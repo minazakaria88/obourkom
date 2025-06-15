@@ -21,19 +21,25 @@ class ProfileSettingSecondSection extends StatelessWidget {
             ProfileButtonWidget(
               title: S.of(context).PrivacyPolicy,
               image: Assets.imagesPrivacy,
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(Routes.privacyPolicy);
+              },
             ),
             10.height,
             ProfileButtonWidget(
               title: S.of(context).TermsAndConditions,
               image: Assets.imagesTerms,
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(Routes.termsAndConditions);
+              },
             ),
             10.height,
             ProfileButtonWidget(
               title: S.of(context).aboutUs,
               image: Assets.imagesAboutUs,
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(Routes.aboutUs);
+              },
             ),
             10.height,
             ProfileButtonWidget(

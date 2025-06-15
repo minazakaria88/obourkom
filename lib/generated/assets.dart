@@ -6,6 +6,7 @@ class Assets {
   static const String fontsCairoMedium = 'assets/fonts/Cairo-Medium.ttf';
   static const String fontsCairoRegular = 'assets/fonts/Cairo-Regular.ttf';
   static const String imagesAboutUs = 'assets/images/aboutUs.svg';
+  static const String imagesAboutUsFaq = 'assets/images/aboutUsFaq.svg';
   static const String imagesAddCircle = 'assets/images/AddCircle.svg';
   static const String imagesAddLocation = 'assets/images/addLocation.svg';
   static const String imagesBell = 'assets/images/Bell.svg';

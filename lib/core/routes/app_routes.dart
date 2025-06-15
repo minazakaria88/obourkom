@@ -9,6 +9,8 @@ import 'package:oborkom/features/login/presentation/pages/login_screen.dart';
 import 'package:oborkom/features/locations/presentation/pages/pick_location_screen.dart';
 import 'package:oborkom/features/notification/presentation/pages/notification_screen.dart';
 import 'package:oborkom/features/profile/presentation/pages/edit_profile_screen.dart';
+import 'package:oborkom/features/profile/presentation/pages/profile_features_screens/about_us_screen.dart';
+import 'package:oborkom/features/profile/presentation/pages/profile_features_screens/privacy_policy_screen.dart';
 import 'package:oborkom/features/profile/presentation/pages/profile_features_screens/support_screen.dart';
 import 'package:oborkom/features/register/presentation/cubit/register_cubit.dart';
 import 'package:oborkom/features/register/presentation/pages/register_screen.dart';
@@ -20,6 +22,7 @@ import '../../features/orders/presentation/cubit/orders_cubit.dart';
 import '../../features/orders/presentation/pages/new_order.dart';
 import '../../features/otp/presentation/cubit/otp_cubit.dart';
 import '../../features/otp/presentation/pages/otp_screen.dart';
+import '../../features/profile/presentation/pages/profile_features_screens/terms_and_conditions_screen.dart';
 import '../../injection.dart';
 
 class AppRoues {
@@ -88,6 +91,16 @@ class AppRoues {
         );
       case Routes.support:
         return MaterialPageRoute(builder: (context) => const SupportScreen());
+      case Routes.aboutUs:
+        return MaterialPageRoute(builder: (context) => const AboutUsScreen());
+      case Routes.termsAndConditions:
+        return MaterialPageRoute(
+          builder: (context) => const TermsAndConditionsScreen(),
+        );
+      case Routes.privacyPolicy:
+        return MaterialPageRoute(
+          builder: (context) => const PrivacyPolicyScreen(),
+        );
       default:
         return null;
     }

@@ -41,6 +41,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "bigCars": MessageLookupByLibrary.simpleMessage("Big Car"),
     "callUs": MessageLookupByLibrary.simpleMessage("Call US"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
+    "checkPrivacyPolicy": MessageLookupByLibrary.simpleMessage(
+      "Check Privacy Policy",
+    ),
     "chooseFromSavedLocations": MessageLookupByLibrary.simpleMessage(
       "choose From Saved Locations",
     ),

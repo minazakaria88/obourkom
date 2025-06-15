@@ -12,6 +12,9 @@ class Routes
   static const String editProfile='/editProfile';
   static const String notifications='/notifications';
   static const String support='/support';
+  static const String aboutUs='/aboutUs';
+  static const String termsAndConditions='/termsAndConditions';
+  static const String privacyPolicy='/privacyPolicy';
 
 
 }

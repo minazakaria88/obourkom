@@ -648,6 +648,16 @@ class S {
   String get whatsapp {
     return Intl.message('Whatsapp', name: 'whatsapp', desc: '', args: []);
   }
+
+  /// `Check Privacy Policy`
+  String get checkPrivacyPolicy {
+    return Intl.message(
+      'Check Privacy Policy',
+      name: 'checkPrivacyPolicy',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
