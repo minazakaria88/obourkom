@@ -24,7 +24,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     try {
      // await registerRepository.register(data);
       await Future.delayed(const Duration(seconds: 2));
-      CacheHelper.saveData(key: CacheHelperKeys.token, value: 'token');
+      CacheHelper.setSecureString( CacheHelperKeys.token,'token');
       emit(state.copyWith(registerStatus: RegisterStatus.success));
     } on ApiException catch (e) {
       emit(

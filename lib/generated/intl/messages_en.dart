@@ -38,8 +38,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "addresses": MessageLookupByLibrary.simpleMessage("Addresses"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "and": MessageLookupByLibrary.simpleMessage(" and "),
+    "areYouSureLogout": MessageLookupByLibrary.simpleMessage(
+      "Are you sure you want to logout?",
+    ),
     "bigCars": MessageLookupByLibrary.simpleMessage("Big Car"),
     "callUs": MessageLookupByLibrary.simpleMessage("Call US"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
     "checkPrivacyPolicy": MessageLookupByLibrary.simpleMessage(
       "Check Privacy Policy",
@@ -79,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterDiscountCode": MessageLookupByLibrary.simpleMessage(
       "Enter discount code",
     ),
+    "exit": MessageLookupByLibrary.simpleMessage("Exit"),
     "expectedTransportationCost": MessageLookupByLibrary.simpleMessage(
       "Expected Transportation Cost",
     ),

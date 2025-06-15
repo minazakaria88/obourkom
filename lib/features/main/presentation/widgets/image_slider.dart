@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/features/profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/utils/app_colors.dart';
@@ -25,15 +26,16 @@ class _ImageSliderState extends State<ImageSlider> {
         CarouselSlider(
           items: widget.images
               .map(
-                (e) => SizedBox(
-                  width: MediaQuery.sizeOf(context).width,
-                  child: Card(
-                    elevation: 2,
-                    color: widget.colors[widget.images.indexOf(e)],
-                    child: Image.asset(
-                      e,
-                      //fit: BoxFit.fill,
-                      gaplessPlayback: true,
+                (e) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    width: MediaQuery.sizeOf(context).width,
+                    child: BackgroundProfileWidget(
+                      child: Image.asset(
+                        e,
+                        //fit: BoxFit.fill,
+                        gaplessPlayback: true,
+                      ),
                     ),
                   ),
                 ),
@@ -41,7 +43,7 @@ class _ImageSliderState extends State<ImageSlider> {
               .toList(),
           options: CarouselOptions(
             height: 190,
-            viewportFraction: 0.9,
+            viewportFraction: 1,
             initialPage: 0,
             enableInfiniteScroll: true,
             reverse: false,

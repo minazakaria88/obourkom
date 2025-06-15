@@ -5,6 +5,7 @@ import 'package:oborkom/generated/l10n.dart';
 import '../../../../generated/assets.dart';
 import '../cubit/profile_cubit.dart';
 import '../widgets/profile_screen_widgets/background_profile_widget.dart';
+import '../widgets/profile_screen_widgets/logout_widget.dart';
 import '../widgets/profile_screen_widgets/profile_button_widget.dart';
 import '../widgets/profile_screen_widgets/profile_header_widget.dart';
 import '../widgets/profile_screen_widgets/profile_setting_first_section.dart';
@@ -34,13 +35,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           const ProfileHeaderWidget(),
           SliverToBoxAdapter(child: 20.height),
           const ProfileSettingsFirstSection(),
-          SliverToBoxAdapter(
-            child: 30.height,
-          ),
+          SliverToBoxAdapter(child: 30.height),
           const ProfileSettingSecondSection(),
-          SliverToBoxAdapter(
-            child: 40.height,
-          ),
+          SliverToBoxAdapter(child: 40.height),
           SliverToBoxAdapter(
             child: BackgroundProfileWidget(
               child: Column(
@@ -48,23 +45,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ProfileButtonWidget(
                     title: S.of(context).logout,
                     image: Assets.imagesExit,
-                    onTap: () {},
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => const LogoutWidget(),
+                      );
+                    },
                   ),
                   10.height,
                 ],
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: 40.height,
-          ),
-
-
+          SliverToBoxAdapter(child: 40.height),
         ],
       ),
     );
   }
-
 }
+
 
 

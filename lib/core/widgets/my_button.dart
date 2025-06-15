@@ -4,10 +4,11 @@ import '../utils/app_colors.dart';
 
 class MyButton extends StatelessWidget {
   const MyButton({
-    super.key, required this.title, required this.onTap,
+    super.key, required this.title, required this.onTap, this.color,
   });
   final String title;
   final Function onTap;
+  final Color ? color;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class MyButton extends StatelessWidget {
         width: double.infinity,
         height: 56,
         decoration: BoxDecoration(
-          color: AppColors.mainColor,
+          color: color ?? AppColors.mainColor,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(

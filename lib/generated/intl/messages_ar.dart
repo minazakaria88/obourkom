@@ -38,8 +38,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "addresses": MessageLookupByLibrary.simpleMessage("العناوين"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "and": MessageLookupByLibrary.simpleMessage(" و "),
+    "areYouSureLogout": MessageLookupByLibrary.simpleMessage(
+      "هل انت متأكد من تسجيل الخروج؟",
+    ),
     "bigCars": MessageLookupByLibrary.simpleMessage(" شاحنة كبيرة"),
     "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
+    "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
     "checkPrivacyPolicy": MessageLookupByLibrary.simpleMessage(
       "قم بمراجعة الشروط والأحكام",
@@ -73,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني *"),
     "enter": MessageLookupByLibrary.simpleMessage("دخول"),
     "enterDiscountCode": MessageLookupByLibrary.simpleMessage("ادخل كود الخصم"),
+    "exit": MessageLookupByLibrary.simpleMessage("خروج"),
     "expectedTransportationCost": MessageLookupByLibrary.simpleMessage(
       "التكلفة المتوقعة للنقل",
     ),

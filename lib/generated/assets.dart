@@ -13,6 +13,7 @@ class Assets {
   static const String imagesBigCar = 'assets/images/bigCar.png';
   static const String imagesCall = 'assets/images/call.svg';
   static const String imagesDelete = 'assets/images/delete.svg';
+  static const String imagesDeleteAccount = 'assets/images/deleteAccount.svg';
   static const String imagesEdit = 'assets/images/edit.svg';
   static const String imagesEditImage = 'assets/images/editImage.svg';
   static const String imagesEnableLocation = 'assets/images/enable_location.svg';
@@ -24,6 +25,7 @@ class Assets {
   static const String imagesLanguage = 'assets/images/language.svg';
   static const String imagesLocation = 'assets/images/location.svg';
   static const String imagesLogo = 'assets/images/logo.png';
+  static const String imagesLogout = 'assets/images/logout.svg';
   static const String imagesMarker = 'assets/images/marker.png';
   static const String imagesNewOrder = 'assets/images/newOrder.png';
   static const String imagesNotification = 'assets/images/notification.svg';

@@ -75,7 +75,11 @@
   "home": "Home",
   "callUs": "Call US",
   "whatsapp": "Whatsapp",
-  "checkPrivacyPolicy": "Check Privacy Policy"
+  "checkPrivacyPolicy": "Check Privacy Policy",
+  "areYouSureLogout": "Are you sure you want to logout?",
+  "exit": "Exit",
+  "cancel": "Cancel"
+
 
 
 

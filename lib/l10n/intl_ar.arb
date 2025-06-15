@@ -77,7 +77,10 @@
     "home": "المنزل",
     "callUs": "اتصل بنا",
     "whatsapp": "واتساب",
-    "checkPrivacyPolicy": "قم بمراجعة الشروط والأحكام"
+    "checkPrivacyPolicy": "قم بمراجعة الشروط والأحكام",
+    "areYouSureLogout": "هل انت متأكد من تسجيل الخروج؟",
+    "exit": "خروج",
+    "cancel": "الغاء"
 
 
 

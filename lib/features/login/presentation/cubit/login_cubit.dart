@@ -19,7 +19,7 @@ class LoginCubit extends Cubit<LoginState> {
     try {
      // await loginRepository.login(phoneNumber: phoneController.text);
       await Future.delayed(const Duration(seconds: 2));
-      CacheHelper.saveData(key: CacheHelperKeys.token, value: 'token');
+      CacheHelper.setSecureString( CacheHelperKeys.token,'token');
       emit(state.copyWith(loginStatus: LoginStatus.success));
     } on ApiException catch (e) {
       emit(
