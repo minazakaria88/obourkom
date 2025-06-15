@@ -12,6 +12,7 @@ class Assets {
   static const String imagesBell = 'assets/images/Bell.svg';
   static const String imagesBigCar = 'assets/images/bigCar.png';
   static const String imagesCall = 'assets/images/call.svg';
+  static const String imagesCloseCircle = 'assets/images/CloseCircle.svg';
   static const String imagesDelete = 'assets/images/delete.svg';
   static const String imagesDeleteAccount = 'assets/images/deleteAccount.svg';
   static const String imagesEdit = 'assets/images/edit.svg';
@@ -21,6 +22,7 @@ class Assets {
   static const String imagesFaq = 'assets/images/faq.svg';
   static const String imagesFridges = 'assets/images/fridges.png';
   static const String imagesFurniture = 'assets/images/furniture.png';
+  static const String imagesGreenDot = 'assets/images/greenDot.svg';
   static const String imagesHome = 'assets/images/home.svg';
   static const String imagesLanguage = 'assets/images/language.svg';
   static const String imagesLocation = 'assets/images/location.svg';
@@ -28,6 +30,7 @@ class Assets {
   static const String imagesLogout = 'assets/images/logout.svg';
   static const String imagesMarker = 'assets/images/marker.png';
   static const String imagesNewOrder = 'assets/images/newOrder.png';
+  static const String imagesNoNotifications = 'assets/images/NoNotifications.svg';
   static const String imagesNotification = 'assets/images/notification.svg';
   static const String imagesOrders = 'assets/images/orders.svg';
   static const String imagesOtherAddLocations = 'assets/images/otherAddLocations.svg';
