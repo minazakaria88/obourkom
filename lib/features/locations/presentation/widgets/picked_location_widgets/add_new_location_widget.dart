@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_styles.dart';
 import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.dart';
@@ -59,7 +60,7 @@ class AddNewLocationWidget extends StatelessWidget {
                   10.width,
                   Flexible(
                     child: Text(
-                      location?.street ?? '',
+                      concatenatePlacemark(place: location) ?? '',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppTextStyles.regular12Grey,

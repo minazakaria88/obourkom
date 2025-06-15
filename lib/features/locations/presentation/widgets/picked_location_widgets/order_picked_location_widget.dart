@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_styles.dart';
 import '../../../../../core/utils/app_colors.dart';
@@ -52,7 +53,7 @@ class OrderPickLocation extends StatelessWidget {
           ),
           20.height,
           Text(
-            location?.street ?? '',
+            concatenatePlacemark(place: location) ?? '',
             style: const TextStyle(
               color: Color(0xff474747),
               fontSize: 16,

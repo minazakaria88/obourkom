@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_styles.dart';
 import 'package:oborkom/core/utils/constant.dart';
@@ -72,7 +73,7 @@ class NewOrder extends StatelessWidget {
                                 title: S.of(context).pickUpFrom,
                                 value: state.pickedLocation == null
                                     ? ''
-                                    : state.pickedLocationData!.street,
+                                    : concatenatePlacemark(place: state.pickedLocationData),
                                 onTap: () async {
                                   final result = await context.pushNamed(
                                     Routes.pickLocation,
@@ -103,7 +104,7 @@ class NewOrder extends StatelessWidget {
                                 title: S.of(context).deliveryTo,
                                 value: state.deliveryLocationData == null
                                     ? ''
-                                    : state.deliveryLocationData!.street,
+                                    : concatenatePlacemark(place: state.deliveryLocationData),
                                 onTap: () async {
                                   final result = await context.pushNamed(
                                     Routes.pickLocation,
