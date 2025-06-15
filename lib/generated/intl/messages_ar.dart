@@ -61,6 +61,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "createAccount": MessageLookupByLibrary.simpleMessage("انشاء حساب"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
+    "deleteAccountDesc": MessageLookupByLibrary.simpleMessage(
+      "سنقوم بحذف الحساب الخاص بك بشكل نهائي مما سيؤدي الي فقدان سجل الطلبات وكافة البيانات الخاصة بك، هل انت متأكد من القيام بعملية الحذف ؟",
+    ),
     "deliveryTo": MessageLookupByLibrary.simpleMessage("توصيل إلى:"),
     "determineLocationManually": MessageLookupByLibrary.simpleMessage(
       "حدد الموقع يدويا",

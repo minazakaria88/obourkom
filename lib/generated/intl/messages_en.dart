@@ -61,6 +61,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
+    "deleteAccountDesc": MessageLookupByLibrary.simpleMessage(
+      "We will permanently delete your account, which will result in the loss of your order history and all your data. Are you sure you want to delete it?",
+    ),
     "deliveryTo": MessageLookupByLibrary.simpleMessage("Delivery To"),
     "determineLocationManually": MessageLookupByLibrary.simpleMessage(
       "Determine Location Manually",

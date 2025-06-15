@@ -678,6 +678,26 @@ class S {
   String get cancel {
     return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
   }
+
+  /// `Delete Account`
+  String get deleteAccount {
+    return Intl.message(
+      'Delete Account',
+      name: 'deleteAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We will permanently delete your account, which will result in the loss of your order history and all your data. Are you sure you want to delete it?`
+  String get deleteAccountDesc {
+    return Intl.message(
+      'We will permanently delete your account, which will result in the loss of your order history and all your data. Are you sure you want to delete it?',
+      name: 'deleteAccountDesc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

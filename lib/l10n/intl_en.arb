@@ -78,7 +78,9 @@
   "checkPrivacyPolicy": "Check Privacy Policy",
   "areYouSureLogout": "Are you sure you want to logout?",
   "exit": "Exit",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "deleteAccount": "Delete Account",
+  "deleteAccountDesc": "We will permanently delete your account, which will result in the loss of your order history and all your data. Are you sure you want to delete it?"
 
 
 

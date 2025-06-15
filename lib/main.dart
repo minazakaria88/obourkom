@@ -21,7 +21,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.init();
   ApiHelper.init();
-  checkIfUserLoggedIn();
+  await checkIfUserLoggedIn();
   setupServicesLocator();
   Bloc.observer = MyBlocObserver();
   runApp(DevicePreview(enabled: false, builder: (context) => const OborKom()));
@@ -62,10 +62,8 @@ class NavigatorClass {
   static final navigatorKey = GlobalKey<NavigatorState>();
 }
 
-
-
-void checkIfUserLoggedIn() {
-  String? token = CacheHelper.getData(key: CacheHelperKeys.token);
+Future<void> checkIfUserLoggedIn() async {
+  String? token = await CacheHelper.getSecureString(CacheHelperKeys.token);
   log('token : $token');
   if (!token.isNullOrEmpty()) {
     isLoggedIn = true;
