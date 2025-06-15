@@ -7,6 +7,9 @@ import 'package:oborkom/core/widgets/my_app_bar.dart';
 import 'package:oborkom/generated/assets.dart';
 import 'package:oborkom/generated/l10n.dart';
 
+import '../../../../../core/functions/make_phone_call.dart';
+import '../../../../../core/functions/whatsapp.dart';
+
 class SupportScreen extends StatelessWidget {
   const SupportScreen({super.key});
 
@@ -18,13 +21,17 @@ class SupportScreen extends StatelessWidget {
         children: [
           20.height,
           SupportItemWidget(
-            onTap: (){},
+            onTap: (){
+              makePhoneCall(phoneNumber: '+201064687742');
+            },
             title: S.of(context).callUs,
             image: Assets.imagesCall,
           ),
           10.height,
           SupportItemWidget(
-            onTap: (){},
+            onTap: (){
+              whatsapp(phoneNumber: '+201064687742');
+            },
             title: S.of(context).whatsapp,
             image: Assets.imagesWhatsapp,
           ),
