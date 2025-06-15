@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oborkom/core/helpers/extension.dart';
 
 class ValidateWidget extends StatelessWidget {
   const ValidateWidget({
@@ -15,6 +16,7 @@ class ValidateWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           child,
+          10.height,
           if (field.errorText != null)
             Text(
               field.errorText!,

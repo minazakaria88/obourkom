@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_styles.dart';
@@ -12,7 +13,7 @@ class OrderPickLocation extends StatelessWidget {
     required this.location,
     required this.pickedLocation,
   });
-  final String location;
+  final Placemark? location;
   final LatLng? pickedLocation;
 
   @override
@@ -51,7 +52,7 @@ class OrderPickLocation extends StatelessWidget {
           ),
           20.height,
           Text(
-            location,
+            location?.street ?? '',
             style: const TextStyle(
               color: Color(0xff474747),
               fontSize: 16,

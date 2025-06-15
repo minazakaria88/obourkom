@@ -698,6 +698,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Save`
+  String get save {
+    return Intl.message('Save', name: 'save', desc: '', args: []);
+  }
+
+  /// `Type`
+  String get type {
+    return Intl.message('Type', name: 'type', desc: '', args: []);
+  }
+
+  /// `Work`
+  String get work {
+    return Intl.message('Work', name: 'work', desc: '', args: []);
+  }
+
+  /// `Other`
+  String get other {
+    return Intl.message('Other', name: 'other', desc: '', args: []);
+  }
+
+  /// `Add Address`
+  String get addAddress {
+    return Intl.message('Add Address', name: 'addAddress', desc: '', args: []);
+  }
+
+  /// `Please select address type`
+  String get pleaseSelectAddressType {
+    return Intl.message(
+      'Please select address type',
+      name: 'pleaseSelectAddressType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Label`
+  String get label {
+    return Intl.message('Label', name: 'label', desc: '', args: []);
+  }
+
+  /// `Please enter label`
+  String get pleaseEnterLabel {
+    return Intl.message(
+      'Please enter label',
+      name: 'pleaseEnterLabel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Example: My uncle's house`
+  String get labelHint {
+    return Intl.message(
+      'Example: My uncle\'s house',
+      name: 'labelHint',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

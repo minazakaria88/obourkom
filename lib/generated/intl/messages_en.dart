@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "aboutUs": MessageLookupByLibrary.simpleMessage("about Us"),
     "active": MessageLookupByLibrary.simpleMessage("Active"),
     "activeLocation": MessageLookupByLibrary.simpleMessage("Active Location"),
+    "addAddress": MessageLookupByLibrary.simpleMessage("Add Address"),
     "addresses": MessageLookupByLibrary.simpleMessage("Addresses"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "and": MessageLookupByLibrary.simpleMessage(" and "),
@@ -96,6 +97,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "iAgreeToThe": MessageLookupByLibrary.simpleMessage("I agree to the"),
+    "label": MessageLookupByLibrary.simpleMessage("Label"),
+    "labelHint": MessageLookupByLibrary.simpleMessage(
+      "Example: My uncle\'s house",
+    ),
     "language": MessageLookupByLibrary.simpleMessage("English"),
     "location": MessageLookupByLibrary.simpleMessage("Location"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
@@ -108,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "To provide the best service and ease of access, please enable your location",
     ),
     "orders": MessageLookupByLibrary.simpleMessage("Orders"),
+    "other": MessageLookupByLibrary.simpleMessage("Other"),
     "otp": MessageLookupByLibrary.simpleMessage("OTP"),
     "otpText": MessageLookupByLibrary.simpleMessage(
       "Please enter the 4-digit verification code just sent to you via text message.",
@@ -137,8 +143,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseEnterDeliveryLocation": MessageLookupByLibrary.simpleMessage(
       "Please enter delivery location",
     ),
+    "pleaseEnterLabel": MessageLookupByLibrary.simpleMessage(
+      "Please enter label",
+    ),
     "pleaseEnterPickupLocation": MessageLookupByLibrary.simpleMessage(
       "Please enter pickup location",
+    ),
+    "pleaseSelectAddressType": MessageLookupByLibrary.simpleMessage(
+      "Please select address type",
     ),
     "pleaseWriteYourNotes": MessageLookupByLibrary.simpleMessage(
       "Please write your notes",
@@ -151,6 +163,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "request": MessageLookupByLibrary.simpleMessage("Request"),
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
+    "save": MessageLookupByLibrary.simpleMessage("Save"),
     "smallCars": MessageLookupByLibrary.simpleMessage("Small Car"),
     "support": MessageLookupByLibrary.simpleMessage("Support"),
     "transferServices": MessageLookupByLibrary.simpleMessage(
@@ -159,12 +172,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "transportOfGoods": MessageLookupByLibrary.simpleMessage(
       "Transport of Goods",
     ),
+    "type": MessageLookupByLibrary.simpleMessage("Type"),
     "weCannotDetermineYourLocation": MessageLookupByLibrary.simpleMessage(
       "We cannot determine your location",
     ),
     "welcome": MessageLookupByLibrary.simpleMessage("Welcome , "),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back"),
     "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
+    "work": MessageLookupByLibrary.simpleMessage("Work"),
     "writeYourNameHere": MessageLookupByLibrary.simpleMessage(
       "Write your name here",
     ),

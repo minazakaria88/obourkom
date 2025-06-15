@@ -80,8 +80,16 @@
   "exit": "Exit",
   "cancel": "Cancel",
   "deleteAccount": "Delete Account",
-  "deleteAccountDesc": "We will permanently delete your account, which will result in the loss of your order history and all your data. Are you sure you want to delete it?"
-
+  "deleteAccountDesc": "We will permanently delete your account, which will result in the loss of your order history and all your data. Are you sure you want to delete it?",
+ "save": "Save",
+  "type": "Type",
+  "work": "Work",
+  "other": "Other",
+  "addAddress": "Add Address",
+  "pleaseSelectAddressType": "Please select address type",
+  "label": "Label",
+  "pleaseEnterLabel": "Please enter label",
+  "labelHint": "Example: My uncle's house"
 
 
 

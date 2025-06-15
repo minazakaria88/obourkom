@@ -10,6 +10,7 @@ import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/routes/app_routes.dart';
 import 'package:oborkom/core/routes/routes.dart';
 import 'package:oborkom/core/utils/app_theme.dart';
+import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/language/presentation/cubit/language_cubit.dart';
 import 'package:oborkom/injection.dart';
 
@@ -40,7 +41,7 @@ class OborKom extends StatelessWidget {
           title: 'Oborkom',
           theme: appTheme(),
           locale: Locale(
-            CacheHelper.getData(key: CacheHelperKeys.lang) ?? 'ar',
+            CacheHelper.getData(key: CacheHelperKeys.lang) ?? 'en',
           ),
           localizationsDelegates: [
             S.delegate,
@@ -64,7 +65,9 @@ class NavigatorClass {
 
 Future<void> checkIfUserLoggedIn() async {
   String? token = await CacheHelper.getSecureString(CacheHelperKeys.token);
-  log('token : $token');
+  String? lang = await CacheHelper.getData(key:CacheHelperKeys.lang);
+  logger.i(token);
+  logger.i(lang);
   if (!token.isNullOrEmpty()) {
     isLoggedIn = true;
   }

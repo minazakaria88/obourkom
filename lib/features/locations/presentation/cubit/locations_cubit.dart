@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/api/failure.dart';
@@ -19,6 +20,10 @@ class LocationsCubit extends Cubit<LocationsState> {
 
   final Completer<GoogleMapController> controller =
       Completer<GoogleMapController>();
+
+  final formKey = GlobalKey<FormState>();
+
+  TextEditingController nameController = TextEditingController();
 
   void changeCameraPosition(LatLng position) async {
     controller.future
@@ -84,4 +89,12 @@ class LocationsCubit extends Cubit<LocationsState> {
       );
     }
   }
+
+
+  void selectLocationType(int locationType) {
+    emit(state.copyWith(locationType: locationType));
+  }
+
+
+
 }

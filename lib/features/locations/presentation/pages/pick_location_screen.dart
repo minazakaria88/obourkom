@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.dart';
+import 'package:oborkom/features/locations/presentation/widgets/picked_location_widgets/add_new_location_widget.dart';
 import 'package:oborkom/generated/l10n.dart';
 import '../../../../core/widgets/my_app_bar.dart';
 import '../../../../generated/assets.dart';
@@ -38,8 +39,14 @@ class _PickOrderLocationScreenState extends State<PickOrderLocationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(title: S.of(context).request),
+      appBar: MyAppBar(
+        title: widget.mapContext.type == MapTypes.addLocation
+            ? S.of(context).addAddress
+            : S.of(context).request,
+      ),
       body: BlocBuilder<LocationsCubit, LocationsState>(
+        buildWhen: (previous, current) =>
+            previous.pickedLocation != current.pickedLocation,
         builder: (context, state) {
           final cubit = context.read<LocationsCubit>();
           return Stack(
@@ -69,7 +76,7 @@ class _PickOrderLocationScreenState extends State<PickOrderLocationScreen> {
                 onCameraIdle: () {},
                 zoomControlsEnabled: false,
                 mapType: MapType.normal,
-                myLocationButtonEnabled: false,
+                myLocationButtonEnabled: true,
                 myLocationEnabled: true,
                 zoomGesturesEnabled: true,
                 padding: const EdgeInsets.all(0),
@@ -85,10 +92,13 @@ class _PickOrderLocationScreenState extends State<PickOrderLocationScreen> {
               if (state.pickedLocation != null)
                 widget.mapContext.type == MapTypes.orderPick
                     ? OrderPickLocation(
-                        location: state.locationData!.street ?? '',
+                        location: state.locationData,
                         pickedLocation: state.pickedLocation,
                       )
-                    : const SizedBox(),
+                    : AddNewLocationWidget(
+                        location: state.locationData,
+                        pickedLocation: state.pickedLocation,
+                      ),
             ],
           );
         },

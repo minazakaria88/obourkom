@@ -35,6 +35,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "aboutUs": MessageLookupByLibrary.simpleMessage("من نحن"),
     "active": MessageLookupByLibrary.simpleMessage("تفعيل"),
     "activeLocation": MessageLookupByLibrary.simpleMessage("تفعيل الموقع"),
+    "addAddress": MessageLookupByLibrary.simpleMessage("اضافة عنوان"),
     "addresses": MessageLookupByLibrary.simpleMessage("العناوين"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "and": MessageLookupByLibrary.simpleMessage(" و "),
@@ -90,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "home": MessageLookupByLibrary.simpleMessage("المنزل"),
     "iAgreeToThe": MessageLookupByLibrary.simpleMessage(" اوافق على "),
+    "label": MessageLookupByLibrary.simpleMessage("التسمية"),
+    "labelHint": MessageLookupByLibrary.simpleMessage("مثال: منزل عمي"),
     "language": MessageLookupByLibrary.simpleMessage("العربية"),
     "location": MessageLookupByLibrary.simpleMessage("الموقع"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
@@ -102,6 +105,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "لتقديم افضل خدمة وسهولة في الوصول يرجي تفعيل الموقع",
     ),
     "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
+    "other": MessageLookupByLibrary.simpleMessage("اخرى"),
     "otp": MessageLookupByLibrary.simpleMessage("رمز التحقق"),
     "otpText": MessageLookupByLibrary.simpleMessage(
       "فضلًا ادخل رمز التحقق المكون من 4 أرقام المرسل اليك للتو عبر رسالة نصية",
@@ -131,8 +135,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseEnterDeliveryLocation": MessageLookupByLibrary.simpleMessage(
       "الرجاء ادخال موقع التسليم",
     ),
+    "pleaseEnterLabel": MessageLookupByLibrary.simpleMessage(
+      "الرجاء ادخال التسمية",
+    ),
     "pleaseEnterPickupLocation": MessageLookupByLibrary.simpleMessage(
       "الرجاء ادخال موقع الاستلام",
+    ),
+    "pleaseSelectAddressType": MessageLookupByLibrary.simpleMessage(
+      "الرجاء اختيار نوع العنوان",
     ),
     "pleaseWriteYourNotes": MessageLookupByLibrary.simpleMessage(
       "الرجاء كتابة ملاحظاتك ",
@@ -145,16 +155,19 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "request": MessageLookupByLibrary.simpleMessage("طلب"),
     "resend": MessageLookupByLibrary.simpleMessage("اعادة الارسال"),
+    "save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "smallCars": MessageLookupByLibrary.simpleMessage(" شاحنة صغيرة"),
     "support": MessageLookupByLibrary.simpleMessage("مركز الدعم"),
     "transferServices": MessageLookupByLibrary.simpleMessage(" خدمة نقل "),
     "transportOfGoods": MessageLookupByLibrary.simpleMessage("نقل بضائع"),
+    "type": MessageLookupByLibrary.simpleMessage("النوع"),
     "weCannotDetermineYourLocation": MessageLookupByLibrary.simpleMessage(
       "لا يمكننا التعرف علي موقعك",
     ),
     "welcome": MessageLookupByLibrary.simpleMessage("مرحبا بك، "),
     "welcomeBack": MessageLookupByLibrary.simpleMessage("مرحبا بعودتك"),
     "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
+    "work": MessageLookupByLibrary.simpleMessage("عمل"),
     "writeYourNameHere": MessageLookupByLibrary.simpleMessage("اكتب اسمك هنا"),
     "writeYourNotesHere": MessageLookupByLibrary.simpleMessage(
       "اكتب ملاحظاتك هنا",

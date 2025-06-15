@@ -30,6 +30,7 @@ class Assets {
   static const String imagesNewOrder = 'assets/images/newOrder.png';
   static const String imagesNotification = 'assets/images/notification.svg';
   static const String imagesOrders = 'assets/images/orders.svg';
+  static const String imagesOtherAddLocations = 'assets/images/otherAddLocations.svg';
   static const String imagesOtp = 'assets/images/otp.png';
   static const String imagesPrivacy = 'assets/images/privacy.svg';
   static const String imagesProfile = 'assets/images/profile.svg';

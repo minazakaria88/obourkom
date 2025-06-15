@@ -8,6 +8,7 @@ class LocationsState extends Equatable {
   List<LocationModel>? locations;
   LocationsStatus? locationsStatus;
   String? errorMessage;
+  int? locationType;
 
   LocationsState({
     this.pickedLocation,
@@ -15,6 +16,7 @@ class LocationsState extends Equatable {
     this.locations,
     this.locationsStatus,
     this.errorMessage,
+    this.locationType,
   });
 
   LocationsState copyWith({
@@ -23,17 +25,25 @@ class LocationsState extends Equatable {
     List<LocationModel>? locations,
     LocationsStatus? locationsStatus,
     String? errorMessage,
-
+    int? locationType,
   }) {
     return LocationsState(
       pickedLocation: pickedLocation ?? this.pickedLocation,
       locationData: locationData ?? this.locationData,
       locations: locations ?? this.locations,
-      errorMessage: errorMessage?? this.errorMessage,
-      locationsStatus: locationsStatus?? this.locationsStatus
+      errorMessage: errorMessage ?? this.errorMessage,
+      locationsStatus: locationsStatus ?? this.locationsStatus,
+      locationType: locationType ?? this.locationType,
     );
   }
 
   @override
-  List<Object?> get props => [pickedLocation, locations, locationData,errorMessage,locationsStatus];
+  List<Object?> get props => [
+    pickedLocation,
+    locations,
+    locationData,
+    errorMessage,
+    locationsStatus,
+    locationType,
+  ];
 }

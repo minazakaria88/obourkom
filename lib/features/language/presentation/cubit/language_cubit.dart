@@ -12,12 +12,15 @@ class LanguageCubit extends Cubit<LanguageState> {
 
   void initLanguage()
   {
-    CacheHelper.saveData(key: CacheHelperKeys.lang, value: 'ar');
+    String? lang = CacheHelper.getData(key: CacheHelperKeys.lang);
+    if(lang == null) {
+      CacheHelper.saveData(key: CacheHelperKeys.lang, value: 'ar');
+    }
 
   }
 
-  void changeLanguage(String languageCode) {
-    CacheHelper.saveData(key: CacheHelperKeys.lang, value: languageCode);
+  void changeLanguage(String languageCode)async {
+   await CacheHelper.saveData(key: CacheHelperKeys.lang, value: languageCode);
     emit(LanguageChanged(languageCode: languageCode));
   }
 }
