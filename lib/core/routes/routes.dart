@@ -1,0 +1,17 @@
+
+class Routes
+{
+  static const String  login='/login';
+  static const String  register='/register';
+  static const String  home='/home';
+  static const String  otp='/otp';
+  static const String chooseYourCar='/chooseYourCar';
+  static const String newOrder='/newOrder';
+  static const String pickLocation='/pickLocation';
+  static const String locations='/locations';
+  static const String editProfile='/editProfile';
+  static const String notifications='/notifications';
+  static const String support='/support';
+
+
+}
