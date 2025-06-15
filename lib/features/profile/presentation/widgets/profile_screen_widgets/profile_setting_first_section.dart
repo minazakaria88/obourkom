@@ -8,6 +8,7 @@ import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../home/presentation/cubit/home_cubit.dart';
+import '../../cubit/profile_cubit.dart';
 import '../language/language_model_sheet_widget.dart';
 import 'background_profile_widget.dart';
 
@@ -25,7 +26,7 @@ class ProfileSettingsFirstSection extends StatelessWidget {
             ProfileButtonWidget(
               title: S.of(context).personalAccount,
               onTap: () {
-                context.pushNamed(Routes.editProfile);
+                context.pushNamed(Routes.editProfile,arguments: context.read<ProfileCubit>());
               },
               image: Assets.imagesProfile,
             ),

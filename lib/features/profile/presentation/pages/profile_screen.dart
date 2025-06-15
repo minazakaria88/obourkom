@@ -5,7 +5,6 @@ import 'package:oborkom/generated/l10n.dart';
 import '../../../../generated/assets.dart';
 import '../cubit/profile_cubit.dart';
 import '../widgets/profile_screen_widgets/background_profile_widget.dart';
-import '../widgets/profile_screen_widgets/delete_account_widget.dart';
 import '../widgets/profile_screen_widgets/logout_widget.dart';
 import '../widgets/profile_screen_widgets/profile_button_widget.dart';
 import '../widgets/profile_screen_widgets/profile_header_widget.dart';
@@ -49,7 +48,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () {
                       showDialog(
                         context: context,
-                        builder: (context) => const DeleteAccountWidget(),
+                        builder: (context) => const LogoutWidget(),
                       );
                     },
                   ),

@@ -91,7 +91,8 @@
     "pleaseSelectAddressType": "الرجاء اختيار نوع العنوان",
     "label": "التسمية",
     "pleaseEnterLabel": "الرجاء ادخال التسمية",
-    "labelHint": "مثال: منزل عمي"
+    "labelHint": "مثال: منزل عمي",
+    "doYouWantToDeleteYourAccount": "هل تريد حذف حسابك ؟"
 
 
 

@@ -758,6 +758,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Do you want to delete your account?`
+  String get doYouWantToDeleteYourAccount {
+    return Intl.message(
+      'Do you want to delete your account?',
+      name: 'doYouWantToDeleteYourAccount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

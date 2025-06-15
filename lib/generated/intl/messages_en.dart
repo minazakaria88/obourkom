@@ -76,6 +76,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "doYouHaveADiscountCode": MessageLookupByLibrary.simpleMessage(
       "Do you have a discount code?",
     ),
+    "doYouWantToDeleteYourAccount": MessageLookupByLibrary.simpleMessage(
+      "Do you want to delete your account?",
+    ),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage(
       "Don\'t have an account?",
     ),

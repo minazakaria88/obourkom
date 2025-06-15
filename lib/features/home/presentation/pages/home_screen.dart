@@ -48,10 +48,11 @@ class _HomeScreenState extends State<HomeScreen> {
               cubit.changeIndex(index);
             },
           ),
-          body: IndexedStack(
-            index: state.currentIndex,
-            children: cubit.screens,
-          ),
+           body:cubit.screens[state.currentIndex],
+          // IndexedStack(
+          //   index: state.currentIndex,
+          //   children: cubit.screens,
+          // ),
         );
       },
     );

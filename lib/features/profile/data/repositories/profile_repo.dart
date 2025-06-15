@@ -12,11 +12,11 @@ class ProfileRepository {
     try {
       // final response = await apiHelper.getData(url: EndPoints.profile);
       // return UserModel.fromJson(response.data);
-      await Future.delayed(const Duration(seconds: 8));
+      await Future.delayed(const Duration(seconds: 2));
       return UserModel(
-        name: 'name',
+        name: 'mina',
         email: 'minazakaria264@gmail.com',
-        phone: 'phone',
+        phone: '558412655',
         image: 'image',
       );
     } catch (e) {
@@ -26,4 +26,20 @@ class ProfileRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
+
+  Future<bool> updateProfile(data) async
+  {
+    try {
+      // final response = await apiHelper.putData(url: EndPoints.profile, data: data);
+      // return UserModel.fromJson(response.data);
+      await Future.delayed(const Duration(seconds: 2));
+      return true;
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
 }

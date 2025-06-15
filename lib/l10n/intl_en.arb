@@ -89,7 +89,8 @@
   "pleaseSelectAddressType": "Please select address type",
   "label": "Label",
   "pleaseEnterLabel": "Please enter label",
-  "labelHint": "Example: My uncle's house"
+  "labelHint": "Example: My uncle's house",
+  "doYouWantToDeleteYourAccount": "Do you want to delete your account?"
 
 
 

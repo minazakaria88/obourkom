@@ -8,6 +8,7 @@ import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.da
 import 'package:oborkom/features/login/presentation/pages/login_screen.dart';
 import 'package:oborkom/features/locations/presentation/pages/pick_location_screen.dart';
 import 'package:oborkom/features/notification/presentation/pages/notification_screen.dart';
+import 'package:oborkom/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:oborkom/features/profile/presentation/pages/edit_profile_screen.dart';
 import 'package:oborkom/features/profile/presentation/pages/profile_features_screens/about_us_screen.dart';
 import 'package:oborkom/features/profile/presentation/pages/profile_features_screens/privacy_policy_screen.dart';
@@ -75,8 +76,11 @@ class AppRoues {
           ),
         );
       case Routes.editProfile:
+        final arguments = setting.arguments as ProfileCubit;
         return MaterialPageRoute(
-          builder: (context) => const EditProfileScreen(),
+          builder: (context) => BlocProvider.value(
+            value: arguments,
+              child: const EditProfileScreen()),
         );
       case Routes.locations:
         return MaterialPageRoute(

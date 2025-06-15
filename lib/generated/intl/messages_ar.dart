@@ -74,6 +74,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "doYouHaveADiscountCode": MessageLookupByLibrary.simpleMessage(
       "هل لديك كود خصم؟",
     ),
+    "doYouWantToDeleteYourAccount": MessageLookupByLibrary.simpleMessage(
+      "هل تريد حذف حسابك ؟",
+    ),
     "dontHaveAccount": MessageLookupByLibrary.simpleMessage("ليس لديك حساب ؟"),
     "dontReceiveTheCode": MessageLookupByLibrary.simpleMessage(
       "لم تستلم رمز التحقق؟",
