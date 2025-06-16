@@ -104,7 +104,9 @@
   "serviceType" : "Service Type",
   "orderNumber" : "Order Number",
   "lookingForOffers": "Looking for offers ...",
-  "itWillTakeSomeTime": "It will take some time ..."
+  "itWillTakeSomeTime": "It will take some time ...",
+  "accept": "Accept",
+  "decline": "Decline"
 
 
 

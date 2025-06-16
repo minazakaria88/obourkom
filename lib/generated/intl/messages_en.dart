@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
       " Terms and Conditions ",
     ),
     "aboutUs": MessageLookupByLibrary.simpleMessage("about Us"),
+    "accept": MessageLookupByLibrary.simpleMessage("Accept"),
     "active": MessageLookupByLibrary.simpleMessage("Active"),
     "activeLocation": MessageLookupByLibrary.simpleMessage("Active Location"),
     "addAddress": MessageLookupByLibrary.simpleMessage("Add Address"),
@@ -63,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "This cost is estimated and varies according to each representative. It may sometimes increase depending on the distance between the pickup and delivery location. ",
     ),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
+    "decline": MessageLookupByLibrary.simpleMessage("Decline"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
     "deleteAccountDesc": MessageLookupByLibrary.simpleMessage(

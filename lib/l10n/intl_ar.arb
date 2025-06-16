@@ -106,7 +106,10 @@
     "serviceType" : "نوع الخدمة",
     "orderNumber" : "رقم الطلب",
     "lookingForOffers": "جاري البحث عن عروض ...",
-    "itWillTakeSomeTime": "قد تتطلب عملية البحث بعض الوقت ..."
+    "itWillTakeSomeTime": "قد تتطلب عملية البحث بعض الوقت ...",
+    "accept": "قبول",
+    "decline": "رفض"
+
 
 
 

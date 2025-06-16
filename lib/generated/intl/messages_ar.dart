@@ -33,6 +33,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "الشروط والاحكام ",
     ),
     "aboutUs": MessageLookupByLibrary.simpleMessage("من نحن"),
+    "accept": MessageLookupByLibrary.simpleMessage("قبول"),
     "active": MessageLookupByLibrary.simpleMessage("تفعيل"),
     "activeLocation": MessageLookupByLibrary.simpleMessage("تفعيل الموقع"),
     "addAddress": MessageLookupByLibrary.simpleMessage("اضافة عنوان"),
@@ -63,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
       " هذه التكلفة تقديرية وتختلف حسب كل مندوب فيمكن ان تزيد في بعض الأحيان طبقا للمسافة بين موقع الاستلام والتسليم",
     ),
     "createAccount": MessageLookupByLibrary.simpleMessage("انشاء حساب"),
+    "decline": MessageLookupByLibrary.simpleMessage("رفض"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
     "deleteAccountDesc": MessageLookupByLibrary.simpleMessage(

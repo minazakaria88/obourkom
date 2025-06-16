@@ -4,8 +4,8 @@ import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/widgets/my_app_bar.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../generated/l10n.dart';
-import '../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 import '../cubit/orders_cubit.dart';
+import '../widgets/finding_driver_widgets/driver_details_widget.dart';
 import '../widgets/finding_driver_widgets/order_details_widget.dart';
 import '../widgets/finding_driver_widgets/order_timer_widget.dart';
 
@@ -20,7 +20,7 @@ class FindingDriversScreen extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         child: CustomScrollView(
           slivers: [
-             SliverFillRemaining(
+            SliverFillRemaining(
               hasScrollBody: false,
               child: Column(
                 children: [
@@ -28,14 +28,9 @@ class FindingDriversScreen extends StatelessWidget {
                   const OrderDetailsWidget(),
                   20.height,
                   const OrderTimerWidget(),
+                  20.height,
+                  const DriverDetailsWidget(),
                   const Spacer(),
-                  const BackgroundProfileWidget(
-                    child: Column(
-                      children: [
-
-                      ],
-                    ),
-                  ),
                   TextButton(
                     onPressed: () {
                       context.read<OrdersCubit>().cancelTimer();
@@ -51,10 +46,10 @@ class FindingDriversScreen extends StatelessWidget {
                 ],
               ),
             ),
-
           ],
         ),
       ),
     );
   }
 }
+
