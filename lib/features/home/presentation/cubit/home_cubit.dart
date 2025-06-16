@@ -26,7 +26,7 @@ class HomeCubit extends Cubit<HomeState> {
       child: const OrderScreen(),
     ),
     BlocProvider(
-      create: (context) => getIt<NotificationCubit>(),
+      create: (context) => getIt<NotificationCubit>()..getNotification(),
       child: const NotificationScreen(),
     ),
     BlocProvider(

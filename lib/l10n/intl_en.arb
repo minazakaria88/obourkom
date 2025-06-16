@@ -90,7 +90,11 @@
   "label": "Label",
   "pleaseEnterLabel": "Please enter label",
   "labelHint": "Example: My uncle's house",
-  "doYouWantToDeleteYourAccount": "Do you want to delete your account?"
+  "doYouWantToDeleteYourAccount": "Do you want to delete your account?",
+  "noNotifications" : "No Notifications",
+  "noOrders" : "No Orders",
+  "noAddresses" : "No Addresses",
+  "noSavedAddresses" : "No Saved Addresses"
 
 
 

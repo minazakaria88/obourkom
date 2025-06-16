@@ -768,6 +768,41 @@ class S {
       args: [],
     );
   }
+
+  /// `No Notifications`
+  String get noNotifications {
+    return Intl.message(
+      'No Notifications',
+      name: 'noNotifications',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Orders`
+  String get noOrders {
+    return Intl.message('No Orders', name: 'noOrders', desc: '', args: []);
+  }
+
+  /// `No Addresses`
+  String get noAddresses {
+    return Intl.message(
+      'No Addresses',
+      name: 'noAddresses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Saved Addresses`
+  String get noSavedAddresses {
+    return Intl.message(
+      'No Saved Addresses',
+      name: 'noSavedAddresses',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

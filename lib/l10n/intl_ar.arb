@@ -92,7 +92,11 @@
     "label": "التسمية",
     "pleaseEnterLabel": "الرجاء ادخال التسمية",
     "labelHint": "مثال: منزل عمي",
-    "doYouWantToDeleteYourAccount": "هل تريد حذف حسابك ؟"
+    "doYouWantToDeleteYourAccount": "هل تريد حذف حسابك ؟",
+    "noNotifications": "لا يوجد اشعارات",
+    "noOrders" : "لا يوجد طلبات",
+    "noAddresses" : "لا يوجد عناوين",
+    "noSavedAddresses" : "لا يوجد عناوين محفوظة"
 
 
 

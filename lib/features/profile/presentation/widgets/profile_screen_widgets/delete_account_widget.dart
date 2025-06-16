@@ -50,13 +50,6 @@ class DeleteAccountWidget extends StatelessWidget {
               onTap: () {
               },
             ),
-            MyButton(
-              title: S.of(context).cancel,
-              color: AppColors.mainColor,
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
           ],
         ),
       ),

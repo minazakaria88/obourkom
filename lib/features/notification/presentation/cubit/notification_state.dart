@@ -1,10 +1,34 @@
 part of 'notification_cubit.dart';
 
-abstract class NotificationState extends Equatable {
-  const NotificationState();
+enum NotificationStatus { loading, success, error }
 
-  @override
-  List<Object> get props => [];
+extension NotificationStatusX on NotificationState
+{
+  bool get isLoading => notificationStatus==NotificationStatus.loading;
+  bool get isError => notificationStatus==NotificationStatus.error;
+  bool get isSuccess => notificationStatus==NotificationStatus.success;
+
 }
 
-class NotificationInitial extends NotificationState {}
+class NotificationState extends Equatable {
+  NotificationStatus? notificationStatus;
+  List<NotificationModel>? notifications;
+  String ? errorMessage;
+
+  NotificationState({this.notificationStatus, this.notifications,this.errorMessage});
+
+  NotificationState copyWith({
+    NotificationStatus? notificationStatus,
+    List<NotificationModel>? notifications,
+    String ? errorMessage
+  }) {
+    return NotificationState(
+      notifications: notifications ?? this.notifications,
+      notificationStatus: notificationStatus ?? this.notificationStatus,
+      errorMessage: errorMessage ?? this.errorMessage
+    );
+  }
+
+  @override
+  List<Object?> get props => [notificationStatus, notifications,errorMessage];
+}

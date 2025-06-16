@@ -110,6 +110,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "main": MessageLookupByLibrary.simpleMessage("Main"),
     "name": MessageLookupByLibrary.simpleMessage("Name *"),
+    "noAddresses": MessageLookupByLibrary.simpleMessage("No Addresses"),
+    "noNotifications": MessageLookupByLibrary.simpleMessage("No Notifications"),
+    "noOrders": MessageLookupByLibrary.simpleMessage("No Orders"),
+    "noSavedAddresses": MessageLookupByLibrary.simpleMessage(
+      "No Saved Addresses",
+    ),
     "notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "openGps": MessageLookupByLibrary.simpleMessage(

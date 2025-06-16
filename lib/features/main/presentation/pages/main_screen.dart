@@ -36,31 +36,35 @@ class _MainScreenState extends State<MainScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${S.of(context).welcome}  mina !',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.mainColor,
-                    ),
-                  ),
-                  5.height,
-                  BlocBuilder<MainCubit, MainState>(
-                    buildWhen: (previous, current) =>
-                        previous.location != current.location,
-                    builder: (context, state) => Text(
-                      state.location ?? '',
+              Flexible(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '${S.of(context).welcome}  mina !',
                       style: const TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         fontWeight: FontWeight.w400,
-                        color: Colors.grey,
+                        color: AppColors.mainColor,
                       ),
                     ),
-                  ),
-                ],
+                    5.height,
+                    BlocBuilder<MainCubit, MainState>(
+                      buildWhen: (previous, current) =>
+                          previous.location != current.location,
+                      builder: (context, state) => Text(
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        state.location ?? '',
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               IconButton(
                 onPressed: () {},

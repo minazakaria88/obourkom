@@ -34,7 +34,6 @@ class OrderPickLocation extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          10.height,
           Center(
             child: Text(
               S.of(context).chooseFromSavedLocations,
@@ -46,12 +45,12 @@ class OrderPickLocation extends StatelessWidget {
               ),
             ),
           ),
-          25.height,
+          15.height,
           Text(
             S.of(context).determinedLocation,
             style: AppTextStyles.bold18Black,
           ),
-          20.height,
+          10.height,
           Text(
             concatenatePlacemark(place: location) ?? '',
             style: const TextStyle(
@@ -60,14 +59,13 @@ class OrderPickLocation extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          20.height,
+          10.height,
           MyButton(
             title: S.of(context).confirmLocation,
             onTap: () {
               context.pop(pickedLocation);
             },
           ),
-          10.height,
         ],
       ),
     );

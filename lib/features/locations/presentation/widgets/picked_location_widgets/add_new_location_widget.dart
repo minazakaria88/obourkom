@@ -27,7 +27,7 @@ class AddNewLocationWidget extends StatelessWidget {
     final cubit = context.read<LocationsCubit>();
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(15),
       margin: const EdgeInsets.all(5),
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -49,7 +49,7 @@ class AddNewLocationWidget extends StatelessWidget {
             10.height,
             Container(
               width: double.infinity,
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(color: AppColors.mainColor),
@@ -69,11 +69,11 @@ class AddNewLocationWidget extends StatelessWidget {
                 ],
               ),
             ),
-            15.height,
+            5.height,
             Text(S.of(context).type, style: AppTextStyles.bold18Black),
             10.height,
             const ChooseLocationTypeWidget(),
-            10.height,
+            5.height,
             MyButton(
               title: S.of(context).save,
               onTap: () {

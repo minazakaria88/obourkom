@@ -102,6 +102,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "main": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم *"),
+    "noAddresses": MessageLookupByLibrary.simpleMessage("لا يوجد عناوين"),
+    "noNotifications": MessageLookupByLibrary.simpleMessage("لا يوجد اشعارات"),
+    "noOrders": MessageLookupByLibrary.simpleMessage("لا يوجد طلبات"),
+    "noSavedAddresses": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد عناوين محفوظة",
+    ),
     "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "openGps": MessageLookupByLibrary.simpleMessage(
