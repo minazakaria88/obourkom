@@ -15,12 +15,14 @@ class NotificationCubit extends Cubit<NotificationState> {
   void getNotification() async {
     try {
       emit(state.copyWith(notificationStatus: NotificationStatus.loading));
-     // final result = await notificationRepository.getNotification();
+      // final result = await notificationRepository.getNotification();
       await Future.delayed(const Duration(seconds: 2));
       emit(
         state.copyWith(
           notificationStatus: NotificationStatus.success,
-          notifications: [],
+          notifications: [
+            NotificationModel('title', 'description', 1, false, 'dateTime'),
+            NotificationModel('title', 'mina is the best flutter developer', 1, true, 'dateTime'),],
         ),
       );
     } on ApiException catch (e) {

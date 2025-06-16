@@ -14,39 +14,43 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<NotificationCubit,NotificationState>(
-      listener: (context, state) {
-
-      },
+    return BlocConsumer<NotificationCubit, NotificationState>(
+      listener: (context, state) {},
       builder: (context, state) {
-        if(state.isLoading)
-          {
-            return const Center(child: CircularProgressIndicator(color: AppColors.mainColor,));
-          }
-        if(state.isSuccess)
-          {
-            final list=state.notifications??[];
-          return list.isNotEmpty?  Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: ListView.separated(
-                itemCount: state.notifications!.length,
-                separatorBuilder: (context, index) => 30.height,
-                itemBuilder: (context, index) => const NotificationItemWidget(),
-              ),
-            ): Center(child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SvgPicture.asset(Assets.imagesNoNotifications),
-                15.height,
-                Text(S.of(context).noNotifications,style: AppTextStyles.bold18Black,),
-
-              ],
-            ));
-          }
+        if (state.isLoading) {
+          return const Center(
+            child: CircularProgressIndicator(color: AppColors.mainColor),
+          );
+        }
+        if (state.isSuccess) {
+          final list = state.notifications ?? [];
+          return list.isNotEmpty
+              ? Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: ListView.separated(
+                    itemCount: state.notifications!.length,
+                    separatorBuilder: (context, index) => 30.height,
+                    itemBuilder: (context, index) => NotificationItemWidget(
+                      notificationModel: state.notifications![index],
+                    ),
+                  ),
+                )
+              : Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(Assets.imagesNoNotifications),
+                      15.height,
+                      Text(
+                        S.of(context).noNotifications,
+                        style: AppTextStyles.bold18Black,
+                      ),
+                    ],
+                  ),
+                );
+        }
         return const Text('error');
-
       },
     );
   }
 }
-
