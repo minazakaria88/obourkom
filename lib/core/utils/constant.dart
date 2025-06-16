@@ -17,4 +17,11 @@ class MapContext
   MapContext({required this.type,this.cubit});
 }
 
+
+enum PaymentMethods
+{
+  applePay,
+  card,
+}
+
 var logger = Logger();

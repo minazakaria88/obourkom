@@ -45,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "bigCars": MessageLookupByLibrary.simpleMessage("Big Car"),
     "callUs": MessageLookupByLibrary.simpleMessage("Call US"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "cancelOrder": MessageLookupByLibrary.simpleMessage("Cancel Order"),
+    "carType": MessageLookupByLibrary.simpleMessage("Car Type"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
     "checkPrivacyPolicy": MessageLookupByLibrary.simpleMessage(
       "Check Privacy Policy",
@@ -95,11 +97,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "expectedTransportationCost": MessageLookupByLibrary.simpleMessage(
       "Expected Transportation Cost",
     ),
+    "findingDrivers": MessageLookupByLibrary.simpleMessage("Finding Drivers"),
     "haveFun": MessageLookupByLibrary.simpleMessage(
       "Enjoy a smooth and hassle-free moving experience.",
     ),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
     "iAgreeToThe": MessageLookupByLibrary.simpleMessage("I agree to the"),
+    "itWillTakeSomeTime": MessageLookupByLibrary.simpleMessage(
+      "It will take some time ...",
+    ),
     "label": MessageLookupByLibrary.simpleMessage("Label"),
     "labelHint": MessageLookupByLibrary.simpleMessage(
       "Example: My uncle\'s house",
@@ -108,9 +114,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "location": MessageLookupByLibrary.simpleMessage("Location"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
+    "lookingForOffers": MessageLookupByLibrary.simpleMessage(
+      "Looking for offers ...",
+    ),
     "main": MessageLookupByLibrary.simpleMessage("Main"),
     "name": MessageLookupByLibrary.simpleMessage("Name *"),
     "noAddresses": MessageLookupByLibrary.simpleMessage("No Addresses"),
+    "noDrivers": MessageLookupByLibrary.simpleMessage("No Drivers"),
+    "noDriversFound": MessageLookupByLibrary.simpleMessage("No Drivers Found"),
     "noNotifications": MessageLookupByLibrary.simpleMessage("No Notifications"),
     "noOrders": MessageLookupByLibrary.simpleMessage("No Orders"),
     "noSavedAddresses": MessageLookupByLibrary.simpleMessage(
@@ -121,6 +132,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "openGps": MessageLookupByLibrary.simpleMessage(
       "To provide the best service and ease of access, please enable your location",
     ),
+    "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
+    "orderNumber": MessageLookupByLibrary.simpleMessage("Order Number"),
     "orders": MessageLookupByLibrary.simpleMessage("Orders"),
     "other": MessageLookupByLibrary.simpleMessage("Other"),
     "otp": MessageLookupByLibrary.simpleMessage("OTP"),
@@ -173,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "request": MessageLookupByLibrary.simpleMessage("Request"),
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
+    "serviceType": MessageLookupByLibrary.simpleMessage("Service Type"),
     "smallCars": MessageLookupByLibrary.simpleMessage("Small Car"),
     "support": MessageLookupByLibrary.simpleMessage("Support"),
     "transferServices": MessageLookupByLibrary.simpleMessage(

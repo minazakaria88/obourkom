@@ -50,6 +50,12 @@ class AppTextStyles {
     color: Colors.grey,
   );
 
+  static TextStyle bold14Grey = const TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    color: AppColors.darkGreyColor,
+  );
+
 
 
 }

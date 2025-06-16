@@ -15,6 +15,7 @@ class Routes
   static const String aboutUs='/aboutUs';
   static const String termsAndConditions='/termsAndConditions';
   static const String privacyPolicy='/privacyPolicy';
+  static const String findDriver='/findDriver';
 
 
 }

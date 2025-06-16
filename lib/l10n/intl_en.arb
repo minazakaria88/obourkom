@@ -94,7 +94,18 @@
   "noNotifications" : "No Notifications",
   "noOrders" : "No Orders",
   "noAddresses" : "No Addresses",
-  "noSavedAddresses" : "No Saved Addresses"
+  "noSavedAddresses" : "No Saved Addresses",
+  "findingDrivers" : "Finding Drivers",
+  "noDrivers" : "No Drivers",
+  "orderDetails" : "Order Details",
+  "noDriversFound" : "No Drivers Found",
+  "cancelOrder" : "Cancel Order",
+  "carType" : "Car Type",
+  "serviceType" : "Service Type",
+  "orderNumber" : "Order Number",
+  "lookingForOffers": "Looking for offers ...",
+  "itWillTakeSomeTime": "It will take some time ..."
+
 
 
 

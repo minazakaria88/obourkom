@@ -1,20 +1,24 @@
+import 'dart:async';
+
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
+import 'package:oborkom/core/utils/constant.dart';
+import '../../../../core/api/failure.dart';
 import '../../../../core/functions/get_places_mark.dart';
-
+import '../../data/repositories/order_repo.dart';
 
 part 'orders_state.dart';
 
 class OrdersCubit extends Cubit<OrdersState> {
-  OrdersCubit() : super(OrdersState());
-
-  final formKey=GlobalKey<FormState>();
-  final TextEditingController notesController=TextEditingController();
-  final TextEditingController codeController=TextEditingController();
+  OrdersCubit({required this.otpRepository})
+    : super(OrdersState(orderTimerDuration: const Duration(minutes: 5)));
+  final OrderRepository otpRepository;
+  final formKey = GlobalKey<FormState>();
+  final TextEditingController notesController = TextEditingController();
+  final TextEditingController codeController = TextEditingController();
 
   void pickDeliveryLocation(LatLng position) async {
     final locationData = await getAddressFromLatAndLng(position);
@@ -26,7 +30,6 @@ class OrdersCubit extends Cubit<OrdersState> {
     );
   }
 
-
   void pickPickupLocation(LatLng position) async {
     final locationData = await getAddressFromLatAndLng(position);
     emit(
@@ -37,9 +40,61 @@ class OrdersCubit extends Cubit<OrdersState> {
     );
   }
 
+  void pickPaymentMethod(String applePay) {
+    emit(state.copyWith(paymentMethod: applePay));
+  }
+
+  void makeOrder(data) async {
+    try {
+      emit(state.copyWith(makeOrderStatus: MakeOrderStatus.loading));
+      await Future.delayed(const Duration(seconds: 2));
+      //final result = await otpRepository.makeOrder(data);
+      emit(state.copyWith(makeOrderStatus: MakeOrderStatus.success));
+    } on ApiException catch (e) {
+      emit(
+        state.copyWith(
+          makeOrderStatus: MakeOrderStatus.failure,
+          errorMessage: e.failure.message,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          makeOrderStatus: MakeOrderStatus.failure,
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
+
+  Timer? _timer;
+  void startTimer() {
+    logger.d('startTimer');
+    _timer?.cancel();
+    Duration oneSec = const Duration(seconds: 1);
+    emit(state.copyWith(orderTimerDuration: const Duration(minutes: 5)));
+    _timer = Timer.periodic(oneSec, (timer) {
+      if (state.orderTimerDuration == Duration.zero) {
+        timer.cancel();
+      } else {
+        emit(
+          state.copyWith(
+            orderTimerDuration: state.orderTimerDuration! - oneSec,
+          ),
+        );
+      }
+    });
+  }
+
+  void cancelTimer() {
+    logger.d('cancelTimer');
+    _timer?.cancel();
+  }
 
 
-
-
-
+  @override
+  Future<void> close() {
+    cancelTimer();
+    return super.close();
+  }
 }

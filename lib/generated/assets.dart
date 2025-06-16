@@ -12,9 +12,11 @@ class Assets {
   static const String imagesBell = 'assets/images/Bell.svg';
   static const String imagesBigCar = 'assets/images/bigCar.png';
   static const String imagesCall = 'assets/images/call.svg';
+  static const String imagesClock = 'assets/images/clock.svg';
   static const String imagesCloseCircle = 'assets/images/CloseCircle.svg';
   static const String imagesDelete = 'assets/images/delete.svg';
   static const String imagesDeleteAccount = 'assets/images/deleteAccount.svg';
+  static const String imagesDocuments = 'assets/images/Documents.svg';
   static const String imagesEdit = 'assets/images/edit.svg';
   static const String imagesEditImage = 'assets/images/editImage.svg';
   static const String imagesEnableLocation = 'assets/images/enable_location.svg';
@@ -42,6 +44,7 @@ class Assets {
   static const String imagesRadio = 'assets/images/radio.svg';
   static const String imagesSaudi = 'assets/images/saudi.svg';
   static const String imagesSmallCar = 'assets/images/smallCar.png';
+  static const String imagesStars = 'assets/images/Stars.svg';
   static const String imagesSupport = 'assets/images/support.svg';
   static const String imagesTerms = 'assets/images/terms.svg';
   static const String imagesUnited = 'assets/images/united.svg';

@@ -45,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "bigCars": MessageLookupByLibrary.simpleMessage(" شاحنة كبيرة"),
     "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
     "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
+    "cancelOrder": MessageLookupByLibrary.simpleMessage("إلغاء الطلب"),
+    "carType": MessageLookupByLibrary.simpleMessage("نوع الشاحنة"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
     "checkPrivacyPolicy": MessageLookupByLibrary.simpleMessage(
       "قم بمراجعة الشروط والأحكام",
@@ -89,20 +91,30 @@ class MessageLookup extends MessageLookupByLibrary {
     "expectedTransportationCost": MessageLookupByLibrary.simpleMessage(
       "التكلفة المتوقعة للنقل",
     ),
+    "findingDrivers": MessageLookupByLibrary.simpleMessage("البحث عن مندوب"),
     "haveFun": MessageLookupByLibrary.simpleMessage(
       "استمتع بتجربة نقل سهلة وخالية من المتاعب.",
     ),
     "home": MessageLookupByLibrary.simpleMessage("المنزل"),
     "iAgreeToThe": MessageLookupByLibrary.simpleMessage(" اوافق على "),
+    "itWillTakeSomeTime": MessageLookupByLibrary.simpleMessage(
+      "قد تتطلب عملية البحث بعض الوقت ...",
+    ),
     "label": MessageLookupByLibrary.simpleMessage("التسمية"),
     "labelHint": MessageLookupByLibrary.simpleMessage("مثال: منزل عمي"),
     "language": MessageLookupByLibrary.simpleMessage("العربية"),
     "location": MessageLookupByLibrary.simpleMessage("الموقع"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
+    "lookingForOffers": MessageLookupByLibrary.simpleMessage(
+      "جاري البحث عن عروض ...",
+    ),
     "main": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم *"),
     "noAddresses": MessageLookupByLibrary.simpleMessage("لا يوجد عناوين"),
+    "noDriversFound": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على مندوبين",
+    ),
     "noNotifications": MessageLookupByLibrary.simpleMessage("لا يوجد اشعارات"),
     "noOrders": MessageLookupByLibrary.simpleMessage("لا يوجد طلبات"),
     "noSavedAddresses": MessageLookupByLibrary.simpleMessage(
@@ -113,6 +125,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "openGps": MessageLookupByLibrary.simpleMessage(
       "لتقديم افضل خدمة وسهولة في الوصول يرجي تفعيل الموقع",
     ),
+    "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
+    "orderNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
     "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
     "other": MessageLookupByLibrary.simpleMessage("اخرى"),
     "otp": MessageLookupByLibrary.simpleMessage("رمز التحقق"),
@@ -165,6 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "request": MessageLookupByLibrary.simpleMessage("طلب"),
     "resend": MessageLookupByLibrary.simpleMessage("اعادة الارسال"),
     "save": MessageLookupByLibrary.simpleMessage("حفظ"),
+    "serviceType": MessageLookupByLibrary.simpleMessage("نوع الخدمة"),
     "smallCars": MessageLookupByLibrary.simpleMessage(" شاحنة صغيرة"),
     "support": MessageLookupByLibrary.simpleMessage("مركز الدعم"),
     "transferServices": MessageLookupByLibrary.simpleMessage(" خدمة نقل "),

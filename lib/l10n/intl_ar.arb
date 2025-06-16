@@ -96,7 +96,18 @@
     "noNotifications": "لا يوجد اشعارات",
     "noOrders" : "لا يوجد طلبات",
     "noAddresses" : "لا يوجد عناوين",
-    "noSavedAddresses" : "لا يوجد عناوين محفوظة"
+    "noSavedAddresses" : "لا يوجد عناوين محفوظة",
+    "findingDrivers" : "البحث عن مندوب",
+    "noDriversFound" : "لم يتم العثور على مندوبين",
+    "noDriversFoundDesc" : "لا يوجد مندوبين متاحين في الموقع الحالي",
+    "orderDetails" : "تفاصيل الطلب",
+    "cancelOrder" : "إلغاء الطلب",
+    "carType" : "نوع الشاحنة",
+    "serviceType" : "نوع الخدمة",
+    "orderNumber" : "رقم الطلب",
+    "lookingForOffers": "جاري البحث عن عروض ...",
+    "itWillTakeSomeTime": "قد تتطلب عملية البحث بعض الوقت ..."
+
 
 
 

@@ -6,6 +6,6 @@ class EndPoints
   static const verifyOtp='';
   static const resendOtp='';
   static const profile = 'profile';
-
   static const notification='notification';
+  static const makeOrder='makeOrder';
 }

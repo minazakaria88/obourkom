@@ -6,6 +6,7 @@ import 'package:oborkom/core/utils/app_styles.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/core/widgets/validate_widget.dart';
 import '../../../../core/routes/routes.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/my_button.dart';
 import '../../../../generated/assets.dart';
 import '../../../../generated/l10n.dart';
@@ -42,8 +43,26 @@ class NewOrder extends StatelessWidget {
                       topRight: Radius.circular(24),
                     ),
                   ),
-                  child: BlocBuilder<OrdersCubit, OrdersState>(
+                  child: BlocConsumer<OrdersCubit, OrdersState>(
+                    listenWhen: (previous, current) =>
+                        previous.makeOrderStatus != current.makeOrderStatus,
+                    listener: (context, state) {
+                      if (state.isSuccess) {
+                        context.pushNamed(
+                          Routes.findDriver,
+                          arguments: context.read<OrdersCubit>(),
+                        );
+                      }
+                    },
+                    buildWhen: (previous, current) =>
+                        previous.pickedLocation != current.pickedLocation ||
+                        previous.makeOrderStatus != current.makeOrderStatus ||
+                        previous.deliveryLocation != current.deliveryLocation ||
+                        previous.paymentMethod != current.paymentMethod ||
+                        previous.errorMessage != current.errorMessage,
+
                     builder: (context, state) {
+                      logger.e(state);
                       final cubit = context.read<OrdersCubit>();
                       return Form(
                         key: cubit.formKey,
@@ -73,11 +92,15 @@ class NewOrder extends StatelessWidget {
                                 title: S.of(context).pickUpFrom,
                                 value: state.pickedLocation == null
                                     ? ''
-                                    : concatenatePlacemark(place: state.pickedLocationData),
+                                    : concatenatePlacemark(
+                                        place: state.pickedLocationData,
+                                      ),
                                 onTap: () async {
                                   final result = await context.pushNamed(
                                     Routes.pickLocation,
-                                    arguments: MapContext(type: MapTypes.orderPick),
+                                    arguments: MapContext(
+                                      type: MapTypes.orderPick,
+                                    ),
                                   );
                                   if (result != null) {
                                     logger.e(result);
@@ -104,11 +127,15 @@ class NewOrder extends StatelessWidget {
                                 title: S.of(context).deliveryTo,
                                 value: state.deliveryLocationData == null
                                     ? ''
-                                    : concatenatePlacemark(place: state.deliveryLocationData),
+                                    : concatenatePlacemark(
+                                        place: state.deliveryLocationData,
+                                      ),
                                 onTap: () async {
                                   final result = await context.pushNamed(
                                     Routes.pickLocation,
-                                    arguments: MapContext(type: MapTypes.orderPick),
+                                    arguments: MapContext(
+                                      type: MapTypes.orderPick,
+                                    ),
                                   );
                                   if (result != null) {
                                     logger.e(result);
@@ -140,7 +167,12 @@ class NewOrder extends StatelessWidget {
                               },
                               child: NewOrderInputWidget(
                                 title: 'أبل باي',
-                                onTap: () {},
+                                value: state.paymentMethod ?? '',
+                                onTap: () {
+                                  cubit.pickPaymentMethod(
+                                    PaymentMethods.applePay.toString(),
+                                  );
+                                },
                               ),
                             ),
                             20.height,
@@ -172,12 +204,21 @@ class NewOrder extends StatelessWidget {
                               style: AppTextStyles.regular12Grey,
                             ),
                             30.height,
-                            MyButton(
-                              title: S.of(context).request,
-                              onTap: () {
-                                if (cubit.formKey.currentState!.validate()) {}
-                              },
-                            ),
+                            state.isLoading
+                                ? const Center(
+                                    child: CircularProgressIndicator(
+                                      color: AppColors.mainColor,
+                                    ),
+                                  )
+                                : MyButton(
+                                    title: S.of(context).request,
+                                    onTap: () {
+                                      if (cubit.formKey.currentState!
+                                          .validate()) {
+                                        cubit.makeOrder({});
+                                      }
+                                    },
+                                  ),
                             20.height,
                           ],
                         ),

@@ -803,6 +803,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Finding Drivers`
+  String get findingDrivers {
+    return Intl.message(
+      'Finding Drivers',
+      name: 'findingDrivers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Drivers`
+  String get noDrivers {
+    return Intl.message('No Drivers', name: 'noDrivers', desc: '', args: []);
+  }
+
+  /// `Order Details`
+  String get orderDetails {
+    return Intl.message(
+      'Order Details',
+      name: 'orderDetails',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Drivers Found`
+  String get noDriversFound {
+    return Intl.message(
+      'No Drivers Found',
+      name: 'noDriversFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel Order`
+  String get cancelOrder {
+    return Intl.message(
+      'Cancel Order',
+      name: 'cancelOrder',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Car Type`
+  String get carType {
+    return Intl.message('Car Type', name: 'carType', desc: '', args: []);
+  }
+
+  /// `Service Type`
+  String get serviceType {
+    return Intl.message(
+      'Service Type',
+      name: 'serviceType',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Number`
+  String get orderNumber {
+    return Intl.message(
+      'Order Number',
+      name: 'orderNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Looking for offers ...`
+  String get lookingForOffers {
+    return Intl.message(
+      'Looking for offers ...',
+      name: 'lookingForOffers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `It will take some time ...`
+  String get itWillTakeSomeTime {
+    return Intl.message(
+      'It will take some time ...',
+      name: 'itWillTakeSomeTime',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

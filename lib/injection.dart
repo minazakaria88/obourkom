@@ -11,6 +11,7 @@ import 'features/login/data/repositories/login_repo.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
 import 'features/main/presentation/cubit/main_cubit.dart';
 import 'features/notification/presentation/cubit/notification_cubit.dart';
+import 'features/orders/data/repositories/order_repo.dart';
 import 'features/orders/presentation/cubit/orders_cubit.dart';
 import 'features/otp/presentation/cubit/otp_cubit.dart';
 import 'features/profile/data/repositories/profile_repo.dart';
@@ -56,7 +57,8 @@ void setupServicesLocator() {
 
 
   //orders
-  getIt.registerFactory(() => OrdersCubit());
+  getIt.registerFactory(() => OrdersCubit(otpRepository: getIt()));
+  getIt.registerLazySingleton(()=>OrderRepository(apiHelper: getIt()));
 
 
   //Profile
