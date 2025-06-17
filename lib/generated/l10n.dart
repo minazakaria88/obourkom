@@ -973,6 +973,51 @@ class S {
   String get pending {
     return Intl.message('Pending', name: 'pending', desc: '', args: []);
   }
+
+  /// `Payment Summary`
+  String get paymentSummary {
+    return Intl.message(
+      'Payment Summary',
+      name: 'paymentSummary',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Order Value`
+  String get orderValue {
+    return Intl.message('Order Value', name: 'orderValue', desc: '', args: []);
+  }
+
+  /// `Shipment Value`
+  String get shipmentValue {
+    return Intl.message(
+      'Shipment Value',
+      name: 'shipmentValue',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Discount`
+  String get discount {
+    return Intl.message('Discount', name: 'discount', desc: '', args: []);
+  }
+
+  /// `Total:`
+  String get total {
+    return Intl.message('Total:', name: 'total', desc: '', args: []);
+  }
+
+  /// `Invoice`
+  String get Invoice {
+    return Intl.message('Invoice', name: 'Invoice', desc: '', args: []);
+  }
+
+  /// `Evaluation`
+  String get evaluation {
+    return Intl.message('Evaluation', name: 'evaluation', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "DeterminePickupLocation": MessageLookupByLibrary.simpleMessage(
       "تحديد موقع الاستلام",
     ),
+    "Invoice": MessageLookupByLibrary.simpleMessage("فاتورة"),
     "PrivacyPolicy": MessageLookupByLibrary.simpleMessage("سياسة الخصوصية "),
     "TermsAndConditions": MessageLookupByLibrary.simpleMessage(
       "الشروط والاحكام ",
@@ -77,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "حدد الموقع يدويا",
     ),
     "determinedLocation": MessageLookupByLibrary.simpleMessage("الموقع المحدد"),
+    "discount": MessageLookupByLibrary.simpleMessage("الخصم"),
     "doYouHaveADiscountCode": MessageLookupByLibrary.simpleMessage(
       "هل لديك كود خصم؟",
     ),
@@ -91,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني *"),
     "enter": MessageLookupByLibrary.simpleMessage("دخول"),
     "enterDiscountCode": MessageLookupByLibrary.simpleMessage("ادخل كود الخصم"),
+    "evaluation": MessageLookupByLibrary.simpleMessage("تقييم"),
     "exit": MessageLookupByLibrary.simpleMessage("خروج"),
     "expectedTransportationCost": MessageLookupByLibrary.simpleMessage(
       "التكلفة المتوقعة للنقل",
@@ -132,6 +135,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
     "orderNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
+    "orderValue": MessageLookupByLibrary.simpleMessage("قيمة الطلب"),
     "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
     "other": MessageLookupByLibrary.simpleMessage("اخرى"),
     "otp": MessageLookupByLibrary.simpleMessage("رمز التحقق"),
@@ -139,6 +143,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "فضلًا ادخل رمز التحقق المكون من 4 أرقام المرسل اليك للتو عبر رسالة نصية",
     ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
+    "paymentSummary": MessageLookupByLibrary.simpleMessage("ملخص الدفع"),
     "pending": MessageLookupByLibrary.simpleMessage("قيد الانتظار"),
     "personalAccount": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف *"),
@@ -190,6 +195,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resend": MessageLookupByLibrary.simpleMessage("اعادة الارسال"),
     "save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "serviceType": MessageLookupByLibrary.simpleMessage("نوع الخدمة"),
+    "shipmentValue": MessageLookupByLibrary.simpleMessage("قيمة التوصيل"),
     "showOnMap": MessageLookupByLibrary.simpleMessage("عرض على الخريطة"),
     "smallCars": MessageLookupByLibrary.simpleMessage(" شاحنة صغيرة"),
     "support": MessageLookupByLibrary.simpleMessage("مركز الدعم"),
@@ -197,6 +203,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "theShipmentHasArrived": MessageLookupByLibrary.simpleMessage(
       "وصلت الشحنه للموقع المحدد",
     ),
+    "total": MessageLookupByLibrary.simpleMessage("الإجمالي:"),
     "transferServices": MessageLookupByLibrary.simpleMessage(" خدمة نقل "),
     "transportOfGoods": MessageLookupByLibrary.simpleMessage("نقل بضائع"),
     "type": MessageLookupByLibrary.simpleMessage("النوع"),

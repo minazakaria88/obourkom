@@ -12,6 +12,7 @@ class Assets {
   static const String imagesBanknote = 'assets/images/Banknote.svg';
   static const String imagesBell = 'assets/images/Bell.svg';
   static const String imagesBigCar = 'assets/images/bigCar.png';
+  static const String imagesCalendar = 'assets/images/Calendar.svg';
   static const String imagesCall = 'assets/images/call.svg';
   static const String imagesCar = 'assets/images/car.svg';
   static const String imagesClock = 'assets/images/clock.svg';
@@ -36,9 +37,11 @@ class Assets {
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLogout = 'assets/images/logout.svg';
   static const String imagesMarker = 'assets/images/marker.png';
+  static const String imagesMoneyBag = 'assets/images/MoneyBag.svg';
   static const String imagesNewOrder = 'assets/images/newOrder.png';
   static const String imagesNoNotifications = 'assets/images/NoNotifications.svg';
   static const String imagesNotification = 'assets/images/notification.svg';
+  static const String imagesOrderNumber = 'assets/images/orderNumber.svg';
   static const String imagesOrders = 'assets/images/orders.svg';
   static const String imagesOtherAddLocations = 'assets/images/otherAddLocations.svg';
   static const String imagesOtp = 'assets/images/otp.png';
@@ -51,13 +54,17 @@ class Assets {
   static const String imagesProfileNotification = 'assets/images/profileNotification.svg';
   static const String imagesRadio = 'assets/images/radio.svg';
   static const String imagesReceived = 'assets/images/received.svg';
+  static const String imagesReview = 'assets/images/Review.svg';
+  static const String imagesRoundGraph = 'assets/images/RoundGraph.svg';
   static const String imagesSaudi = 'assets/images/saudi.svg';
   static const String imagesSendButton = 'assets/images/SendButton.svg';
+  static const String imagesServicesType = 'assets/images/servicesType.svg';
   static const String imagesShipmentArrive = 'assets/images/shipmentArrive.svg';
   static const String imagesSmallCar = 'assets/images/smallCar.png';
   static const String imagesStars = 'assets/images/Stars.svg';
   static const String imagesSupport = 'assets/images/support.svg';
   static const String imagesTerms = 'assets/images/terms.svg';
+  static const String imagesTram = 'assets/images/Tram.svg';
   static const String imagesUnited = 'assets/images/united.svg';
   static const String imagesUrdu = 'assets/images/Urdu.svg';
   static const String imagesUser = 'assets/images/User.svg';

@@ -116,7 +116,14 @@
   "pleaseWriteYourMessage": "Please write your message",
   "currentOrders": "Current",
   "previous": "Previous",
-  "pending": "Pending"
+  "pending": "Pending",
+  "paymentSummary": "Payment Summary",
+  "orderValue": "Order Value",
+  "shipmentValue": "Shipment Value",
+  "discount": "Discount",
+  "total": "Total:",
+  "Invoice": "Invoice",
+  "evaluation": "Evaluation"
 
 
 

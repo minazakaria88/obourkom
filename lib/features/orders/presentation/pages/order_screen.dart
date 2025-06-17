@@ -1,15 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
-import 'package:oborkom/features/profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
+import 'package:oborkom/features/orders/presentation/widgets/order_screen_widget/order_listview_item_widget.dart';
 import 'package:oborkom/generated/l10n.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
-import '../../../../generated/assets.dart';
 import '../cubit/orders_cubit.dart';
-import '../widgets/finding_driver_widgets/order_details_item_widget.dart';
 
 class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
@@ -19,13 +16,12 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
-
-
   @override
   void initState() {
     context.read<OrdersCubit>().getOrders();
     super.initState();
   }
+
   int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
@@ -55,8 +51,8 @@ class _OrderScreenState extends State<OrderScreen> {
                     S.of(context).previous,
                     style: selectedIndex == 1
                         ? AppTextStyles.bold18Black.copyWith(
-                      color: Colors.white,
-                    )
+                            color: Colors.white,
+                          )
                         : null,
                   ),
                 ),
@@ -72,45 +68,11 @@ class _OrderScreenState extends State<OrderScreen> {
             ),
           ),
           20.height,
-          BackgroundProfileWidget(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      10.width,
-                      SvgPicture.asset(Assets.imagesPending),
-                      10.width,
-                      Text(
-                        S.of(context).pending,
-                        style: AppTextStyles.bold18Black,
-                      ),
-                    ],
-                  ),
-                  const Divider(
-                    thickness: 2,
-                    color: Colors.grey,
-                  ),
-
-                  OrderDetailsItemWidget(
-                    value: '#100',
-                    title: S.of(context).orderNumber,
-                  ),
-                  OrderDetailsItemWidget(
-                    value: 'نقل أثاث',
-                    title: S.of(context).serviceType,
-                  ),
-                  OrderDetailsItemWidget(
-                    value: 'كبيرة',
-                    title: S.of(context).carType,
-                  ),
-                  OrderDetailsItemWidget(
-                    value: 'أبل باي',
-                    title: S.of(context).paymentMethod,
-                  ),
-                ],
-              ),
+          Expanded(
+            child: ListView.separated(
+              itemBuilder: (context, index) => const OrderListviewItemWidget(),
+              separatorBuilder: (BuildContext context, int index) => 20.height,
+              itemCount: 10,
             ),
           ),
         ],

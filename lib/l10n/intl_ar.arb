@@ -118,7 +118,15 @@
     "pleaseWriteYourMessage": "الرجاء كتابة رسالتك",
     "currentOrders": "الحالية",
     "previous": "السابقة",
-    "pending": "قيد الانتظار"
+    "pending": "قيد الانتظار",
+    "paymentSummary": "ملخص الدفع",
+    "orderValue": "قيمة الطلب",
+    "shipmentValue": "قيمة التوصيل",
+    "discount": "الخصم",
+    "total": "الإجمالي:",
+    "Invoice": "فاتورة",
+    "evaluation": "تقييم"
+
 
 
 

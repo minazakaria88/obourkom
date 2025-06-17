@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "DeterminePickupLocation": MessageLookupByLibrary.simpleMessage(
       "Determine Pickup Location",
     ),
+    "Invoice": MessageLookupByLibrary.simpleMessage("Invoice"),
     "PrivacyPolicy": MessageLookupByLibrary.simpleMessage(" Privacy Policy "),
     "TermsAndConditions": MessageLookupByLibrary.simpleMessage(
       " Terms and Conditions ",
@@ -79,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "determinedLocation": MessageLookupByLibrary.simpleMessage(
       "Determined Location",
     ),
+    "discount": MessageLookupByLibrary.simpleMessage("Discount"),
     "doYouHaveADiscountCode": MessageLookupByLibrary.simpleMessage(
       "Do you have a discount code?",
     ),
@@ -97,6 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "enterDiscountCode": MessageLookupByLibrary.simpleMessage(
       "Enter discount code",
     ),
+    "evaluation": MessageLookupByLibrary.simpleMessage("Evaluation"),
     "exit": MessageLookupByLibrary.simpleMessage("Exit"),
     "expectedTransportationCost": MessageLookupByLibrary.simpleMessage(
       "Expected Transportation Cost",
@@ -139,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
     "orderNumber": MessageLookupByLibrary.simpleMessage("Order Number"),
+    "orderValue": MessageLookupByLibrary.simpleMessage("Order Value"),
     "orders": MessageLookupByLibrary.simpleMessage("Orders"),
     "other": MessageLookupByLibrary.simpleMessage("Other"),
     "otp": MessageLookupByLibrary.simpleMessage("OTP"),
@@ -146,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please enter the 4-digit verification code just sent to you via text message.",
     ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
+    "paymentSummary": MessageLookupByLibrary.simpleMessage("Payment Summary"),
     "pending": MessageLookupByLibrary.simpleMessage("Pending"),
     "personalAccount": MessageLookupByLibrary.simpleMessage("Personal Account"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number *"),
@@ -197,6 +202,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "serviceType": MessageLookupByLibrary.simpleMessage("Service Type"),
+    "shipmentValue": MessageLookupByLibrary.simpleMessage("Shipment Value"),
     "showOnMap": MessageLookupByLibrary.simpleMessage("Show On Map"),
     "smallCars": MessageLookupByLibrary.simpleMessage("Small Car"),
     "support": MessageLookupByLibrary.simpleMessage("Support"),
@@ -206,6 +212,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "theShipmentHasArrived": MessageLookupByLibrary.simpleMessage(
       "The Shipment Has Arrived",
     ),
+    "total": MessageLookupByLibrary.simpleMessage("Total:"),
     "transferServices": MessageLookupByLibrary.simpleMessage(
       "Transfer Services",
     ),
