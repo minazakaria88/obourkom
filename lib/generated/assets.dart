@@ -42,12 +42,15 @@ class Assets {
   static const String imagesOrders = 'assets/images/orders.svg';
   static const String imagesOtherAddLocations = 'assets/images/otherAddLocations.svg';
   static const String imagesOtp = 'assets/images/otp.png';
+  static const String imagesPending = 'assets/images/Pending.svg';
+  static const String imagesPendingOnWay = 'assets/images/PendingOnWay.svg';
   static const String imagesPhoneCalling = 'assets/images/PhoneCalling.svg';
   static const String imagesPrivacy = 'assets/images/privacy.svg';
   static const String imagesProfile = 'assets/images/profile.svg';
   static const String imagesProfileHome = 'assets/images/profileHome.svg';
   static const String imagesProfileNotification = 'assets/images/profileNotification.svg';
   static const String imagesRadio = 'assets/images/radio.svg';
+  static const String imagesReceived = 'assets/images/received.svg';
   static const String imagesSaudi = 'assets/images/saudi.svg';
   static const String imagesSendButton = 'assets/images/SendButton.svg';
   static const String imagesShipmentArrive = 'assets/images/shipmentArrive.svg';

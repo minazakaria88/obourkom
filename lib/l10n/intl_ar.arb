@@ -115,7 +115,12 @@
     "showOnMap": "عرض على الخريطة",
     "call": "اتصال",
     "writeYourMessage": "اكتب رسالتك ...",
-    "pleaseWriteYourMessage": "الرجاء كتابة رسالتك"
+    "pleaseWriteYourMessage": "الرجاء كتابة رسالتك",
+    "currentOrders": "الحالية",
+    "previous": "السابقة",
+    "pending": "قيد الانتظار"
+
+
 
 
 

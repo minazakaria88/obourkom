@@ -65,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "This cost is estimated and varies according to each representative. It may sometimes increase depending on the distance between the pickup and delivery location. ",
     ),
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
+    "currentOrders": MessageLookupByLibrary.simpleMessage("Current"),
     "decline": MessageLookupByLibrary.simpleMessage("Decline"),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
@@ -145,6 +146,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please enter the 4-digit verification code just sent to you via text message.",
     ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
+    "pending": MessageLookupByLibrary.simpleMessage("Pending"),
     "personalAccount": MessageLookupByLibrary.simpleMessage("Personal Account"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number *"),
     "phoneNumberToContinue": MessageLookupByLibrary.simpleMessage(
@@ -184,6 +186,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseWriteYourNotes": MessageLookupByLibrary.simpleMessage(
       "Please write your notes",
     ),
+    "previous": MessageLookupByLibrary.simpleMessage("Previous"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profileLanguage": MessageLookupByLibrary.simpleMessage("Language"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),

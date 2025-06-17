@@ -113,7 +113,10 @@
   "showOnMap": "Show On Map",
   "call": "Call",
   "writeYourMessage": "Write your message ...",
-  "pleaseWriteYourMessage": "Please write your message"
+  "pleaseWriteYourMessage": "Please write your message",
+  "currentOrders": "Current",
+  "previous": "Previous",
+  "pending": "Pending"
 
 
 

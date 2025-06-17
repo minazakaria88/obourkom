@@ -958,6 +958,21 @@ class S {
       args: [],
     );
   }
+
+  /// `Current`
+  String get currentOrders {
+    return Intl.message('Current', name: 'currentOrders', desc: '', args: []);
+  }
+
+  /// `Previous`
+  String get previous {
+    return Intl.message('Previous', name: 'previous', desc: '', args: []);
+  }
+
+  /// `Pending`
+  String get pending {
+    return Intl.message('Pending', name: 'pending', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

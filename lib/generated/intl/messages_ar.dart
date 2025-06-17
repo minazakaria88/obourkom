@@ -65,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
       " هذه التكلفة تقديرية وتختلف حسب كل مندوب فيمكن ان تزيد في بعض الأحيان طبقا للمسافة بين موقع الاستلام والتسليم",
     ),
     "createAccount": MessageLookupByLibrary.simpleMessage("انشاء حساب"),
+    "currentOrders": MessageLookupByLibrary.simpleMessage("الحالية"),
     "decline": MessageLookupByLibrary.simpleMessage("رفض"),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
@@ -138,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "فضلًا ادخل رمز التحقق المكون من 4 أرقام المرسل اليك للتو عبر رسالة نصية",
     ),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
+    "pending": MessageLookupByLibrary.simpleMessage("قيد الانتظار"),
     "personalAccount": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
     "phoneNumber": MessageLookupByLibrary.simpleMessage("رقم الهاتف *"),
     "phoneNumberToContinue": MessageLookupByLibrary.simpleMessage(
@@ -177,6 +179,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseWriteYourNotes": MessageLookupByLibrary.simpleMessage(
       "الرجاء كتابة ملاحظاتك ",
     ),
+    "previous": MessageLookupByLibrary.simpleMessage("السابقة"),
     "profile": MessageLookupByLibrary.simpleMessage("حسابي "),
     "profileLanguage": MessageLookupByLibrary.simpleMessage("اللغة"),
     "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
