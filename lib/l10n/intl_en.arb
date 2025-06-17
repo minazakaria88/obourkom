@@ -106,7 +106,14 @@
   "lookingForOffers": "Looking for offers ...",
   "itWillTakeSomeTime": "It will take some time ...",
   "accept": "Accept",
-  "decline": "Decline"
+  "decline": "Decline",
+  "onYourWay": "On Your Way",
+  "theDriverHasArrived": "The Driver Has Arrived",
+  "theShipmentHasArrived": "The Shipment Has Arrived",
+  "showOnMap": "Show On Map",
+  "call": "Call",
+  "writeYourMessage": "Write your message ...",
+  "pleaseWriteYourMessage": "Please write your message"
 
 
 

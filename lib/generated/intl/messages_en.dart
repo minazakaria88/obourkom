@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Are you sure you want to logout?",
     ),
     "bigCars": MessageLookupByLibrary.simpleMessage("Big Car"),
+    "call": MessageLookupByLibrary.simpleMessage("Call"),
     "callUs": MessageLookupByLibrary.simpleMessage("Call US"),
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cancelOrder": MessageLookupByLibrary.simpleMessage("Cancel Order"),
@@ -131,6 +132,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "onYourWay": MessageLookupByLibrary.simpleMessage("On Your Way"),
     "openGps": MessageLookupByLibrary.simpleMessage(
       "To provide the best service and ease of access, please enable your location",
     ),
@@ -176,6 +178,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseSelectAddressType": MessageLookupByLibrary.simpleMessage(
       "Please select address type",
     ),
+    "pleaseWriteYourMessage": MessageLookupByLibrary.simpleMessage(
+      "Please write your message",
+    ),
     "pleaseWriteYourNotes": MessageLookupByLibrary.simpleMessage(
       "Please write your notes",
     ),
@@ -189,8 +194,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "serviceType": MessageLookupByLibrary.simpleMessage("Service Type"),
+    "showOnMap": MessageLookupByLibrary.simpleMessage("Show On Map"),
     "smallCars": MessageLookupByLibrary.simpleMessage("Small Car"),
     "support": MessageLookupByLibrary.simpleMessage("Support"),
+    "theDriverHasArrived": MessageLookupByLibrary.simpleMessage(
+      "The Driver Has Arrived",
+    ),
+    "theShipmentHasArrived": MessageLookupByLibrary.simpleMessage(
+      "The Shipment Has Arrived",
+    ),
     "transferServices": MessageLookupByLibrary.simpleMessage(
       "Transfer Services",
     ),
@@ -205,6 +217,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcomeBack": MessageLookupByLibrary.simpleMessage("Welcome Back"),
     "whatsapp": MessageLookupByLibrary.simpleMessage("Whatsapp"),
     "work": MessageLookupByLibrary.simpleMessage("Work"),
+    "writeYourMessage": MessageLookupByLibrary.simpleMessage(
+      "Write your message ...",
+    ),
     "writeYourNameHere": MessageLookupByLibrary.simpleMessage(
       "Write your name here",
     ),

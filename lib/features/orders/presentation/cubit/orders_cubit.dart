@@ -19,6 +19,7 @@ class OrdersCubit extends Cubit<OrdersState> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController notesController = TextEditingController();
   final TextEditingController codeController = TextEditingController();
+  final TextEditingController messageController = TextEditingController();
 
   void pickDeliveryLocation(LatLng position) async {
     final locationData = await getAddressFromLatAndLng(position);
@@ -91,10 +92,17 @@ class OrdersCubit extends Cubit<OrdersState> {
     _timer?.cancel();
   }
 
+  disposeControllers() {
+    codeController.dispose();
+    notesController.dispose();
+    messageController.dispose();
+  }
+
 
   @override
   Future<void> close() {
     cancelTimer();
+    disposeControllers();
     return super.close();
   }
 }

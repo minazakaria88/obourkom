@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/widgets/my_app_bar.dart';
+import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../generated/l10n.dart';
 import '../cubit/orders_cubit.dart';
@@ -14,6 +15,7 @@ class FindingDriversScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<OrdersCubit>();
     return Scaffold(
       appBar: MyAppBar(title: S.of(context).findingDrivers),
       body: Padding(
@@ -29,11 +31,17 @@ class FindingDriversScreen extends StatelessWidget {
                   20.height,
                   const OrderTimerWidget(),
                   20.height,
-                  const DriverDetailsWidget(),
+                  DriverDetailsWidget(
+                    accept: () {
+                      cubit.cancelTimer();
+                      context.pushNamed(Routes.orderDetails, arguments: cubit);
+                    },
+                    decline: () {},
+                  ),
                   const Spacer(),
                   TextButton(
                     onPressed: () {
-                      context.read<OrdersCubit>().cancelTimer();
+                      cubit.cancelTimer();
                       context.pop();
                     },
                     child: Text(
@@ -52,4 +60,3 @@ class FindingDriversScreen extends StatelessWidget {
     );
   }
 }
-

@@ -13,8 +13,11 @@ import 'decline_offer_widget.dart';
 
 class DriverDetailsWidget extends StatelessWidget {
   const DriverDetailsWidget({
-    super.key,
+    super.key, required this.accept, required this.decline,
   });
+
+  final Function accept;
+  final Function decline;
 
   @override
   Widget build(BuildContext context) {
@@ -77,13 +80,17 @@ class DriverDetailsWidget extends StatelessWidget {
                     children: [
                       Expanded(
                         child: DeclineOfferWidget(
-                          onTap: () {},
+                          onTap: () {
+                            decline();
+                          },
                         ),
                       ),
                       Expanded(
                         child: MyButton(
                           title: S.of(context).accept,
-                          onTap: () {},
+                          onTap: () {
+                            accept();
+                          },
                         ),
                       ),
                     ],

@@ -903,6 +903,61 @@ class S {
   String get decline {
     return Intl.message('Decline', name: 'decline', desc: '', args: []);
   }
+
+  /// `On Your Way`
+  String get onYourWay {
+    return Intl.message('On Your Way', name: 'onYourWay', desc: '', args: []);
+  }
+
+  /// `The Driver Has Arrived`
+  String get theDriverHasArrived {
+    return Intl.message(
+      'The Driver Has Arrived',
+      name: 'theDriverHasArrived',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The Shipment Has Arrived`
+  String get theShipmentHasArrived {
+    return Intl.message(
+      'The Shipment Has Arrived',
+      name: 'theShipmentHasArrived',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Show On Map`
+  String get showOnMap {
+    return Intl.message('Show On Map', name: 'showOnMap', desc: '', args: []);
+  }
+
+  /// `Call`
+  String get call {
+    return Intl.message('Call', name: 'call', desc: '', args: []);
+  }
+
+  /// `Write your message ...`
+  String get writeYourMessage {
+    return Intl.message(
+      'Write your message ...',
+      name: 'writeYourMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please write your message`
+  String get pleaseWriteYourMessage {
+    return Intl.message(
+      'Please write your message',
+      name: 'pleaseWriteYourMessage',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

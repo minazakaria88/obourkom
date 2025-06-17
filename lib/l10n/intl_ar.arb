@@ -108,7 +108,14 @@
     "lookingForOffers": "جاري البحث عن عروض ...",
     "itWillTakeSomeTime": "قد تتطلب عملية البحث بعض الوقت ...",
     "accept": "قبول",
-    "decline": "رفض"
+    "decline": "رفض",
+    "onYourWay": "في الطريق اليك",
+    "theDriverHasArrived": "المندوب وصل",
+    "theShipmentHasArrived": "وصلت الشحنه للموقع المحدد",
+    "showOnMap": "عرض على الخريطة",
+    "call": "اتصال",
+    "writeYourMessage": "اكتب رسالتك ...",
+    "pleaseWriteYourMessage": "الرجاء كتابة رسالتك"
 
 
 

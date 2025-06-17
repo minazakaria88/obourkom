@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل انت متأكد من تسجيل الخروج؟",
     ),
     "bigCars": MessageLookupByLibrary.simpleMessage(" شاحنة كبيرة"),
+    "call": MessageLookupByLibrary.simpleMessage("اتصال"),
     "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
     "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
     "cancelOrder": MessageLookupByLibrary.simpleMessage("إلغاء الطلب"),
@@ -124,6 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
+    "onYourWay": MessageLookupByLibrary.simpleMessage("في الطريق اليك"),
     "openGps": MessageLookupByLibrary.simpleMessage(
       "لتقديم افضل خدمة وسهولة في الوصول يرجي تفعيل الموقع",
     ),
@@ -169,6 +171,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseSelectAddressType": MessageLookupByLibrary.simpleMessage(
       "الرجاء اختيار نوع العنوان",
     ),
+    "pleaseWriteYourMessage": MessageLookupByLibrary.simpleMessage(
+      "الرجاء كتابة رسالتك",
+    ),
     "pleaseWriteYourNotes": MessageLookupByLibrary.simpleMessage(
       "الرجاء كتابة ملاحظاتك ",
     ),
@@ -182,8 +187,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "resend": MessageLookupByLibrary.simpleMessage("اعادة الارسال"),
     "save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "serviceType": MessageLookupByLibrary.simpleMessage("نوع الخدمة"),
+    "showOnMap": MessageLookupByLibrary.simpleMessage("عرض على الخريطة"),
     "smallCars": MessageLookupByLibrary.simpleMessage(" شاحنة صغيرة"),
     "support": MessageLookupByLibrary.simpleMessage("مركز الدعم"),
+    "theDriverHasArrived": MessageLookupByLibrary.simpleMessage("المندوب وصل"),
+    "theShipmentHasArrived": MessageLookupByLibrary.simpleMessage(
+      "وصلت الشحنه للموقع المحدد",
+    ),
     "transferServices": MessageLookupByLibrary.simpleMessage(" خدمة نقل "),
     "transportOfGoods": MessageLookupByLibrary.simpleMessage("نقل بضائع"),
     "type": MessageLookupByLibrary.simpleMessage("النوع"),
@@ -194,6 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "welcomeBack": MessageLookupByLibrary.simpleMessage("مرحبا بعودتك"),
     "whatsapp": MessageLookupByLibrary.simpleMessage("واتساب"),
     "work": MessageLookupByLibrary.simpleMessage("عمل"),
+    "writeYourMessage": MessageLookupByLibrary.simpleMessage("اكتب رسالتك ..."),
     "writeYourNameHere": MessageLookupByLibrary.simpleMessage("اكتب اسمك هنا"),
     "writeYourNotesHere": MessageLookupByLibrary.simpleMessage(
       "اكتب ملاحظاتك هنا",

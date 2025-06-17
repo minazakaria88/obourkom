@@ -22,6 +22,7 @@ import '../../features/login/presentation/cubit/login_cubit.dart';
 import '../../features/main/presentation/pages/choose_car_screen.dart';
 import '../../features/orders/presentation/cubit/orders_cubit.dart';
 import '../../features/orders/presentation/pages/new_order.dart';
+import '../../features/orders/presentation/pages/order_details_screen.dart';
 import '../../features/otp/presentation/cubit/otp_cubit.dart';
 import '../../features/otp/presentation/pages/otp_screen.dart';
 import '../../features/profile/presentation/pages/profile_features_screens/terms_and_conditions_screen.dart';
@@ -112,6 +113,13 @@ class AppRoues {
           builder: (context) => BlocProvider.value(
             value: arguments..startTimer(),
               child: const FindingDriversScreen()),
+        );
+        case Routes.orderDetails:
+        final arguments = setting.arguments as OrdersCubit;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider.value(
+            value: arguments,
+              child: const OrderDetailsScreen()),
         );
       default:
         return null;

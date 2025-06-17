@@ -42,15 +42,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: BackgroundProfileWidget(
               child: Column(
                 children: [
-                  ProfileButtonWidget(
-                    title: S.of(context).logout,
-                    image: Assets.imagesExit,
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => const LogoutWidget(),
-                      );
-                    },
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ProfileButtonWidget(
+                      title: S.of(context).logout,
+                      image: Assets.imagesExit,
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => const LogoutWidget(),
+                        );
+                      },
+                    ),
                   ),
                   10.height,
                 ],
