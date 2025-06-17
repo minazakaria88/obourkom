@@ -147,23 +147,19 @@ class EditProfileScreen extends StatelessWidget {
                         ),
                         15.height,
                         BackgroundProfileWidget(
-                          child: Column(
-                            children: [
-                              ProfileButtonWidget(
-                                title: S.of(context).deleteAccount,
-                                image: Assets.imagesDelete,
-                                onTap: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) =>
-                                        const DeleteAccountWidget(),
-                                  );
-                                },
-                              ),
-                              10.height,
-                            ],
+                          child: ProfileButtonWidget(
+                            title: S.of(context).deleteAccount,
+                            image: Assets.imagesDelete,
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) =>
+                                    const DeleteAccountWidget(),
+                              );
+                            },
                           ),
                         ),
+                        15.height,
                       ],
                     ),
                   ),

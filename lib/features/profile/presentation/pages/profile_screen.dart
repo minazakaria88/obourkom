@@ -40,23 +40,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
           SliverToBoxAdapter(child: 40.height),
           SliverToBoxAdapter(
             child: BackgroundProfileWidget(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ProfileButtonWidget(
-                      title: S.of(context).logout,
-                      image: Assets.imagesExit,
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) => const LogoutWidget(),
-                        );
-                      },
-                    ),
-                  ),
-                  10.height,
-                ],
+              child: ProfileButtonWidget(
+                title: S.of(context).logout,
+                image: Assets.imagesExit,
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => const LogoutWidget(),
+                  );
+                },
               ),
             ),
           ),
