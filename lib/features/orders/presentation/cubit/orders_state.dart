@@ -9,6 +9,14 @@ enum MakeOrderStatus {
 }
 
 
+enum GetOrdersStatus {
+  initial,
+  loading,
+  success,
+  failure,
+}
+
+
 extension MakeOrderStatusX on OrdersState {
   bool get isLoading => makeOrderStatus == MakeOrderStatus.loading;
   bool get isSuccess => makeOrderStatus == MakeOrderStatus.success;
@@ -24,6 +32,8 @@ class OrdersState extends Equatable {
   MakeOrderStatus ? makeOrderStatus;
   String? errorMessage;
   Duration ? orderTimerDuration;
+  GetOrdersStatus ? getOrdersStatus;
+  List<OrderModel>? ordersList;
   OrdersState({
     this.pickedLocation,
     this.pickedLocationData,
@@ -32,7 +42,9 @@ class OrdersState extends Equatable {
     this.paymentMethod,
     this.makeOrderStatus,
     this.errorMessage,
-    this.orderTimerDuration
+    this.orderTimerDuration,
+    this.getOrdersStatus,
+    this.ordersList
   });
 
   OrdersState copyWith({
@@ -43,7 +55,9 @@ class OrdersState extends Equatable {
     String? paymentMethod,
     MakeOrderStatus? makeOrderStatus,
     String? errorMessage,
-    Duration? orderTimerDuration
+    Duration? orderTimerDuration,
+    GetOrdersStatus? getOrdersStatus,
+    List<OrderModel>? ordersList
 
   }) {
     return OrdersState(
@@ -54,7 +68,9 @@ class OrdersState extends Equatable {
       paymentMethod: paymentMethod ?? this.paymentMethod,
       makeOrderStatus: makeOrderStatus ?? this.makeOrderStatus,
       errorMessage: errorMessage ?? this.errorMessage,
-      orderTimerDuration: orderTimerDuration ?? this.orderTimerDuration
+      orderTimerDuration: orderTimerDuration ?? this.orderTimerDuration,
+      getOrdersStatus: getOrdersStatus ?? this.getOrdersStatus,
+      ordersList: ordersList ?? this.ordersList
     );
   }
 
@@ -67,6 +83,8 @@ class OrdersState extends Equatable {
     pickedLocationData,
     makeOrderStatus,
     errorMessage,
-    orderTimerDuration
+    orderTimerDuration,
+    getOrdersStatus,
+    ordersList
   ];
 }

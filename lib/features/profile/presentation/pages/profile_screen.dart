@@ -28,7 +28,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(12.0),
+      padding: const EdgeInsets.all(15.0),
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(child: 20.height),

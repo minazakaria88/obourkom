@@ -8,4 +8,6 @@ class EndPoints
   static const profile = 'profile';
   static const notification='notification';
   static const makeOrder='makeOrder';
+
+  static const getOrders = 'getOrders';
 }

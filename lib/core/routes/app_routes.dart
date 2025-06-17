@@ -21,6 +21,7 @@ import '../../features/locations/presentation/pages/locations_screen.dart';
 import '../../features/login/presentation/cubit/login_cubit.dart';
 import '../../features/main/presentation/pages/choose_car_screen.dart';
 import '../../features/orders/presentation/cubit/orders_cubit.dart';
+import '../../features/orders/presentation/pages/completed_order_details_screen.dart';
 import '../../features/orders/presentation/pages/new_order.dart';
 import '../../features/orders/presentation/pages/order_details_screen.dart';
 import '../../features/otp/presentation/cubit/otp_cubit.dart';
@@ -120,6 +121,13 @@ class AppRoues {
           builder: (context) => BlocProvider.value(
             value: arguments,
               child: const OrderDetailsScreen()),
+        );
+      case Routes.completedOrderDetails:
+        final arguments = setting.arguments as OrdersCubit;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider.value(
+            value: arguments,
+              child: const CompletedOrderDetailsScreen()),
         );
       default:
         return null;

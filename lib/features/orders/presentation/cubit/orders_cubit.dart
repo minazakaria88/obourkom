@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/utils/constant.dart';
+import 'package:oborkom/features/orders/data/models/order_model.dart';
 import '../../../../core/api/failure.dart';
 import '../../../../core/functions/get_places_mark.dart';
 import '../../data/repositories/order_repo.dart';
@@ -68,6 +69,33 @@ class OrdersCubit extends Cubit<OrdersState> {
     }
   }
 
+  void getOrders() async {
+    emit(state.copyWith(getOrdersStatus: GetOrdersStatus.loading));
+    try {
+      final result = await otpRepository.getOrders();
+      emit(
+        state.copyWith(
+          getOrdersStatus: GetOrdersStatus.success,
+          ordersList: result,
+        ),
+      );
+    } on ApiException catch (e) {
+      emit(
+        state.copyWith(
+          getOrdersStatus: GetOrdersStatus.failure,
+          errorMessage: e.failure.message,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          getOrdersStatus: GetOrdersStatus.failure,
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
+
   Timer? _timer;
   void startTimer() {
     logger.d('startTimer');
@@ -97,7 +125,6 @@ class OrdersCubit extends Cubit<OrdersState> {
     notesController.dispose();
     messageController.dispose();
   }
-
 
   @override
   Future<void> close() {
