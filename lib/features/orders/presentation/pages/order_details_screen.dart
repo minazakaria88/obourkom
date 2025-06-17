@@ -19,60 +19,88 @@ class OrderDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = context.read<OrdersCubit>();
     return Scaffold(
       appBar: MyAppBar(title: S.of(context).orderDetails),
-      body: BlocBuilder<OrdersCubit, OrdersState>(
-        builder: (context, state) {
-          final cubit = context.read<OrdersCubit>();
-          return Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              children: [
-                20.height,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    OrderStepperWidget(
-                      title: S.of(context).onYourWay,
-                      image: Assets.imagesDriverOnWay,
-                    ),
-                    const Expanded(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: SizedBox(
-                          height: 100,
-                          child: Center(
-                            child: DottedLine(alignment: WrapAlignment.center),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 80), // space for input field
+              child: CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(child: 20.height),
+                  SliverToBoxAdapter(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        OrderStepperWidget(
+                          title: S.of(context).onYourWay,
+                          image: Assets.imagesDriverOnWay,
+                        ),
+                        const Expanded(
+                          child: SizedBox(
+                            height: 100,
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: DottedLine(alignment: WrapAlignment.center),
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    OrderStepperWidget(
-                      title: S.of(context).theDriverHasArrived,
-                      image: Assets.imagesDriverArrive,
-                    ),
-                    const Expanded(
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: SizedBox(
-                          height: 100, // Adjust height
-                          child: Center(child: DottedLine()),
+                        OrderStepperWidget(
+                          title: S.of(context).theDriverHasArrived,
+                          image: Assets.imagesDriverArrive,
                         ),
+                        const Expanded(
+                          child: SizedBox(
+                            height: 100,
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: DottedLine(),
+                            ),
+                          ),
+                        ),
+                        OrderStepperWidget(
+                          title: S.of(context).theShipmentHasArrived,
+                          image: Assets.imagesShipmentArrive,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SliverToBoxAdapter(child: 20.height),
+                  const SliverToBoxAdapter(child: OrderDetailsWidget()),
+                  SliverToBoxAdapter(child: 10.height),
+                  const SliverToBoxAdapter(child: DriverDetails()),
+                  SliverToBoxAdapter(child: 20.height),
+                  // Chat/Message List
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                          (context, index) => Container(
+                        padding: const EdgeInsets.all(12),
+                        margin: const EdgeInsets.only(bottom: 10),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade200,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text('Message $index'),
                       ),
+                      childCount: 10,
                     ),
-                    OrderStepperWidget(
-                      title: S.of(context).theShipmentHasArrived,
-                      image: Assets.imagesShipmentArrive,
-                    ),
-                  ],
-                ),
-                20.height,
-                const OrderDetailsWidget(),
-                20.height,
-                const DriverDetails(),
-                const Spacer(),
-                MyTextFormField(
+                  ),
+                  SliverToBoxAdapter(child: 20.height),
+                ],
+              ),
+            ),
+
+            // Fixed input at bottom
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                color: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                child: MyTextFormField(
                   prefixIcon: IconButton(
                     onPressed: () {},
                     icon: Container(
@@ -91,11 +119,12 @@ class OrderDetailsScreen extends StatelessWidget {
                     S.of(context).pleaseWriteYourMessage,
                   ),
                 ),
-              ],
+              ),
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }
+
 }
