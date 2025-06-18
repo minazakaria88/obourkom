@@ -8,6 +8,7 @@ class EndPoints
   static const profile = 'profile';
   static const notification='notification';
   static const makeOrder='makeOrder';
-
   static const getOrders = 'getOrders';
+  static const cancelOrder='cancelOrder';
+  static var rateDriver='rateDriver';
 }

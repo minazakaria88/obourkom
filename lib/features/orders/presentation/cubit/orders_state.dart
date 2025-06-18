@@ -16,12 +16,25 @@ enum GetOrdersStatus {
   failure,
 }
 
+enum RateDriverStatus {
+  initial,
+  loading,
+  success,
+  failure,
+}
+
 
 extension MakeOrderStatusX on OrdersState {
   bool get isLoading => makeOrderStatus == MakeOrderStatus.loading;
   bool get isSuccess => makeOrderStatus == MakeOrderStatus.success;
   bool get isFailure => makeOrderStatus == MakeOrderStatus.failure;
+  bool get isRateDriverLoading => rateDriverStatus == RateDriverStatus.loading;
+  bool get isRateDriverSuccess => rateDriverStatus == RateDriverStatus.success;
+  bool get isRateDriverFailure => rateDriverStatus == RateDriverStatus.failure;
 }
+
+
+
 
 class OrdersState extends Equatable {
   LatLng? pickedLocation;
@@ -34,6 +47,7 @@ class OrdersState extends Equatable {
   Duration ? orderTimerDuration;
   GetOrdersStatus ? getOrdersStatus;
   List<OrderModel>? ordersList;
+  RateDriverStatus ? rateDriverStatus;
   OrdersState({
     this.pickedLocation,
     this.pickedLocationData,
@@ -44,7 +58,8 @@ class OrdersState extends Equatable {
     this.errorMessage,
     this.orderTimerDuration,
     this.getOrdersStatus,
-    this.ordersList
+    this.ordersList,
+    this.rateDriverStatus
   });
 
   OrdersState copyWith({
@@ -57,7 +72,8 @@ class OrdersState extends Equatable {
     String? errorMessage,
     Duration? orderTimerDuration,
     GetOrdersStatus? getOrdersStatus,
-    List<OrderModel>? ordersList
+    List<OrderModel>? ordersList,
+    RateDriverStatus? rateDriverStatus
 
   }) {
     return OrdersState(
@@ -70,7 +86,8 @@ class OrdersState extends Equatable {
       errorMessage: errorMessage ?? this.errorMessage,
       orderTimerDuration: orderTimerDuration ?? this.orderTimerDuration,
       getOrdersStatus: getOrdersStatus ?? this.getOrdersStatus,
-      ordersList: ordersList ?? this.ordersList
+      ordersList: ordersList ?? this.ordersList,
+      rateDriverStatus: rateDriverStatus ?? this.rateDriverStatus
     );
   }
 
@@ -85,6 +102,7 @@ class OrdersState extends Equatable {
     errorMessage,
     orderTimerDuration,
     getOrdersStatus,
-    ordersList
+    ordersList,
+    rateDriverStatus
   ];
 }

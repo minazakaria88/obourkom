@@ -1,12 +1,14 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 
 import '../../../../../core/helpers/validation_inputs_class.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/widgets/my_text_form_field.dart';
 import '../../../../../generated/l10n.dart';
+import '../../cubit/orders_cubit.dart';
 
 class DiscountInputWidget extends StatefulWidget {
   const DiscountInputWidget({
@@ -50,6 +52,7 @@ class _DiscountInputWidgetState extends State<DiscountInputWidget> {
         builder: (context, value, child) => InkWell(
           onTap: () {
             log('Discount Code: ${value.isNullOrEmpty() ? 'Empty' : value}');
+            context.read<OrdersCubit>().setDiscountCode(value);
           },
           child: Container(
             padding: const EdgeInsets.all(8),

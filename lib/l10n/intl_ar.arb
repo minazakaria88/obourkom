@@ -125,7 +125,9 @@
     "discount": "الخصم",
     "total": "الإجمالي:",
     "Invoice": "فاتورة",
-    "evaluation": "تقييم"
+    "evaluation": "تقييم",
+    "delegationEvaluation": "تقييم المندوب",
+    "thanksForYourReview": "شكرا علي تقييمك !"
 
 
 

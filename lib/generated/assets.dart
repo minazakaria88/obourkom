@@ -62,6 +62,7 @@ class Assets {
   static const String imagesShipmentArrive = 'assets/images/shipmentArrive.svg';
   static const String imagesSmallCar = 'assets/images/smallCar.png';
   static const String imagesStars = 'assets/images/Stars.svg';
+  static const String imagesStarsMinimalistic = 'assets/images/StarsMinimalistic.svg';
   static const String imagesSupport = 'assets/images/support.svg';
   static const String imagesTerms = 'assets/images/terms.svg';
   static const String imagesTram = 'assets/images/Tram.svg';

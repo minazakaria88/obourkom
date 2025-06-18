@@ -68,6 +68,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAccount": MessageLookupByLibrary.simpleMessage("انشاء حساب"),
     "currentOrders": MessageLookupByLibrary.simpleMessage("الحالية"),
     "decline": MessageLookupByLibrary.simpleMessage("رفض"),
+    "delegationEvaluation": MessageLookupByLibrary.simpleMessage(
+      "تقييم المندوب",
+    ),
     "delete": MessageLookupByLibrary.simpleMessage("حذف"),
     "deleteAccount": MessageLookupByLibrary.simpleMessage("حذف الحساب"),
     "deleteAccountDesc": MessageLookupByLibrary.simpleMessage(
@@ -199,6 +202,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "showOnMap": MessageLookupByLibrary.simpleMessage("عرض على الخريطة"),
     "smallCars": MessageLookupByLibrary.simpleMessage(" شاحنة صغيرة"),
     "support": MessageLookupByLibrary.simpleMessage("مركز الدعم"),
+    "thanksForYourReview": MessageLookupByLibrary.simpleMessage(
+      "شكرا علي تقييمك !",
+    ),
     "theDriverHasArrived": MessageLookupByLibrary.simpleMessage("المندوب وصل"),
     "theShipmentHasArrived": MessageLookupByLibrary.simpleMessage(
       "وصلت الشحنه للموقع المحدد",

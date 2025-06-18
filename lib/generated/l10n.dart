@@ -1018,6 +1018,26 @@ class S {
   String get evaluation {
     return Intl.message('Evaluation', name: 'evaluation', desc: '', args: []);
   }
+
+  /// `Delegation Evaluation`
+  String get delegationEvaluation {
+    return Intl.message(
+      'Delegation Evaluation',
+      name: 'delegationEvaluation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Thank you for your review!`
+  String get thanksForYourReview {
+    return Intl.message(
+      'Thank you for your review!',
+      name: 'thanksForYourReview',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

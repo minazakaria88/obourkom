@@ -68,6 +68,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "createAccount": MessageLookupByLibrary.simpleMessage("Create Account"),
     "currentOrders": MessageLookupByLibrary.simpleMessage("Current"),
     "decline": MessageLookupByLibrary.simpleMessage("Decline"),
+    "delegationEvaluation": MessageLookupByLibrary.simpleMessage(
+      "Delegation Evaluation",
+    ),
     "delete": MessageLookupByLibrary.simpleMessage("Delete"),
     "deleteAccount": MessageLookupByLibrary.simpleMessage("Delete Account"),
     "deleteAccountDesc": MessageLookupByLibrary.simpleMessage(
@@ -206,6 +209,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "showOnMap": MessageLookupByLibrary.simpleMessage("Show On Map"),
     "smallCars": MessageLookupByLibrary.simpleMessage("Small Car"),
     "support": MessageLookupByLibrary.simpleMessage("Support"),
+    "thanksForYourReview": MessageLookupByLibrary.simpleMessage(
+      "Thank you for your review!",
+    ),
     "theDriverHasArrived": MessageLookupByLibrary.simpleMessage(
       "The Driver Has Arrived",
     ),

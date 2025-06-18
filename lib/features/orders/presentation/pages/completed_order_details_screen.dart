@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/features/profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
-
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/my_app_bar.dart';
@@ -10,6 +10,8 @@ import '../../../../core/widgets/my_button.dart';
 import '../../../../generated/assets.dart';
 import '../../../../generated/l10n.dart';
 import '../../../profile/presentation/widgets/profile_screen_widgets/profile_image.dart';
+import '../cubit/orders_cubit.dart';
+import '../widgets/completed_orders_widgets/rating_widget.dart';
 import '../widgets/finding_driver_widgets/order_details_item_widget.dart';
 
 class CompletedOrderDetailsScreen extends StatelessWidget {
@@ -125,7 +127,7 @@ class CompletedOrderDetailsScreen extends StatelessWidget {
                         title: S.of(context).orderValue,
                       ),
                       OrderDetailsItemWidget(
-                        value: '0.200 ريال',
+                        value: '200.00 ريال',
                         title: S.of(context).shipmentValue,
                       ),
                       OrderDetailsItemWidget(
@@ -133,6 +135,11 @@ class CompletedOrderDetailsScreen extends StatelessWidget {
                         title: S.of(context).discount,
                       ),
                       const Divider(thickness: 1.2, color: Colors.grey),
+                      5.height,
+                      OrderDetailsItemWidget(
+                        title: S.of(context).total,
+                        value: '200.00 ريال',
+                      ),
                       Row(
                         children: [
                           Expanded(
@@ -147,13 +154,18 @@ class CompletedOrderDetailsScreen extends StatelessWidget {
                             child: MyButton(
                               title: S.of(context).evaluation,
                               color: AppColors.darkGreyColor,
-                              onTap: () {},
+                              onTap: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => BlocProvider.value(
+                                      value: context.read<OrdersCubit>(),
+                                      child: const MyRatingWidget()),
+                                );
+                              },
                             ),
                           ),
                         ],
                       ),
-
-
                     ],
                   ),
                 ),
@@ -164,4 +176,6 @@ class CompletedOrderDetailsScreen extends StatelessWidget {
       ),
     );
   }
+
 }
+

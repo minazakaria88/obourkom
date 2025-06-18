@@ -1,16 +1,14 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/utils/constant.dart';
+import 'package:oborkom/features/locations/data/models/location_order_model.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
 import '../../../../core/api/failure.dart';
-import '../../../../core/functions/get_places_mark.dart';
 import '../../data/repositories/order_repo.dart';
-
 part 'orders_state.dart';
 
 class OrdersCubit extends Cubit<OrdersState> {
@@ -22,22 +20,20 @@ class OrdersCubit extends Cubit<OrdersState> {
   final TextEditingController codeController = TextEditingController();
   final TextEditingController messageController = TextEditingController();
 
-  void pickDeliveryLocation(LatLng position) async {
-    final locationData = await getAddressFromLatAndLng(position);
+  void pickDeliveryLocation(LocationOrderModel model) async {
     emit(
       state.copyWith(
-        deliveryLocation: LatLng(position.latitude, position.longitude),
-        deliveryLocationData: locationData.first,
+        deliveryLocation: LatLng(model.position!.latitude, model.position!.longitude),
+        deliveryLocationData: model.address,
       ),
     );
   }
 
-  void pickPickupLocation(LatLng position) async {
-    final locationData = await getAddressFromLatAndLng(position);
+  void pickPickupLocation(LocationOrderModel model) async {
     emit(
       state.copyWith(
-        pickedLocation: LatLng(position.latitude, position.longitude),
-        pickedLocationData: locationData.first,
+        pickedLocation: LatLng(model.position!.latitude, model.position!.longitude),
+        pickedLocationData: model.address,
       ),
     );
   }
@@ -131,5 +127,31 @@ class OrdersCubit extends Cubit<OrdersState> {
     cancelTimer();
     disposeControllers();
     return super.close();
+  }
+
+  void setDiscountCode(String value) {
+    logger.d(value);
+  }
+
+  void rateDriver(double rate)async {
+    try {
+      emit(state.copyWith(rateDriverStatus: RateDriverStatus.loading));
+      await Future.delayed(const Duration(seconds: 2));
+      emit(state.copyWith(rateDriverStatus: RateDriverStatus.success));
+    } on ApiException catch (e) {
+      emit(
+        state.copyWith(
+          rateDriverStatus: RateDriverStatus.failure,
+          errorMessage: e.failure.message,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          rateDriverStatus: RateDriverStatus.failure,
+          errorMessage: e.toString(),
+        ),
+      );
+    }
   }
 }

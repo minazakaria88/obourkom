@@ -37,4 +37,34 @@ class OrderRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
+
+  Future<bool> cancelOrder(data) async {
+    try {
+      final response = await apiHelper.postData(
+        url: EndPoints.cancelOrder,
+        data: data,
+      );
+      return response.data['status'];
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
+  Future<bool> rateDriver(data) async {
+    try {
+      final response = await apiHelper.postData(
+        url: EndPoints.rateDriver,
+        data: data,
+      );
+      return response.data['status'];
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
 }
