@@ -11,7 +11,7 @@ import '../../../../generated/assets.dart';
 import '../../../../generated/l10n.dart';
 import '../../../profile/presentation/widgets/profile_screen_widgets/profile_image.dart';
 import '../cubit/orders_cubit.dart';
-import '../widgets/completed_orders_widgets/rating_widget.dart';
+import '../../../rating/presentation/pages/rating_widget.dart';
 import '../widgets/finding_driver_widgets/order_details_item_widget.dart';
 
 class CompletedOrderDetailsScreen extends StatelessWidget {
@@ -157,9 +157,7 @@ class CompletedOrderDetailsScreen extends StatelessWidget {
                               onTap: () {
                                 showDialog(
                                   context: context,
-                                  builder: (_) => BlocProvider.value(
-                                      value: context.read<OrdersCubit>(),
-                                      child: const MyRatingWidget()),
+                                  builder: (_) => const MyRatingWidget(),
                                 );
                               },
                             ),

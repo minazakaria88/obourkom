@@ -133,25 +133,5 @@ class OrdersCubit extends Cubit<OrdersState> {
     logger.d(value);
   }
 
-  void rateDriver(double rate)async {
-    try {
-      emit(state.copyWith(rateDriverStatus: RateDriverStatus.loading));
-      await Future.delayed(const Duration(seconds: 2));
-      emit(state.copyWith(rateDriverStatus: RateDriverStatus.success));
-    } on ApiException catch (e) {
-      emit(
-        state.copyWith(
-          rateDriverStatus: RateDriverStatus.failure,
-          errorMessage: e.failure.message,
-        ),
-      );
-    } catch (e) {
-      emit(
-        state.copyWith(
-          rateDriverStatus: RateDriverStatus.failure,
-          errorMessage: e.toString(),
-        ),
-      );
-    }
-  }
+
 }

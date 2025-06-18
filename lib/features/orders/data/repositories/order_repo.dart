@@ -53,18 +53,5 @@ class OrderRepository {
     }
   }
 
-  Future<bool> rateDriver(data) async {
-    try {
-      final response = await apiHelper.postData(
-        url: EndPoints.rateDriver,
-        data: data,
-      );
-      return response.data['status'];
-    } catch (e) {
-      if (e is DioException) {
-        throw ApiException(failure: ServerFailure.serverError(e));
-      }
-      throw ApiException(failure: Failure(message: e.toString()));
-    }
-  }
+
 }

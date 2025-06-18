@@ -16,6 +16,8 @@ import 'features/orders/presentation/cubit/orders_cubit.dart';
 import 'features/otp/presentation/cubit/otp_cubit.dart';
 import 'features/profile/data/repositories/profile_repo.dart';
 import 'features/profile/presentation/cubit/profile_cubit.dart';
+import 'features/rating/data/repositories/rating_repo.dart';
+import 'features/rating/presentation/cubit/rating_cubit.dart';
 import 'features/register/data/repositories/register_repo.dart';
 import 'features/register/presentation/cubit/register_cubit.dart';
 
@@ -68,6 +70,11 @@ void setupServicesLocator() {
   //locations
   getIt.registerFactory(()=>LocationsCubit(locationRepository: getIt()));
   getIt.registerLazySingleton(() => LocationRepository(apiHelper: getIt()));
+
+
+  //rating
+  getIt.registerFactory(() => RatingCubit(ratingRepository: getIt()));
+  getIt.registerLazySingleton(() => RatingRepository(apiHelper: getIt()));
 
 
 
