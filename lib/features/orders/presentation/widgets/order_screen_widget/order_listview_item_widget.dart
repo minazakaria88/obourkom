@@ -26,34 +26,42 @@ class OrderListviewItemWidget extends StatelessWidget {
       child: BackgroundProfileWidget(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
+          child: Row(
             children: [
-              Row(
-                children: [
-                  10.width,
-                  SvgPicture.asset(Assets.imagesPending),
-                  10.width,
-                  Text(S.of(context).pending, style: AppTextStyles.bold18Black),
-                ],
-              ),
-              const Divider(thickness: 2, color: Colors.grey),
+              Expanded(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        10.width,
+                        SvgPicture.asset(Assets.imagesPending),
+                        10.width,
+                        Text(S.of(context).pending, style: AppTextStyles.bold18Black),
+                      ],
+                    ),
+                    const Divider(thickness: 2, color: Colors.grey),
 
-              OrderDetailsItemWidget(
-                value: '#100',
-                title: S.of(context).orderNumber,
+                    OrderDetailsItemWidget(
+                      value: '#100',
+                      title: S.of(context).orderNumber,
+                    ),
+                    OrderDetailsItemWidget(
+                      value: 'نقل أثاث',
+                      title: S.of(context).serviceType,
+                    ),
+                    OrderDetailsItemWidget(
+                      value: 'كبيرة',
+                      title: S.of(context).carType,
+                    ),
+                    OrderDetailsItemWidget(
+                      value: 'أبل باي',
+                      title: S.of(context).paymentMethod,
+                    ),
+                  ],
+                ),
               ),
-              OrderDetailsItemWidget(
-                value: 'نقل أثاث',
-                title: S.of(context).serviceType,
-              ),
-              OrderDetailsItemWidget(
-                value: 'كبيرة',
-                title: S.of(context).carType,
-              ),
-              OrderDetailsItemWidget(
-                value: 'أبل باي',
-                title: S.of(context).paymentMethod,
-              ),
+              10.width,
+              const Icon(Icons.arrow_forward_ios)
             ],
           ),
         ),
