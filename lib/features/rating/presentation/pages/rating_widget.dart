@@ -31,7 +31,10 @@ class _MyRatingWidgetState extends State<MyRatingWidget> {
           builder: (context, state) {
             final cubit = context.read<RatingCubit>();
             return Container(
-              color: Colors.white,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+              ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
