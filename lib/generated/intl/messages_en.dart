@@ -60,6 +60,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "chooseYourService": MessageLookupByLibrary.simpleMessage(
       "Choose Your Service",
     ),
+    "close": MessageLookupByLibrary.simpleMessage("Close"),
     "codeExpiredIn": MessageLookupByLibrary.simpleMessage("Code expired in "),
     "confirmLocation": MessageLookupByLibrary.simpleMessage("Confirm Location"),
     "costEstimate": MessageLookupByLibrary.simpleMessage(

@@ -74,22 +74,19 @@ class _MyRatingWidgetState extends State<MyRatingWidget> {
                         ),
 
                   10.height,
-                  Padding(
+                 ! state.isRateDriverLoading?  Padding(
                     padding: const EdgeInsets.symmetric(vertical: 15.0),
                     child: Column(
                       children: [
-                        state.isRateDriverLoading
-                            ? const CircularProgressIndicator(
-                                color: AppColors.mainColor,
-                              )
-                            : state .isRateDriverSuccess ? Container() : MyButton(
+
+                            state .isRateDriverSuccess ? Container() : MyButton(
                                 title: S.of(context).evaluation,
                                 onTap: () {
                                   cubit.rateDriver(rate);
                                 },
                               ),
                         MyButton(
-                          title: S.of(context).cancel,
+                          title: state.isRateDriverSuccess ? S.of(context).close:S.of(context).cancel,
                           color: AppColors.shadowColor.withAlpha(30),
                           onTap: () {
                             context.pop();
@@ -97,7 +94,15 @@ class _MyRatingWidgetState extends State<MyRatingWidget> {
                         ),
                       ],
                     ),
-                  ),
+                  ) :  Column(
+                    children: [
+                      const CircularProgressIndicator(
+                        color: AppColors.mainColor,
+                      ),
+                      10.height,
+                    ],
+                  )
+
                 ],
               ),
             );

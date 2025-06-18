@@ -3,13 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:oborkom/features/profile/presentation/widgets/profile_screen_widgets/profile_image.dart';
+import '../../../../../core/routes/routes.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
 
 class ProfileHeaderWidget extends StatelessWidget {
-  const ProfileHeaderWidget({
-    super.key,
-  });
+  const ProfileHeaderWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,14 +33,17 @@ class ProfileHeaderWidget extends StatelessWidget {
             const ProfileImage(),
             20.width,
             BlocBuilder<ProfileCubit, ProfileState>(
-              buildWhen: (previous, current) => previous.userModel != current.userModel,
-              builder:(context, state) {
-                if(state.profileStatus == ProfileStatus.loading) {
-                  return const Center(child: CircularProgressIndicator(
-                    color: AppColors.mainColor,
-                  ));
+              buildWhen: (previous, current) =>
+                  previous.userModel != current.userModel,
+              builder: (context, state) {
+                if (state.profileStatus == ProfileStatus.loading) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.mainColor,
+                    ),
+                  );
                 }
-                return  Expanded(
+                return Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -66,7 +68,10 @@ class ProfileHeaderWidget extends StatelessWidget {
             20.width,
             IconButton(
               onPressed: () {
-
+                context.pushNamed(
+                  Routes.editProfile,
+                  arguments: context.read<ProfileCubit>(),
+                );
               },
               icon: const Icon(Icons.arrow_forward_ios),
               color: AppColors.mainColor,
@@ -77,4 +82,3 @@ class ProfileHeaderWidget extends StatelessWidget {
     );
   }
 }
-
