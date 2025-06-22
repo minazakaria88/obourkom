@@ -186,6 +186,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseEnterPickupLocation": MessageLookupByLibrary.simpleMessage(
       "Please enter pickup location",
     ),
+    "pleaseRateDriver": MessageLookupByLibrary.simpleMessage(
+      "Please rate driver",
+    ),
     "pleaseSelectAddressType": MessageLookupByLibrary.simpleMessage(
       "Please select address type",
     ),

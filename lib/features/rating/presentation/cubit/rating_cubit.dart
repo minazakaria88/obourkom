@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:oborkom/features/rating/data/repositories/rating_repo.dart';
 
 import '../../../../core/api/failure.dart';
@@ -10,6 +11,8 @@ class RatingCubit extends Cubit<RatingState> {
   RatingCubit({required this.ratingRepository}) : super(RatingState());
 
   final RatingRepository ratingRepository;
+
+  final formKey = GlobalKey<FormState>();
 
 
   void rateDriver(double rate)async {

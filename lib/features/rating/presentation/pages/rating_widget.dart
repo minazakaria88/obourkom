@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/core/widgets/validate_widget.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/utils/constant.dart';
@@ -50,22 +51,33 @@ class _MyRatingWidgetState extends State<MyRatingWidget> {
                               style: AppTextStyles.bold18Black,
                             ),
                             10.height,
-                            RatingBar.builder(
-                              initialRating: 0,
-                              minRating: 0,
-                              direction: Axis.horizontal,
-                              allowHalfRating: true,
-                              itemCount: 5,
-                              itemPadding: const EdgeInsets.symmetric(
-                                horizontal: 4.0,
+                            Form(
+                              key: cubit.formKey,
+                              child: ValidateWidget(
+                                validator: () {
+                                  if (rate == 0.0) {
+                                    return S.of(context).pleaseRateDriver;
+                                  }
+                                  return null;
+                                },
+                                child: RatingBar.builder(
+                                  initialRating: 0,
+                                  minRating: 0,
+                                  direction: Axis.horizontal,
+                                  allowHalfRating: true,
+                                  itemCount: 5,
+                                  itemPadding: const EdgeInsets.symmetric(
+                                    horizontal: 4.0,
+                                  ),
+                                  itemBuilder: (context, _) => SvgPicture.asset(
+                                    Assets.imagesStarsMinimalistic,
+                                  ),
+                                  onRatingUpdate: (rating) {
+                                    rate = rating;
+                                    logger.d(rating);
+                                  },
+                                ),
                               ),
-                              itemBuilder: (context, _) => SvgPicture.asset(
-                                Assets.imagesStarsMinimalistic,
-                              ),
-                              onRatingUpdate: (rating) {
-                                rate = rating;
-                                logger.d(rating);
-                              },
                             ),
                           ],
                         )
@@ -85,7 +97,9 @@ class _MyRatingWidgetState extends State<MyRatingWidget> {
                                   : MyButton(
                                       title: S.of(context).evaluation,
                                       onTap: () {
-                                        cubit.rateDriver(rate);
+                                        if (cubit.formKey.currentState!.validate()) {
+                                          cubit.rateDriver(rate);
+                                        }
                                       },
                                     ),
                               MyButton(

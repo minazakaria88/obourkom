@@ -30,7 +30,9 @@ class LocationListviewItem extends StatelessWidget {
           ),
         ],
         borderRadius: BorderRadius.circular(16),
-        border:model.type != 'home' ? null : Border.all(width: 1, color: AppColors.mainColor),
+        border: model.type != 'home'
+            ? null
+            : Border.all(width: 1, color: AppColors.mainColor),
       ),
       child: Column(
         children: [
@@ -39,7 +41,7 @@ class LocationListviewItem extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  SvgPicture.asset(addressToImage[model.type]??''),
+                  SvgPicture.asset(addressToImage[model.type] ?? ''),
                   5.width,
                   Text(
                     S.of(context).home,
@@ -47,28 +49,30 @@ class LocationListviewItem extends StatelessWidget {
                   ),
                 ],
               ),
-             model.type == 'home' ? Container(
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                  color: AppColors.mainColor,
-                  borderRadius: BorderRadius.circular(6),
-                ),
-                child: Text(
-                  S.of(context).main,
-                  style: AppTextStyles.regular12Grey.copyWith(
-                    color: Colors.white,
-                  ),
-                ),
-              ):TextButton(onPressed: (){
-
-             }, child: Text(
-               S.of(context).setAsPrimary,
-                style: AppTextStyles.regular12Grey.copyWith(
-                  color: AppColors.mainColor,
-                ),
-             )),
-              if(model.type != 'home')
-              const LocationItemEditWidget(),
+              model.type == 'home'
+                  ? Container(
+                      padding: const EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: AppColors.mainColor,
+                        borderRadius: BorderRadius.circular(6),
+                      ),
+                      child: Text(
+                        S.of(context).main,
+                        style: AppTextStyles.regular12Grey.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+                  : TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        S.of(context).setAsPrimary,
+                        style: AppTextStyles.regular12Grey.copyWith(
+                          color: AppColors.mainColor,
+                        ),
+                      ),
+                    ),
+              if (model.type != 'home') const LocationItemEditWidget(),
               const LocationItemDeleteWidget(),
             ],
           ),
@@ -80,7 +84,7 @@ class LocationListviewItem extends StatelessWidget {
               20.width,
               Flexible(
                 child: Text(
-                  model.name??'',
+                  model.name ?? '',
                   style: AppTextStyles.regular12Grey,
                 ),
               ),
@@ -91,5 +95,3 @@ class LocationListviewItem extends StatelessWidget {
     );
   }
 }
-
-

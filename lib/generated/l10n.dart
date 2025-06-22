@@ -1053,6 +1053,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Please rate driver`
+  String get pleaseRateDriver {
+    return Intl.message(
+      'Please rate driver',
+      name: 'pleaseRateDriver',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

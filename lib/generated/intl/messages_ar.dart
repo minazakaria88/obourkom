@@ -179,6 +179,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pleaseEnterPickupLocation": MessageLookupByLibrary.simpleMessage(
       "الرجاء ادخال موقع الاستلام",
     ),
+    "pleaseRateDriver": MessageLookupByLibrary.simpleMessage(
+      "الرجاء تقييم المندوب",
+    ),
     "pleaseSelectAddressType": MessageLookupByLibrary.simpleMessage(
       "الرجاء اختيار نوع العنوان",
     ),
