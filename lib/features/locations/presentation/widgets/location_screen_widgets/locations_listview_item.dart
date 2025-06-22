@@ -30,7 +30,7 @@ class LocationListviewItem extends StatelessWidget {
           ),
         ],
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(width: 1, color: AppColors.mainColor),
+        border:model.type != 'home' ? null : Border.all(width: 1, color: AppColors.mainColor),
       ),
       child: Column(
         children: [
