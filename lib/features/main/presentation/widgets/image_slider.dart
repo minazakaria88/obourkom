@@ -27,10 +27,22 @@ class _ImageSliderState extends State<ImageSlider> {
           items: widget.images
               .map(
                 (e) => Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.only(bottom: 12.0),
                   child: SizedBox(
                     width: MediaQuery.sizeOf(context).width,
-                    child: BackgroundProfileWidget(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xff001C33).withAlpha((0.068 * 255).toInt()),
+                            spreadRadius: 0,
+                            blurRadius: 24,
+                            offset: const Offset(0, 5),
+                          ),
+                        ],
+                      ),
                       child: Image.asset(
                         e,
                         //fit: BoxFit.fill,

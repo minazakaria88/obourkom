@@ -20,13 +20,13 @@ class OneServicesWidget extends StatelessWidget {
         margin: const EdgeInsets.all(2),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: AppColors.shadowColor.withAlpha((0.1 * 255).toInt()),
-              spreadRadius: 2,
-              blurRadius: 2,
-              offset: const Offset(0, 3),
+              color: const Color(0xff065C73).withAlpha((0.1 * 255).toInt()),
+              spreadRadius: 0,
+              blurRadius: 24,
+              offset: const Offset(0, 8),
             ),
           ],
         ),
