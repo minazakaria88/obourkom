@@ -126,6 +126,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noDriversFound": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على مندوبين",
     ),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد اتصال بالانترنت",
+    ),
     "noNotifications": MessageLookupByLibrary.simpleMessage("لا يوجد اشعارات"),
     "noOrders": MessageLookupByLibrary.simpleMessage("لا يوجد طلبات"),
     "noSavedAddresses": MessageLookupByLibrary.simpleMessage(
@@ -157,6 +160,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pickUpFrom": MessageLookupByLibrary.simpleMessage("توصيل من:"),
     "pleaseAcceptTheTermsAndConditions": MessageLookupByLibrary.simpleMessage(
       "الرجاء قبول الشروط والاحكام ",
+    ),
+    "pleaseCheckYourInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "الرجاء التحقق من اتصالك بالانترنت",
     ),
     "pleaseChoosePaymentMethod": MessageLookupByLibrary.simpleMessage(
       "الرجاء اختيار طريقة الدفع",

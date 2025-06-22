@@ -28,6 +28,7 @@ import '../../features/otp/presentation/cubit/otp_cubit.dart';
 import '../../features/otp/presentation/pages/otp_screen.dart';
 import '../../features/profile/presentation/pages/profile_features_screens/terms_and_conditions_screen.dart';
 import '../../injection.dart';
+import '../widgets/noInternet_screen.dart';
 
 class AppRoues {
   static Route? onGenerateRoute(RouteSettings setting) {
@@ -129,6 +130,8 @@ class AppRoues {
             value: arguments,
               child: const CompletedOrderDetailsScreen()),
         );
+      case Routes.noInternet:
+        return MaterialPageRoute(builder: (context) => const NoInternet());
       default:
         return null;
     }

@@ -1063,6 +1063,26 @@ class S {
       args: [],
     );
   }
+
+  /// `No Internet Connection`
+  String get noInternetConnection {
+    return Intl.message(
+      'No Internet Connection',
+      name: 'noInternetConnection',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please check your internet connection`
+  String get pleaseCheckYourInternetConnection {
+    return Intl.message(
+      'Please check your internet connection',
+      name: 'pleaseCheckYourInternetConnection',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

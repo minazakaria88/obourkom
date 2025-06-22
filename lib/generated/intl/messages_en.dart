@@ -133,6 +133,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "noAddresses": MessageLookupByLibrary.simpleMessage("No Addresses"),
     "noDrivers": MessageLookupByLibrary.simpleMessage("No Drivers"),
     "noDriversFound": MessageLookupByLibrary.simpleMessage("No Drivers Found"),
+    "noInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "No Internet Connection",
+    ),
     "noNotifications": MessageLookupByLibrary.simpleMessage("No Notifications"),
     "noOrders": MessageLookupByLibrary.simpleMessage("No Orders"),
     "noSavedAddresses": MessageLookupByLibrary.simpleMessage(
@@ -164,6 +167,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "pickUpFrom": MessageLookupByLibrary.simpleMessage("Pickup From"),
     "pleaseAcceptTheTermsAndConditions": MessageLookupByLibrary.simpleMessage(
       "Please accept the terms and conditions",
+    ),
+    "pleaseCheckYourInternetConnection": MessageLookupByLibrary.simpleMessage(
+      "Please check your internet connection",
     ),
     "pleaseChoosePaymentMethod": MessageLookupByLibrary.simpleMessage(
       "Please choose payment method",

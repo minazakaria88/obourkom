@@ -1,11 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oborkom/core/helpers/check_internet_class.dart';
 import 'package:oborkom/features/home/presentation/cubit/home_cubit.dart';
 import '../../../../core/widgets/bottom_app_bar_widget.dart';
 import '../widgets/bottom_navigation_bar_widget.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>  with WidgetsBindingObserver{
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    CheckInternetClass.checkInternetStream();
+  }
+
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused ||
+        state == AppLifecycleState.inactive) {
+      CheckInternetClass.subscription?.cancel();
+    } else if (state == AppLifecycleState.resumed) {
+      CheckInternetClass.checkInternetStream();
+    }
+    super.didChangeAppLifecycleState(state);
+  }
+
+  @override
+  void dispose() {
+    CheckInternetClass.subscription?.cancel();
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +53,7 @@ class HomeScreen extends StatelessWidget {
                   bottom: const BottomAppBarWidget(),
                   backgroundColor: Colors.white,
                   centerTitle: true,
-                  title: Text(
-                    cubit.titles[state.currentIndex],
-                  ),
+                  title: Text(cubit.titles[state.currentIndex]),
                 ),
           bottomNavigationBar: MyBottomNavigationBar(
             currentIndex: state.currentIndex,
@@ -29,7 +61,7 @@ class HomeScreen extends StatelessWidget {
               cubit.changeIndex(index);
             },
           ),
-           body://cubit.screens[state.currentIndex],
+          body: //cubit.screens[state.currentIndex],
           IndexedStack(
             index: state.currentIndex,
             children: cubit.screens,

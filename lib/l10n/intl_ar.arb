@@ -130,7 +130,9 @@
     "thanksForYourReview": "شكرا علي تقييمك !",
     "close": "اغلاق",
     "setAsPrimary": "تعيين كرئيسي",
-    "pleaseRateDriver": "الرجاء تقييم المندوب"
+    "pleaseRateDriver": "الرجاء تقييم المندوب",
+    "noInternetConnection": "لا يوجد اتصال بالانترنت",
+    "pleaseCheckYourInternetConnection": "الرجاء التحقق من اتصالك بالانترنت"
 
 
 
