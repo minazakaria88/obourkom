@@ -1,6 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:oborkom/core/helpers/cache_helper.dart';
+
+import '../../../../core/api/api_helper.dart';
+import '../../../../injection.dart';
 part 'language_state.dart';
 
 class LanguageCubit extends Cubit<LanguageState> {
@@ -21,6 +24,7 @@ class LanguageCubit extends Cubit<LanguageState> {
 
   void changeLanguage(String languageCode)async {
    await CacheHelper.saveData(key: CacheHelperKeys.lang, value: languageCode);
+   getIt<ApiHelper>().setLanguageIntoHeaders(languageCode);
     emit(LanguageChanged(languageCode: languageCode));
   }
 }

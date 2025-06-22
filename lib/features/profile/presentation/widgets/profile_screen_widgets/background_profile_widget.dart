@@ -10,6 +10,7 @@ class BackgroundProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.all(3),
       padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.white,

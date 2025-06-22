@@ -88,7 +88,7 @@ class AppRoues {
       case Routes.locations:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => getIt<LocationsCubit>(),
+            create: (context) => getIt<LocationsCubit>()..getLocations(),
             child: const LocationsScreen(),
           ),
         );

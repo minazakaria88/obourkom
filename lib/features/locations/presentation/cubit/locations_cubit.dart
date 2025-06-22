@@ -66,6 +66,7 @@ class LocationsCubit extends Cubit<LocationsState> {
 
   void getLocations() async {
     try {
+      emit(state.copyWith(locationsStatus: LocationsStatus.loading));
       final result = await locationRepository.getLocations();
       emit(
         state.copyWith(

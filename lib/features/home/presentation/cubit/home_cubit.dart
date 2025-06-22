@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/features/orders/presentation/cubit/orders_cubit.dart';
 import 'package:oborkom/features/orders/presentation/pages/order_screen.dart';
+import 'package:oborkom/main.dart';
+import '../../../../generated/l10n.dart';
 import '../../../../injection.dart';
 import '../../../main/presentation/cubit/main_cubit.dart';
 import '../../../notification/presentation/cubit/notification_cubit.dart';
@@ -38,4 +40,11 @@ class HomeCubit extends Cubit<HomeState> {
   void changeIndex(int index) {
     emit(state.copyWith(currentIndex: index));
   }
+
+  final List<String> titles = [
+    S.of(NavigatorClass.navigatorKey.currentState!.context).main,
+    S.of(NavigatorClass.navigatorKey.currentState!.context).orders,
+    S.of(NavigatorClass.navigatorKey.currentState!.context).notifications,
+    S.of(NavigatorClass.navigatorKey.currentState!.context).profile,
+  ];
 }

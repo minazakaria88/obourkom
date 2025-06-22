@@ -1043,6 +1043,16 @@ class S {
   String get close {
     return Intl.message('Close', name: 'close', desc: '', args: []);
   }
+
+  /// `Set As Primary`
+  String get setAsPrimary {
+    return Intl.message(
+      'Set As Primary',
+      name: 'setAsPrimary',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

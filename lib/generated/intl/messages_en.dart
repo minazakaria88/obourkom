@@ -206,6 +206,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "serviceType": MessageLookupByLibrary.simpleMessage("Service Type"),
+    "setAsPrimary": MessageLookupByLibrary.simpleMessage("Set As Primary"),
     "shipmentValue": MessageLookupByLibrary.simpleMessage("Shipment Value"),
     "showOnMap": MessageLookupByLibrary.simpleMessage("Show On Map"),
     "smallCars": MessageLookupByLibrary.simpleMessage("Small Car"),

@@ -1,30 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/features/home/presentation/cubit/home_cubit.dart';
-import 'package:oborkom/generated/l10n.dart';
 import '../../../../core/widgets/bottom_app_bar_widget.dart';
 import '../widgets/bottom_navigation_bar_widget.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  late List<String> titles;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    titles = [
-      S.of(context).main,
-      S.of(context).orders,
-      S.of(context).notifications,
-      S.of(context).profile,
-    ];
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   backgroundColor: Colors.white,
                   centerTitle: true,
                   title: Text(
-                    titles[state.currentIndex],
+                    cubit.titles[state.currentIndex],
                   ),
                 ),
           bottomNavigationBar: MyBottomNavigationBar(

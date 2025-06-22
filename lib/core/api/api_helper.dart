@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-
 import '../helpers/cache_helper.dart';
 import 'end_point.dart';
 
@@ -28,13 +27,13 @@ class ApiHelper {
     };
   }
 
-  static void setTokenIntoHeadersAfterLogin(String token) {
+  void setTokenIntoHeadersAfterLogin(String token) {
     dio?.options.headers['Authorization'] = 'Bearer $token';
   }
 
-    static void setLanguageIntoHeaders(String lang) {
-      dio?.options.headers['lang'] = lang;
-    }
+  void setLanguageIntoHeaders(String lang) {
+    dio?.options.headers['lang'] = lang;
+  }
 
   Future<Response> getData({
     required String url,
@@ -57,10 +56,7 @@ class ApiHelper {
     return await dio!.put(url, data: data);
   }
 
-  Future<Response> deleteData({
-    required String url,
-  }) async {
+  Future<Response> deleteData({required String url}) async {
     return await dio!.delete(url);
   }
-
 }

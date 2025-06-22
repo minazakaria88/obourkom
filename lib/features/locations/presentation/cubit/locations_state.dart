@@ -2,6 +2,13 @@ part of 'locations_cubit.dart';
 
 enum LocationsStatus { loading, success, error }
 
+extension LocationsStatusX on LocationsState {
+  bool get isLoading => locationsStatus == LocationsStatus.loading;
+  bool get isSuccess => locationsStatus == LocationsStatus.success;
+  bool get isError => locationsStatus == LocationsStatus.error;
+}
+
+
 class LocationsState extends Equatable {
   LatLng? pickedLocation;
   Placemark? locationData;

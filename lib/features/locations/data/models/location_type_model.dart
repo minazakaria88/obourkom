@@ -19,7 +19,7 @@ List<LocationTypeModel> locationTypes = [
   LocationTypeModel(
     id: 1,
     name: S.of(NavigatorClass.navigatorKey.currentState!.context).home,
-    image: Assets.imagesHome,
+    image: Assets.imagesProfileHome,
   ),
   LocationTypeModel(
     id: 2,
