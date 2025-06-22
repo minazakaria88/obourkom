@@ -67,7 +67,9 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  throw Exception('error ');
+                },
                 icon: SvgPicture.asset(Assets.imagesNotification),
               ),
             ],

@@ -27,7 +27,12 @@ class _ImageSliderState extends State<ImageSlider> {
           items: widget.images
               .map(
                 (e) => Padding(
-                  padding: const EdgeInsets.only(bottom: 12.0),
+                  padding: const EdgeInsets.only(
+                    bottom: 12.0,
+                    top: 8,
+                    left: 8,
+                    right: 8,
+                  ),
                   child: SizedBox(
                     width: MediaQuery.sizeOf(context).width,
                     child: Container(
@@ -36,7 +41,9 @@ class _ImageSliderState extends State<ImageSlider> {
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xff001C33).withAlpha((0.068 * 255).toInt()),
+                            color: const Color(
+                              0xff001C33,
+                            ).withAlpha((0.068 * 255).toInt()),
                             spreadRadius: 0,
                             blurRadius: 24,
                             offset: const Offset(0, 5),
@@ -84,7 +91,6 @@ class _ImageSliderState extends State<ImageSlider> {
             dotWidth: 10,
             strokeWidth: 10,
             spacing: 10,
-
           ),
         ),
       ],
