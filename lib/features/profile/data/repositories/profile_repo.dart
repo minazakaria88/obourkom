@@ -17,7 +17,7 @@ class ProfileRepository {
         name: 'mina',
         email: 'minazakaria264@gmail.com',
         phone: '558412655',
-        image: 'image',
+
       );
     } catch (e) {
       if (e is DioException) {

@@ -40,7 +40,6 @@ class OrderListviewItemWidget extends StatelessWidget {
                       ],
                     ),
                     const Divider(thickness: 2, color: Colors.grey),
-
                     OrderDetailsItemWidget(
                       value: '#100',
                       title: S.of(context).orderNumber,
@@ -54,8 +53,8 @@ class OrderListviewItemWidget extends StatelessWidget {
                       title: S.of(context).carType,
                     ),
                     OrderDetailsItemWidget(
-                      value: 'أبل باي',
-                      title: S.of(context).paymentMethod,
+                      value:  '200.00 ريال',
+                      title: S.of(context).total,
                     ),
                   ],
                 ),

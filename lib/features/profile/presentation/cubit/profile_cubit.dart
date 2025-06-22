@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:oborkom/features/profile/data/models/user_model.dart';
 import 'package:oborkom/features/profile/data/repositories/profile_repo.dart';
 
@@ -32,15 +33,14 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(
         state.copyWith(profileStatus: ProfileStatus.success, userModel: result),
       );
-    }on ApiException catch (e) {
+    } on ApiException catch (e) {
       emit(
         state.copyWith(
           profileStatus: ProfileStatus.failure,
           errorMessage: e.failure.message,
         ),
       );
-    }
-    catch (e) {
+    } catch (e) {
       emit(
         state.copyWith(
           profileStatus: ProfileStatus.failure,
@@ -49,8 +49,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       );
     }
   }
-
-
 
   void updateProfile() async {
     emit(state.copyWith(editProfileStatus: EditProfileStatus.loading));
@@ -76,6 +74,15 @@ class ProfileCubit extends Cubit<ProfileState> {
           errorMessage: e.toString(),
         ),
       );
+    }
+  }
+
+  void updateImage() async {
+    final image = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      emit(state.copyWith(imageStatus: ImageStatus.loading));
+      await Future.delayed(const Duration(seconds: 2));
+      emit(state.copyWith(imageStatus: ImageStatus.success));
     }
   }
 }

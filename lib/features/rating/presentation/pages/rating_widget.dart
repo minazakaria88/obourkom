@@ -42,7 +42,7 @@ class _MyRatingWidgetState extends State<MyRatingWidget> {
                   const SizedBox(width: double.infinity),
                   SvgPicture.asset(Assets.imagesReview),
                   10.height,
-                  ! state.isRateDriverSuccess
+                  !state.isRateDriverSuccess
                       ? Column(
                           children: [
                             Text(
@@ -59,8 +59,9 @@ class _MyRatingWidgetState extends State<MyRatingWidget> {
                               itemPadding: const EdgeInsets.symmetric(
                                 horizontal: 4.0,
                               ),
-                              itemBuilder: (context, _) =>
-                                  SvgPicture.asset(Assets.imagesStarsMinimalistic),
+                              itemBuilder: (context, _) => SvgPicture.asset(
+                                Assets.imagesStarsMinimalistic,
+                              ),
                               onRatingUpdate: (rating) {
                                 rate = rating;
                                 logger.d(rating);
@@ -74,35 +75,39 @@ class _MyRatingWidgetState extends State<MyRatingWidget> {
                         ),
 
                   10.height,
-                 ! state.isRateDriverLoading?  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 15.0),
-                    child: Column(
-                      children: [
-
-                            state .isRateDriverSuccess ? Container() : MyButton(
-                                title: S.of(context).evaluation,
+                  !state.isRateDriverLoading
+                      ? Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 15.0),
+                          child: Column(
+                            children: [
+                              state.isRateDriverSuccess
+                                  ? Container()
+                                  : MyButton(
+                                      title: S.of(context).evaluation,
+                                      onTap: () {
+                                        cubit.rateDriver(rate);
+                                      },
+                                    ),
+                              MyButton(
+                                title: state.isRateDriverSuccess
+                                    ? S.of(context).close
+                                    : S.of(context).cancel,
+                                color: AppColors.shadowColor.withAlpha(30),
                                 onTap: () {
-                                  cubit.rateDriver(rate);
+                                  context.pop();
                                 },
                               ),
-                        MyButton(
-                          title: state.isRateDriverSuccess ? S.of(context).close:S.of(context).cancel,
-                          color: AppColors.shadowColor.withAlpha(30),
-                          onTap: () {
-                            context.pop();
-                          },
+                            ],
+                          ),
+                        )
+                      : Column(
+                          children: [
+                            const CircularProgressIndicator(
+                              color: AppColors.mainColor,
+                            ),
+                            10.height,
+                          ],
                         ),
-                      ],
-                    ),
-                  ) :  Column(
-                    children: [
-                      const CircularProgressIndicator(
-                        color: AppColors.mainColor,
-                      ),
-                      10.height,
-                    ],
-                  )
-
                 ],
               ),
             );

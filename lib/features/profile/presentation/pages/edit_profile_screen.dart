@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/core/widgets/loader_widget.dart';
 import 'package:oborkom/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:oborkom/features/profile/presentation/widgets/profile_screen_widgets/profile_image.dart';
 import 'package:oborkom/generated/assets.dart';
@@ -38,11 +39,24 @@ class EditProfileScreen extends StatelessWidget {
                   Stack(
                     alignment: Alignment.bottomRight,
                     children: [
-                      const ProfileImage(height: 117, width: 117),
+                      state.isImageLoading
+                          ? const LoaderWidget()
+                          : state.userModel != null
+                          ? ProfileImage(
+                              image: state.userModel!.image,
+                              height: 117,
+                              width: 117,
+                            )
+                          : const ProfileImage(height: 117, width: 117),
                       Positioned(
                         top: 70,
                         left: 50,
-                        child: SvgPicture.asset(Assets.imagesEditImage),
+                        child: InkWell(
+                          onTap: () {
+                            cubit.updateImage();
+                          },
+                          child: SvgPicture.asset(Assets.imagesEditImage),
+                        ),
                       ),
                     ],
                   ),
