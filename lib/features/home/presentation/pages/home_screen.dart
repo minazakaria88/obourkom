@@ -25,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen>  with WidgetsBindingObserver{
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.paused ||
         state == AppLifecycleState.inactive) {
-      CheckInternetClass.subscription?.cancel();
+      CheckInternetClass.dispose();
     } else if (state == AppLifecycleState.resumed) {
       CheckInternetClass.checkInternetStream();
     }
@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen>  with WidgetsBindingObserver{
 
   @override
   void dispose() {
-    CheckInternetClass.subscription?.cancel();
+    CheckInternetClass.dispose();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }

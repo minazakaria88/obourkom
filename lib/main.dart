@@ -65,9 +65,7 @@ class NavigatorClass {
 
 Future<void> checkIfUserLoggedIn() async {
   String? token = await CacheHelper.getSecureString(CacheHelperKeys.token);
-  String? lang = await CacheHelper.getData(key:CacheHelperKeys.lang);
   logger.i(token);
-  logger.i(lang);
   if (!token.isNullOrEmpty()) {
     isLoggedIn = true;
   }

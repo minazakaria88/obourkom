@@ -37,4 +37,8 @@ class CheckInternetClass {
       }
     }
   }
+
+ static void dispose() {
+    subscription?.cancel();
+  }
 }
