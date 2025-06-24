@@ -35,7 +35,8 @@ class MainCubit extends Cubit<MainState> {
         ),
       );
     } catch (e) {
-      log(e.toString());
+      logger.e(e);
+      emit(state.copyWith(getLocationState: GetLocationState.failure));
     }
   }
 

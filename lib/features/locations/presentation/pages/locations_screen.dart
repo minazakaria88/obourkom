@@ -4,8 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/routes/routes.dart';
 import 'package:oborkom/core/utils/constant.dart';
-import 'package:oborkom/core/widgets/loader_widget.dart';
 import 'package:oborkom/core/widgets/my_app_bar.dart';
+import 'package:oborkom/core/widgets/shimmer_listview.dart';
 import 'package:oborkom/generated/assets.dart';
 import '../../../../generated/l10n.dart';
 import '../cubit/locations_cubit.dart';
@@ -41,7 +41,7 @@ class LocationsScreen extends StatelessWidget {
         child: BlocBuilder<LocationsCubit, LocationsState>(
           builder: (context, state) {
             if(state.isLoading) {
-              return const LoaderWidget();
+              return const ShimmerListview();
             }
             final list = state.locations ?? [];
             if (list.isEmpty) {

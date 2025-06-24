@@ -4,9 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_styles.dart';
 import 'package:oborkom/core/widgets/error_widget.dart';
-import 'package:oborkom/core/widgets/shimmer_item.dart';
 import 'package:oborkom/features/notification/presentation/cubit/notification_cubit.dart';
 import 'package:oborkom/generated/assets.dart';
+import '../../../../core/widgets/shimmer_listview.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/notification_item_widget.dart';
 
@@ -19,14 +19,7 @@ class NotificationScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         if (state.isLoading) {
-          return ListView.builder(
-            itemCount: 5,
-            itemBuilder: (context, index) => const ShimmerItem(
-              height: 100,
-              width: double.infinity,
-              margin: 12,
-            ),
-          );
+          return const ShimmerListview();
         }
         if (state.isSuccess) {
           final list = state.notifications ?? [];
@@ -60,3 +53,4 @@ class NotificationScreen extends StatelessWidget {
     );
   }
 }
+
