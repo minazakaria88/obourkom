@@ -5,6 +5,7 @@ import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_styles.dart';
 import 'package:oborkom/features/locations/data/models/location_order_model.dart';
+import '../../../../../core/routes/routes.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/my_button.dart';
 import '../../../../../generated/l10n.dart';
@@ -35,14 +36,19 @@ class OrderPickLocation extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Center(
-            child: Text(
-              S.of(context).chooseFromSavedLocations,
-              style: const TextStyle(
-                color: AppColors.darkMainColor,
-                decoration: TextDecoration.underline,
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
+          InkWell(
+            onTap: () {
+              context.pushNamed(Routes.locations);
+            },
+            child: Center(
+              child: Text(
+                S.of(context).chooseFromSavedLocations,
+                style: const TextStyle(
+                  color: AppColors.darkMainColor,
+                  decoration: TextDecoration.underline,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
           ),

@@ -26,3 +26,9 @@ Future<Position> determinePosition() async {
     locationSettings: const LocationSettings(accuracy: LocationAccuracy.medium),
   );
 }
+
+Future<Stream<Position>> listenForLocationChanges() async {
+  return  Geolocator.getPositionStream();
+}
+
+

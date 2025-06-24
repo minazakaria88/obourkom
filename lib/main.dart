@@ -71,3 +71,6 @@ Future<void> checkIfUserLoggedIn() async {
     isLoggedIn = true;
   }
 }
+
+//https://firebase.google.com/docs/crashlytics/get-started?platform=flutter
+
