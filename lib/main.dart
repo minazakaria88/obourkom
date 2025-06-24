@@ -24,7 +24,7 @@ void main() async {
   await checkIfUserLoggedIn();
   setupServicesLocator();
   Bloc.observer = MyBlocObserver();
-  runApp(DevicePreview(enabled: false, builder: (context) => const OborKom()));
+  runApp(DevicePreview(enabled: true, builder: (context) => const OborKom()));
 }
 
 class OborKom extends StatelessWidget {
@@ -37,7 +37,7 @@ class OborKom extends StatelessWidget {
       child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, state) => MaterialApp(
           navigatorKey: NavigatorClass.navigatorKey,
-          title: 'Oborkom',
+          title: 'Obourkom',
           theme: appTheme(),
           locale: Locale(
             CacheHelper.getData(key: CacheHelperKeys.lang) ?? 'en',

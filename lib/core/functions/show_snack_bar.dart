@@ -9,10 +9,16 @@ void showSnackBar({
 }) {
   final snackBar = SnackBar(
     elevation: 0,
+    margin: const EdgeInsets.only(
+      top: 20,   // Distance from top
+      left: 16,
+      right: 16,
+    ),
     behavior: SnackBarBehavior.floating,
     backgroundColor: Colors.transparent,
     duration: const Duration(milliseconds: 600),
     content: AwesomeSnackbarContent(
+      inMaterialBanner: true,
       title: title,
       message: message,
       contentType: contentType,

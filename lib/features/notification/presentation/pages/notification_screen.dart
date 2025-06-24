@@ -19,6 +19,7 @@ class NotificationScreen extends StatelessWidget {
       builder: (context, state) {
         if (state.isLoading) {
           return ListView.builder(
+            itemCount: 5,
             itemBuilder: (context, index) => const ShimmerItem(
               height: 100,
               width: double.infinity,
