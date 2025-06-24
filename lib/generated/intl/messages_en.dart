@@ -125,6 +125,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "language": MessageLookupByLibrary.simpleMessage("English"),
     "location": MessageLookupByLibrary.simpleMessage("Location"),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
+    "loginSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Login Successfully",
+    ),
     "logout": MessageLookupByLibrary.simpleMessage("Logout"),
     "lookingForOffers": MessageLookupByLibrary.simpleMessage(
       "Looking for offers ...",

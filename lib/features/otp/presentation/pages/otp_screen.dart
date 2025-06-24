@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'dart:developer';
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oborkom/core/functions/show_snack_bar.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/widgets/loading_widget.dart';
 import 'package:sms_autofill/sms_autofill.dart';
@@ -55,12 +57,18 @@ class _OtpScreenState extends State<OtpScreen> {
                       Routes.home,
                       (context) => false,
                     );
+                    showSnackBar(
+                      message: S.of(context).loginSuccessfully,
+                      context: context,
+                      title: S.of(context).loginSuccessfully,
+                      contentType: ContentType.success,
+                    );
                   }
                 },
                 builder: (context, state) {
                   return Stack(
                     children: [
-                      Column(  
+                      Column(
                         children: [
                           _buildOtpInput(state),
                           20.height,

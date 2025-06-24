@@ -1088,6 +1088,16 @@ class S {
   String get faq {
     return Intl.message('FAQ', name: 'faq', desc: '', args: []);
   }
+
+  /// `Login Successfully`
+  String get loginSuccessfully {
+    return Intl.message(
+      'Login Successfully',
+      name: 'loginSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

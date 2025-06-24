@@ -117,6 +117,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "language": MessageLookupByLibrary.simpleMessage("العربية"),
     "location": MessageLookupByLibrary.simpleMessage("الموقع"),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
+    "loginSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم تسجيل الدخول بنجاح",
+    ),
     "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
     "lookingForOffers": MessageLookupByLibrary.simpleMessage(
       "جاري البحث عن عروض ...",
