@@ -216,6 +216,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "shipmentValue": MessageLookupByLibrary.simpleMessage("قيمة التوصيل"),
     "showOnMap": MessageLookupByLibrary.simpleMessage("عرض على الخريطة"),
     "smallCars": MessageLookupByLibrary.simpleMessage(" شاحنة صغيرة"),
+    "somethingWentWrong": MessageLookupByLibrary.simpleMessage("حدث خطأ ما"),
     "support": MessageLookupByLibrary.simpleMessage("مركز الدعم"),
     "thanksForYourReview": MessageLookupByLibrary.simpleMessage(
       "شكرا علي تقييمك !",

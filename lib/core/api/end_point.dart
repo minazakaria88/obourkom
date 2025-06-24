@@ -13,4 +13,6 @@ class EndPoints
   static const rateDriver='rateDriver';
 
   static const service='';
+
+  static const slider='';
 }

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_styles.dart';
+import 'package:oborkom/core/widgets/error_widget.dart';
 import 'package:oborkom/core/widgets/shimmer_item.dart';
 import 'package:oborkom/features/notification/presentation/cubit/notification_cubit.dart';
 import 'package:oborkom/generated/assets.dart';
@@ -54,7 +55,7 @@ class NotificationScreen extends StatelessWidget {
                   ),
                 );
         }
-        return const Text('error');
+        return const ErrorAppWidget();
       },
     );
   }

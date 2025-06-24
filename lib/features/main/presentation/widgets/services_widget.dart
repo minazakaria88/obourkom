@@ -17,19 +17,26 @@ class MyServicesWidget extends StatelessWidget {
     return BlocBuilder<MainCubit, MainState>(
       builder: (context, state) {
         final servicesList = state.servicesList ?? [];
+        final sliderList = state.sliderList ?? [];
         return CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
               child: Column(
                 children: [
-                  const ImageSlider(
-                    images: [
-                      Assets.imagesLogo,
-                      Assets.imagesSmallCar,
-                      Assets.imagesFurniture,
-                    ],
-                    colors: [Colors.white, AppColors.mainColor, Colors.white],
-                  ),
+                  sliderList.isEmpty
+                      ? const ShimmerItem(
+                          width: double.infinity,
+                          height: 200,
+                          margin: 12,
+                        )
+                      :  ImageSlider(
+                          images: sliderList,
+                          colors: [
+                            Colors.white,
+                            AppColors.mainColor,
+                            Colors.white,
+                          ],
+                        ),
                   20.height,
                   const ChooseYourServices(),
                   10.height,

@@ -24,4 +24,22 @@ class MainRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
+
+
+  Future<List<String>> getSlider()async
+  {
+    List<String> slider=[];
+    try {
+      final response = await apiHelper.getData(url: EndPoints.slider);
+      response.data.forEach((e) {
+        slider.add(e['image']);
+      });
+      return slider;
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
 }

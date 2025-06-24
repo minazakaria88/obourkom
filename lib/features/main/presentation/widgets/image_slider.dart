@@ -26,12 +26,12 @@ class _ImageSliderState extends State<ImageSlider> {
           items: widget.images
               .map(
                 (e) => Padding(
-                  padding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(8),
                   child: SizedBox(
                     width: MediaQuery.sizeOf(context).width,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Colors.teal,
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           const BoxShadow(

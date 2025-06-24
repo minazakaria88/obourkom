@@ -26,6 +26,7 @@ class Assets {
   static const String imagesEdit = 'assets/images/edit.svg';
   static const String imagesEditImage = 'assets/images/editImage.svg';
   static const String imagesEnableLocation = 'assets/images/enable_location.svg';
+  static const String imagesError = 'assets/images/error.gif';
   static const String imagesExit = 'assets/images/exit.svg';
   static const String imagesFaq = 'assets/images/faq.svg';
   static const String imagesFridges = 'assets/images/fridges.png';

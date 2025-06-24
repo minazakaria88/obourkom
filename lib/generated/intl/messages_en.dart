@@ -223,6 +223,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "shipmentValue": MessageLookupByLibrary.simpleMessage("Shipment Value"),
     "showOnMap": MessageLookupByLibrary.simpleMessage("Show On Map"),
     "smallCars": MessageLookupByLibrary.simpleMessage("Small Car"),
+    "somethingWentWrong": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong",
+    ),
     "support": MessageLookupByLibrary.simpleMessage("Support"),
     "thanksForYourReview": MessageLookupByLibrary.simpleMessage(
       "Thank you for your review!",
