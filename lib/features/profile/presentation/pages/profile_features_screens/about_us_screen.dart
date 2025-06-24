@@ -12,7 +12,7 @@ class AboutUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(title: S.of(context).aboutUs),
+      appBar: MyAppBar(title: S.of(context).faq),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(

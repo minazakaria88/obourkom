@@ -10,5 +10,7 @@ class EndPoints
   static const makeOrder='makeOrder';
   static const getOrders = 'getOrders';
   static const cancelOrder='cancelOrder';
-  static var rateDriver='rateDriver';
+  static const rateDriver='rateDriver';
+
+  static const service='';
 }

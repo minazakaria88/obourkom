@@ -37,6 +37,7 @@ class Assets {
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLogout = 'assets/images/logout.svg';
   static const String imagesMarker = 'assets/images/marker.png';
+  static const String imagesMicrophoneIcon = 'assets/images/MicrophoneIcon.svg';
   static const String imagesMoneyBag = 'assets/images/MoneyBag.svg';
   static const String imagesNewOrder = 'assets/images/newOrder.png';
   static const String imagesNoNotifications = 'assets/images/NoNotifications.svg';

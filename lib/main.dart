@@ -15,11 +15,10 @@ import 'core/api/api_helper.dart';
 import 'core/helpers/error_handler.dart';
 import 'generated/l10n.dart';
 
-
 bool isLoggedIn = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  FlutterError.onError =ErrorHandler.handleFlutterError;
+  FlutterError.onError = ErrorHandler.handleFlutterError;
   await CacheHelper.init();
   ApiHelper.init();
   await checkIfUserLoggedIn();
@@ -65,8 +64,10 @@ class NavigatorClass {
 
 Future<void> checkIfUserLoggedIn() async {
   String? token = await CacheHelper.getSecureString(CacheHelperKeys.token);
+  bool verified = await CacheHelper.getData(key: CacheHelperKeys.verified) ?? false;
   logger.i(token);
-  if (!token.isNullOrEmpty()) {
+  logger.d(verified);
+  if (!token.isNullOrEmpty() && verified) {
     isLoggedIn = true;
   }
 }

@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:oborkom/core/api/failure.dart';
+import 'package:oborkom/core/helpers/cache_helper.dart';
 import 'package:oborkom/features/otp/data/repositories/otp_repo.dart';
 
 part 'otp_state.dart';
@@ -39,8 +40,9 @@ class OtpCubit extends Cubit<OtpState> {
     try {
       _timer?.cancel();
       emit(state.copyWith(otpStatus: VerifyOtpStatus.loading));
-     // await otpRepository.verifyOtp(otp: otp, phoneNumber: phoneNumber);
+      // await otpRepository.verifyOtp(otp: otp, phoneNumber: phoneNumber);
       await Future.delayed(const Duration(seconds: 2));
+      await CacheHelper.saveData(key: CacheHelperKeys.verified, value: true);
       emit(state.copyWith(otpStatus: VerifyOtpStatus.success));
     } on ApiException catch (e) {
       emit(

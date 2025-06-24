@@ -5,12 +5,16 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/helpers/cache_helper.dart';
+import 'package:oborkom/features/main/data/repositories/main_repo.dart';
+import '../../../../core/api/failure.dart';
 import '../../../../core/functions/determine_position.dart';
 import '../../../../core/functions/get_places_mark.dart';
+import '../../data/models/services_model.dart';
 part 'main_state.dart';
 
 class MainCubit extends Cubit<MainState> {
-  MainCubit() : super(MainState(location: ''));
+  MainCubit({required this.mainRepository}) : super(MainState(location: ''));
+  final MainRepository mainRepository;
 
   void getUserCurrentLocation() async {
     log('getUserCurrentLocation');
@@ -25,11 +29,23 @@ class MainCubit extends Cubit<MainState> {
       emit(
         state.copyWith(
           getLocationState: GetLocationState.success,
-          location:concatenatePlacemark(place: addresses.first) ?? '',
+          location: concatenatePlacemark(place: addresses.first) ?? '',
         ),
       );
     } catch (e) {
       log(e.toString());
+    }
+  }
+
+  void getService() async {
+    try {
+      await Future.delayed(const Duration(seconds: 5));
+     // final response = await mainRepository.getService();
+      emit(state.copyWith(servicesList: servicesList));
+    } on ApiException catch (e) {
+      emit(state.copyWith(errorMessage: e.failure.message));
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
     }
   }
 }

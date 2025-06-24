@@ -27,7 +27,9 @@ class OrderDetailsScreen extends StatelessWidget {
         child: Stack(
           children: [
             Padding(
-              padding: const EdgeInsets.only(bottom: 80), // space for input field
+              padding: const EdgeInsets.only(
+                bottom: 80,
+              ), // space for input field
               child: CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(child: 20.height),
@@ -45,7 +47,9 @@ class OrderDetailsScreen extends StatelessWidget {
                             height: 100,
                             child: Align(
                               alignment: Alignment.center,
-                              child: DottedLine(alignment: WrapAlignment.center),
+                              child: DottedLine(
+                                alignment: WrapAlignment.center,
+                              ),
                             ),
                           ),
                         ),
@@ -77,7 +81,7 @@ class OrderDetailsScreen extends StatelessWidget {
                   // Chat/Message List
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
-                          (context, index) => Container(
+                      (context, index) => Container(
                         padding: const EdgeInsets.all(12),
                         margin: const EdgeInsets.only(bottom: 10),
                         decoration: BoxDecoration(
@@ -99,7 +103,10 @@ class OrderDetailsScreen extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Container(
                 color: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 15,
+                  vertical: 10,
+                ),
                 child: MyTextFormField(
                   prefixIcon: IconButton(
                     onPressed: () {},
@@ -111,6 +118,10 @@ class OrderDetailsScreen extends StatelessWidget {
                       ),
                       child: SvgPicture.asset(Assets.imagesSendButton),
                     ),
+                  ),
+                  suffixIcon: IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset(Assets.imagesMicrophoneIcon),
                   ),
                   controller: cubit.messageController,
                   hint: S.of(context).writeYourMessage,
@@ -126,5 +137,4 @@ class OrderDetailsScreen extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -68,7 +68,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
               IconButton(
                 onPressed: () {
-                  throw Exception('error ');
+
                 },
                 icon: SvgPicture.asset(Assets.imagesNotification),
               ),
@@ -76,6 +76,8 @@ class _MainScreenState extends State<MainScreen> {
           ),
           20.height,
           BlocBuilder<MainCubit, MainState>(
+            buildWhen: (previous, current) =>
+                previous.location != current.location,
             builder: (context, state) =>
                 CacheHelper.getData(key: CacheHelperKeys.locationEnabled) ==
                     true

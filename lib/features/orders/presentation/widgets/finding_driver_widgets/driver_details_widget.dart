@@ -24,79 +24,84 @@ class DriverDetailsWidget extends StatelessWidget {
     return BackgroundProfileWidget(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
           children: [
-            const ProfileImage(),
-            10.width,
-            Flexible(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Mina Zakaria',
-                    style: AppTextStyles.bold18Black,
-                  ),
-                  5.height,
-                  Row(
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const ProfileImage(),
+                10.width,
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SvgPicture.asset(Assets.imagesStars),
-                      5.width,
                       Text(
-                        '4.5',
+                        'Mina Zakaria',
                         style: AppTextStyles.bold18Black,
                       ),
-                      20.width,
-                      SvgPicture.asset(
-                        Assets.imagesDocuments,
+                      5.height,
+                      Row(
+                        children: [
+                          SvgPicture.asset(Assets.imagesStars),
+                          5.width,
+                          Text(
+                            '4.5',
+                            style: AppTextStyles.bold18Black,
+                          ),
+                          20.width,
+                          SvgPicture.asset(
+                            Assets.imagesDocuments,
+                          ),
+                          5.width,
+                          Text(
+                            '500',
+                            style: AppTextStyles.bold18Black,
+                          ),
+                        ],
                       ),
-                      5.width,
-                      Text(
-                        '500',
-                        style: AppTextStyles.bold18Black,
+                      5.height,
+                      const Divider(
+                        color: AppColors.greyColor,
+                        thickness: 2,
                       ),
+                      Row(
+                        children: [
+                          SvgPicture.asset(Assets.imagesBanknote),
+                          10.width,
+                          Text(
+                            '210.00 ريال',
+                            style: AppTextStyles.bold18Black
+                                .copyWith(
+                              color: AppColors.mainColor,
+                            ),
+                          ),
+                        ],
+                      ),
+
                     ],
                   ),
-                  5.height,
-                  const Divider(
-                    color: AppColors.greyColor,
-                    thickness: 2,
+                ),
+              ],
+            ),
+            20.height,
+            Row(
+              children: [
+                Expanded(
+                  child: DeclineOfferWidget(
+                    onTap: () {
+                      decline();
+                    },
                   ),
-                  Row(
-                    children: [
-                      SvgPicture.asset(Assets.imagesBanknote),
-                      10.width,
-                      Text(
-                        '210.00 ريال',
-                        style: AppTextStyles.bold18Black
-                            .copyWith(
-                          color: AppColors.mainColor,
-                        ),
-                      ),
-                    ],
+                ),
+                Expanded(
+                  child: MyButton(
+                    title: S.of(context).accept,
+                    onTap: () {
+                      accept();
+                    },
                   ),
-                  20.height,
-                  Row(
-                    children: [
-                      Expanded(
-                        child: DeclineOfferWidget(
-                          onTap: () {
-                            decline();
-                          },
-                        ),
-                      ),
-                      Expanded(
-                        child: MyButton(
-                          title: S.of(context).accept,
-                          onTap: () {
-                            accept();
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

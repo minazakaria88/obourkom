@@ -26,7 +26,8 @@ class LoginScreen extends StatelessWidget {
                 SnackBar(content: Text(state.errorMessage ?? 'error')),
               );
             }
-            if (state.loginStatus == LoginStatus.success) {
+            if (state.isSuccess) {
+              print('sdfffffffffffffffffffffffffff');
               Navigator.pushNamed(context, Routes.otp);
             }
 

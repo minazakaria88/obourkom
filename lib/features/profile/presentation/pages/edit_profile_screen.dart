@@ -67,6 +67,26 @@ class EditProfileScreen extends StatelessWidget {
                       children: [
                         20.height,
                         Text(
+                          S.of(context).name,
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        10.height,
+                        MyTextFormField(
+                          controller: cubit.nameController,
+                          validator: (String? value) {
+                            return ValidationClass.validateText(
+                              value,
+                              S.of(context).pleaseEnterAValidName,
+                            );
+                          },
+                          hint: S.of(context).writeYourNameHere,
+                        ),
+                        15.height,
+                        Text(
                           S.of(context).phoneNumber,
                           style: const TextStyle(
                             color: Colors.black,
@@ -99,26 +119,7 @@ class EditProfileScreen extends StatelessWidget {
                         ),
 
                         15.height,
-                        Text(
-                          S.of(context).name,
-                          style: const TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        10.height,
-                        MyTextFormField(
-                          controller: cubit.nameController,
-                          validator: (String? value) {
-                            return ValidationClass.validateText(
-                              value,
-                              S.of(context).pleaseEnterAValidName,
-                            );
-                          },
-                          hint: S.of(context).writeYourNameHere,
-                        ),
-                        15.height,
+
                         Text(
                           S.of(context).email,
                           style: const TextStyle(

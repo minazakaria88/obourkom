@@ -9,6 +9,7 @@ import 'package:oborkom/features/otp/data/repositories/otp_repo.dart';
 import 'core/api/api_helper.dart';
 import 'features/login/data/repositories/login_repo.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
+import 'features/main/data/repositories/main_repo.dart';
 import 'features/main/presentation/cubit/main_cubit.dart';
 import 'features/notification/presentation/cubit/notification_cubit.dart';
 import 'features/orders/data/repositories/order_repo.dart';
@@ -51,7 +52,8 @@ void setupServicesLocator() {
 
 
   //main
-  getIt.registerFactory(() => MainCubit());
+  getIt.registerFactory(() => MainCubit(mainRepository: getIt()));
+  getIt.registerLazySingleton(() => MainRepository(apiHelper: getIt()));
 
   //notifications
   getIt.registerFactory(() => NotificationCubit(notificationRepository: getIt()));

@@ -32,9 +32,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(state.errorMessage ?? 'error')),
               );
-              if(state.isSuccess){
-                Navigator.pushNamed(context, Routes.otp);
-              }
+            }
+            if(state.isSuccess){
+              Navigator.pushNamed(context, Routes.otp);
             }
           },
           builder: (context, state) {

@@ -71,6 +71,7 @@ class OrderTimerWidget extends StatelessWidget {
                     color: AppColors.shadowColor.withAlpha(20),
                   ),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         S.of(context).expectedTransportationCost,
@@ -82,8 +83,10 @@ class OrderTimerWidget extends StatelessWidget {
                       Flexible(
                         child: Text(
                           'من 200 الي 300 ريال',
+                          textAlign: TextAlign.center,
                           style: AppTextStyles.bold14MainColor.copyWith(
                             fontSize: 16,
+
                           ),
                         ),
                       ),

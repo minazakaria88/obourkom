@@ -102,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "expectedTransportationCost": MessageLookupByLibrary.simpleMessage(
       "التكلفة المتوقعة للنقل",
     ),
+    "faq": MessageLookupByLibrary.simpleMessage("الاسئلة الشائعة"),
     "findingDrivers": MessageLookupByLibrary.simpleMessage("البحث عن مندوب"),
     "haveFun": MessageLookupByLibrary.simpleMessage(
       "استمتع بتجربة نقل سهلة وخالية من المتاعب.",

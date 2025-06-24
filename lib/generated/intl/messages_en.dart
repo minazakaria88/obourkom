@@ -108,6 +108,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "expectedTransportationCost": MessageLookupByLibrary.simpleMessage(
       "Expected Transportation Cost",
     ),
+    "faq": MessageLookupByLibrary.simpleMessage("FAQ"),
     "findingDrivers": MessageLookupByLibrary.simpleMessage("Finding Drivers"),
     "haveFun": MessageLookupByLibrary.simpleMessage(
       "Enjoy a smooth and hassle-free moving experience.",

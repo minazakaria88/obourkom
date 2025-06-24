@@ -3,9 +3,16 @@ import 'package:oborkom/generated/assets.dart';
 class ServicesModel {
   ServicesModel({required this.id, required this.name, required this.image});
 
-  final int id;
-  final String name;
-  final String image;
+   int ?id;
+   String ?name;
+   String ?image;
+
+
+  ServicesModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    image = json['image'];
+}
 }
 
 

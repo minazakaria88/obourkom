@@ -33,10 +33,10 @@ class OneServicesWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Flexible(child: Image.asset(model.image, gaplessPlayback: true)),
+            Flexible(child: Image.asset(model.image!, gaplessPlayback: true)),
             10.height,
             Text(
-              model.name,
+              model.name!,
               style: const TextStyle(
                 color: AppColors.mainColor,
                 fontSize: 16,

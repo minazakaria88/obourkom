@@ -21,8 +21,8 @@ class NotificationCubit extends Cubit<NotificationState> {
         state.copyWith(
           notificationStatus: NotificationStatus.success,
           notifications: [
-            NotificationModel('title', 'description', 1, false, 'dateTime'),
-            NotificationModel('title', 'mina is the best flutter developer', 1, true, 'dateTime'),],
+            NotificationModel('title', 'description1', 1, false, 'dateTime'),
+            NotificationModel('title', 'description2', 1, true, 'dateTime'),],
         ),
       );
     } on ApiException catch (e) {

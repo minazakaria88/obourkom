@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_colors.dart';
-import 'package:oborkom/features/main/data/models/services_model.dart';
+import 'package:oborkom/core/widgets/shimmer_item.dart';
 import 'package:oborkom/generated/assets.dart';
+import '../cubit/main_cubit.dart';
 import 'choose_your_services.dart';
 import 'image_slider.dart';
 import 'one_services_widget.dart';
@@ -12,42 +14,57 @@ class MyServicesWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: Column(
-            children: [
-               const ImageSlider(
-                images: [
-                  Assets.imagesLogo,
-                  Assets.imagesSmallCar,
-                  Assets.imagesFurniture,
-                ], colors: [
-                  Colors.white,
-                AppColors.mainColor,
-                 Colors.white,
-
-
-               ],
+    return BlocBuilder<MainCubit, MainState>(
+      builder: (context, state) {
+        final servicesList = state.servicesList ?? [];
+        return CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  const ImageSlider(
+                    images: [
+                      Assets.imagesLogo,
+                      Assets.imagesSmallCar,
+                      Assets.imagesFurniture,
+                    ],
+                    colors: [Colors.white, AppColors.mainColor, Colors.white],
+                  ),
+                  20.height,
+                  const ChooseYourServices(),
+                  10.height,
+                ],
               ),
-              20.height,
-              const ChooseYourServices(),
-              10.height,
-            ],
-          ),
-        ),
-        SliverGrid.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            crossAxisSpacing: 12,
-            mainAxisSpacing: 12,
-            childAspectRatio: 0.8,
-          ),
-          itemCount: servicesList.length,
-          itemBuilder: (context, index) =>
-              OneServicesWidget(model: servicesList[index]),
-        ),
-      ],
+            ),
+
+            servicesList.isEmpty
+                ? SliverGrid.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 12,
+                          mainAxisSpacing: 12,
+                          childAspectRatio: 0.8,
+                        ),
+                    itemCount: 10,
+                    itemBuilder: (context, index) =>
+                        const ShimmerItem(width: 0, height: 0, margin: 10),
+                  )
+                : SliverGrid.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 3,
+                          crossAxisSpacing: 12,
+                          mainAxisSpacing: 12,
+                          childAspectRatio: 0.8,
+                        ),
+                    itemCount: servicesList.length,
+                    itemBuilder: (context, index) =>
+                        OneServicesWidget(model: servicesList[index]),
+                  ),
+          ],
+        );
+      },
     );
   }
 }
