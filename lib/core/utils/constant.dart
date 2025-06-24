@@ -1,7 +1,6 @@
 
 
 import 'package:logger/logger.dart';
-import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.dart';
 
 import '../../generated/assets.dart';
 
@@ -14,9 +13,7 @@ enum MapTypes
 class MapContext
 {
   final MapTypes type;
-  final LocationsCubit ? cubit;
-
-  MapContext({required this.type,this.cubit});
+  MapContext({required this.type});
 }
 
 
