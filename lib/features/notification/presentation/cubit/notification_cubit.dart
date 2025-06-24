@@ -16,7 +16,7 @@ class NotificationCubit extends Cubit<NotificationState> {
     try {
       emit(state.copyWith(notificationStatus: NotificationStatus.loading));
       // final result = await notificationRepository.getNotification();
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(const Duration(seconds: 10));
       emit(
         state.copyWith(
           notificationStatus: NotificationStatus.success,
