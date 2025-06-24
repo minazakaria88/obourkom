@@ -53,6 +53,7 @@ class Assets {
   static const String imagesProfile = 'assets/images/profile.svg';
   static const String imagesProfileHome = 'assets/images/profileHome.svg';
   static const String imagesProfileNotification = 'assets/images/profileNotification.svg';
+  static const String imagesQuestionCircle = 'assets/images/QuestionCircle.svg';
   static const String imagesRadio = 'assets/images/radio.svg';
   static const String imagesReceived = 'assets/images/received.svg';
   static const String imagesReview = 'assets/images/Review.svg';

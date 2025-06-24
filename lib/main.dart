@@ -24,7 +24,7 @@ void main() async {
   await checkIfUserLoggedIn();
   setupServicesLocator();
   Bloc.observer = MyBlocObserver();
-  runApp(DevicePreview(enabled: true, builder: (context) => const OborKom()));
+  runApp(DevicePreview(enabled: false, builder: (context) => const OborKom()));
 }
 
 class OborKom extends StatelessWidget {

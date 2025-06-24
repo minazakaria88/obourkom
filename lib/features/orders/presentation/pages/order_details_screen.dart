@@ -21,7 +21,15 @@ class OrderDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<OrdersCubit>();
     return Scaffold(
-      appBar: MyAppBar(title: S.of(context).orderDetails),
+      appBar: MyAppBar(
+        title: S.of(context).orderDetails,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(Assets.imagesQuestionCircle),
+          ),
+        ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Stack(
