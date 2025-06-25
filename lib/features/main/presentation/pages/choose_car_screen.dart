@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/core/widgets/loader_widget.dart';
+import 'package:oborkom/features/main/presentation/cubit/main_cubit.dart';
 import 'package:oborkom/generated/l10n.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -13,25 +16,32 @@ class ChooseCarScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MyAppBar(title: S.of(context).transportOfGoods),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 20.0),
-        child: SizedBox(
-          width: double.infinity,
-          child: Wrap(
-            alignment: WrapAlignment.start,
-            crossAxisAlignment: WrapCrossAlignment.end,
-            children: carList
-                .map(
-                  (e) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: _buildItem(e, () {
-                      context.pushNamed(Routes.newOrder);
-                    }),
+      body: BlocBuilder<MainCubit, MainState>(
+        builder: (context, state) {
+          final carList = state.cars ?? [];
+          return carList.isNotEmpty
+              ? Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: SizedBox(
+                    width: double.infinity,
+                    child: Wrap(
+                      alignment: WrapAlignment.start,
+                      crossAxisAlignment: WrapCrossAlignment.end,
+                      children: carList
+                          .map(
+                            (e) => Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: _buildItem(e, () {
+                                context.pushNamed(Routes.newOrder);
+                              }),
+                            ),
+                          )
+                          .toList(),
+                    ),
                   ),
                 )
-                .toList(),
-          ),
-        ),
+              : const LoaderWidget();
+        },
       ),
     );
   }
@@ -61,11 +71,11 @@ class ChooseCarScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(e.image, fit: BoxFit.fill),
+            Image.asset(e.image!, fit: BoxFit.fill),
             10.height,
             Flexible(
               child: Text(
-                e.name,
+                e.name!,
                 style: const TextStyle(
                   color: AppColors.darkMainColor,
                   fontSize: 16,
@@ -79,4 +89,3 @@ class ChooseCarScreen extends StatelessWidget {
     );
   }
 }
-

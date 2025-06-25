@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_colors.dart';
 import 'package:oborkom/core/widgets/shimmer_item.dart';
-import 'package:oborkom/generated/assets.dart';
 import '../cubit/main_cubit.dart';
 import 'choose_your_services.dart';
 import 'image_slider.dart';

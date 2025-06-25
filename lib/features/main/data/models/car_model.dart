@@ -4,10 +4,10 @@ import '../../../../generated/assets.dart';
 import '../../../../generated/l10n.dart';
 
 class CarModel {
-  final int id;
-  final String name;
-  final int type;
-  final String image;
+   int ?id;
+   String ?name;
+   int ?type;
+   String ?image;
 
   CarModel({
     required this.id,
@@ -15,6 +15,12 @@ class CarModel {
     required this.type,
     required this.image,
   });
+
+
+  CarModel.fromJson(Map<String,dynamic> json)
+  {
+
+  }
 }
 
 List<CarModel> carList = [

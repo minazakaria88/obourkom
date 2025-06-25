@@ -5,12 +5,15 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/helpers/cache_helper.dart';
+import 'package:oborkom/features/main/data/models/car_model.dart';
 import 'package:oborkom/features/main/data/repositories/main_repo.dart';
 import '../../../../core/api/failure.dart';
 import '../../../../core/functions/determine_position.dart';
 import '../../../../core/functions/get_places_mark.dart';
 import '../../../../core/utils/constant.dart';
 import '../../../../generated/assets.dart';
+import '../../../../generated/l10n.dart';
+import '../../../../main.dart';
 import '../../data/models/services_model.dart';
 part 'main_state.dart';
 
@@ -67,4 +70,31 @@ class MainCubit extends Cubit<MainState> {
       emit(state.copyWith(errorMessage: e.toString()));
     }
   }
+
+  void getCars()async
+  {
+    try {
+      await Future.delayed(const Duration(seconds: 5));
+       final response = await mainRepository.getCars();
+      emit(state.copyWith(cars: [
+        CarModel(
+          id: 1,
+          name: S.of(NavigatorClass.navigatorKey.currentState!.context).smallCars,
+          type: 1,
+          image: Assets.imagesSmallCar,
+        ),
+        CarModel(
+          id: 2,
+          name: S.of(NavigatorClass.navigatorKey.currentState!.context).bigCars,
+          type: 2,
+          image: Assets.imagesBigCar,
+        ),
+      ]));
+    } on ApiException catch (e) {
+      emit(state.copyWith(errorMessage: e.failure.message));
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
+  }
+
 }
