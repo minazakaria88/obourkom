@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
-import 'package:oborkom/core/widgets/loader_widget.dart';
+import 'package:oborkom/core/widgets/shimmer_item.dart';
 import 'package:oborkom/features/main/presentation/cubit/main_cubit.dart';
 import 'package:oborkom/generated/l10n.dart';
 import '../../../../core/routes/routes.dart';
@@ -9,8 +9,19 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/my_app_bar.dart';
 import '../../data/models/car_model.dart';
 
-class ChooseCarScreen extends StatelessWidget {
+class ChooseCarScreen extends StatefulWidget {
   const ChooseCarScreen({super.key});
+
+  @override
+  State<ChooseCarScreen> createState() => _ChooseCarScreenState();
+}
+
+class _ChooseCarScreenState extends State<ChooseCarScreen> {
+  @override
+  void initState() {
+    context.read<MainCubit>().getCars();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +51,14 @@ class ChooseCarScreen extends StatelessWidget {
                     ),
                   ),
                 )
-              : const LoaderWidget();
+              : GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  ),
+                  itemCount: 7,
+                  itemBuilder: (context, index) =>
+                      const ShimmerItem(width: 0, height: 0, margin: 15),
+                );
         },
       ),
     );

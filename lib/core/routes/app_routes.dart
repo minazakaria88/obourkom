@@ -7,6 +7,7 @@ import 'package:oborkom/features/home/presentation/pages/home_screen.dart';
 import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.dart';
 import 'package:oborkom/features/login/presentation/pages/login_screen.dart';
 import 'package:oborkom/features/locations/presentation/pages/pick_location_screen.dart';
+import 'package:oborkom/features/main/presentation/cubit/main_cubit.dart';
 import 'package:oborkom/features/notification/presentation/pages/notification_screen.dart';
 import 'package:oborkom/features/orders/presentation/pages/finding_drivers.dart';
 import 'package:oborkom/features/profile/presentation/cubit/profile_cubit.dart';
@@ -63,7 +64,13 @@ class AppRoues {
           ),
         );
       case Routes.chooseYourCar:
-        return MaterialPageRoute(builder: (context) => const ChooseCarScreen());
+        final arguments = setting.arguments as MainCubit;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider.value(
+            value: arguments,
+            child: const ChooseCarScreen(),
+          ),
+        );
       case Routes.newOrder:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
@@ -84,7 +91,8 @@ class AppRoues {
         return MaterialPageRoute(
           builder: (context) => BlocProvider.value(
             value: arguments,
-              child: const EditProfileScreen()),
+            child: const EditProfileScreen(),
+          ),
         );
       case Routes.locations:
         return MaterialPageRoute(
@@ -114,21 +122,24 @@ class AppRoues {
         return MaterialPageRoute(
           builder: (context) => BlocProvider.value(
             value: arguments..startTimer(),
-              child: const FindingDriversScreen()),
+            child: const FindingDriversScreen(),
+          ),
         );
-        case Routes.orderDetails:
+      case Routes.orderDetails:
         final arguments = setting.arguments as OrdersCubit;
         return MaterialPageRoute(
           builder: (context) => BlocProvider.value(
             value: arguments,
-              child: const OrderDetailsScreen()),
+            child: const OrderDetailsScreen(),
+          ),
         );
       case Routes.completedOrderDetails:
         final arguments = setting.arguments as OrdersCubit;
         return MaterialPageRoute(
           builder: (context) => BlocProvider.value(
             value: arguments,
-              child: const CompletedOrderDetailsScreen()),
+            child: const CompletedOrderDetailsScreen(),
+          ),
         );
       case Routes.noInternet:
         return MaterialPageRoute(builder: (context) => const NoInternet());

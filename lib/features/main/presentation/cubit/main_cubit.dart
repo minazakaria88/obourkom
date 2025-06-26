@@ -74,8 +74,9 @@ class MainCubit extends Cubit<MainState> {
   void getCars()async
   {
     try {
+      emit(state.copyWith(cars: []));
       await Future.delayed(const Duration(seconds: 5));
-       final response = await mainRepository.getCars();
+      // final response = await mainRepository.getCars();
       emit(state.copyWith(cars: [
         CarModel(
           id: 1,
