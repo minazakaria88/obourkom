@@ -6,15 +6,16 @@ import '../../../../core/utils/app_colors.dart';
 import '../../data/models/services_model.dart';
 
 class OneServicesWidget extends StatelessWidget {
-  const OneServicesWidget({super.key, required this.model});
+  const OneServicesWidget({super.key, required this.model, required this.onTap});
 
   final ServicesModel model;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.pushNamed(Routes.chooseYourCar);
+        onTap();
       },
       child: Container(
         margin: const EdgeInsets.all(2),

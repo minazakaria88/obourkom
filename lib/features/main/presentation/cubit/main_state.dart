@@ -2,6 +2,9 @@ part of 'main_cubit.dart';
 
 enum GetLocationState { loading, success, failure }
 
+
+
+
 extension MainStateX on MainState {}
 
 class MainState extends Equatable {
@@ -10,13 +13,15 @@ class MainState extends Equatable {
   List<ServicesModel>? servicesList;
   String? errorMessage;
   List<String>? sliderList;
+  List<CarModel> ? cars;
 
   MainState({
     this.getLocationState,
     this.location,
     this.servicesList,
     this.errorMessage,
-    this.sliderList
+    this.sliderList,
+    this.cars
   });
 
   MainState copyWith({
@@ -24,14 +29,16 @@ class MainState extends Equatable {
     String? location,
     List<ServicesModel>? servicesList,
     String? errorMessage,
-    List<String>? sliderList
+    List<String>? sliderList,
+    List<CarModel> ? cars
   }) {
     return MainState(
       getLocationState: getLocationState ?? this.getLocationState,
       location: location ?? this.location,
       servicesList: servicesList ?? this.servicesList,
       errorMessage: errorMessage ?? this.errorMessage,
-      sliderList: sliderList ?? this.sliderList
+      sliderList: sliderList ?? this.sliderList,
+      cars: cars?? this.cars
     );
   }
 
@@ -41,6 +48,7 @@ class MainState extends Equatable {
     location,
     servicesList,
     errorMessage,
-    sliderList
+    sliderList,
+    cars,
   ];
 }

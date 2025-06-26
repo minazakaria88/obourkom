@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_colors.dart';
 import 'package:oborkom/core/widgets/shimmer_item.dart';
-import 'package:oborkom/generated/assets.dart';
+import '../../../../core/routes/routes.dart';
 import '../cubit/main_cubit.dart';
 import 'choose_your_services.dart';
 import 'image_slider.dart';
@@ -29,7 +29,7 @@ class MyServicesWidget extends StatelessWidget {
                           height: 200,
                           margin: 12,
                         )
-                      :  ImageSlider(
+                      : ImageSlider(
                           images: sliderList,
                           colors: [
                             Colors.white,
@@ -66,8 +66,15 @@ class MyServicesWidget extends StatelessWidget {
                           childAspectRatio: 0.8,
                         ),
                     itemCount: servicesList.length,
-                    itemBuilder: (context, index) =>
-                        OneServicesWidget(model: servicesList[index]),
+                    itemBuilder: (context, index) => OneServicesWidget(
+                      model: servicesList[index],
+                      onTap: () {
+                        context.pushNamed(
+                          Routes.chooseYourCar,
+                          arguments: context.read<MainCubit>(),
+                        );
+                      },
+                    ),
                   ),
           ],
         );
