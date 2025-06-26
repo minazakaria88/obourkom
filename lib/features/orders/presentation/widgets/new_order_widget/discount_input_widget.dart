@@ -11,9 +11,7 @@ import '../../../../../generated/l10n.dart';
 import '../../cubit/orders_cubit.dart';
 
 class DiscountInputWidget extends StatefulWidget {
-  const DiscountInputWidget({
-    super.key, required this.controller,
-  });
+  const DiscountInputWidget({super.key, required this.controller});
   final TextEditingController controller;
 
   @override
@@ -61,7 +59,9 @@ class _DiscountInputWidgetState extends State<DiscountInputWidget> {
             height: 40,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
-              color: value.isNullOrEmpty() ? Colors.redAccent : Colors.greenAccent,
+              color: value.isNullOrEmpty()
+                  ? Colors.redAccent
+                  : Colors.greenAccent,
             ),
             child: Center(
               child: Text(
@@ -74,7 +74,10 @@ class _DiscountInputWidgetState extends State<DiscountInputWidget> {
       ),
       hint: S.of(context).enterDiscountCode,
       validator: (value) {
-        return ValidationClass.validateText(value, '');
+        return ValidationClass.validateText(
+          value,
+          S.of(context).enterDiscountCode,
+        );
       },
     );
   }

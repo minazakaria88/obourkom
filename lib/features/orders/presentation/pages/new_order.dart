@@ -215,7 +215,7 @@ class NewOrder extends StatelessWidget {
                                     onTap: () {
                                       if (cubit.formKey.currentState!
                                           .validate()) {
-                                        cubit.makeOrder({});
+                                        cubit.makeOrder();
                                       }
                                     },
                                   ),

@@ -8,6 +8,8 @@ import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/locations/data/models/location_order_model.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
 import '../../../../core/api/failure.dart';
+import '../../../../core/functions/concatenate_placemark.dart';
+import '../../data/models/new_order_model.dart';
 import '../../data/repositories/order_repo.dart';
 part 'orders_state.dart';
 
@@ -42,11 +44,12 @@ class OrdersCubit extends Cubit<OrdersState> {
     emit(state.copyWith(paymentMethod: applePay));
   }
 
-  void makeOrder(data) async {
+  void makeOrder() async {
     try {
+      final model = getNewOrderModel();
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.loading));
       await Future.delayed(const Duration(seconds: 2));
-      //final result = await otpRepository.makeOrder(data);
+      //final result = await otpRepository.makeOrder(model.toJson());
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.success));
     } on ApiException catch (e) {
       emit(
@@ -63,6 +66,28 @@ class OrdersCubit extends Cubit<OrdersState> {
         ),
       );
     }
+  }
+
+  NewOrderModel getNewOrderModel() {
+    return NewOrderModel(
+      pickUpLocation: state.pickedLocation!,
+      dropOffLocation:
+          state.deliveryLocation!,
+      pickUpAddress:
+          concatenatePlacemark(
+            place: state.pickedLocationData,
+          ) ??
+              '',
+      dropOffAddress:
+          concatenatePlacemark(
+            place:
+                state.deliveryLocationData,
+          ) ??
+              '',
+      paymentMethod: state.paymentMethod!,
+      notes: notesController.text,
+      discount: codeController.text,
+    );
   }
 
   void getOrders() async {
