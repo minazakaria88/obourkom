@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/routes/routes.dart';
 import 'package:oborkom/features/profile/presentation/widgets/profile_screen_widgets/profile_button_widget.dart';
 
 import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
+import '../../cubit/profile_cubit.dart';
 import 'background_profile_widget.dart';
 
 class ProfileSettingSecondSection extends StatelessWidget {
-  const ProfileSettingSecondSection({
-    super.key,
-  });
+  const ProfileSettingSecondSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,10 @@ class ProfileSettingSecondSection extends StatelessWidget {
               title: S.of(context).aboutUs,
               image: Assets.imagesAboutUs,
               onTap: () {
-                context.pushNamed(Routes.aboutUs);
+                context.pushNamed(
+                  Routes.aboutUs,
+                  arguments: context.read<ProfileCubit>()..getFaq(),
+                );
               },
             ),
             10.height,

@@ -108,7 +108,13 @@ class AppRoues {
       case Routes.support:
         return MaterialPageRoute(builder: (context) => const SupportScreen());
       case Routes.aboutUs:
-        return MaterialPageRoute(builder: (context) => const AboutUsScreen());
+        final arguments = setting.arguments as ProfileCubit;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider.value(
+            value: arguments,
+            child: const AboutUsScreen(),
+          ),
+        );
       case Routes.termsAndConditions:
         return MaterialPageRoute(
           builder: (context) => const TermsAndConditionsScreen(),

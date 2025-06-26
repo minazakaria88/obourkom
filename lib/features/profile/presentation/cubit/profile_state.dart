@@ -7,6 +7,9 @@ enum EditProfileStatus { initial, loading, success, failure }
 enum ImageStatus { initial, loading, success, failure }
 
 
+
+enum GetFaqStatus { initial, loading, success, failure }
+
 extension ProfileStatusX on ProfileState {
   bool get isLoading => profileStatus == ProfileStatus.loading;
   bool get isSuccess => profileStatus == ProfileStatus.success;
@@ -25,12 +28,17 @@ class ProfileState extends Equatable {
   EditProfileStatus? editProfileStatus;
   String? errorMessage;
   ImageStatus? imageStatus;
+  List<FaqModel> ? faqs ;
+  GetFaqStatus? getFaqStatus;
+
   ProfileState({
     this.userModel,
     this.profileStatus = ProfileStatus.initial,
     this.editProfileStatus = EditProfileStatus.initial,
     this.errorMessage,
     this.imageStatus,
+    this.faqs ,
+    this.getFaqStatus=GetFaqStatus.initial
   });
 
   ProfileState copyWith({
@@ -39,6 +47,8 @@ class ProfileState extends Equatable {
     EditProfileStatus? editProfileStatus,
     String? errorMessage,
     ImageStatus? imageStatus,
+    List<FaqModel>? faqs,
+    GetFaqStatus? getFaqStatus
   }) {
     return ProfileState(
       userModel: userModel ?? this.userModel,
@@ -46,6 +56,8 @@ class ProfileState extends Equatable {
       editProfileStatus: editProfileStatus ?? this.editProfileStatus,
       errorMessage: errorMessage ?? this.errorMessage,
       imageStatus: imageStatus ?? this.imageStatus,
+      faqs: faqs ?? this.faqs,
+      getFaqStatus: getFaqStatus ?? this.getFaqStatus
     );
   }
 
@@ -55,6 +67,8 @@ class ProfileState extends Equatable {
     profileStatus,
     editProfileStatus,
     errorMessage,
-    imageStatus
+    imageStatus,
+    faqs,
+    getFaqStatus
   ];
 }

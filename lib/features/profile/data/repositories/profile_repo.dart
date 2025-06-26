@@ -4,6 +4,7 @@ import 'package:oborkom/features/profile/data/models/user_model.dart';
 
 import '../../../../core/api/api_helper.dart';
 import '../../../../core/api/failure.dart';
+import '../models/faq_model.dart';
 
 class ProfileRepository {
   final ApiHelper apiHelper;
@@ -17,7 +18,6 @@ class ProfileRepository {
         name: 'mina',
         email: 'minazakaria264@gmail.com',
         phone: '558412655',
-
       );
     } catch (e) {
       if (e is DioException) {
@@ -27,8 +27,7 @@ class ProfileRepository {
     }
   }
 
-  Future<bool> updateProfile(data) async
-  {
+  Future<bool> updateProfile(data) async {
     try {
       // final response = await apiHelper.putData(url: EndPoints.profile, data: data);
       // return UserModel.fromJson(response.data);
@@ -42,4 +41,19 @@ class ProfileRepository {
     }
   }
 
+  Future<List<FaqModel>> getFaq() async {
+    List<FaqModel> faq = [];
+    try {
+      final response = await apiHelper.getData(url: EndPoints.faq);
+      response.data.forEach((element) {
+        faq.add(FaqModel.fromJson(element));
+      });
+      return faq;
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
 }

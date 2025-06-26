@@ -17,4 +17,6 @@ class EndPoints
   static const slider='';
 
   static const cars='';
+
+  static const faq='';
 }
