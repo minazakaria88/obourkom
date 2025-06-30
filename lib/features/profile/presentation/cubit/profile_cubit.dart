@@ -3,10 +3,10 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:oborkom/features/profile/data/models/faq_model.dart';
-import 'package:oborkom/features/profile/data/models/user_model.dart';
 import 'package:oborkom/features/profile/data/repositories/profile_repo.dart';
 
 import '../../../../core/api/failure.dart';
+import '../../../otp/data/models/user_model.dart';
 
 part 'profile_state.dart';
 
@@ -20,7 +20,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   final ProfileRepository profileRepository;
 
-  void fillForm(UserModel userModel) {
+  void fillForm(User userModel) {
     emailController.text = userModel.email ?? '';
     nameController.text = userModel.name ?? '';
     phoneController.text = userModel.phone ?? '';
@@ -51,32 +51,32 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  void updateProfile() async {
-    emit(state.copyWith(editProfileStatus: EditProfileStatus.loading));
-    try {
-      final user = UserModel(
-        email: emailController.text,
-        name: nameController.text,
-        phone: phoneController.text,
-      );
-      await profileRepository.updateProfile(user.toJson());
-      emit(state.copyWith(editProfileStatus: EditProfileStatus.success));
-    } on ApiException catch (e) {
-      emit(
-        state.copyWith(
-          editProfileStatus: EditProfileStatus.failure,
-          errorMessage: e.failure.message,
-        ),
-      );
-    } catch (e) {
-      emit(
-        state.copyWith(
-          editProfileStatus: EditProfileStatus.failure,
-          errorMessage: e.toString(),
-        ),
-      );
-    }
-  }
+  // void updateProfile() async {
+  //   emit(state.copyWith(editProfileStatus: EditProfileStatus.loading));
+  //   try {
+  //     final user = UserModel(
+  //       email: emailController.text,
+  //       name: nameController.text,
+  //       phone: phoneController.text,
+  //     );
+  //     await profileRepository.updateProfile(user.toJson());
+  //     emit(state.copyWith(editProfileStatus: EditProfileStatus.success));
+  //   } on ApiException catch (e) {
+  //     emit(
+  //       state.copyWith(
+  //         editProfileStatus: EditProfileStatus.failure,
+  //         errorMessage: e.failure.message,
+  //       ),
+  //     );
+  //   } catch (e) {
+  //     emit(
+  //       state.copyWith(
+  //         editProfileStatus: EditProfileStatus.failure,
+  //         errorMessage: e.toString(),
+  //       ),
+  //     );
+  //   }
+  // }
 
   void updateImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);

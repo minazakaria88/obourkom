@@ -1,10 +1,13 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/widgets/loading_widget.dart';
 import 'package:oborkom/features/register/presentation/widgets/register_header_widget.dart';
+import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/helpers/validation_inputs_class.dart';
 import '../../../../core/routes/routes.dart';
+import '../../../../core/utils/constant.dart';
 import '../../../../core/widgets/my_back_button.dart';
 import '../../../../core/widgets/my_button.dart';
 import '../../../../core/widgets/my_text_form_field.dart';
@@ -29,12 +32,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: BlocConsumer<RegisterCubit, RegisterState>(
           listener: (context, state) {
             if (state.isFailure) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.errorMessage ?? 'error')),
+              showSnackBar(
+                message: state.errorMessage ?? '',
+                context: context,
+                title: '',
+                contentType: ContentType.failure,
               );
             }
-            if(state.isSuccess){
-              Navigator.pushNamed(context, Routes.otp);
+            if (state.isSuccess) {
+              Navigator.pushNamed(
+                context,
+                Routes.otp,
+                arguments: {
+                  'phone': context.read<RegisterCubit>().phoneController.text,
+                  'otpType': OtpType.register,
+                },
+              );
             }
           },
           builder: (context, state) {
@@ -64,25 +77,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ),
                               ),
                               10.height,
-                                 MyTextFormField(
-                                  controller: cubit.phoneController,
-                                  validator: (String? value) {
-                                    return ValidationClass.validatePhone(value, context);
-                                  },
-                                   textInputType: TextInputType.phone,
-                                   hint: '5xxxxxxxx',
-                                  prefixIcon: const Padding(
-                                    padding: EdgeInsets.all(13.0),
-                                    child: Text(
-                                      '+966',
-                                      style: TextStyle(
-                                        color: Colors.black,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w400,
-                                      ),
+                              MyTextFormField(
+                                controller: cubit.phoneController,
+                                validator: (String? value) {
+                                  return ValidationClass.validatePhone(
+                                    value,
+                                    context,
+                                  );
+                                },
+                                textInputType: TextInputType.phone,
+                                hint: '5xxxxxxxx',
+                                prefixIcon: const Padding(
+                                  padding: EdgeInsets.all(13.0),
+                                  child: Text(
+                                    '+966',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
                                     ),
                                   ),
                                 ),
+                              ),
 
                               15.height,
                               Text(
@@ -117,10 +133,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               MyTextFormField(
                                 controller: cubit.emailController,
                                 validator: (String? value) {
-
                                   return ValidationClass.validateEmail(
                                     value,
-                                    context
+                                    context,
                                   );
                                 },
                                 textInputType: TextInputType.emailAddress,
@@ -136,15 +151,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     if (isAccept.value) {
                                       cubit.register();
                                     }
-
                                   }
                                 },
                               ),
                               20.height,
                             ],
                           ),
-                          if(state.isLoading)
-                            const LoadingWidget(),
+                          if (state.isLoading) const LoadingWidget(),
                         ],
                       ),
                     ),
@@ -158,5 +171,3 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
-
-

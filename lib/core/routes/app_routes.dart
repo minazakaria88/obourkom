@@ -50,10 +50,14 @@ class AppRoues {
           ),
         );
       case Routes.otp:
+        final arguments = setting.arguments as Map;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<OtpCubit>()..startTimerDuration(),
-            child: const OtpScreen(),
+            child: OtpScreen(
+              otpType: arguments['otpType'],
+              phoneNumber: arguments['phone'],
+            ),
           ),
         );
       case Routes.home:

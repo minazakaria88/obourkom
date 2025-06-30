@@ -43,7 +43,7 @@ class EditProfileScreen extends StatelessWidget {
                           ? const LoaderWidget()
                           : state.userModel != null
                           ? ProfileImage(
-                              image: state.userModel!.image,
+                              image: state.userModel?.avatar,
                               height: 117,
                               width: 117,
                             )
@@ -151,7 +151,7 @@ class EditProfileScreen extends StatelessWidget {
                                 title: S.of(context).edit,
                                 onTap: () {
                                   if (cubit.formKey.currentState!.validate()) {
-                                    cubit.updateProfile();
+                                    //cubit.updateProfile();
                                   }
                                 },
                               ),

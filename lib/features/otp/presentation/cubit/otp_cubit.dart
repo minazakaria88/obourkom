@@ -2,9 +2,15 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
+import 'package:oborkom/core/api/api_helper.dart';
 import 'package:oborkom/core/api/failure.dart';
 import 'package:oborkom/core/helpers/cache_helper.dart';
+import 'package:oborkom/features/otp/data/models/user_model.dart';
 import 'package:oborkom/features/otp/data/repositories/otp_repo.dart';
+import 'package:oborkom/injection.dart';
+
+import '../../../../core/utils/constant.dart';
 
 part 'otp_state.dart';
 
@@ -36,13 +42,16 @@ class OtpCubit extends Cubit<OtpState> {
     });
   }
 
-  void verifyOtp({required String otp, required String phoneNumber}) async {
+  void verifyOtp({required String otp, required OtpType otpType}) async {
     try {
       _timer?.cancel();
       emit(state.copyWith(otpStatus: VerifyOtpStatus.loading));
-      // await otpRepository.verifyOtp(otp: otp, phoneNumber: phoneNumber);
-      await Future.delayed(const Duration(seconds: 2));
-      await CacheHelper.saveData(key: CacheHelperKeys.verified, value: true);
+      final UserModel result = await otpRepository.verifyOtp(
+        otp: otp,
+        otpType: otpType,
+      );
+     await CacheHelper.setSecureString(CacheHelperKeys.token, result.token);
+      getIt<ApiHelper>().setTokenIntoHeadersAfterLogin(result.token ?? '');
       emit(state.copyWith(otpStatus: VerifyOtpStatus.success));
     } on ApiException catch (e) {
       emit(
@@ -61,10 +70,15 @@ class OtpCubit extends Cubit<OtpState> {
     }
   }
 
-  void resendOtp({required String phoneNumber}) async {
+  void resendOtp({
+    required String phoneNumber,
+    required OtpType otpType,
+  }) async {
     try {
+      _timer?.cancel();
+      startTimerDuration();
       emit(state.copyWith(resendOtpStatus: ResendOtpStatus.loading));
-      await otpRepository.resendOtp(phoneNumber: phoneNumber);
+      await otpRepository.resendOtp(phoneNumber: '+966$phoneNumber', otpType: otpType);
       emit(state.copyWith(resendOtpStatus: ResendOtpStatus.success));
     } on ApiException catch (e) {
       emit(

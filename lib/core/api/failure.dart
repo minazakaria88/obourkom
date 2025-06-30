@@ -29,7 +29,7 @@ class ServerFailure extends Failure {
         case DioExceptionType.badCertificate:
           return ServerFailure(message: 'Bad Certificate');
         case DioExceptionType.badResponse:
-          return ServerFailure(message: 'Bad Response');
+          return ServerFailure.fromCode(e.response!.statusCode, e.response!.data);
         case DioExceptionType.cancel:
           return ServerFailure(message: 'Request was canceled');
         case DioExceptionType.connectionError:
@@ -43,9 +43,10 @@ class ServerFailure extends Failure {
     switch (code) {
       case 400:
       case 403:
-        return ServerFailure(message: response['error']['message']);// check the back end for that
+        case 422:
+        return ServerFailure(message: response['message']);
       case 401:
-        return ServerFailure(message: response['error']['message']);// check the back end for that
+        return ServerFailure(message: response['message']);
         case 404:
         return ServerFailure(message: 'Not Found');
       case 500:

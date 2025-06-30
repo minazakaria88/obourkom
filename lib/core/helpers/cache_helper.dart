@@ -51,13 +51,11 @@ class CacheHelper {
 
   static clearData() async {
     await storage.deleteAll();
-    await  removeData(key: CacheHelperKeys.verified);
   }
 }
 
 class CacheHelperKeys {
   static const String token = 'token';
   static const String lang = 'lang';
-  static const String verified = 'verify';
   static const locationEnabled = 'locationEnabled';
 }

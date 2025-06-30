@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/functions/show_snack_bar.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/core/widgets/loading_widget.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import '../../../../core/routes/routes.dart';
@@ -15,15 +16,14 @@ import '../widgets/dont_receive_the_code.dart';
 import '../widgets/otp_header_widget.dart';
 
 class OtpScreen extends StatefulWidget {
-  const OtpScreen({super.key});
-
+  const OtpScreen({super.key, required this.otpType, required this.phoneNumber});
+  final OtpType otpType;
+  final String phoneNumber;
   @override
   State<OtpScreen> createState() => _OtpScreenState();
 }
 
 class _OtpScreenState extends State<OtpScreen> {
-  Duration waitingDuration = const Duration(minutes: 1);
-
   @override
   void initState() {
     listenForCode();
@@ -51,6 +51,9 @@ class _OtpScreenState extends State<OtpScreen> {
             children: [
               const OtpHeaderWidget(),
               BlocConsumer<OtpCubit, OtpState>(
+                listenWhen: (previous, current) =>
+                    previous.successVerifyOtp != current.successVerifyOtp ||
+                    previous.failureVerifyOtp != current.failureVerifyOtp,
                 listener: (context, state) {
                   if (state.successVerifyOtp) {
                     context.pushNamedAndRemoveUntil(
@@ -62,6 +65,14 @@ class _OtpScreenState extends State<OtpScreen> {
                       context: context,
                       title: S.of(context).loginSuccessfully,
                       contentType: ContentType.success,
+                    );
+                  }
+                  if (state.failureVerifyOtp) {
+                    showSnackBar(
+                      message: state.errorMessage??'',
+                      context: context,
+                      title: '',
+                      contentType: ContentType.failure,
                     );
                   }
                 },
@@ -98,7 +109,10 @@ class _OtpScreenState extends State<OtpScreen> {
                           20.height,
                           DontReceiveTheCodeWidget(
                             onTap: () {
-                              context.read<OtpCubit>().startTimerDuration();
+                              context.read<OtpCubit>().resendOtp(
+                                phoneNumber: widget.phoneNumber,
+                                otpType: widget.otpType,
+                              );
                             },
                           ),
                         ],
@@ -139,7 +153,7 @@ class _OtpScreenState extends State<OtpScreen> {
           if ((code ?? '').length == 4) {
             context.read<OtpCubit>().verifyOtp(
               otp: code ?? '',
-              phoneNumber: '',
+              otpType: widget.otpType,
             );
           }
         },

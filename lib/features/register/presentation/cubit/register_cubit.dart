@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:oborkom/core/api/failure.dart';
 import 'package:oborkom/features/register/data/repositories/register_repo.dart';
-import '../../../../core/helpers/cache_helper.dart';
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
@@ -19,12 +18,10 @@ class RegisterCubit extends Cubit<RegisterState> {
     final data = {
       'name': nameController.text,
       'email': emailController.text,
-      'phone': phoneController.text,
+      'phone': '+966${phoneController.text}',
     };
     try {
-     // await registerRepository.register(data);
-      await Future.delayed(const Duration(seconds: 2));
-      CacheHelper.setSecureString( CacheHelperKeys.token,'token');
+      await registerRepository.register(data);
       emit(state.copyWith(registerStatus: RegisterStatus.success));
     } on ApiException catch (e) {
       emit(

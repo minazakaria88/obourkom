@@ -1,8 +1,11 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/helpers/validation_inputs_class.dart';
+import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/generated/l10n.dart';
+import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/widgets/loading_widget.dart';
 import '../../../../core/widgets/my_button.dart';
@@ -21,14 +24,19 @@ class LoginScreen extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
-            if (state.loginStatus == LoginStatus.failure) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text(state.errorMessage ?? 'error')),
+            if (state.isFailure) {
+              showSnackBar(
+                message: state.errorMessage ?? '',
+                context: context,
+                title: '',
+                contentType: ContentType.failure,
               );
             }
             if (state.isSuccess) {
-              print('sdfffffffffffffffffffffffffff');
-              Navigator.pushNamed(context, Routes.otp);
+              Navigator.pushNamed(context, Routes.otp,arguments: {
+                'phone': context.read<LoginCubit>().phoneController.text,
+                'otpType':OtpType.login,
+              });
             }
 
           },

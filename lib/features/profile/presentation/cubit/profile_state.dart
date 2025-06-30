@@ -23,7 +23,7 @@ extension ProfileStatusX on ProfileState {
 }
 
 class ProfileState extends Equatable {
-  UserModel? userModel;
+  User? userModel;
   ProfileStatus? profileStatus;
   EditProfileStatus? editProfileStatus;
   String? errorMessage;
@@ -42,7 +42,7 @@ class ProfileState extends Equatable {
   });
 
   ProfileState copyWith({
-    UserModel? userModel,
+    User? userModel,
     ProfileStatus? profileStatus,
     EditProfileStatus? editProfileStatus,
     String? errorMessage,

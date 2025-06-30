@@ -31,6 +31,13 @@ Map<String, String> addressToImage = {
 };
 
 
+enum OtpType
+{
+  login,
+  register
+}
+
+
 
 
 var logger = Logger();

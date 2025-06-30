@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import '../helpers/cache_helper.dart';
+import '../utils/constant.dart';
 import 'end_point.dart';
 
 class ApiHelper {
@@ -17,14 +18,13 @@ class ApiHelper {
     addHeaders();
   }
 
-  static void addHeaders() {
+  static void addHeaders()async {
     dio?.options.headers = {
-      'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'lang': 'en',
       'Authorization':
-          'Bearer ${CacheHelper.getSecureString(CacheHelperKeys.token)}',
+          'Bearer ${await CacheHelper.getSecureString(CacheHelperKeys.token)}',
     };
+
   }
 
   void setTokenIntoHeadersAfterLogin(String token) {

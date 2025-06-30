@@ -30,8 +30,6 @@ class ProfileHeaderWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const ProfileImage(),
-            20.width,
             BlocBuilder<ProfileCubit, ProfileState>(
               buildWhen: (previous, current) =>
                   previous.userModel != current.userModel,
@@ -44,21 +42,27 @@ class ProfileHeaderWidget extends StatelessWidget {
                   );
                 }
                 return Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Row(
                     children: [
-                      Text(
-                        state.userModel?.name ?? '',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyles.bold18Black,
-                      ),
-                      10.height,
-                      Text(
-                        state.userModel?.email ?? '',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyles.regular12Grey,
+                      ProfileImage(image: state.userModel?.avatar),
+                      20.width,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            state.userModel?.name ?? '',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextStyles.bold18Black,
+                          ),
+                          10.height,
+                          Text(
+                            state.userModel?.email ?? '',
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTextStyles.regular12Grey,
+                          ),
+                        ],
                       ),
                     ],
                   ),

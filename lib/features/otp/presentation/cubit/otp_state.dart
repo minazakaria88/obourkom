@@ -1,38 +1,47 @@
 part of 'otp_cubit.dart';
 
 enum VerifyOtpStatus { initial, loading, success, error }
+
 enum ResendOtpStatus { initial, loading, success, error }
 
-extension CheckStatus on OtpState
-{
-  bool get loadingVerifyOtp => otpStatus==VerifyOtpStatus.loading;
-  bool get successVerifyOtp => otpStatus==VerifyOtpStatus.success;
-  bool get failureVerifyOtp => otpStatus==VerifyOtpStatus.error;
-
-
+extension CheckStatus on OtpState {
+  bool get loadingVerifyOtp => otpStatus == VerifyOtpStatus.loading;
+  bool get successVerifyOtp => otpStatus == VerifyOtpStatus.success;
+  bool get failureVerifyOtp => otpStatus == VerifyOtpStatus.error;
 }
 
-
-class OtpState {
+class OtpState extends Equatable {
   VerifyOtpStatus? otpStatus;
-  ResendOtpStatus ?resendOtpStatus;
+  ResendOtpStatus? resendOtpStatus;
   Duration? otpTimerDuration;
   String? errorMessage;
 
-
-  OtpState({this.otpTimerDuration, this.otpStatus, this.errorMessage,this.resendOtpStatus});
+  OtpState({
+    this.otpTimerDuration,
+    this.otpStatus,
+    this.errorMessage,
+    this.resendOtpStatus,
+  });
 
   OtpState copyWith({
     Duration? otpTimerDuration,
     VerifyOtpStatus? otpStatus,
     String? errorMessage,
-    ResendOtpStatus ?resendOtpStatus
+    ResendOtpStatus? resendOtpStatus,
   }) {
     return OtpState(
       otpTimerDuration: otpTimerDuration ?? this.otpTimerDuration,
       otpStatus: otpStatus ?? this.otpStatus,
       errorMessage: errorMessage ?? this.errorMessage,
-      resendOtpStatus: resendOtpStatus ?? this.resendOtpStatus
+      resendOtpStatus: resendOtpStatus ?? this.resendOtpStatus,
     );
   }
+
+  @override
+  List<Object?> get props => [
+    otpTimerDuration,
+    otpStatus,
+    errorMessage,
+    resendOtpStatus,
+  ];
 }

@@ -5,6 +5,8 @@ import 'package:oborkom/core/api/failure.dart';
 import 'package:oborkom/core/helpers/cache_helper.dart';
 import 'package:oborkom/features/login/data/repositories/login_repo.dart';
 
+import '../../../../core/utils/constant.dart';
+
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
@@ -17,9 +19,8 @@ class LoginCubit extends Cubit<LoginState> {
   void login() async {
     emit(state.copyWith(loginStatus: LoginStatus.loading));
     try {
-     // await loginRepository.login(phoneNumber: phoneController.text);
-      await Future.delayed(const Duration(seconds: 2));
-      CacheHelper.setSecureString( CacheHelperKeys.token,'token');
+      logger.d('+966${phoneController.text}');
+      await loginRepository.login(phoneNumber: '+966${phoneController.text}');
       emit(state.copyWith(loginStatus: LoginStatus.success));
     } on ApiException catch (e) {
       emit(
