@@ -1,9 +1,9 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/widgets/loading_widget.dart';
 import 'package:oborkom/features/register/presentation/widgets/register_header_widget.dart';
+import 'package:toastification/toastification.dart';
 import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/helpers/validation_inputs_class.dart';
 import '../../../../core/routes/routes.dart';
@@ -32,11 +32,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         child: BlocConsumer<RegisterCubit, RegisterState>(
           listener: (context, state) {
             if (state.isFailure) {
-              showSnackBar(
+              showToastification(
                 message: state.errorMessage ?? '',
                 context: context,
-                title: '',
-                contentType: ContentType.failure,
+                type: ToastificationType.error,
               );
             }
             if (state.isSuccess) {

@@ -1,10 +1,10 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/helpers/validation_inputs_class.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/generated/l10n.dart';
+import 'package:toastification/toastification.dart';
 import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/widgets/loading_widget.dart';
@@ -25,20 +25,22 @@ class LoginScreen extends StatelessWidget {
         child: BlocConsumer<LoginCubit, LoginState>(
           listener: (context, state) {
             if (state.isFailure) {
-              showSnackBar(
+              showToastification(
                 message: state.errorMessage ?? '',
                 context: context,
-                title: '',
-                contentType: ContentType.failure,
+                type: ToastificationType.error,
               );
             }
             if (state.isSuccess) {
-              Navigator.pushNamed(context, Routes.otp,arguments: {
-                'phone': context.read<LoginCubit>().phoneController.text,
-                'otpType':OtpType.login,
-              });
+              Navigator.pushNamed(
+                context,
+                Routes.otp,
+                arguments: {
+                  'phone': context.read<LoginCubit>().phoneController.text,
+                  'otpType': OtpType.login,
+                },
+              );
             }
-
           },
           builder: (context, state) {
             final cubit = context.read<LoginCubit>();
@@ -67,7 +69,10 @@ class LoginScreen extends StatelessWidget {
                         MyTextFormField(
                           controller: cubit.phoneController,
                           validator: (String? value) {
-                            return ValidationClass.validatePhone(value, context);
+                            return ValidationClass.validatePhone(
+                              value,
+                              context,
+                            );
                           },
                           hint: '5xxxxxxxx',
                           textInputType: TextInputType.phone,
@@ -98,8 +103,7 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  if (state.isLoading)
-                    const LoadingWidget(),
+                  if (state.isLoading) const LoadingWidget(),
                 ],
               ),
             );

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:developer';
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/functions/show_snack_bar.dart';
@@ -8,6 +7,7 @@ import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/core/widgets/loading_widget.dart';
 import 'package:sms_autofill/sms_autofill.dart';
+import 'package:toastification/toastification.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../generated/l10n.dart';
@@ -16,7 +16,11 @@ import '../widgets/dont_receive_the_code.dart';
 import '../widgets/otp_header_widget.dart';
 
 class OtpScreen extends StatefulWidget {
-  const OtpScreen({super.key, required this.otpType, required this.phoneNumber});
+  const OtpScreen({
+    super.key,
+    required this.otpType,
+    required this.phoneNumber,
+  });
   final OtpType otpType;
   final String phoneNumber;
   @override
@@ -60,19 +64,17 @@ class _OtpScreenState extends State<OtpScreen> {
                       Routes.home,
                       (context) => false,
                     );
-                    showSnackBar(
+                    showToastification(
                       message: S.of(context).loginSuccessfully,
                       context: context,
-                      title: S.of(context).loginSuccessfully,
-                      contentType: ContentType.success,
+                      type: ToastificationType.success,
                     );
                   }
                   if (state.failureVerifyOtp) {
-                    showSnackBar(
-                      message: state.errorMessage??'',
+                    showToastification(
+                      message: state.errorMessage ?? '',
                       context: context,
-                      title: '',
-                      contentType: ContentType.failure,
+                      type: ToastificationType.error,
                     );
                   }
                 },

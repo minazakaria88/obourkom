@@ -11,6 +11,7 @@ import 'package:oborkom/core/utils/app_theme.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/language/presentation/cubit/language_cubit.dart';
 import 'package:oborkom/injection.dart';
+import 'package:toastification/toastification.dart';
 import 'core/api/api_helper.dart';
 import 'core/helpers/error_handler.dart';
 import 'generated/l10n.dart';
@@ -35,23 +36,25 @@ class OborKom extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<LanguageCubit>()..initLanguage(),
       child: BlocBuilder<LanguageCubit, LanguageState>(
-        builder: (context, state) => MaterialApp(
-          navigatorKey: NavigatorClass.navigatorKey,
-          title: 'Obourkom',
-          theme: appTheme(),
-          locale: Locale(
-            CacheHelper.getData(key: CacheHelperKeys.lang) ?? 'en',
+        builder: (context, state) => ToastificationWrapper(
+          child: MaterialApp(
+            navigatorKey: NavigatorClass.navigatorKey,
+            title: '3bourkom',
+            theme: appTheme(),
+            locale: Locale(
+              CacheHelper.getData(key: CacheHelperKeys.lang) ?? 'en',
+            ),
+            localizationsDelegates: [
+              S.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: S.delegate.supportedLocales,
+            debugShowCheckedModeBanner: false,
+            onGenerateRoute: AppRoues.onGenerateRoute,
+            initialRoute: isLoggedIn ? Routes.home : Routes.login,
           ),
-          localizationsDelegates: [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          debugShowCheckedModeBanner: false,
-          onGenerateRoute: AppRoues.onGenerateRoute,
-          initialRoute: isLoggedIn ? Routes.home : Routes.login,
         ),
       ),
     );
