@@ -61,11 +61,17 @@ class _HomeScreenState extends State<HomeScreen>  with WidgetsBindingObserver{
               cubit.changeIndex(index);
             },
           ),
-          body: //cubit.screens[state.currentIndex],
-          IndexedStack(
-            index: state.currentIndex,
-            children: cubit.screens,
-          ),
+       //cubit.screens[state.currentIndex],
+          body: IndexedStack(
+          index: state.currentIndex,
+          children: List.generate(cubit.screens.length, (index) {
+            if (state.isVisited[index]) {
+              return cubit.screens[index];
+            } else {
+              return const SizedBox(); // placeholder
+            }
+          }),
+        ),
         );
       },
     );

@@ -29,10 +29,9 @@ class _ImageSliderState extends State<ImageSlider> {
                 (e) => SizedBox(
                   width: MediaQuery.sizeOf(context).width,
                   child: Container(
-                    margin: const EdgeInsets.all(12),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Colors.teal,
+                      color: Colors.white,
                       borderRadius: BorderRadius.circular(16),
                       boxShadow: [
                         const BoxShadow(
@@ -51,7 +50,7 @@ class _ImageSliderState extends State<ImageSlider> {
               )
               .toList(),
           options: CarouselOptions(
-            height: 190,
+            height: 200,
             viewportFraction: 1,
             initialPage: 0,
             enableInfiniteScroll: true,
@@ -70,7 +69,7 @@ class _ImageSliderState extends State<ImageSlider> {
             },
           ),
         ),
-        20.height,
+        30.height,
         AnimatedSmoothIndicator(
           activeIndex: activeIndex,
           count: widget.images.length,

@@ -1,23 +1,28 @@
-class EndPoints {
-  static const baseUrl = '';
+class EndPoints
+{
+  static const baseUrl = 'https://3borkom.elnoorphp.com/';
+  //login
+  static const login='api/login';
+  static const verifyOtp='api/verify-code-login';
+  static const resendOtp='api/resendCode';
 
-  static const login = '';
-  static const verifyOtp = '';
-  static const resendOtp = '';
+  //register
+  static const register='api/register';
+  static const resendOtpRegister='api/verify-resendCodeRegister';
+  static const verifyOtpRegister='api/verify-code';
 
-  static const register = '';
-  static const resendOtpRegister = '';
-  static const verifyOtpRegister = '';
+  static const profile = 'api/profile';
+  static const notification='notification';
+  static const makeOrder='makeOrder';
+  static const getOrders = 'getOrders';
+  static const cancelOrder='cancelOrder';
+  static const rateDriver='rateDriver';
 
-  static const profile = '';
-  static const notification = '';
-  static const makeOrder = '';
-  static const getOrders = '';
-  static const cancelOrder = '';
-  static const rateDriver = '';
+  static const categories='api/categories';
 
-  static const categories = '';
-  static const slider = '';
-  static const cars = '';
-  static const faq = '';
+  static const slider='api/sliders';
+
+  static const cars='';
+
+  static const faq='';
 }

@@ -15,11 +15,19 @@ import '../../../main/presentation/pages/main_screen.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(const HomeState(currentIndex: 0));
+  HomeCubit()
+    : super(
+        const HomeState(
+          currentIndex: 0,
+          isVisited: [true, false, false, false],
+        ),
+      );
 
   List<Widget> screens = [
     BlocProvider(
-      create: (context) => getIt<MainCubit>()..getCategories()..getSlider(),
+      create: (context) => getIt<MainCubit>()
+        ..getCategories()
+        ..getSlider(),
       child: const MainScreen(),
     ),
     BlocProvider(
@@ -37,7 +45,11 @@ class HomeCubit extends Cubit<HomeState> {
   ];
 
   void changeIndex(int index) {
-    emit(state.copyWith(currentIndex: index));
+    List<bool> isVisited = List.from(state.isVisited);
+    if (!state.isVisited[index]) {
+      isVisited[index] = true;
+    }
+    emit(state.copyWith(currentIndex: index, isVisited: isVisited));
   }
 
   final List<String> titles = [
