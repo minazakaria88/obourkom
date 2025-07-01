@@ -44,7 +44,7 @@ class ServerFailure extends Failure {
       case 400:
       case 403:
         case 422:
-        return ServerFailure(message: response['message']);
+        return ServerFailure(message: getError(response));
       case 401:
         return ServerFailure(message: response['message']);
         case 404:
@@ -63,4 +63,21 @@ class ServerFailure extends Failure {
   }
 
 
+
+
+
+
+
+}
+
+String getError(dynamic response)
+{
+  String error='';
+  if(response['errors']==null) return response['message'];
+  Map<String,dynamic> errors=response['errors'];
+  errors.forEach((k,v){
+    error+='${v.first} , ';
+  });
+
+  return error;
 }

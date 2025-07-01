@@ -1,15 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/features/main/data/models/slider_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../../../../core/utils/app_colors.dart';
+import '../../../../core/widgets/cached_image_widget.dart';
 
 class ImageSlider extends StatefulWidget {
-  const ImageSlider({super.key, required this.images, required this.colors});
+  const ImageSlider({super.key, required this.images});
 
-  final List<String> images;
-  final List<Color> colors;
+  final List<SliderData> images;
 
   @override
   State<ImageSlider> createState() => _ImageSliderState();
@@ -42,10 +44,8 @@ class _ImageSliderState extends State<ImageSlider> {
                           ),
                         ],
                       ),
-                      child: Image.asset(
-                        e,
-                        //fit: BoxFit.fill,
-                        gaplessPlayback: true,
+                      child: CachedImageWidget(
+                        imageUrl: e.image!,
                       ),
                     ),
                   ),
@@ -89,3 +89,4 @@ class _ImageSliderState extends State<ImageSlider> {
     );
   }
 }
+

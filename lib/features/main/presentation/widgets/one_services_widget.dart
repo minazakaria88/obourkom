@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:oborkom/core/helpers/extension.dart';
-import 'package:oborkom/core/routes/routes.dart';
-
+import 'package:oborkom/core/widgets/cached_image_widget.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../data/models/services_model.dart';
+import '../../data/models/categories_model.dart';
 
 class OneServicesWidget extends StatelessWidget {
-  const OneServicesWidget({super.key, required this.model, required this.onTap});
+  const OneServicesWidget({
+    super.key,
+    required this.model,
+    required this.onTap,
+  });
 
-  final ServicesModel model;
+  final CategoryModel model;
   final Function onTap;
 
   @override
@@ -34,7 +37,7 @@ class OneServicesWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Flexible(child: Image.asset(model.image!, gaplessPlayback: true)),
+            Flexible(child: CachedImageWidget(imageUrl: model.image!)),
             10.height,
             Text(
               model.name!,

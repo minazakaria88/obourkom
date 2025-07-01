@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:oborkom/features/profile/data/models/faq_model.dart';
 import 'package:oborkom/features/profile/data/repositories/profile_repo.dart';
-
 import '../../../../core/api/failure.dart';
-import '../../../otp/data/models/user_model.dart';
+import '../../../../core/helpers/cache_helper.dart';
+import '../../../../core/utils/constant.dart';
+import '../../data/models/user_model.dart';
 
 part 'profile_state.dart';
 
@@ -20,7 +21,7 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   final ProfileRepository profileRepository;
 
-  void fillForm(User userModel) {
+  void fillForm(CachedUserModel userModel) {
     emailController.text = userModel.email ?? '';
     nameController.text = userModel.name ?? '';
     phoneController.text = userModel.phone ?? '';
@@ -29,7 +30,8 @@ class ProfileCubit extends Cubit<ProfileState> {
   void getUserProfile() async {
     emit(state.copyWith(profileStatus: ProfileStatus.loading));
     try {
-      final result = await profileRepository.getUser();
+      final result = await CacheHelper.getUser();
+      logger.i(result);
       fillForm(result);
       emit(
         state.copyWith(profileStatus: ProfileStatus.success, userModel: result),

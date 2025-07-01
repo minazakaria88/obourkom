@@ -50,7 +50,8 @@ class OtpCubit extends Cubit<OtpState> {
         otp: otp,
         otpType: otpType,
       );
-     await CacheHelper.setSecureString(CacheHelperKeys.token, result.token);
+      CacheHelper.setSecureString(CacheHelperKeys.token, result.token);
+      CacheHelper.saveUser(result.user!);
       getIt<ApiHelper>().setTokenIntoHeadersAfterLogin(result.token ?? '');
       emit(state.copyWith(otpStatus: VerifyOtpStatus.success));
     } on ApiException catch (e) {

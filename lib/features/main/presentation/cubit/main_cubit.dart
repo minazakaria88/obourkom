@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:geolocator/geolocator.dart';
@@ -6,6 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/helpers/cache_helper.dart';
 import 'package:oborkom/features/main/data/models/car_model.dart';
+import 'package:oborkom/features/main/data/models/slider_model.dart';
 import 'package:oborkom/features/main/data/repositories/main_repo.dart';
 import '../../../../core/api/failure.dart';
 import '../../../../core/functions/determine_position.dart';
@@ -14,7 +14,7 @@ import '../../../../core/utils/constant.dart';
 import '../../../../generated/assets.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../main.dart';
-import '../../data/models/services_model.dart';
+import '../../data/models/categories_model.dart';
 part 'main_state.dart';
 
 class MainCubit extends Cubit<MainState> {
@@ -22,7 +22,6 @@ class MainCubit extends Cubit<MainState> {
   final MainRepository mainRepository;
 
   void getUserCurrentLocation() async {
-    log('getUserCurrentLocation');
     try {
       emit(state.copyWith(getLocationState: GetLocationState.loading));
       Position currentPosition = await determinePosition();
@@ -45,9 +44,8 @@ class MainCubit extends Cubit<MainState> {
 
   void getService() async {
     try {
-      await Future.delayed(const Duration(seconds: 5));
-      // final response = await mainRepository.getService();
-      emit(state.copyWith(servicesList: servicesList));
+       final result = await mainRepository.getService();
+      emit(state.copyWith(categoriesModel: result));
     } on ApiException catch (e) {
       emit(state.copyWith(errorMessage: e.failure.message));
     } catch (e) {
@@ -57,13 +55,8 @@ class MainCubit extends Cubit<MainState> {
 
   void getSlider() async {
     try {
-      await Future.delayed(const Duration(seconds: 5));
-     // final response = await mainRepository.getSlider();
-      emit(state.copyWith(sliderList: [
-        Assets.imagesLogo,
-        Assets.imagesSmallCar,
-        Assets.imagesFurniture,
-      ]));
+      final result = await mainRepository.getSlider();
+      emit(state.copyWith(sliderModel: result));
     } on ApiException catch (e) {
       emit(state.copyWith(errorMessage: e.failure.message));
     } catch (e) {

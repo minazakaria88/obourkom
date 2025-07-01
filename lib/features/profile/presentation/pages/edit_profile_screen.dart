@@ -43,7 +43,7 @@ class EditProfileScreen extends StatelessWidget {
                           ? const LoaderWidget()
                           : state.userModel != null
                           ? ProfileImage(
-                              image: state.userModel?.avatar,
+                              image: state.userModel?.image,
                               height: 117,
                               width: 117,
                             )

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
-import 'package:oborkom/core/utils/app_colors.dart';
 import 'package:oborkom/core/widgets/shimmer_item.dart';
 import '../../../../core/routes/routes.dart';
 import '../cubit/main_cubit.dart';
@@ -16,8 +15,8 @@ class MyServicesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<MainCubit, MainState>(
       builder: (context, state) {
-        final servicesList = state.servicesList ?? [];
-        final sliderList = state.sliderList ?? [];
+        final servicesList = state.categoriesModel?.data ?? [];
+        final sliderList = state.sliderModel?.data ?? [];
         return CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
@@ -30,12 +29,7 @@ class MyServicesWidget extends StatelessWidget {
                           margin: 12,
                         )
                       : ImageSlider(
-                          images: sliderList,
-                          colors: [
-                            Colors.white,
-                            AppColors.mainColor,
-                            Colors.white,
-                          ],
+                          images: sliderList
                         ),
                   20.height,
                   const ChooseYourServices(),

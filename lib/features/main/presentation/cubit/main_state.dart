@@ -10,34 +10,34 @@ extension MainStateX on MainState {}
 class MainState extends Equatable {
   GetLocationState? getLocationState;
   String? location;
-  List<ServicesModel>? servicesList;
+  CategoriesModel? categoriesModel;
   String? errorMessage;
-  List<String>? sliderList;
+  SliderModel?  sliderModel;
   List<CarModel> ? cars;
 
   MainState({
     this.getLocationState,
     this.location,
-    this.servicesList,
+    this.categoriesModel,
     this.errorMessage,
-    this.sliderList,
+    this.sliderModel,
     this.cars
   });
 
   MainState copyWith({
     GetLocationState? getLocationState,
     String? location,
-    List<ServicesModel>? servicesList,
+    CategoriesModel? categoriesModel,
     String? errorMessage,
-    List<String>? sliderList,
+    SliderModel? sliderModel,
     List<CarModel> ? cars
   }) {
     return MainState(
       getLocationState: getLocationState ?? this.getLocationState,
       location: location ?? this.location,
-      servicesList: servicesList ?? this.servicesList,
+      categoriesModel: categoriesModel ?? this.categoriesModel,
       errorMessage: errorMessage ?? this.errorMessage,
-      sliderList: sliderList ?? this.sliderList,
+        sliderModel: sliderModel ?? this.sliderModel,
       cars: cars?? this.cars
     );
   }
@@ -46,9 +46,9 @@ class MainState extends Equatable {
   List<Object?> get props => [
     getLocationState,
     location,
-    servicesList,
+    categoriesModel,
     errorMessage,
-    sliderList,
+    sliderModel,
     cars,
   ];
 }

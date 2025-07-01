@@ -12,7 +12,6 @@ import '../../../notification/presentation/pages/notification_screen.dart';
 import '../../../profile/presentation/cubit/profile_cubit.dart';
 import '../../../profile/presentation/pages/profile_screen.dart';
 import '../../../main/presentation/pages/main_screen.dart';
-
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
