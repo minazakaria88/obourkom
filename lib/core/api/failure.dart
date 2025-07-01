@@ -76,7 +76,7 @@ String getError(dynamic response)
   if(response['errors']==null) return response['message'];
   Map<String,dynamic> errors=response['errors'];
   errors.forEach((k,v){
-    error+='${v.first} , ';
+    error+='${v.first}\n';
   });
 
   return error;

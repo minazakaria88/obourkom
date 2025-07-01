@@ -157,6 +157,7 @@ class _OtpScreenState extends State<OtpScreen> {
               otp: code ?? '',
               otpType: widget.otpType,
             );
+            otpCode = '';
           }
         },
         codeLength: 4,
