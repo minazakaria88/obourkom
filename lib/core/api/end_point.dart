@@ -16,7 +16,7 @@ class EndPoints {
   static const cancelOrder = '';
   static const rateDriver = '';
 
-  static const service = '';
+  static const categories = '';
   static const slider = '';
   static const cars = '';
   static const faq = '';
