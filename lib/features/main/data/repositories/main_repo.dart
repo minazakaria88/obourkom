@@ -12,7 +12,7 @@ class MainRepository {
   final ApiHelper apiHelper;
   MainRepository({required this.apiHelper});
 
-  Future<CategoriesModel> getService() async {
+  Future<CategoriesModel> getCategories() async {
     try {
       final response = await apiHelper.getData(url: EndPoints.categories);
       logger.d(response.data);

@@ -19,7 +19,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<Widget> screens = [
     BlocProvider(
-      create: (context) => getIt<MainCubit>()..getService()..getSlider(),
+      create: (context) => getIt<MainCubit>()..getCategories()..getSlider(),
       child: const MainScreen(),
     ),
     BlocProvider(

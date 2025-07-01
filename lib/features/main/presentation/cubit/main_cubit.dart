@@ -42,9 +42,9 @@ class MainCubit extends Cubit<MainState> {
     }
   }
 
-  void getService() async {
+  void getCategories() async {
     try {
-       final result = await mainRepository.getService();
+       final result = await mainRepository.getCategories();
       emit(state.copyWith(categoriesModel: result));
     } on ApiException catch (e) {
       emit(state.copyWith(errorMessage: e.failure.message));

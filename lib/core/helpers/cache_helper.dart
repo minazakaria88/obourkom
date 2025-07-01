@@ -57,7 +57,7 @@ class CacheHelper {
   }
 
 
- static void saveUser(User model) async {
+ static Future<void> saveUser(User model) async {
     await CacheHelper.saveData(key: CacheHelperKeys.name, value: model.name);
     await CacheHelper.saveData(key: CacheHelperKeys.email, value: model.email);
     await CacheHelper.saveData(key: CacheHelperKeys.phone, value: model.phone);
