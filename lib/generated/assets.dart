@@ -34,6 +34,7 @@ class Assets {
   static const String imagesGreenDot = 'assets/images/greenDot.svg';
   static const String imagesHome = 'assets/images/home.svg';
   static const String imagesLanguage = 'assets/images/language.svg';
+  static const String imagesLoading = 'assets/images/loading.gif';
   static const String imagesLocation = 'assets/images/location.svg';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLogout = 'assets/images/logout.svg';

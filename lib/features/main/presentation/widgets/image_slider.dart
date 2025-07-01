@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:oborkom/core/helpers/extension.dart';
@@ -27,26 +26,25 @@ class _ImageSliderState extends State<ImageSlider> {
         CarouselSlider(
           items: widget.images
               .map(
-                (e) => Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: SizedBox(
-                    width: MediaQuery.sizeOf(context).width,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.teal,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [
-                          const BoxShadow(
-                            color: Color.fromRGBO(0, 28, 51, 0.06),
-                            spreadRadius: 0,
-                            blurRadius: 24,
-                            offset: Offset(0, 4),
-                          ),
-                        ],
-                      ),
-                      child: CachedImageWidget(
-                        imageUrl: e.image!,
-                      ),
+                (e) => SizedBox(
+                  width: MediaQuery.sizeOf(context).width,
+                  child: Container(
+                    margin: const EdgeInsets.all(12),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    decoration: BoxDecoration(
+                      color: Colors.teal,
+                      borderRadius: BorderRadius.circular(16),
+                      boxShadow: [
+                        const BoxShadow(
+                          color: Color.fromRGBO(0, 28, 51, 0.06),
+                          spreadRadius: 0,
+                          blurRadius: 24,
+                          offset: Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: CachedImageWidget(
+                      imageUrl: e.image!,
                     ),
                   ),
                 ),

@@ -8,6 +8,7 @@ import '../../../../core/helpers/cache_helper.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../generated/assets.dart';
 import '../../../../generated/l10n.dart';
+import '../../../home/presentation/cubit/home_cubit.dart';
 import '../widgets/determine_location_widget.dart';
 
 class MainScreen extends StatefulWidget {
@@ -68,7 +69,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
               IconButton(
                 onPressed: () {
-
+                  context.read<HomeCubit>().changeIndex(2);
                 },
                 icon: SvgPicture.asset(Assets.imagesNotification),
               ),
