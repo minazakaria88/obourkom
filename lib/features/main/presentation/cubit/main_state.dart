@@ -2,8 +2,7 @@ part of 'main_cubit.dart';
 
 enum GetLocationState { loading, success, failure }
 
-
-
+enum GetCarsState { loading, success, failure }
 
 extension MainStateX on MainState {}
 
@@ -12,8 +11,9 @@ class MainState extends Equatable {
   String? location;
   CategoriesModel? categoriesModel;
   String? errorMessage;
-  SliderModel?  sliderModel;
-  List<CarModel> ? cars;
+  SliderModel? sliderModel;
+  List<CarModel>? cars;
+  GetCarsState? getCarsState;
 
   MainState({
     this.getLocationState,
@@ -21,7 +21,8 @@ class MainState extends Equatable {
     this.categoriesModel,
     this.errorMessage,
     this.sliderModel,
-    this.cars
+    this.cars,
+    this.getCarsState,
   });
 
   MainState copyWith({
@@ -30,15 +31,17 @@ class MainState extends Equatable {
     CategoriesModel? categoriesModel,
     String? errorMessage,
     SliderModel? sliderModel,
-    List<CarModel> ? cars
+    List<CarModel>? cars,
+    GetCarsState? getCarsState,
   }) {
     return MainState(
       getLocationState: getLocationState ?? this.getLocationState,
       location: location ?? this.location,
       categoriesModel: categoriesModel ?? this.categoriesModel,
       errorMessage: errorMessage ?? this.errorMessage,
-        sliderModel: sliderModel ?? this.sliderModel,
-      cars: cars?? this.cars
+      sliderModel: sliderModel ?? this.sliderModel,
+      cars: cars ?? this.cars,
+      getCarsState: getCarsState ?? this.getCarsState,
     );
   }
 
@@ -50,5 +53,6 @@ class MainState extends Equatable {
     errorMessage,
     sliderModel,
     cars,
+    getCarsState,
   ];
 }

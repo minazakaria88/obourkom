@@ -7,7 +7,6 @@ import 'package:oborkom/features/home/presentation/pages/home_screen.dart';
 import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.dart';
 import 'package:oborkom/features/login/presentation/pages/login_screen.dart';
 import 'package:oborkom/features/locations/presentation/pages/pick_location_screen.dart';
-import 'package:oborkom/features/main/presentation/cubit/main_cubit.dart';
 import 'package:oborkom/features/notification/presentation/pages/notification_screen.dart';
 import 'package:oborkom/features/orders/presentation/pages/finding_drivers.dart';
 import 'package:oborkom/features/profile/presentation/cubit/profile_cubit.dart';
@@ -17,9 +16,9 @@ import 'package:oborkom/features/profile/presentation/pages/profile_features_scr
 import 'package:oborkom/features/profile/presentation/pages/profile_features_screens/support_screen.dart';
 import 'package:oborkom/features/register/presentation/cubit/register_cubit.dart';
 import 'package:oborkom/features/register/presentation/pages/register_screen.dart';
-
 import '../../features/locations/presentation/pages/locations_screen.dart';
 import '../../features/login/presentation/cubit/login_cubit.dart';
+import '../../features/main/presentation/cubit/main_cubit.dart';
 import '../../features/main/presentation/pages/choose_car_screen.dart';
 import '../../features/orders/presentation/cubit/orders_cubit.dart';
 import '../../features/orders/presentation/pages/completed_order_details_screen.dart';
@@ -29,6 +28,7 @@ import '../../features/otp/presentation/cubit/otp_cubit.dart';
 import '../../features/otp/presentation/pages/otp_screen.dart';
 import '../../features/profile/presentation/pages/profile_features_screens/terms_and_conditions_screen.dart';
 import '../../injection.dart';
+import '../helpers/error_handler.dart';
 import '../widgets/noInternet_screen.dart';
 
 class AppRoues {
@@ -68,11 +68,11 @@ class AppRoues {
           ),
         );
       case Routes.chooseYourCar:
-        final arguments = setting.arguments as MainCubit;
+        final arguments = setting.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
           builder: (context) => BlocProvider.value(
-            value: arguments,
-            child: const ChooseCarScreen(),
+            value: arguments['cubit'] as MainCubit,
+            child: ChooseCarScreen(ids: arguments['ids'],),
           ),
         );
       case Routes.newOrder:
@@ -153,6 +153,10 @@ class AppRoues {
         );
       case Routes.noInternet:
         return MaterialPageRoute(builder: (context) => const NoInternet());
+      case Routes.error:
+        final arguments = setting.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) => CustomErrorWidget(error: arguments),);
       default:
         return null;
     }

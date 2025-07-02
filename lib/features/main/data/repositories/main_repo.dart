@@ -40,15 +40,17 @@ class MainRepository {
     }
   }
 
-  Future<List<CarModel>> getCars() async {
+  Future<List<CarModel>> getCars(List<String> ids) async {
     List<CarModel> cars = [];
     try {
-      final response = await apiHelper.getData(url: EndPoints.cars);
-      response.data.forEach((e) {
-        cars.add(CarModel.fromJson(e));
-      });
+      final future =ids.map((e) => apiHelper.getData(url: '${EndPoints.trucks}/$e')).toList();
+      final responses = await Future.wait(future);
+      for (var element in responses) {
+        cars.add(CarModel.fromJson(element.data['data']));
+      }
       return cars;
     } catch (e) {
+      logger.e(e);
       if (e is DioException) {
         throw ApiException(failure: ServerFailure.serverError(e));
       }

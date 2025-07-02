@@ -42,7 +42,7 @@ class OtpCubit extends Cubit<OtpState> {
     });
   }
 
-  void verifyOtp({required String otp, required OtpType otpType}) async {
+  Future<void> verifyOtp({required String otp, required OtpType otpType}) async {
     try {
       _timer?.cancel();
       emit(state.copyWith(otpStatus: VerifyOtpStatus.loading));

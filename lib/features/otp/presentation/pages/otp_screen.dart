@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/functions/show_snack_bar.dart';
@@ -149,11 +148,11 @@ class _OtpScreenState extends State<OtpScreen> {
         onCodeSubmitted: (String code) {
           otpCode = code;
         },
-        onCodeChanged: (String? code) {
+        onCodeChanged: (String? code)async {
           otpCode = code ?? '';
-          log('onCodeChanged: $code');
+          logger.i(code);
           if ((code ?? '').length == 4) {
-            context.read<OtpCubit>().verifyOtp(
+            await context.read<OtpCubit>().verifyOtp(
               otp: code ?? '',
               otpType: widget.otpType,
             );

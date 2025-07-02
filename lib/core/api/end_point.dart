@@ -18,6 +18,8 @@ class EndPoints {
 
   static const categories = '';
   static const slider = '';
-  static const cars = '';
+
   static const faq = '';
+
+  static const trucks='';
 }

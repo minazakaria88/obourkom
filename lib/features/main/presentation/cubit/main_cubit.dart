@@ -11,9 +11,6 @@ import '../../../../core/api/failure.dart';
 import '../../../../core/functions/determine_position.dart';
 import '../../../../core/functions/get_places_mark.dart';
 import '../../../../core/utils/constant.dart';
-import '../../../../generated/assets.dart';
-import '../../../../generated/l10n.dart';
-import '../../../../main.dart';
 import '../../data/models/categories_model.dart';
 part 'main_state.dart';
 
@@ -44,7 +41,7 @@ class MainCubit extends Cubit<MainState> {
 
   void getCategories() async {
     try {
-       final result = await mainRepository.getCategories();
+      final result = await mainRepository.getCategories();
       emit(state.copyWith(categoriesModel: result));
     } on ApiException catch (e) {
       emit(state.copyWith(errorMessage: e.failure.message));
@@ -64,31 +61,25 @@ class MainCubit extends Cubit<MainState> {
     }
   }
 
-  void getCars()async
-  {
+  void getCars(List<String> ids) async {
     try {
-      emit(state.copyWith(cars: []));
-      await Future.delayed(const Duration(seconds: 5));
-      // final response = await mainRepository.getCars();
-      emit(state.copyWith(cars: [
-        CarModel(
-          id: 1,
-          name: S.of(NavigatorClass.navigatorKey.currentState!.context).smallCars,
-          type: 1,
-          image: Assets.imagesSmallCar,
-        ),
-        CarModel(
-          id: 2,
-          name: S.of(NavigatorClass.navigatorKey.currentState!.context).bigCars,
-          type: 2,
-          image: Assets.imagesBigCar,
-        ),
-      ]));
+      emit(state.copyWith(getCarsState: GetCarsState.loading));
+      final response = await mainRepository.getCars(ids);
+      emit(state.copyWith(cars: response, getCarsState: GetCarsState.success));
     } on ApiException catch (e) {
-      emit(state.copyWith(errorMessage: e.failure.message));
+      emit(
+        state.copyWith(
+          errorMessage: e.failure.message,
+          getCarsState: GetCarsState.failure,
+        ),
+      );
     } catch (e) {
-      emit(state.copyWith(errorMessage: e.toString()));
+      emit(
+        state.copyWith(
+          errorMessage: e.toString(),
+          getCarsState: GetCarsState.failure,
+        ),
+      );
     }
   }
-
 }
