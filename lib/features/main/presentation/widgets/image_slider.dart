@@ -32,13 +32,13 @@ class _ImageSliderState extends State<ImageSlider> {
                     margin: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
+                      borderRadius: BorderRadius.circular(12),
                       boxShadow: [
-                        const BoxShadow(
-                          color: Color.fromRGBO(0, 28, 51, 0.06),
+                        BoxShadow(
+                          color: const Color(0xff065C73).withAlpha((0.1 * 255).toInt()),
                           spreadRadius: 0,
                           blurRadius: 24,
-                          offset: Offset(0, 4),
+                          offset: const Offset(0, 8),
                         ),
                       ],
                     ),

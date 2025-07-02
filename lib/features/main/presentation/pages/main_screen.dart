@@ -42,7 +42,7 @@ class _MainScreenState extends State<MainScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '${S.of(context).welcome}  mina !',
+                      '${S.of(context).welcome}  ${CacheHelper.getData(key: CacheHelperKeys.name) ?? 'Guest'} !',
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w400,
