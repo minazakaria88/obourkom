@@ -65,7 +65,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const RegisterHeaderWidget(),
+                              const Center(child: RegisterHeaderWidget()),
                               20.height,
                               Text(
                                 S.of(context).phoneNumber,

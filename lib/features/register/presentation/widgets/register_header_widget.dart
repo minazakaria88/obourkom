@@ -14,6 +14,7 @@ class RegisterHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+
       children: [
         Image.asset(Assets.imagesLogo),
         15.height,
