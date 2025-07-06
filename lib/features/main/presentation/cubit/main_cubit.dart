@@ -26,7 +26,7 @@ class MainCubit extends Cubit<MainState> {
       final addresses = await getAddressFromLatAndLng(
         LatLng(currentPosition.latitude, currentPosition.longitude),
       );
-      CacheHelper.saveData(key: CacheHelperKeys.locationEnabled, value: true);
+     await CacheHelper.saveData(key: CacheHelperKeys.locationEnabled, value: true);
       emit(
         state.copyWith(
           getLocationState: GetLocationState.success,

@@ -78,7 +78,7 @@ class _MainScreenState extends State<MainScreen> {
           20.height,
           BlocBuilder<MainCubit, MainState>(
             buildWhen: (previous, current) =>
-                previous.location != current.location,
+                previous.getLocationState != current.getLocationState,
             builder: (context, state) =>
                 CacheHelper.getData(key: CacheHelperKeys.locationEnabled) ==
                     true
