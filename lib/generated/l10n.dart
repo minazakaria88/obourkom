@@ -1108,6 +1108,41 @@ class S {
       args: [],
     );
   }
+
+  /// `Order Date`
+  String get orderDate {
+    return Intl.message('Order Date', name: 'orderDate', desc: '', args: []);
+  }
+
+  /// `Order Status`
+  String get orderStatus {
+    return Intl.message(
+      'Order Status',
+      name: 'orderStatus',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No Orders Found`
+  String get noOrdersFound {
+    return Intl.message(
+      'No Orders Found',
+      name: 'noOrdersFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `There are no orders available in the current location`
+  String get noOrdersFoundDesc {
+    return Intl.message(
+      'There are no orders available in the current location',
+      name: 'noOrdersFoundDesc',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

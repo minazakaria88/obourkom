@@ -15,7 +15,7 @@ class CompleteOrderPaymentSummaryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BackgroundProfileWidget(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(12.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

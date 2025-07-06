@@ -19,7 +19,12 @@ class CompletedOrderDetailsScreen extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(
+              top: 12.0,
+              left: 12,
+              right: 12,
+              bottom: 100,
+            ),
             child: SingleChildScrollView(
               child: Column(
                 children: [

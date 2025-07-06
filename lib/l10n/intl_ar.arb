@@ -135,7 +135,11 @@
     "pleaseCheckYourInternetConnection": "الرجاء التحقق من اتصالك بالانترنت",
     "faq": "الاسئلة الشائعة",
     "loginSuccessfully": "تم تسجيل الدخول بنجاح",
-    "somethingWentWrong": "حدث خطأ ما"
+    "somethingWentWrong": "حدث خطأ ما",
+    "orderDate": "تاريخ الطلب",
+    "orderStatus": "حالة الطلب",
+    "noOrdersFound" : "لم يتم العثور على طلبات",
+    "noOrdersFoundDesc" : "لا يوجد طلبات متاحة في الموقع الحالي"
 
 
 

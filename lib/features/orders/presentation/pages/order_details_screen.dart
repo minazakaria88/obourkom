@@ -86,7 +86,6 @@ class OrderDetailsScreen extends StatelessWidget {
                   SliverToBoxAdapter(child: 10.height),
                   const SliverToBoxAdapter(child: DriverDetails()),
                   SliverToBoxAdapter(child: 20.height),
-                  // Chat/Message List
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) => Container(
@@ -105,8 +104,6 @@ class OrderDetailsScreen extends StatelessWidget {
                 ],
               ),
             ),
-
-            // Fixed input at bottom
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(

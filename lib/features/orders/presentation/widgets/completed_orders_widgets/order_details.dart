@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
@@ -40,6 +39,15 @@ class CompleteOrderDetailsWidget extends StatelessWidget {
               value: 'أبل باي',
               title: S.of(context).paymentMethod,
             ),
+            OrderDetailsItemWidget(
+              value: '13/11/2024',
+              title: S.of(context).orderDate,
+            ),
+            OrderDetailsItemWidget(
+              value: 'تم التوصيل',
+              title: S.of(context).orderStatus,
+            ),
+
           ],
         ),
       ),

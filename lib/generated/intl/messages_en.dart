@@ -142,6 +142,10 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "noNotifications": MessageLookupByLibrary.simpleMessage("No Notifications"),
     "noOrders": MessageLookupByLibrary.simpleMessage("No Orders"),
+    "noOrdersFound": MessageLookupByLibrary.simpleMessage("No Orders Found"),
+    "noOrdersFoundDesc": MessageLookupByLibrary.simpleMessage(
+      "There are no orders available in the current location",
+    ),
     "noSavedAddresses": MessageLookupByLibrary.simpleMessage(
       "No Saved Addresses",
     ),
@@ -151,8 +155,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "openGps": MessageLookupByLibrary.simpleMessage(
       "To provide the best service and ease of access, please enable your location",
     ),
+    "orderDate": MessageLookupByLibrary.simpleMessage("Order Date"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),
     "orderNumber": MessageLookupByLibrary.simpleMessage("Order Number"),
+    "orderStatus": MessageLookupByLibrary.simpleMessage("Order Status"),
     "orderValue": MessageLookupByLibrary.simpleMessage("Order Value"),
     "orders": MessageLookupByLibrary.simpleMessage("Orders"),
     "other": MessageLookupByLibrary.simpleMessage("Other"),

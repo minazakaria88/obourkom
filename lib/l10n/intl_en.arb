@@ -133,9 +133,11 @@
   "pleaseCheckYourInternetConnection": "Please check your internet connection",
   "faq": "FAQ",
   "loginSuccessfully": "Login Successfully",
-  "somethingWentWrong": "Something went wrong"
-
-
+  "somethingWentWrong": "Something went wrong",
+  "orderDate": "Order Date",
+  "orderStatus": "Order Status",
+  "noOrdersFound" : "No Orders Found",
+  "noOrdersFoundDesc" : "There are no orders available in the current location"
 
 
 

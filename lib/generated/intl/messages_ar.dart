@@ -135,6 +135,12 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "noNotifications": MessageLookupByLibrary.simpleMessage("لا يوجد اشعارات"),
     "noOrders": MessageLookupByLibrary.simpleMessage("لا يوجد طلبات"),
+    "noOrdersFound": MessageLookupByLibrary.simpleMessage(
+      "لم يتم العثور على طلبات",
+    ),
+    "noOrdersFoundDesc": MessageLookupByLibrary.simpleMessage(
+      "لا يوجد طلبات متاحة في الموقع الحالي",
+    ),
     "noSavedAddresses": MessageLookupByLibrary.simpleMessage(
       "لا يوجد عناوين محفوظة",
     ),
@@ -144,8 +150,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "openGps": MessageLookupByLibrary.simpleMessage(
       "لتقديم افضل خدمة وسهولة في الوصول يرجي تفعيل الموقع",
     ),
+    "orderDate": MessageLookupByLibrary.simpleMessage("تاريخ الطلب"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),
     "orderNumber": MessageLookupByLibrary.simpleMessage("رقم الطلب"),
+    "orderStatus": MessageLookupByLibrary.simpleMessage("حالة الطلب"),
     "orderValue": MessageLookupByLibrary.simpleMessage("قيمة الطلب"),
     "orders": MessageLookupByLibrary.simpleMessage("الطلبات"),
     "other": MessageLookupByLibrary.simpleMessage("اخرى"),
