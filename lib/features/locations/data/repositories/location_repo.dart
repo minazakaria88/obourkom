@@ -14,7 +14,7 @@ class LocationRepository {
   Future<List<LocationModel>> getLocations() async {
     final List<LocationModel> locations = [];
     try {
-      // final response = await apiHelper.getData(url: EndPoints.login);
+      // final response = await apiHelper.getData(url: EndPoints.locations);
       // response.data.forEach((e) {
       //   locations.add(LocationModel.fromJson(e));
       // });
@@ -23,7 +23,6 @@ class LocationRepository {
           id: 1,
           name:
               'PM8G+HVJ حي الورد، الأمير فيصل بن سعد بن عبدالرحمن، الورود، الرياض 12251، المملكة العربية السعودية',
-
           latLng: const LatLng(30.0444, 31.2357),
           type: 'home',
         ),

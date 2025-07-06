@@ -1,5 +1,8 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+
+
+/// get locations model
 class LocationModel
 {
   int? id;

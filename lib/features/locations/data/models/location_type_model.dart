@@ -3,6 +3,9 @@ import 'package:oborkom/generated/assets.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../main.dart';
 
+
+
+/// home , work , other
 class LocationTypeModel {
   final int id;
   final String name;
