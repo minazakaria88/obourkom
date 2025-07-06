@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:oborkom/core/widgets/cached_image_widget.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../generated/assets.dart';
@@ -26,7 +26,7 @@ class ProfileImage extends StatelessWidget {
               width: width ?? 80,
               height: height ?? 80,
               decoration: const BoxDecoration(shape: BoxShape.circle),
-              child: CachedNetworkImage(imageUrl: image!, fit: BoxFit.fill),
+              child: CachedImageWidget(imageUrl: image!),
             )
           : Image.asset(Assets.imagesLogo),
     );
