@@ -84,24 +84,27 @@ class DriverDetailsWidget extends StatelessWidget {
               ],
             ),
             20.height,
-            Row(
-              children: [
-                Expanded(
-                  child: DeclineOfferWidget(
-                    onTap: () {
-                      decline();
-                    },
+            SizedBox(
+              height: 60,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: DeclineOfferWidget(
+                      onTap: () {
+                        decline();
+                      },
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: MyButton(
-                    title: S.of(context).accept,
-                    onTap: () {
-                      accept();
-                    },
+                  Expanded(
+                    child: MyButton(
+                      title: S.of(context).accept,
+                      onTap: () {
+                        accept();
+                      },
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
