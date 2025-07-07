@@ -154,7 +154,7 @@ class EditProfileScreen extends StatelessWidget {
                                 title: S.of(context).edit,
                                 onTap: () {
                                   if (cubit.formKey.currentState!.validate()) {
-                                    //cubit.updateProfile();
+                                    cubit.updateProfile();
                                   }
                                 },
                               ),
