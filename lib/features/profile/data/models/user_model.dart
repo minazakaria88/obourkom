@@ -24,7 +24,9 @@ class CachedUserModel
     data['name'] = name;
     data['email'] = email;
     data['phone'] = phone;
-    data['image'] = image;
+    if (image != null) {
+      data['image'] = image;
+    }
     return data;
   }
 }

@@ -53,39 +53,42 @@ class ProfileCubit extends Cubit<ProfileState> {
     }
   }
 
-  // void updateProfile() async {
-  //   emit(state.copyWith(editProfileStatus: EditProfileStatus.loading));
-  //   try {
-  //     final user = UserModel(
-  //       email: emailController.text,
-  //       name: nameController.text,
-  //       phone: phoneController.text,
-  //     );
-  //     await profileRepository.updateProfile(user.toJson());
-  //     emit(state.copyWith(editProfileStatus: EditProfileStatus.success));
-  //   } on ApiException catch (e) {
-  //     emit(
-  //       state.copyWith(
-  //         editProfileStatus: EditProfileStatus.failure,
-  //         errorMessage: e.failure.message,
-  //       ),
-  //     );
-  //   } catch (e) {
-  //     emit(
-  //       state.copyWith(
-  //         editProfileStatus: EditProfileStatus.failure,
-  //         errorMessage: e.toString(),
-  //       ),
-  //     );
-  //   }
-  // }
+  void updateProfile() async {
+    emit(state.copyWith(editProfileStatus: EditProfileStatus.loading));
+    try {
+      final user = CachedUserModel(
+        email: emailController.text,
+        name: nameController.text,
+        phone: phoneController.text,
+      );
+      await profileRepository.updateProfile(user.toJson());
+      emit(state.copyWith(editProfileStatus: EditProfileStatus.success));
+    } on ApiException catch (e) {
+      emit(
+        state.copyWith(
+          editProfileStatus: EditProfileStatus.failure,
+          errorMessage: e.failure.message,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          editProfileStatus: EditProfileStatus.failure,
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
 
   void updateImage() async {
+    emit(state.copyWith(imageStatus: ImageStatus.loading));
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
-      emit(state.copyWith(imageStatus: ImageStatus.loading));
       await Future.delayed(const Duration(seconds: 2));
       emit(state.copyWith(imageStatus: ImageStatus.success));
+    }
+    else {
+      emit(state.copyWith(imageStatus: ImageStatus.failure));
     }
   }
 
