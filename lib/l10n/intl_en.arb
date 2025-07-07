@@ -137,9 +137,8 @@
   "orderDate": "Order Date",
   "orderStatus": "Order Status",
   "noOrdersFound" : "No Orders Found",
-  "noOrdersFoundDesc" : "There are no orders available in the current location"
-
-
+  "noOrdersFoundDesc" : "There are no orders available in the current location",
+  "searchOnMap": "Search on Map"
 
 
 

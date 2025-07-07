@@ -219,6 +219,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "request": MessageLookupByLibrary.simpleMessage("طلب"),
     "resend": MessageLookupByLibrary.simpleMessage("اعادة الارسال"),
     "save": MessageLookupByLibrary.simpleMessage("حفظ"),
+    "searchOnMap": MessageLookupByLibrary.simpleMessage("ابحث في الخريطة"),
     "serviceType": MessageLookupByLibrary.simpleMessage("نوع الخدمة"),
     "setAsPrimary": MessageLookupByLibrary.simpleMessage("تعيين كرئيسي"),
     "shipmentValue": MessageLookupByLibrary.simpleMessage("قيمة التوصيل"),

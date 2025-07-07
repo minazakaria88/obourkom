@@ -8,6 +8,7 @@ import 'package:oborkom/generated/l10n.dart';
 import '../../../../core/widgets/my_app_bar.dart';
 import '../../../../generated/assets.dart';
 import '../widgets/picked_location_widgets/order_picked_location_widget.dart';
+import '../widgets/picked_location_widgets/search_widget.dart';
 
 class PickOrderLocationScreen extends StatefulWidget {
   const PickOrderLocationScreen({super.key, required this.mapContext});
@@ -89,6 +90,7 @@ class _PickOrderLocationScreenState extends State<PickOrderLocationScreen> {
                 rotateGesturesEnabled: true,
                 scrollGesturesEnabled: true,
               ),
+              const SearchWidget(),
               if (state.pickedLocation != null)
                 widget.mapContext.type == MapTypes.orderPick
                     ? OrderPickLocation(
@@ -106,3 +108,4 @@ class _PickOrderLocationScreenState extends State<PickOrderLocationScreen> {
     );
   }
 }
+

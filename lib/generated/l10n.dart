@@ -1143,6 +1143,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Search on Map`
+  String get searchOnMap {
+    return Intl.message(
+      'Search on Map',
+      name: 'searchOnMap',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -19,7 +19,7 @@ class ChooseLocationTypeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LocationsCubit, LocationsState>(
       buildWhen: (previous, current) =>
-      previous.locationType != current.locationType,
+          previous.locationType != current.locationType,
       builder: (context, state) {
         final cubit = context.read<LocationsCubit>();
         return Column(
@@ -38,53 +38,52 @@ class ChooseLocationTypeWidget extends StatelessWidget {
                 children: locationTypes
                     .map(
                       (e) => InkWell(
-                    onTap: () {
-                      cubit.selectLocationType(e.id);
-                    },
-                    child: Container(
-                      height: 40,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: state.locationType == e.id
-                            ? AppColors.mainColor
-                            : Colors.white,
-                        borderRadius: BorderRadius.circular(8),
-                        border: state.locationType == e.id
-                            ? null
-                            : Border.all(color: AppColors.mainColor),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SvgPicture.asset(
-                            e.image,
-                            colorFilter: ColorFilter.mode(
-                              state.locationType == e.id
-                                  ? Colors.white
-                                  : AppColors.mainColor,
-                              BlendMode.srcIn,
-                            ),
+                        onTap: () {
+                          cubit.selectLocationType(e.id);
+                        },
+                        child: Container(
+                          height: 40,
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: state.locationType == e.id
+                                ? AppColors.mainColor
+                                : Colors.white,
+                            borderRadius: BorderRadius.circular(8),
+                            border: state.locationType == e.id
+                                ? null
+                                : Border.all(color: AppColors.mainColor),
                           ),
-                          10.width,
-                          Text(
-                            e.name,
-                            style: state.locationType == e.id
-                                ? AppTextStyles.bold14White
-                                : AppTextStyles.regular16Black.copyWith(
-                              fontSize: 12,
-                            ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SvgPicture.asset(
+                                e.image,
+                                colorFilter: ColorFilter.mode(
+                                  state.locationType == e.id
+                                      ? Colors.white
+                                      : AppColors.mainColor,
+                                  BlendMode.srcIn,
+                                ),
+                              ),
+                              10.width,
+                              Text(
+                                e.name,
+                                style: state.locationType == e.id
+                                    ? AppTextStyles.bold14White
+                                    : AppTextStyles.regular16Black.copyWith(
+                                        fontSize: 12,
+                                      ),
+                              ),
+                              10.width,
+                            ],
                           ),
-                          10.width,
-
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                )
+                    )
                     .toList(),
               ),
             ),
-            if(state.locationType == 3)...[
+            if (state.locationType == 3) ...[
               10.height,
               Text(S.of(context).label, style: AppTextStyles.bold18Black),
               10.height,
@@ -99,7 +98,6 @@ class ChooseLocationTypeWidget extends StatelessWidget {
                 },
               ),
             ],
-
           ],
         );
       },

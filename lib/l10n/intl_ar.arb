@@ -139,7 +139,8 @@
     "orderDate": "تاريخ الطلب",
     "orderStatus": "حالة الطلب",
     "noOrdersFound" : "لم يتم العثور على طلبات",
-    "noOrdersFoundDesc" : "لا يوجد طلبات متاحة في الموقع الحالي"
+    "noOrdersFoundDesc" : "لا يوجد طلبات متاحة في الموقع الحالي",
+    "searchOnMap":"ابحث في الخريطة"
 
 
 
