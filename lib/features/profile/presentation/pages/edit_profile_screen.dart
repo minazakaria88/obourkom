@@ -42,10 +42,13 @@ class EditProfileScreen extends StatelessWidget {
                       state.isImageLoading
                           ? const LoaderWidget()
                           : state.userModel != null
-                          ? ProfileImage(
-                              image: state.userModel?.image,
-                              height: 117,
-                              width: 117,
+                          ? Hero(
+                              tag: state.userModel!.image!,
+                              child: ProfileImage(
+                                image: state.userModel!.image,
+                                height: 117,
+                                width: 117,
+                              ),
                             )
                           : const ProfileImage(height: 117, width: 117),
                       Positioned(

@@ -44,7 +44,10 @@ class ProfileHeaderWidget extends StatelessWidget {
                 return Expanded(
                   child: Row(
                     children: [
-                      ProfileImage(image: state.userModel?.image),
+                      Hero(
+                        tag: state.userModel!.image!,
+                        child: ProfileImage(image: state.userModel!.image),
+                      ),
                       20.width,
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
