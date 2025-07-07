@@ -16,6 +16,10 @@ class NotificationModel {
 
   NotificationModel.fromJson(Map<String,dynamic> json)
   {
-
+    title = json['title'];
+    description = json['description'];
+    id = json['id'];
+    isRead = json['isRead'];
+    dateTime = json['dateTime'];
   }
 }

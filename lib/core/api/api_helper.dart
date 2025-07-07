@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import '../helpers/cache_helper.dart';
-import '../utils/constant.dart';
 import 'end_point.dart';
 
 class ApiHelper {
