@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:oborkom/core/functions/make_phone_call.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -38,24 +39,31 @@ class DriverDetails extends StatelessWidget {
               ],
             ),
             const Spacer(),
-            Container(
-              padding: const EdgeInsets.all(7),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: AppColors.greenColor,
+            InkWell(
+              onTap: () {
+                makePhoneCall(phoneNumber: '+201064687742');
+              },
+              child: Container(
+                padding: const EdgeInsets.all(7),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: AppColors.greenColor,
+                ),
+                child: SvgPicture.asset(Assets.imagesPhoneCalling),
               ),
-              child: SvgPicture.asset(Assets.imagesPhoneCalling),
             ),
             10.width,
-            Container(
-              padding: const EdgeInsets.all(7),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: AppColors.darkMainColor,
+            InkWell(
+              onTap: () {},
+              child: Container(
+                padding: const EdgeInsets.all(7),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  color: AppColors.darkMainColor,
+                ),
+                child: SvgPicture.asset(Assets.imagesCompassBig),
               ),
-              child: SvgPicture.asset(Assets.imagesCompassBig),
             ),
-
           ],
         ),
         children: [
@@ -65,10 +73,7 @@ class DriverDetails extends StatelessWidget {
             children: [
               SvgPicture.asset(Assets.imagesCar),
               10.width,
-              Text(
-                'شيفروليه 2022 - ابيض',
-                style: AppTextStyles.bold18Black,
-              ),
+              Text('شيفروليه 2022 - ابيض', style: AppTextStyles.bold18Black),
             ],
           ),
           20.height,
@@ -92,17 +97,19 @@ class DriverDetails extends StatelessWidget {
                         ),
                       ),
                       10.width,
-                      Text(S.of(context).call,
-                          style: AppTextStyles.bold14Grey.copyWith(
-                            color: AppColors.greenColor,
-                          ))
+                      Text(
+                        S.of(context).call,
+                        style: AppTextStyles.bold14Grey.copyWith(
+                          color: AppColors.greenColor,
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
               10.width,
               Expanded(
-                child:  Container(
+                child: Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
@@ -119,21 +126,18 @@ class DriverDetails extends StatelessWidget {
                         ),
                       ),
                       10.width,
-                      Text(S.of(context).showOnMap,
-                          style: AppTextStyles.bold14Grey.copyWith(
-                            color: AppColors.darkMainColor,
-                          ))
+                      Text(
+                        S.of(context).showOnMap,
+                        style: AppTextStyles.bold14Grey.copyWith(
+                          color: AppColors.darkMainColor,
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
-
             ],
           ),
-
-
-
-
         ],
       ),
     );
