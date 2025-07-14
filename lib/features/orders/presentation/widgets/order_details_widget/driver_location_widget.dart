@@ -5,7 +5,6 @@ import 'package:oborkom/core/helpers/extension.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/assets.dart';
-import '../../../../../generated/l10n.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/profile_image.dart';
 import 'call_and_show_on_map_widget.dart';
 

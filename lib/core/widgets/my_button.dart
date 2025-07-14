@@ -4,11 +4,16 @@ import '../utils/app_colors.dart';
 
 class MyButton extends StatelessWidget {
   const MyButton({
-    super.key, required this.title, required this.onTap, this.color,
+    super.key,
+    required this.title,
+    required this.onTap,
+    this.color,
+    this.textColor,
   });
   final String title;
   final Function onTap;
-  final Color ? color;
+  final Color? color;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +32,9 @@ class MyButton extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-           title,
-            style: const TextStyle(
-              color: Colors.white,
+            title,
+            style: TextStyle(
+              color: textColor ?? Colors.white,
               fontSize: 16,
               fontWeight: FontWeight.w700,
             ),

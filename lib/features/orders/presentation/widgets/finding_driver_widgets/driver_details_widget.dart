@@ -9,7 +9,6 @@ import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/profile_image.dart';
-import 'decline_offer_widget.dart';
 
 class DriverDetailsWidget extends StatelessWidget {
   const DriverDetailsWidget({
@@ -85,11 +84,14 @@ class DriverDetailsWidget extends StatelessWidget {
             ),
             20.height,
             SizedBox(
-              height: 60,
+              height: 50,
               child: Row(
                 children: [
                   Expanded(
-                    child: DeclineOfferWidget(
+                    child: MyButton(
+                      textColor: Colors.black,
+                      title: S.of(context).decline,
+                      color: const Color(0xffF5FAFA),
                       onTap: () {
                         decline();
                       },

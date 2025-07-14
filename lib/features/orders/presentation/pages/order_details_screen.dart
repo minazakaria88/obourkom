@@ -47,6 +47,7 @@ class OrderDetailsScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         OrderStepperWidget(
+                          isActive: true,
                           title: S.of(context).onYourWay,
                           image: Assets.imagesDriverOnWay,
                         ),
@@ -62,6 +63,7 @@ class OrderDetailsScreen extends StatelessWidget {
                           ),
                         ),
                         OrderStepperWidget(
+                          isActive: true,
                           title: S.of(context).theDriverHasArrived,
                           image: Assets.imagesDriverArrive,
                         ),
@@ -75,6 +77,7 @@ class OrderDetailsScreen extends StatelessWidget {
                           ),
                         ),
                         OrderStepperWidget(
+                          isActive: false,
                           title: S.of(context).theShipmentHasArrived,
                           image: Assets.imagesShipmentArrive,
                         ),
