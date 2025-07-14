@@ -25,7 +25,10 @@ class OrdersCubit extends Cubit<OrdersState> {
   void pickDeliveryLocation(LocationOrderModel model) async {
     emit(
       state.copyWith(
-        deliveryLocation: LatLng(model.position!.latitude, model.position!.longitude),
+        deliveryLocation: LatLng(
+          model.position!.latitude,
+          model.position!.longitude,
+        ),
         deliveryLocationData: model.address,
       ),
     );
@@ -34,7 +37,10 @@ class OrdersCubit extends Cubit<OrdersState> {
   void pickPickupLocation(LocationOrderModel model) async {
     emit(
       state.copyWith(
-        pickedLocation: LatLng(model.position!.latitude, model.position!.longitude),
+        pickedLocation: LatLng(
+          model.position!.latitude,
+          model.position!.longitude,
+        ),
         pickedLocationData: model.address,
       ),
     );
@@ -46,7 +52,7 @@ class OrdersCubit extends Cubit<OrdersState> {
 
   void makeOrder() async {
     try {
-      final model = getNewOrderModel();
+     // final model = getNewOrderModel();
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.loading));
       await Future.delayed(const Duration(seconds: 2));
       //final result = await otpRepository.makeOrder(model.toJson());
@@ -71,19 +77,11 @@ class OrdersCubit extends Cubit<OrdersState> {
   NewOrderModel getNewOrderModel() {
     return NewOrderModel(
       pickUpLocation: state.pickedLocation!,
-      dropOffLocation:
-          state.deliveryLocation!,
+      dropOffLocation: state.deliveryLocation!,
       pickUpAddress:
-          concatenatePlacemark(
-            place: state.pickedLocationData,
-          ) ??
-              '',
+          concatenatePlacemark(place: state.pickedLocationData) ?? '',
       dropOffAddress:
-          concatenatePlacemark(
-            place:
-                state.deliveryLocationData,
-          ) ??
-              '',
+          concatenatePlacemark(place: state.deliveryLocationData) ?? '',
       paymentMethod: state.paymentMethod!,
       notes: notesController.text,
       discount: codeController.text,
@@ -93,11 +91,56 @@ class OrdersCubit extends Cubit<OrdersState> {
   void getOrders() async {
     emit(state.copyWith(getOrdersStatus: GetOrdersStatus.loading));
     try {
-      final result = await otpRepository.getOrders();
+      await Future.delayed(const Duration(seconds: 2));
+      // final result = await otpRepository.getOrders();
+      final result = [
+        OrderModel(
+          cost: '1000',
+          id: '1',
+          orderNumber: '100',
+          serviceType: 'نقل أثاث',
+          truckType: 'كبير',
+          status: 'waiting',
+        ),
+        OrderModel(
+          cost: '1000',
+          id: '1',
+          orderNumber: '100',
+          serviceType: 'نقل أثاث',
+          truckType: 'كبير',
+          status: 'inProgress',
+        ),
+        OrderModel(
+          cost: '1000',
+          id: '1',
+          orderNumber: '100',
+          serviceType: 'نقل أثاث',
+          truckType: 'كبير',
+          status: 'completed',
+        ),
+        OrderModel(
+          cost: '1000',
+          id: '1',
+          orderNumber: '100',
+          serviceType: 'نقل أثاث',
+          truckType: 'كبير',
+          status: 'completed',
+        ),
+      ];
+      final recentOrder = List<OrderModel>.from([]);
+      final completedOrder = List<OrderModel>.from([]);
+      for (var element in result) {
+        if (element.status == 'waiting' || element.status == 'inProgress') {
+          recentOrder.add(element);
+        } else if (element.status == 'completed') {
+          completedOrder.add(element);
+        }
+      }
       emit(
         state.copyWith(
           getOrdersStatus: GetOrdersStatus.success,
-          ordersList: result,
+          recentOrdersList: recentOrder,
+          completedOrdersList: completedOrder,
         ),
       );
     } on ApiException catch (e) {
@@ -157,6 +200,4 @@ class OrdersCubit extends Cubit<OrdersState> {
   void setDiscountCode(String value) {
     logger.d(value);
   }
-
-
 }

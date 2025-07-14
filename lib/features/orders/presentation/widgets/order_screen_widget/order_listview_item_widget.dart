@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/features/orders/data/models/order_model.dart';
 
 import '../../../../../core/routes/routes.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -12,8 +13,9 @@ import '../../cubit/orders_cubit.dart';
 import '../finding_driver_widgets/order_details_item_widget.dart';
 
 class OrderListviewItemWidget extends StatelessWidget {
-  const OrderListviewItemWidget({super.key});
+  const OrderListviewItemWidget({super.key, required this.model});
 
+  final OrderModel model;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -34,33 +36,40 @@ class OrderListviewItemWidget extends StatelessWidget {
                     Row(
                       children: [
                         10.width,
-                        SvgPicture.asset(Assets.imagesPending),
+                        SvgPicture.asset(
+                          model.status == 'waiting'
+                              ? Assets.imagesPending
+                              : Assets.imagesProfile,
+                        ),
                         10.width,
-                        Text(S.of(context).pending, style: AppTextStyles.bold18Black),
+                        Text(
+                          S.of(context).pending,
+                          style: AppTextStyles.bold18Black,
+                        ),
                       ],
                     ),
                     const Divider(thickness: 2, color: Colors.grey),
                     OrderDetailsItemWidget(
-                      value: '#100',
+                      value: '#${model.orderNumber}',
                       title: S.of(context).orderNumber,
                     ),
                     OrderDetailsItemWidget(
-                      value: 'نقل أثاث',
+                      value: model.serviceType ?? '',
                       title: S.of(context).serviceType,
                     ),
                     OrderDetailsItemWidget(
-                      value: 'كبيرة',
+                      value: model.truckType ?? '',
                       title: S.of(context).carType,
                     ),
                     OrderDetailsItemWidget(
-                      value:  '200.00 ريال',
+                      value: model.cost ?? '',
                       title: S.of(context).total,
                     ),
                   ],
                 ),
               ),
               10.width,
-              const Icon(Icons.arrow_forward_ios)
+              const Icon(Icons.arrow_forward_ios),
             ],
           ),
         ),

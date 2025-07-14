@@ -39,7 +39,8 @@ class OrdersState extends Equatable {
   String? errorMessage;
   Duration ? orderTimerDuration;
   GetOrdersStatus ? getOrdersStatus;
-  List<OrderModel>? ordersList;
+  List<OrderModel>? recentOrdersList;
+  List<OrderModel>? completedOrdersList;
   OrdersState({
     this.pickedLocation,
     this.pickedLocationData,
@@ -50,7 +51,8 @@ class OrdersState extends Equatable {
     this.errorMessage,
     this.orderTimerDuration,
     this.getOrdersStatus,
-    this.ordersList,
+    this.completedOrdersList,
+    this.recentOrdersList,
   });
 
   OrdersState copyWith({
@@ -63,7 +65,9 @@ class OrdersState extends Equatable {
     String? errorMessage,
     Duration? orderTimerDuration,
     GetOrdersStatus? getOrdersStatus,
-    List<OrderModel>? ordersList,
+    List<OrderModel>? recentOrdersList,
+    List<OrderModel>? completedOrdersList,
+
 
   }) {
     return OrdersState(
@@ -76,7 +80,8 @@ class OrdersState extends Equatable {
       errorMessage: errorMessage ?? this.errorMessage,
       orderTimerDuration: orderTimerDuration ?? this.orderTimerDuration,
       getOrdersStatus: getOrdersStatus ?? this.getOrdersStatus,
-      ordersList: ordersList ?? this.ordersList,
+      recentOrdersList: recentOrdersList ?? this.recentOrdersList,
+      completedOrdersList: completedOrdersList ?? this.completedOrdersList,
     );
   }
 
@@ -91,6 +96,7 @@ class OrdersState extends Equatable {
     errorMessage,
     orderTimerDuration,
     getOrdersStatus,
-    ordersList,
+    recentOrdersList,
+    completedOrdersList
   ];
 }
