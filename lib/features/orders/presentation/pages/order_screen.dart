@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
-import 'package:oborkom/core/widgets/loader_widget.dart';
+import 'package:oborkom/core/widgets/shimmer_listview.dart';
 import 'package:oborkom/features/orders/presentation/widgets/order_screen_widget/order_listview_item_widget.dart';
 import 'package:oborkom/generated/l10n.dart';
 import '../../../../core/utils/app_colors.dart';
@@ -79,29 +79,25 @@ class _OrderScreenState extends State<OrderScreen> {
                 );
               }
               if (state.getOrdersStatus == GetOrdersStatus.loading) {
-                return const LoaderWidget();
+                return const Expanded(child: ShimmerListview());
               }
               return Expanded(
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 400),
-                  switchInCurve: Curves.easeIn,
-                  child: selectedIndex == 0
-                      ? ListView.separated(
-                    key: ValueKey(selectedIndex),
-                    itemBuilder: (context, index) =>
-                     OrderListviewItemWidget(model: recentOrders[index],),
-                    separatorBuilder: (BuildContext context, int index) =>
-                    20.height,
-                    itemCount: recentOrders.length,
-                  )
-                      : ListView.separated(
-                    key: ValueKey(selectedIndex),
-                    itemBuilder: (context, index) =>
-                     OrderListviewItemWidget(model: completedOrders[index],),
-                    separatorBuilder: (BuildContext context, int index) =>
-                    20.height,
-                    itemCount: completedOrders.length,
-                  ),
+                child: selectedIndex == 0
+                    ? ListView.separated(
+                  key: ValueKey(selectedIndex),
+                  itemBuilder: (context, index) =>
+                   OrderListviewItemWidget(model: recentOrders[index],),
+                  separatorBuilder: (BuildContext context, int index) =>
+                  20.height,
+                  itemCount: recentOrders.length,
+                )
+                    : ListView.separated(
+                  key: ValueKey(selectedIndex),
+                  itemBuilder: (context, index) =>
+                   OrderListviewItemWidget(model: completedOrders[index],),
+                  separatorBuilder: (BuildContext context, int index) =>
+                  20.height,
+                  itemCount: completedOrders.length,
                 ),
               );
             },
