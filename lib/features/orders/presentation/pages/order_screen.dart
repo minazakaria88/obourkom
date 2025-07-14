@@ -69,10 +69,26 @@ class _OrderScreenState extends State<OrderScreen> {
           ),
           20.height,
           Expanded(
-            child: ListView.separated(
-              itemBuilder: (context, index) => const OrderListviewItemWidget(),
-              separatorBuilder: (BuildContext context, int index) => 20.height,
-              itemCount: 10,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 400),
+              switchInCurve: Curves.easeIn,
+              child: selectedIndex == 0
+                  ? ListView.separated(
+                      key: ValueKey(selectedIndex),
+                      itemBuilder: (context, index) =>
+                          const OrderListviewItemWidget(),
+                      separatorBuilder: (BuildContext context, int index) =>
+                          20.height,
+                      itemCount: 10,
+                    )
+                  : ListView.separated(
+                      key: ValueKey(selectedIndex),
+                      itemBuilder: (context, index) =>
+                          const OrderListviewItemWidget(),
+                      separatorBuilder: (BuildContext context, int index) =>
+                          20.height,
+                      itemCount: 10,
+                    ),
             ),
           ),
         ],
