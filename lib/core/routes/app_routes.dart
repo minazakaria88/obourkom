@@ -29,7 +29,7 @@ import '../../features/otp/presentation/pages/otp_screen.dart';
 import '../../features/profile/presentation/pages/profile_features_screens/terms_and_conditions_screen.dart';
 import '../../injection.dart';
 import '../helpers/error_handler.dart';
-import '../widgets/noInternet_screen.dart';
+import '../widgets/no_internet_screen.dart';
 
 class AppRoues {
   static Route? onGenerateRoute(RouteSettings setting) {
