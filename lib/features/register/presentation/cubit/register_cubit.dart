@@ -19,6 +19,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       'name': nameController.text,
       'email': emailController.text,
       'phone': '+966${phoneController.text}',
+      'type': 'customer',
     };
     try {
       await registerRepository.register(data);

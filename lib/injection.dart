@@ -61,7 +61,7 @@ void setupServicesLocator() {
 
 
   //orders
-  getIt.registerFactory(() => OrdersCubit(otpRepository: getIt()));
+  getIt.registerFactory(() => OrdersCubit(orderRepository: getIt()));
   getIt.registerLazySingleton(()=>OrderRepository(apiHelper: getIt()));
 
 

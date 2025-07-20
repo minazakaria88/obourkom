@@ -15,7 +15,7 @@ import '../finding_driver_widgets/order_details_item_widget.dart';
 class OrderListviewItemWidget extends StatelessWidget {
   const OrderListviewItemWidget({super.key, required this.model});
 
-  final OrderModel model;
+  final OrderDataModel model;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -50,21 +50,21 @@ class OrderListviewItemWidget extends StatelessWidget {
                     ),
                     const Divider(thickness: 2, color: Colors.grey),
                     OrderDetailsItemWidget(
-                      value: '#${model.orderNumber}',
+                      value: '#${model.id}',
                       title: S.of(context).orderNumber,
                     ),
-                    OrderDetailsItemWidget(
-                      value: model.serviceType ?? '',
-                      title: S.of(context).serviceType,
-                    ),
-                    OrderDetailsItemWidget(
-                      value: model.truckType ?? '',
-                      title: S.of(context).carType,
-                    ),
-                    OrderDetailsItemWidget(
-                      value: model.cost ?? '',
-                      title: S.of(context).total,
-                    ),
+                    // OrderDetailsItemWidget(
+                    //   value: model.serviceType ?? '',
+                    //   title: S.of(context).serviceType,
+                    // ),
+                    // OrderDetailsItemWidget(
+                    //   value: model.truckType ?? '',
+                    //   title: S.of(context).carType,
+                    // ),
+                    // OrderDetailsItemWidget(
+                    //   value: model.cost ?? '',
+                    //   title: S.of(context).total,
+                    // ),
                   ],
                 ),
               ),

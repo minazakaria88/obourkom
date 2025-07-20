@@ -5,6 +5,8 @@ import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_styles.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/core/widgets/validate_widget.dart';
+import 'package:toastification/toastification.dart';
+import '../../../../core/functions/show_snack_bar.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/my_button.dart';
@@ -51,6 +53,13 @@ class NewOrder extends StatelessWidget {
                         context.pushNamed(
                           Routes.findDriver,
                           arguments: context.read<OrdersCubit>(),
+                        );
+                      }
+                      if(state.isFailure){
+                        showToastification(
+                          message: state.errorMessage ?? '',
+                          context: context,
+                          type: ToastificationType.error,
                         );
                       }
                     },
@@ -215,6 +224,7 @@ class NewOrder extends StatelessWidget {
                                     onTap: () {
                                       if (cubit.formKey.currentState!
                                           .validate()) {
+                                        logger.e('valid');
                                         cubit.makeOrder();
                                       }
                                     },

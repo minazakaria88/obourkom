@@ -8,15 +8,15 @@ import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/locations/data/models/location_order_model.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
 import '../../../../core/api/failure.dart';
-import '../../../../core/functions/concatenate_placemark.dart';
+import '../../../../core/helpers/cache_helper.dart';
 import '../../data/models/new_order_model.dart';
 import '../../data/repositories/order_repo.dart';
 part 'orders_state.dart';
 
 class OrdersCubit extends Cubit<OrdersState> {
-  OrdersCubit({required this.otpRepository})
+  OrdersCubit({required this.orderRepository})
     : super(OrdersState(orderTimerDuration: const Duration(minutes: 5)));
-  final OrderRepository otpRepository;
+  final OrderRepository orderRepository;
   final formKey = GlobalKey<FormState>();
   final TextEditingController notesController = TextEditingController();
   final TextEditingController codeController = TextEditingController();
@@ -52,10 +52,9 @@ class OrdersCubit extends Cubit<OrdersState> {
 
   void makeOrder() async {
     try {
-     // final model = getNewOrderModel();
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.loading));
-      await Future.delayed(const Duration(seconds: 2));
-      //final result = await otpRepository.makeOrder(model.toJson());
+      final model = await getNewOrderModel();
+      await orderRepository.makeOrder(model.toJson());
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.success));
     } on ApiException catch (e) {
       emit(
@@ -74,73 +73,46 @@ class OrdersCubit extends Cubit<OrdersState> {
     }
   }
 
-  NewOrderModel getNewOrderModel() {
+  Future<NewOrderModel> getNewOrderModel() async {
     return NewOrderModel(
-      pickUpLocation: state.pickedLocation!,
-      dropOffLocation: state.deliveryLocation!,
-      pickUpAddress:
-          concatenatePlacemark(place: state.pickedLocationData) ?? '',
-      dropOffAddress:
-          concatenatePlacemark(place: state.deliveryLocationData) ?? '',
-      paymentMethod: state.paymentMethod!,
+      customerId: CacheHelper.getData(
+        key: CacheHelperKeys.customerId,
+      ).toString(),
+      fromLat: state.pickedLocation!.latitude,
+      fromLng: state.pickedLocation!.longitude,
+      toLat: state.deliveryLocation!.latitude,
+      toLng: state.deliveryLocation!.longitude,
       notes: notesController.text,
-      discount: codeController.text,
+      paymentType: state.paymentMethod,
+      status: 'pending',
+      statusPaid: 'unpaid',
     );
   }
 
-  void getOrders() async {
+  void getOrders(int page) async {
     emit(state.copyWith(getOrdersStatus: GetOrdersStatus.loading));
     try {
-      await Future.delayed(const Duration(seconds: 2));
-      // final result = await otpRepository.getOrders();
-      final result = [
-        OrderModel(
-          cost: '1000',
-          id: '1',
-          orderNumber: '100',
-          serviceType: 'نقل أثاث',
-          truckType: 'كبير',
-          status: 'waiting',
-        ),
-        OrderModel(
-          cost: '1000',
-          id: '1',
-          orderNumber: '100',
-          serviceType: 'نقل أثاث',
-          truckType: 'كبير',
-          status: 'inProgress',
-        ),
-        OrderModel(
-          cost: '1000',
-          id: '1',
-          orderNumber: '100',
-          serviceType: 'نقل أثاث',
-          truckType: 'كبير',
-          status: 'completed',
-        ),
-        OrderModel(
-          cost: '1000',
-          id: '1',
-          orderNumber: '100',
-          serviceType: 'نقل أثاث',
-          truckType: 'كبير',
-          status: 'completed',
-        ),
-      ];
-      final recentOrder = List<OrderModel>.from([]);
-      final completedOrder = List<OrderModel>.from([]);
-      for (var element in result) {
-        if (element.status == 'waiting' || element.status == 'inProgress') {
+      final result = await orderRepository.getOrders(page);
+      final recentOrder = List<OrderDataModel>.from([]);
+      final completedOrder = List<OrderDataModel>.from([]);
+      final orders = result.data ?? [];
+      for (var element in orders) {
+        if (element.status == 'pending' || element.status == 'inProgress') {
           recentOrder.add(element);
-        } else if (element.status == 'completed') {
+        }
+        else if (element.status == 'completed') {
           completedOrder.add(element);
         }
       }
       emit(
         state.copyWith(
           getOrdersStatus: GetOrdersStatus.success,
-          recentOrdersList: recentOrder,
-          completedOrdersList: completedOrder,
+          recentOrdersList: state.recentOrdersList == null
+              ? recentOrder
+              : [...state.recentOrdersList!, ...recentOrder],
+          completedOrdersList: state.completedOrdersList == null
+              ? completedOrder
+              : [...state.completedOrdersList!, ...completedOrder],
         ),
       );
     } on ApiException catch (e) {
@@ -158,6 +130,18 @@ class OrdersCubit extends Cubit<OrdersState> {
         ),
       );
     }
+  }
+
+  void getMoreOrders(ScrollController scrollController) async {
+    int page = 2;
+    scrollController.addListener(() {
+      if (scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent) {
+        if (state.getOrdersStatus != GetOrdersStatus.loading) {
+          getOrders(page++);
+        }
+      }
+    });
   }
 
   Timer? _timer;

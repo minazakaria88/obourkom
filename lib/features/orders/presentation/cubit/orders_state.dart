@@ -39,8 +39,8 @@ class OrdersState extends Equatable {
   String? errorMessage;
   Duration ? orderTimerDuration;
   GetOrdersStatus ? getOrdersStatus;
-  List<OrderModel>? recentOrdersList;
-  List<OrderModel>? completedOrdersList;
+  List<OrderDataModel>? recentOrdersList;
+  List<OrderDataModel>? completedOrdersList;
   OrdersState({
     this.pickedLocation,
     this.pickedLocationData,
@@ -65,8 +65,8 @@ class OrdersState extends Equatable {
     String? errorMessage,
     Duration? orderTimerDuration,
     GetOrdersStatus? getOrdersStatus,
-    List<OrderModel>? recentOrdersList,
-    List<OrderModel>? completedOrdersList,
+    List<OrderDataModel>? recentOrdersList,
+    List<OrderDataModel>? completedOrdersList,
 
 
   }) {

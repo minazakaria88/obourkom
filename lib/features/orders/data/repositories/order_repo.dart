@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:oborkom/core/api/api_helper.dart';
+import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
 
 import '../../../../core/api/end_point.dart';
@@ -12,25 +13,28 @@ class OrderRepository {
   Future makeOrder(data) async {
     try {
       final response = await apiHelper.postData(
-        url: EndPoints.makeOrder,
+        url: EndPoints.orders,
         data: data,
       );
-      return response.data['status'];
+      logger.d(response.data);
     } catch (e) {
       if (e is DioException) {
+        logger.e(e.response?.statusCode?? '');
         throw ApiException(failure: ServerFailure.serverError(e));
       }
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
 
-  Future<List<OrderModel>> getOrders() async {
+  Future<OrderModel> getOrders(int page) async {
     try {
-      final response = await apiHelper.getData(url: EndPoints.getOrders);
-      return List<OrderModel>.from(
-        response.data.map((x) => OrderModel.fromJson(x)),
-      );
+      final response = await apiHelper.getData(url: EndPoints.orders,queryParameters:{
+        'page': page,
+      });
+      logger.d(response.data);
+      return OrderModel.fromJson(response.data);
     } catch (e) {
+      logger.e(e);
       if (e is DioException) {
         throw ApiException(failure: ServerFailure.serverError(e));
       }
