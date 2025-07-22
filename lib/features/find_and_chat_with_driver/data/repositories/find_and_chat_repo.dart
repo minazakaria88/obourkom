@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/message_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
+import 'package:oborkom/features/orders/data/models/order_model.dart';
 import '../../../../core/api/api_helper.dart';
 
 class FindAndChatWithDriverRepository {
@@ -30,6 +32,7 @@ class FindAndChatWithDriverRepository {
         .collection('chats')
         .doc(driverId)
         .collection('messages')
+        .orderBy('dateTime')
         .snapshots()
         .map(
           (event) =>
@@ -52,5 +55,15 @@ class FindAndChatWithDriverRepository {
 
   Stream<String> getOrderStatus({required String orderId}) {
     return firestore.doc(orderId).snapshots().map((event) => event['status']);
+  }
+
+  Future<OrderDataModel> getOrderData({required String orderId}) async {
+    final response = await firestore.doc(orderId).get();
+    logger.i(response);
+    if (response.exists) {
+      return OrderDataModel.fromJson(response.data()!);
+    } else {
+      throw Exception('no orders');
+    }
   }
 }

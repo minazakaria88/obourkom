@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +52,12 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
       offerStream = findAndChatWithDriverRepository
           .getOffersForOrder(orderId: orderId)
           .listen((offers) {
+            if(offers.isNotEmpty)
+              {
+                cancelTimer();
+              }
             emit(state.copyWith(offers: offers));
+
           });
       logger.d(state.offers);
     } catch (e) {
@@ -81,9 +85,9 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
     required String orderId,
     required String message,
   }) async {
-    final String? customerId = await CacheHelper.getData(
+    final String customerId = CacheHelper.getData(
       key: CacheHelperKeys.customerId,
-    );
+    ).toString();
     MessageModel messageModel = MessageModel(
       message: message,
       dateTime: DateTime.now(),
@@ -109,6 +113,17 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
             emit(state.copyWith(orderStatus: status));
           });
       logger.d(state.orderStatus);
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
+  }
+
+  void getOrderDetails({required String orderId}) async {
+    try {
+      final result = await findAndChatWithDriverRepository.getOrderData(
+        orderId: orderId,
+      );
+     // emit(state);
     } catch (e) {
       emit(state.copyWith(errorMessage: e.toString()));
     }

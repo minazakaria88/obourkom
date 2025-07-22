@@ -10,7 +10,6 @@ import '../widgets/finding_driver_widgets/driver_details_widget.dart';
 import '../widgets/finding_driver_widgets/order_details_widget.dart';
 import '../widgets/finding_driver_widgets/order_timer_widget.dart';
 
-
 class FindingDriversScreen extends StatelessWidget {
   const FindingDriversScreen({super.key});
 
@@ -25,35 +24,45 @@ class FindingDriversScreen extends StatelessWidget {
           slivers: [
             SliverFillRemaining(
               hasScrollBody: false,
-              child: Column(
-                children: [
-                  20.height,
-                  const OrderDetailsWidget(),
-                  20.height,
-                  const OrderTimerWidget(),
-                  20.height,
-                  DriverDetailsWidget(
-                    accept: () {
-                      cubit.cancelTimer();
-                      context.pushNamed(Routes.orderDetails, arguments: cubit);
+              child: BlocBuilder<
+                    FindAndChatWithDriverCubit,
+                    FindAndChatWithDriverState>(
+                    builder: (context, state) {
+                      final offers = state.offers ?? [];
+                      return Column(
+                        children: [
+                          20.height,
+                          const OrderDetailsWidget(),
+                          20.height,
+                          offers.isEmpty
+                              ? const OrderTimerWidget()
+                              : DriverDetailsWidget(
+                                  accept: () {
+                                    cubit.cancelTimer();
+                                    context.pushNamed(
+                                      Routes.orderDetails,
+                                      arguments: cubit,
+                                    );
+                                  },
+                                  decline: () {},
+                                ),
+                          const Spacer(),
+                          TextButton(
+                            onPressed: () {
+                              cubit.cancelTimer();
+                              context.pop();
+                            },
+                            child: Text(
+                              S.of(context).cancelOrder,
+                              style: AppTextStyles.regular16Black.copyWith(
+                                decoration: TextDecoration.underline,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
                     },
-                    decline: () {},
                   ),
-                  const Spacer(),
-                  TextButton(
-                    onPressed: () {
-                      cubit.cancelTimer();
-                      context.pop();
-                    },
-                    child: Text(
-                      S.of(context).cancelOrder,
-                      style: AppTextStyles.regular16Black.copyWith(
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
           ],
         ),

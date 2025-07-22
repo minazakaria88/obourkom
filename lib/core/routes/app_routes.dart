@@ -73,7 +73,7 @@ class AppRoues {
         return MaterialPageRoute(
           builder: (context) => BlocProvider.value(
             value: arguments['cubit'] as MainCubit,
-            child: ChooseCarScreen(ids: arguments['ids'],),
+            child: ChooseCarScreen(ids: arguments['ids']),
           ),
         );
       case Routes.newOrder:
@@ -131,7 +131,9 @@ class AppRoues {
       case Routes.findDriver:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
-            create: (context) => getIt<FindAndChatWithDriverCubit>()..startTimer(),
+            create: (context) => getIt<FindAndChatWithDriverCubit>()
+              ..startTimer()
+              ..listenForOffers(orderId: ''),
             child: const FindingDriversScreen(),
           ),
         );
@@ -139,7 +141,7 @@ class AppRoues {
         final arguments = setting.arguments as FindAndChatWithDriverCubit;
         return MaterialPageRoute(
           builder: (context) => BlocProvider.value(
-            value: arguments,
+            value: arguments..listenForMessages(driverId: '8', orderId: '14'),
             child: const OrderDetailsScreen(),
           ),
         );
@@ -156,7 +158,8 @@ class AppRoues {
       case Routes.error:
         final arguments = setting.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => CustomErrorWidget(error: arguments),);
+          builder: (context) => CustomErrorWidget(error: arguments),
+        );
       default:
         return null;
     }
