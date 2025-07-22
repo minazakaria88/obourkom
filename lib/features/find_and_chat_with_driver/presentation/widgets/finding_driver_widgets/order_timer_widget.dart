@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/features/find_and_chat_with_driver/presentation/cubit/find_and_chat_with_driver_cubit.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
-import '../../cubit/orders_cubit.dart';
 
 class OrderTimerWidget extends StatelessWidget {
   const OrderTimerWidget({
@@ -18,7 +18,7 @@ class OrderTimerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackgroundProfileWidget(
-      child: BlocBuilder<OrdersCubit, OrdersState>(
+      child: BlocBuilder<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
         buildWhen: (previous, current) =>
         previous.orderTimerDuration != current.orderTimerDuration,
         builder: (context, state) {

@@ -7,6 +7,8 @@ import 'package:oborkom/features/notification/data/repositories/notification_rep
 import 'package:oborkom/features/otp/data/repositories/otp_repo.dart';
 
 import 'core/api/api_helper.dart';
+import 'features/find_and_chat_with_driver/data/repositories/find_and_chat_repo.dart';
+import 'features/find_and_chat_with_driver/presentation/cubit/find_and_chat_with_driver_cubit.dart';
 import 'features/login/data/repositories/login_repo.dart';
 import 'features/login/presentation/cubit/login_cubit.dart';
 import 'features/main/data/repositories/main_repo.dart';
@@ -77,6 +79,11 @@ void setupServicesLocator() {
   //rating
   getIt.registerFactory(() => RatingCubit(ratingRepository: getIt()));
   getIt.registerLazySingleton(() => RatingRepository(apiHelper: getIt()));
+
+
+  //findAndChatWithDriver
+  getIt.registerFactory(() => FindAndChatWithDriverCubit(findAndChatWithDriverRepository: getIt()));
+  getIt.registerLazySingleton(() => FindAndChatWithDriverRepository(apiHelper: getIt()));
 
 
 

@@ -1,4 +1,5 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -14,12 +15,16 @@ import 'package:oborkom/injection.dart';
 import 'package:toastification/toastification.dart';
 import 'core/api/api_helper.dart';
 import 'core/helpers/error_handler.dart';
+import 'firebase_options.dart';
 import 'generated/l10n.dart';
 
 bool isLoggedIn = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  FlutterError.onError = ErrorHandler.handleFlutterError;
+ // FlutterError.onError = ErrorHandler.handleFlutterError;
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await CacheHelper.init();
   ApiHelper.init();
   await checkIfUserLoggedIn();

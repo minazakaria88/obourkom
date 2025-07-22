@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../../find_and_chat_with_driver/presentation/widgets/finding_driver_widgets/order_details_item_widget.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
-import '../finding_driver_widgets/order_details_item_widget.dart';
 
 class CompleteOrderDetailsWidget extends StatelessWidget {
   const CompleteOrderDetailsWidget({

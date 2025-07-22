@@ -4,14 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/widgets/my_text_form_field.dart';
-import 'package:oborkom/features/orders/presentation/widgets/order_details_widget/driver_location_widget.dart';
 import '../../../../core/helpers/validation_inputs_class.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/widgets/my_app_bar.dart';
 import '../../../../generated/assets.dart';
 import '../../../../generated/l10n.dart';
-import '../cubit/orders_cubit.dart';
+import '../../../orders/presentation/cubit/orders_cubit.dart';
+import '../cubit/find_and_chat_with_driver_cubit.dart';
 import '../widgets/finding_driver_widgets/order_details_widget.dart';
+import '../widgets/order_details_widget/driver_location_widget.dart';
 import '../widgets/order_details_widget/order_stepper_widget.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class OrderDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<OrdersCubit>();
+    final cubit = context.read<FindAndChatWithDriverCubit>();
     return Scaffold(
       appBar: MyAppBar(
         title: S.of(context).orderDetails,

@@ -46,6 +46,7 @@ class MainRepository {
       final future =ids.map((e) => apiHelper.getData(url: '${EndPoints.trucks}/$e')).toList();
       final responses = await Future.wait(future);
       for (var element in responses) {
+        logger.i(element);
         cars.add(CarModel.fromJson(element.data['data']));
       }
       return cars;

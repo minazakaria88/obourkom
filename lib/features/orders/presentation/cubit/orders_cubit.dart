@@ -15,7 +15,7 @@ part 'orders_state.dart';
 
 class OrdersCubit extends Cubit<OrdersState> {
   OrdersCubit({required this.orderRepository})
-    : super(OrdersState(orderTimerDuration: const Duration(minutes: 5)));
+    : super(OrdersState());
   final OrderRepository orderRepository;
   final formKey = GlobalKey<FormState>();
   final TextEditingController notesController = TextEditingController();
@@ -54,7 +54,8 @@ class OrdersCubit extends Cubit<OrdersState> {
     try {
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.loading));
       final model = await getNewOrderModel();
-      await orderRepository.makeOrder(model.toJson());
+      //await orderRepository.makeOrder(model.toJson());
+      await Future.delayed(const Duration(seconds: 2));
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.success));
     } on ApiException catch (e) {
       emit(
@@ -144,29 +145,7 @@ class OrdersCubit extends Cubit<OrdersState> {
     });
   }
 
-  Timer? _timer;
-  void startTimer() {
-    logger.d('startTimer');
-    _timer?.cancel();
-    Duration oneSec = const Duration(seconds: 1);
-    emit(state.copyWith(orderTimerDuration: const Duration(minutes: 5)));
-    _timer = Timer.periodic(oneSec, (timer) {
-      if (state.orderTimerDuration == Duration.zero) {
-        timer.cancel();
-      } else {
-        emit(
-          state.copyWith(
-            orderTimerDuration: state.orderTimerDuration! - oneSec,
-          ),
-        );
-      }
-    });
-  }
 
-  void cancelTimer() {
-    logger.d('cancelTimer');
-    _timer?.cancel();
-  }
 
   disposeControllers() {
     codeController.dispose();
@@ -176,7 +155,6 @@ class OrdersCubit extends Cubit<OrdersState> {
 
   @override
   Future<void> close() {
-    cancelTimer();
     disposeControllers();
     return super.close();
   }

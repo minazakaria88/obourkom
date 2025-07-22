@@ -37,7 +37,6 @@ class OrdersState extends Equatable {
   String? paymentMethod;
   MakeOrderStatus ? makeOrderStatus;
   String? errorMessage;
-  Duration ? orderTimerDuration;
   GetOrdersStatus ? getOrdersStatus;
   List<OrderDataModel>? recentOrdersList;
   List<OrderDataModel>? completedOrdersList;
@@ -49,7 +48,6 @@ class OrdersState extends Equatable {
     this.paymentMethod,
     this.makeOrderStatus,
     this.errorMessage,
-    this.orderTimerDuration,
     this.getOrdersStatus,
     this.completedOrdersList,
     this.recentOrdersList,
@@ -78,7 +76,6 @@ class OrdersState extends Equatable {
       paymentMethod: paymentMethod ?? this.paymentMethod,
       makeOrderStatus: makeOrderStatus ?? this.makeOrderStatus,
       errorMessage: errorMessage ?? this.errorMessage,
-      orderTimerDuration: orderTimerDuration ?? this.orderTimerDuration,
       getOrdersStatus: getOrdersStatus ?? this.getOrdersStatus,
       recentOrdersList: recentOrdersList ?? this.recentOrdersList,
       completedOrdersList: completedOrdersList ?? this.completedOrdersList,
@@ -94,7 +91,6 @@ class OrdersState extends Equatable {
     pickedLocationData,
     makeOrderStatus,
     errorMessage,
-    orderTimerDuration,
     getOrdersStatus,
     recentOrdersList,
     completedOrdersList

@@ -10,6 +10,7 @@ class NewOrderModel {
   String ? driverId;
   String ? customerId;
 
+
   NewOrderModel({
     this.fromLng,
     this.fromLat,
@@ -58,7 +59,9 @@ class NewOrderModel {
 
 
 }
-
+//truck_type_id
+//  truck_size_id
+//   type_service
 
 /*   'from_lng' => 'required|numeric',
             'from_lat ' => 'required|numeric',

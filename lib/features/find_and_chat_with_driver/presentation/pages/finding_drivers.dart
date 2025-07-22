@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/widgets/my_app_bar.dart';
+import 'package:oborkom/features/find_and_chat_with_driver/presentation/cubit/find_and_chat_with_driver_cubit.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../generated/l10n.dart';
-import '../cubit/orders_cubit.dart';
 import '../widgets/finding_driver_widgets/driver_details_widget.dart';
 import '../widgets/finding_driver_widgets/order_details_widget.dart';
 import '../widgets/finding_driver_widgets/order_timer_widget.dart';
+
 
 class FindingDriversScreen extends StatelessWidget {
   const FindingDriversScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<OrdersCubit>();
+    final cubit = context.read<FindAndChatWithDriverCubit>();
     return Scaffold(
       appBar: MyAppBar(title: S.of(context).findingDrivers),
       body: Padding(
