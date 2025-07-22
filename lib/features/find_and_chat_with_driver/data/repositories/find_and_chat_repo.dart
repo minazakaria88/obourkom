@@ -1,4 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
+import 'package:oborkom/core/api/end_point.dart';
+import 'package:oborkom/core/api/failure.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/message_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
@@ -64,6 +67,17 @@ class FindAndChatWithDriverRepository {
       return OrderDataModel.fromJson(response.data()!);
     } else {
       throw Exception('no orders');
+    }
+  }
+
+  Future<void> cancelOrder({required String orderId}) async {
+    try {
+      await apiHelper.deleteData(url: EndPoints.cancelOrder);
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
     }
   }
 }

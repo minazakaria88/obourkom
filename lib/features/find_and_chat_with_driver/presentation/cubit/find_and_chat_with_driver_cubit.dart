@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:oborkom/core/api/failure.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/message_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/repositories/find_and_chat_repo.dart';
@@ -52,12 +53,10 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
       offerStream = findAndChatWithDriverRepository
           .getOffersForOrder(orderId: orderId)
           .listen((offers) {
-            if(offers.isNotEmpty)
-              {
-                cancelTimer();
-              }
+            if (offers.isNotEmpty) {
+              cancelTimer();
+            }
             emit(state.copyWith(offers: offers));
-
           });
       logger.d(state.offers);
     } catch (e) {
@@ -123,7 +122,17 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
       final result = await findAndChatWithDriverRepository.getOrderData(
         orderId: orderId,
       );
-     // emit(state);
+      // emit(state);
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
+  }
+
+  void cancelOrder({required String orderId}) async {
+    try {
+      await findAndChatWithDriverRepository.cancelOrder(orderId: orderId);
+    } on ApiException catch (e) {
+      emit(state.copyWith(errorMessage: e.failure.message));
     } catch (e) {
       emit(state.copyWith(errorMessage: e.toString()));
     }
