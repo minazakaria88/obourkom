@@ -133,7 +133,8 @@ class AppRoues {
           builder: (context) => BlocProvider(
             create: (context) => getIt<FindAndChatWithDriverCubit>()
               ..startTimer()
-              ..listenForOffers(orderId: ''),
+              ..listenForOffers(orderId: '14')
+            ..listenForOrderStatus(orderId: '14'),
             child: const FindingDriversScreen(),
           ),
         );

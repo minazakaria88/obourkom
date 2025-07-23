@@ -46,6 +46,16 @@ class FindingDriversScreen extends StatelessWidget {
                                   },
                                   decline: () {},
                                 ),
+                          DriverDetailsWidget(
+                            accept: () {
+                              cubit.cancelTimer();
+                              context.pushNamed(
+                                Routes.orderDetails,
+                                arguments: cubit,
+                              );
+                            },
+                            decline: () {},
+                          ),
                           const Spacer(),
                           TextButton(
                             onPressed: () {

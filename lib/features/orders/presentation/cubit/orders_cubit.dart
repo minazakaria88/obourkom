@@ -54,8 +54,7 @@ class OrdersCubit extends Cubit<OrdersState> {
     try {
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.loading));
       final model = await getNewOrderModel();
-      //await orderRepository.makeOrder(model.toJson());
-      await Future.delayed(const Duration(seconds: 2));
+      await orderRepository.makeOrder(model.toJson());
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.success));
     } on ApiException catch (e) {
       emit(

@@ -52,7 +52,6 @@ class NewOrder extends StatelessWidget {
                       if (state.isSuccess) {
                         context.pushNamed(
                           Routes.findDriver,
-                          arguments: context.read<OrdersCubit>(),
                         );
                       }
                       if(state.isFailure){
@@ -224,7 +223,6 @@ class NewOrder extends StatelessWidget {
                                     onTap: () {
                                       if (cubit.formKey.currentState!
                                           .validate()) {
-                                        logger.e('valid');
                                         cubit.makeOrder();
                                       }
                                     },
