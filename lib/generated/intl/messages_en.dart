@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelOrder": MessageLookupByLibrary.simpleMessage("Cancel Order"),
     "carType": MessageLookupByLibrary.simpleMessage("Car Type"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
+    "changeSupplier": MessageLookupByLibrary.simpleMessage("Change Supplier"),
     "checkPrivacyPolicy": MessageLookupByLibrary.simpleMessage(
       "Check Privacy Policy",
     ),
@@ -87,6 +88,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "discount": MessageLookupByLibrary.simpleMessage("Discount"),
     "doYouHaveADiscountCode": MessageLookupByLibrary.simpleMessage(
       "Do you have a discount code?",
+    ),
+    "doYouWantToChangeSupplier": MessageLookupByLibrary.simpleMessage(
+      "Do you want to change supplier?",
     ),
     "doYouWantToDeleteYourAccount": MessageLookupByLibrary.simpleMessage(
       "Do you want to delete your account?",
@@ -134,6 +138,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "main": MessageLookupByLibrary.simpleMessage("Main"),
     "name": MessageLookupByLibrary.simpleMessage("Name *"),
+    "negotiation": MessageLookupByLibrary.simpleMessage("Negotiation"),
+    "no": MessageLookupByLibrary.simpleMessage("No"),
     "noAddresses": MessageLookupByLibrary.simpleMessage("No Addresses"),
     "noDrivers": MessageLookupByLibrary.simpleMessage("No Drivers"),
     "noDriversFound": MessageLookupByLibrary.simpleMessage("No Drivers Found"),
@@ -166,6 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "otpText": MessageLookupByLibrary.simpleMessage(
       "Please enter the 4-digit verification code just sent to you via text message.",
     ),
+    "payNow": MessageLookupByLibrary.simpleMessage("Pay Now"),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("Payment Method"),
     "paymentSummary": MessageLookupByLibrary.simpleMessage("Payment Summary"),
     "pending": MessageLookupByLibrary.simpleMessage("Pending"),
@@ -267,5 +274,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "writeYourNotesHere": MessageLookupByLibrary.simpleMessage(
       "Write your notes here",
     ),
+    "yes": MessageLookupByLibrary.simpleMessage("Yes"),
   };
 }

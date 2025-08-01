@@ -15,7 +15,7 @@ class MessageModel {
     message = json['message'];
     senderId = json['senderId'];
     receiverId = json['receiverId'];
-    dateTime = json['dateTime'].toDate();
+    dateTime = DateTime.parse(json['created_at']);
   }
 
 
@@ -24,7 +24,7 @@ class MessageModel {
     data['message'] = message;
     data['senderId'] = senderId;
     data['receiverId'] = receiverId;
-    data['dateTime'] = dateTime;
+    data['created_at'] = dateTime.toString();
     return data;
   }
 }

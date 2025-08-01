@@ -49,6 +49,8 @@ class OrderDataModel {
   Customer? customer;
   String? createdAt;
   List<Offer>? offers;
+  TruckSize ?truckSize;
+  TruckType ?truckType;
 
   OrderDataModel({
     this.id,
@@ -68,6 +70,8 @@ class OrderDataModel {
     this.customer,
     this.createdAt,
     this.offers,
+    this.truckSize,
+    this.truckType
   });
 
   OrderDataModel.fromJson(Map<String, dynamic> json) {
@@ -94,6 +98,12 @@ class OrderDataModel {
       json['offers'].forEach((v) {
         offers!.add(Offer.fromJson(v));
       });
+    }
+    if (json['truckSize'] != null) {
+      truckSize = TruckSize.fromJson(json['truckSize']);
+    }
+    if (json['truckType'] != null) {
+      truckType = TruckType.fromJson(json['truckType']);
     }
   }
 
@@ -126,15 +136,48 @@ class OrderDataModel {
   }
 }
 
+class TruckType {
+  int? id;
+  String? name;
+
+  TruckType({this.id, this.name});
+
+  TruckType.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    return data;
+  }
+}
+
+
+class TruckSize {
+  int? id;
+  String? name;
+
+  TruckSize({this.id, this.name});
+
+  TruckSize.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+  }
+}
+
 class Offer {
   int? id;
   String? price;
-
-  Offer({this.id, this.price});
+  int? driverId;
+  Offer({this.id, this.price,this.driverId});
 
   Offer.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     price = json['price'];
+    driverId = json['driver_id'];
   }
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};

@@ -51,6 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancelOrder": MessageLookupByLibrary.simpleMessage("إلغاء الطلب"),
     "carType": MessageLookupByLibrary.simpleMessage("نوع الشاحنة"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
+    "changeSupplier": MessageLookupByLibrary.simpleMessage("تغيير المزود"),
     "checkPrivacyPolicy": MessageLookupByLibrary.simpleMessage(
       "قم بمراجعة الشروط والأحكام",
     ),
@@ -85,6 +86,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "discount": MessageLookupByLibrary.simpleMessage("الخصم"),
     "doYouHaveADiscountCode": MessageLookupByLibrary.simpleMessage(
       "هل لديك كود خصم؟",
+    ),
+    "doYouWantToChangeSupplier": MessageLookupByLibrary.simpleMessage(
+      "هل تريد تغيير المزود ؟",
     ),
     "doYouWantToDeleteYourAccount": MessageLookupByLibrary.simpleMessage(
       "هل تريد حذف حسابك ؟",
@@ -126,6 +130,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "main": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم *"),
+    "negotiation": MessageLookupByLibrary.simpleMessage("قيد التفاوض"),
+    "no": MessageLookupByLibrary.simpleMessage("لا"),
     "noAddresses": MessageLookupByLibrary.simpleMessage("لا يوجد عناوين"),
     "noDriversFound": MessageLookupByLibrary.simpleMessage(
       "لم يتم العثور على مندوبين",
@@ -161,6 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "otpText": MessageLookupByLibrary.simpleMessage(
       "فضلًا ادخل رمز التحقق المكون من 4 أرقام المرسل اليك للتو عبر رسالة نصية",
     ),
+    "payNow": MessageLookupByLibrary.simpleMessage("ادفع الآن"),
     "paymentMethod": MessageLookupByLibrary.simpleMessage("طريقة الدفع"),
     "paymentSummary": MessageLookupByLibrary.simpleMessage("ملخص الدفع"),
     "pending": MessageLookupByLibrary.simpleMessage("قيد الانتظار"),
@@ -250,5 +257,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "writeYourNotesHere": MessageLookupByLibrary.simpleMessage(
       "اكتب ملاحظاتك هنا",
     ),
+    "yes": MessageLookupByLibrary.simpleMessage("نعم"),
   };
 }

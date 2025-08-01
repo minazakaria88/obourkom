@@ -3,20 +3,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/functions/show_snack_bar.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/widgets/shimmer_item.dart';
+import 'package:oborkom/features/main/data/models/truck_size.dart';
 import 'package:oborkom/features/main/presentation/cubit/main_cubit.dart';
 import 'package:oborkom/generated/l10n.dart';
 import 'package:toastification/toastification.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../../../core/utils/constant.dart';
 import '../../../../core/widgets/cached_image_widget.dart';
 import '../../../../core/widgets/error_widget.dart';
 import '../../../../core/widgets/my_app_bar.dart';
-import '../../data/models/car_model.dart';
 
 class ChooseCarScreen extends StatefulWidget {
-  const ChooseCarScreen({super.key, required this.ids});
-  final List<String> ids;
+  const ChooseCarScreen({super.key,});
   @override
   State<ChooseCarScreen> createState() => _ChooseCarScreenState();
 }
@@ -24,8 +22,7 @@ class ChooseCarScreen extends StatefulWidget {
 class _ChooseCarScreenState extends State<ChooseCarScreen> {
   @override
   void initState() {
-    logger.d(widget.ids);
-    context.read<MainCubit>().getCars(widget.ids);
+    context.read<MainCubit>().getCars();
     super.initState();
   }
 
@@ -72,7 +69,7 @@ class _ChooseCarScreenState extends State<ChooseCarScreen> {
                             (e) => Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: _buildItem(e, () {
-                                context.pushNamed(Routes.newOrder);
+                                context.pushNamed(Routes.newOrder,arguments: e);
                               }),
                             ),
                           )
@@ -86,7 +83,7 @@ class _ChooseCarScreenState extends State<ChooseCarScreen> {
     );
   }
 
-  Widget _buildItem(CarModel e, Function onTap) {
+  Widget _buildItem(TruckSizeModel e, Function onTap) {
     return InkWell(
       onTap: () {
         onTap();

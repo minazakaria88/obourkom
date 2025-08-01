@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oborkom/features/orders/data/models/submit_order_model.dart';
 
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/l10n.dart';
@@ -6,8 +7,9 @@ import 'order_details_item_widget.dart';
 
 class OrderDetailsWidget extends StatelessWidget {
   const OrderDetailsWidget({
-    super.key,
+    super.key, required this.model,
   });
+  final SubmitOrderModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -25,19 +27,19 @@ class OrderDetailsWidget extends StatelessWidget {
           ),
           children: [
             OrderDetailsItemWidget(
-              value: '#100',
+              value: '#${model.id}',
               title: S.of(context).orderNumber,
             ),
             OrderDetailsItemWidget(
-              value: 'نقل أثاث',
+              value: '${model.typeService}',
               title: S.of(context).serviceType,
             ),
             OrderDetailsItemWidget(
-              value: 'كبيرة',
+              value: '${model.truckSizeId}',
               title: S.of(context).carType,
             ),
             OrderDetailsItemWidget(
-              value: 'أبل باي',
+              value: model.paymentType ??'',
               title: S.of(context).paymentMethod,
             ),
           ],

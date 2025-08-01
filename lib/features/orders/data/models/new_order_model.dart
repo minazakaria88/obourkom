@@ -9,6 +9,10 @@ class NewOrderModel {
   String ? statusPaid;
   String ? driverId;
   String ? customerId;
+  String ? typeService;
+  String ? truckTypeId;
+  String ? truckSizeId;
+
 
 
   NewOrderModel({
@@ -21,7 +25,10 @@ class NewOrderModel {
     this.status,
     this.statusPaid,
     this.driverId,
-    this.customerId
+    this.customerId,
+    this.typeService,
+    this.truckTypeId,
+    this.truckSizeId,
   });
 
 
@@ -36,6 +43,9 @@ class NewOrderModel {
     statusPaid = json['status_paid'];
     driverId = json['driver_id'];
     customerId = json['customer_id'];
+    typeService = json['type_service'];
+    truckTypeId = json['truck_type_id'];
+    truckSizeId = json['truck_size_id'];
   }
 
 
@@ -51,6 +61,8 @@ class NewOrderModel {
     data['status_paid'] = statusPaid;
     data['driver_id'] = driverId;
     data['customer_id'] = customerId;
+    data['type_service'] = typeService;
+    data['truck_size_id'] = truckSizeId;
     return data;
   }
 

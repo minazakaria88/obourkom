@@ -12,7 +12,7 @@ class MainState extends Equatable {
   CategoriesModel? categoriesModel;
   String? errorMessage;
   SliderModel? sliderModel;
-  List<CarModel>? cars;
+  List<TruckSizeModel>? cars;
   GetCarsState? getCarsState;
 
   MainState({
@@ -31,7 +31,7 @@ class MainState extends Equatable {
     CategoriesModel? categoriesModel,
     String? errorMessage,
     SliderModel? sliderModel,
-    List<CarModel>? cars,
+    List<TruckSizeModel>? cars,
     GetCarsState? getCarsState,
   }) {
     return MainState(

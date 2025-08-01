@@ -40,6 +40,7 @@ class OrdersState extends Equatable {
   GetOrdersStatus ? getOrdersStatus;
   List<OrderDataModel>? recentOrdersList;
   List<OrderDataModel>? completedOrdersList;
+  SubmitOrderModel? orderDataModel;
   OrdersState({
     this.pickedLocation,
     this.pickedLocationData,
@@ -51,6 +52,7 @@ class OrdersState extends Equatable {
     this.getOrdersStatus,
     this.completedOrdersList,
     this.recentOrdersList,
+    this.orderDataModel
   });
 
   OrdersState copyWith({
@@ -65,8 +67,7 @@ class OrdersState extends Equatable {
     GetOrdersStatus? getOrdersStatus,
     List<OrderDataModel>? recentOrdersList,
     List<OrderDataModel>? completedOrdersList,
-
-
+    SubmitOrderModel? orderDataModel
   }) {
     return OrdersState(
       pickedLocation: pickedLocation ?? this.pickedLocation,
@@ -79,6 +80,7 @@ class OrdersState extends Equatable {
       getOrdersStatus: getOrdersStatus ?? this.getOrdersStatus,
       recentOrdersList: recentOrdersList ?? this.recentOrdersList,
       completedOrdersList: completedOrdersList ?? this.completedOrdersList,
+      orderDataModel: orderDataModel ?? this.orderDataModel
     );
   }
 
@@ -93,6 +95,7 @@ class OrdersState extends Equatable {
     errorMessage,
     getOrdersStatus,
     recentOrdersList,
-    completedOrdersList
+    completedOrdersList,
+    orderDataModel
   ];
 }

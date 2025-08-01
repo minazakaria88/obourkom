@@ -138,7 +138,13 @@
   "orderStatus": "Order Status",
   "noOrdersFound" : "No Orders Found",
   "noOrdersFoundDesc" : "There are no orders available in the current location",
-  "searchOnMap": "Search on Map"
+  "searchOnMap": "Search on Map",
+  "negotiation": "Negotiation",
+  "payNow": "Pay Now",
+  "changeSupplier": "Change Supplier",
+  "doYouWantToChangeSupplier": "Do you want to change supplier?",
+  "yes": "Yes",
+  "no": "No"
 
 
 

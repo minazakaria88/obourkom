@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -12,11 +13,12 @@ import '../../../../profile/presentation/widgets/profile_screen_widgets/profile_
 
 class DriverDetailsWidget extends StatelessWidget {
   const DriverDetailsWidget({
-    super.key, required this.accept, required this.decline,
+    super.key, required this.accept, required this.decline, required this.model,
   });
 
   final Function accept;
   final Function decline;
+  final OfferModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,7 @@ class DriverDetailsWidget extends StatelessWidget {
                           SvgPicture.asset(Assets.imagesBanknote),
                           10.width,
                           Text(
-                            '210.00 ريال',
+                            '${model.price} ريال',
                             style: AppTextStyles.bold18Black
                                 .copyWith(
                               color: AppColors.mainColor,
@@ -84,7 +86,7 @@ class DriverDetailsWidget extends StatelessWidget {
             ),
             20.height,
             SizedBox(
-              height: 50,
+              height: 60,
               child: Row(
                 children: [
                   Expanded(

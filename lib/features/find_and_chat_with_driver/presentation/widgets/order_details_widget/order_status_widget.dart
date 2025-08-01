@@ -25,6 +25,22 @@ class OrderStatusWidget extends StatelessWidget {
                 isActive: state.orderStatus == null
                     ? false
                     : statusToNumber[state.orderStatus]! >= 0,
+                title: S.of(context).negotiation,
+                image: Assets.imagesNegoti,
+              ),
+              const Expanded(
+                child: SizedBox(
+                  height: 100,
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: DottedLine(alignment: WrapAlignment.center),
+                  ),
+                ),
+              ),
+              OrderStepperWidget(
+                isActive: state.orderStatus == null
+                    ? false
+                    : statusToNumber[state.orderStatus]! >= 1,
                 title: S.of(context).onYourWay,
                 image: Assets.imagesDriverOnWay,
               ),
@@ -40,7 +56,7 @@ class OrderStatusWidget extends StatelessWidget {
               OrderStepperWidget(
                 isActive: state.orderStatus == null
                     ? false
-                    : statusToNumber[state.orderStatus]! >= 1,
+                    : statusToNumber[state.orderStatus]! >= 2,
                 title: S.of(context).theDriverHasArrived,
                 image: Assets.imagesDriverArrive,
               ),
@@ -56,7 +72,7 @@ class OrderStatusWidget extends StatelessWidget {
               OrderStepperWidget(
                 isActive: state.orderStatus == null
                     ? false
-                    : statusToNumber[state.orderStatus]! >= 2,
+                    : statusToNumber[state.orderStatus]! >= 3,
                 title: S.of(context).theShipmentHasArrived,
                 image: Assets.imagesShipmentArrive,
               ),

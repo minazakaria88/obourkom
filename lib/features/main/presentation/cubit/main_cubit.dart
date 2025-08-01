@@ -6,6 +6,7 @@ import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/helpers/cache_helper.dart';
 import 'package:oborkom/features/main/data/models/car_model.dart';
 import 'package:oborkom/features/main/data/models/slider_model.dart';
+import 'package:oborkom/features/main/data/models/truck_size.dart';
 import 'package:oborkom/features/main/data/repositories/main_repo.dart';
 import '../../../../core/api/failure.dart';
 import '../../../../core/functions/determine_position.dart';
@@ -61,10 +62,10 @@ class MainCubit extends Cubit<MainState> {
     }
   }
 
-  void getCars(List<String> ids) async {
+  void getCars() async {
     try {
       emit(state.copyWith(getCarsState: GetCarsState.loading));
-      final response = await mainRepository.getCars(ids);
+      final response = await mainRepository.getTruckSize();
       emit(state.copyWith(cars: response, getCarsState: GetCarsState.success));
     } on ApiException catch (e) {
       emit(

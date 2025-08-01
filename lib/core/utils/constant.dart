@@ -19,6 +19,12 @@ Map<String, String> addressToImage = {
 
 enum OtpType { login, register }
 
-Map<String, int> statusToNumber = {'pending': 0, 'inWay': 1, 'completed': 2};
+Map<String, int> statusToNumber = {
+  'available': -1,
+  'negotiating': 0,
+  'on_the_way_to_pickup': 1,
+  'on_the_way_to_delivery': 2,
+  'delivered': 3,
+};
 
 var logger = Logger();

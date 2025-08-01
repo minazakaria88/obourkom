@@ -30,12 +30,13 @@ class FindAndChatWithDriverRepository {
     required String orderId,
     required String driverId,
   }) {
+    logger.d('${EndPoints.orders}/$orderId/offers/$driverId/chat');
     return firestore
         .doc(orderId)
-        .collection('chats')
+        .collection('chat')
         .doc(driverId)
         .collection('messages')
-        .orderBy('dateTime')
+        .orderBy('created_at')
         .snapshots()
         .map(
           (event) =>
@@ -48,9 +49,13 @@ class FindAndChatWithDriverRepository {
     required String driverId,
     required MessageModel message,
   }) async {
+    // await apiHelper.postData(
+    //   url: '${EndPoints.orders}/$orderId/offers/$driverId/chat',
+    //   data: message.toJson(),
+    // );
     await firestore
         .doc(orderId)
-        .collection('chats')
+        .collection('chat')
         .doc(driverId)
         .collection('messages')
         .add(message.toJson());
@@ -74,6 +79,26 @@ class FindAndChatWithDriverRepository {
     try {
       await apiHelper.deleteData(url: EndPoints.cancelOrder);
     } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
+  Future<void> acceptOffer({
+    required String orderId,
+    required String offerId,
+  }) async {
+    try {
+      logger.d('${EndPoints.orders}/$orderId/offers/$offerId/accept');
+      final response = await apiHelper.postData(
+        url: '${EndPoints.orders}/$orderId/offers/$offerId/accept',
+        data: {},
+      );
+      logger.d(response.data);
+    } catch (e) {
+      logger.e(e);
       if (e is DioException) {
         throw ApiException(failure: ServerFailure.serverError(e));
       }

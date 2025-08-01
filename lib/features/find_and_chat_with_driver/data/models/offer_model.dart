@@ -1,11 +1,21 @@
 class OfferModel
 {
-  String? id;
-  String? driverId;
+  int? id;
+  int? driverId;
   String? orderId;
   String? price;
   String? createdAt;
   String? updatedAt;
+
+
+  OfferModel({
+    this.id,
+    this.driverId,
+    this.orderId,
+    this.price,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   OfferModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];

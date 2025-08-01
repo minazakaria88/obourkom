@@ -140,7 +140,13 @@
     "orderStatus": "حالة الطلب",
     "noOrdersFound" : "لم يتم العثور على طلبات",
     "noOrdersFoundDesc" : "لا يوجد طلبات متاحة في الموقع الحالي",
-    "searchOnMap":"ابحث في الخريطة"
+    "searchOnMap":"ابحث في الخريطة",
+    "negotiation": "قيد التفاوض",
+    "payNow": "ادفع الآن",
+    "changeSupplier": "تغيير المزود",
+    "doYouWantToChangeSupplier": "هل تريد تغيير المزود ؟",
+    "yes": "نعم",
+    "no": "لا"
 
 
 

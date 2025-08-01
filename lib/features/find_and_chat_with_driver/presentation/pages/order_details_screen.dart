@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/core/utils/app_colors.dart';
+import 'package:oborkom/core/widgets/my_button.dart';
+import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
+import 'package:oborkom/features/find_and_chat_with_driver/presentation/widgets/order_details_widget/change_supplier_widget.dart';
+import '../../../../core/routes/routes.dart';
 import '../../../../core/widgets/my_app_bar.dart';
 import '../../../../generated/assets.dart';
 import '../../../../generated/l10n.dart';
+import '../../../orders/data/models/submit_order_model.dart';
+import '../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 import '../cubit/find_and_chat_with_driver_cubit.dart';
 import '../widgets/finding_driver_widgets/order_details_widget.dart';
 import '../widgets/order_details_widget/chat_listview.dart';
@@ -13,8 +20,13 @@ import '../widgets/order_details_widget/order_status_widget.dart';
 import '../widgets/order_details_widget/send_message_widget.dart';
 
 class OrderDetailsScreen extends StatelessWidget {
-  const OrderDetailsScreen({super.key});
-
+  const OrderDetailsScreen({
+    super.key,
+    required this.orderModel,
+    required this.offerModel,
+  });
+  final SubmitOrderModel orderModel;
+  final OfferModel offerModel;
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<FindAndChatWithDriverCubit>();
@@ -41,8 +53,50 @@ class OrderDetailsScreen extends StatelessWidget {
                   SliverToBoxAdapter(child: 20.height),
                   const OrderStatusWidget(),
                   SliverToBoxAdapter(child: 20.height),
-                  const SliverToBoxAdapter(child: OrderDetailsWidget()),
+                  SliverToBoxAdapter(
+                    child: OrderDetailsWidget(model: orderModel),
+                  ),
                   SliverToBoxAdapter(child: 10.height),
+
+                  SliverToBoxAdapter(
+                    child: BackgroundProfileWidget(
+                      child: SizedBox(
+                        height: 65,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: MyButton(
+                                title: S.of(context).payNow,
+                                onTap: () {},
+                              ),
+                            ),
+                            Expanded(
+                              child: MyButton(
+                                title: S.of(context).changeSupplier,
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (_) => ChangeSupplierWidget(
+                                      onTap: () {
+                                        context.pushNamedAndRemoveUntil(
+                                          Routes.findDriver,
+                                          arguments: orderModel,
+                                          (route) => false,
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
+                                textColor: Colors.black,
+                                color: AppColors.greyColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SliverToBoxAdapter(child: 20.height),
                   const SliverToBoxAdapter(child: DriverDetails()),
                   SliverToBoxAdapter(child: 20.height),
                   const ChatListview(),
@@ -50,13 +104,14 @@ class OrderDetailsScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SendMessageWidget(cubit: cubit),
+            SendMessageWidget(
+              cubit: cubit,
+              orderId: orderModel.id.toString(),
+              driverId: offerModel.driverId.toString(),
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-
-

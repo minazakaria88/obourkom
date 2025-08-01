@@ -41,6 +41,7 @@ class Assets {
   static const String imagesMarker = 'assets/images/marker.png';
   static const String imagesMicrophoneIcon = 'assets/images/MicrophoneIcon.svg';
   static const String imagesMoneyBag = 'assets/images/MoneyBag.svg';
+  static const String imagesNegoti = 'assets/images/negoti.svg';
   static const String imagesNewOrder = 'assets/images/newOrder.png';
   static const String imagesNoNotifications = 'assets/images/NoNotifications.svg';
   static const String imagesNotification = 'assets/images/notification.svg';

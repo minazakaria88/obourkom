@@ -6,76 +6,74 @@ import 'package:oborkom/features/find_and_chat_with_driver/presentation/cubit/fi
 import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../generated/l10n.dart';
+import '../../../orders/data/models/submit_order_model.dart';
 import '../widgets/finding_driver_widgets/driver_details_widget.dart';
 import '../widgets/finding_driver_widgets/order_details_widget.dart';
 import '../widgets/finding_driver_widgets/order_timer_widget.dart';
 
 class FindingDriversScreen extends StatelessWidget {
-  const FindingDriversScreen({super.key});
-
+  const FindingDriversScreen({super.key, required this.model});
+  final SubmitOrderModel model;
   @override
   Widget build(BuildContext context) {
-    final cubit = context.read<FindAndChatWithDriverCubit>();
     return Scaffold(
       appBar: MyAppBar(title: S.of(context).findingDrivers),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
-        child: CustomScrollView(
-          slivers: [
-            SliverFillRemaining(
-              hasScrollBody: false,
-              child: BlocBuilder<
-                    FindAndChatWithDriverCubit,
-                    FindAndChatWithDriverState>(
-                    builder: (context, state) {
-                      final offers = state.offers ?? [];
-                      return Column(
-                        children: [
-                          20.height,
-                          const OrderDetailsWidget(),
-                          20.height,
-                          offers.isEmpty
-                              ? const OrderTimerWidget()
-                              : DriverDetailsWidget(
-                                  accept: () {
-                                    cubit.cancelTimer();
-                                    context.pushNamed(
-                                      Routes.orderDetails,
-                                      arguments: cubit,
-                                    );
-                                  },
-                                  decline: () {},
-                                ),
-                          DriverDetailsWidget(
-                            accept: () {
-                              cubit.cancelTimer();
-                              context.pushNamed(
-                                Routes.orderDetails,
-                                arguments: cubit,
-                              );
-                            },
-                            decline: () {},
-                          ),
-                          const Spacer(),
-                          TextButton(
-                            onPressed: () {
-                              cubit.cancelTimer();
-                              context.pop();
-                            },
-                            child: Text(
-                              S.of(context).cancelOrder,
-                              style: AppTextStyles.regular16Black.copyWith(
-                                decoration: TextDecoration.underline,
-                              ),
+        child:
+            BlocBuilder<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
+              builder: (context, state) {
+                final cubit = context.read<FindAndChatWithDriverCubit>();
+                final offers = state.offers ?? [];
+                return Column(
+                  children: [
+                    20.height,
+                    OrderDetailsWidget(model: model),
+                    20.height,
+                    offers.isEmpty
+                        ? OrderTimerWidget(model: model)
+                        : Expanded(
+                            child: ListView.builder(
+                              itemCount: offers.length,
+                              itemBuilder: (context, index) =>
+                                  DriverDetailsWidget(
+                                    model: offers[index],
+                                    accept: () {
+                                      cubit.acceptOffer(
+                                        orderId: model.id.toString(),
+                                        offerId: offers[index].id.toString(),
+                                      );
+                                      cubit.cancelTimer();
+                                      context.pushNamed(
+                                        Routes.orderDetails,
+                                        arguments: {
+                                          'cubit': cubit,
+                                          'order': model,
+                                          'driver': offers[index],
+                                        },
+                                      );
+                                    },
+                                    decline: () {},
+                                  ),
                             ),
                           ),
-                        ],
-                      );
-                    },
-                  ),
+                    if (offers.isEmpty) const Spacer(),
+                    TextButton(
+                      onPressed: () {
+                        cubit.cancelTimer();
+                        context.pop();
+                      },
+                      child: Text(
+                        S.of(context).cancelOrder,
+                        style: AppTextStyles.regular16Black.copyWith(
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ),
+                  ],
+                );
+              },
             ),
-          ],
-        ),
       ),
     );
   }

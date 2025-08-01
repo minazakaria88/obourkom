@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
@@ -7,8 +8,10 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/locations/data/models/location_order_model.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
+import 'package:oborkom/features/orders/data/models/submit_order_model.dart';
 import '../../../../core/api/failure.dart';
 import '../../../../core/helpers/cache_helper.dart';
+import '../../../main/data/models/truck_size.dart';
 import '../../data/models/new_order_model.dart';
 import '../../data/repositories/order_repo.dart';
 part 'orders_state.dart';
@@ -20,7 +23,7 @@ class OrdersCubit extends Cubit<OrdersState> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController notesController = TextEditingController();
   final TextEditingController codeController = TextEditingController();
-  final TextEditingController messageController = TextEditingController();
+  final TextEditingController serviceController = TextEditingController();
 
   void pickDeliveryLocation(LocationOrderModel model) async {
     emit(
@@ -50,12 +53,12 @@ class OrdersCubit extends Cubit<OrdersState> {
     emit(state.copyWith(paymentMethod: applePay));
   }
 
-  void makeOrder() async {
+  void makeOrder(TruckSizeModel truckSize) async {
     try {
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.loading));
-      final model = await getNewOrderModel();
-      await orderRepository.makeOrder(model.toJson());
-      emit(state.copyWith(makeOrderStatus: MakeOrderStatus.success));
+      final model = await getNewOrderModel(truckSize);
+     final result = await orderRepository.makeOrder(model.toJson());
+      emit(state.copyWith(makeOrderStatus: MakeOrderStatus.success,orderDataModel: result));
     } on ApiException catch (e) {
       emit(
         state.copyWith(
@@ -73,7 +76,7 @@ class OrdersCubit extends Cubit<OrdersState> {
     }
   }
 
-  Future<NewOrderModel> getNewOrderModel() async {
+  Future<NewOrderModel> getNewOrderModel(TruckSizeModel truckSize) async {
     return NewOrderModel(
       customerId: CacheHelper.getData(
         key: CacheHelperKeys.customerId,
@@ -86,6 +89,8 @@ class OrdersCubit extends Cubit<OrdersState> {
       paymentType: state.paymentMethod,
       status: 'pending',
       statusPaid: 'unpaid',
+      typeService: serviceController.text,
+      truckSizeId: truckSize.id.toString(),
     );
   }
 
@@ -97,10 +102,9 @@ class OrdersCubit extends Cubit<OrdersState> {
       final completedOrder = List<OrderDataModel>.from([]);
       final orders = result.data ?? [];
       for (var element in orders) {
-        if (element.status == 'pending' || element.status == 'inProgress') {
           recentOrder.add(element);
-        }
-        else if (element.status == 'completed') {
+
+         if (element.status == 'delivered') {
           completedOrder.add(element);
         }
       }
@@ -149,7 +153,7 @@ class OrdersCubit extends Cubit<OrdersState> {
   disposeControllers() {
     codeController.dispose();
     notesController.dispose();
-    messageController.dispose();
+    serviceController.dispose();
   }
 
   @override

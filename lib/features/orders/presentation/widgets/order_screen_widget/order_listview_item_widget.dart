@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/core/utils/constant.dart';
+import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
-
 import '../../../../../core/routes/routes.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../find_and_chat_with_driver/presentation/widgets/finding_driver_widgets/order_details_item_widget.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
-import '../../cubit/orders_cubit.dart';
+import '../../../data/models/submit_order_model.dart';
 
 class OrderListviewItemWidget extends StatelessWidget {
   const OrderListviewItemWidget({super.key, required this.model});
@@ -20,10 +20,32 @@ class OrderListviewItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.pushNamed(
+        logger.i(model.offers![0].price);
+        logger.d(model.offers![0].driverId);
+        model.status=='delivered'  ?context.pushNamed(
           Routes.completedOrderDetails,
-          arguments: context.read<OrdersCubit>(),
-        );
+        ): context.pushNamed(
+        Routes.orderDetails,
+        arguments: {
+          'order':SubmitOrderModel(
+            id: model.id,
+            fromLat: model.fromLat,
+            fromLng: model.fromLng,
+            toLat: model.toLat,
+            toLng: model.toLng,
+            paymentType: model.paymentType,
+            notes: model.notes,
+            code: model.code,
+            truckTypeId: model.truckType?.id.toString(),
+            truckSizeId: model.truckSize?.id.toString(),
+            createdAt: model.createdAt,
+          ),
+          'driver': OfferModel(
+            driverId: model.offers![0].driverId,
+            price: model.price,
+          ),
+        },
+      );
       },
       child: BackgroundProfileWidget(
         child: Padding(
@@ -53,18 +75,18 @@ class OrderListviewItemWidget extends StatelessWidget {
                       value: '#${model.id}',
                       title: S.of(context).orderNumber,
                     ),
-                    // OrderDetailsItemWidget(
-                    //   value: model.serviceType ?? '',
-                    //   title: S.of(context).serviceType,
-                    // ),
-                    // OrderDetailsItemWidget(
-                    //   value: model.truckType ?? '',
-                    //   title: S.of(context).carType,
-                    // ),
-                    // OrderDetailsItemWidget(
-                    //   value: model.cost ?? '',
-                    //   title: S.of(context).total,
-                    // ),
+                    OrderDetailsItemWidget(
+                      value: model.truckSize!.name ?? '',
+                      title: S.of(context).serviceType,
+                    ),
+                    OrderDetailsItemWidget(
+                      value: model.truckSize!.name  ?? '',
+                      title: S.of(context).carType,
+                    ),
+                    OrderDetailsItemWidget(
+                      value: model.price ?? '',
+                      title: S.of(context).total,
+                    ),
                   ],
                 ),
               ),

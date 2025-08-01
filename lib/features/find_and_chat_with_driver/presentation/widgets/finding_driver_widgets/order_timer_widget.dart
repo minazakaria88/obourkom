@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/cubit/find_and_chat_with_driver_cubit.dart';
+import 'package:oborkom/features/orders/data/models/submit_order_model.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -12,8 +13,9 @@ import '../../../../profile/presentation/widgets/profile_screen_widgets/backgrou
 
 class OrderTimerWidget extends StatelessWidget {
   const OrderTimerWidget({
-    super.key,
+    super.key, required this.model,
   });
+  final SubmitOrderModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +84,7 @@ class OrderTimerWidget extends StatelessWidget {
                       10.width,
                       Flexible(
                         child: Text(
-                          'من 200 الي 300 ريال',
+                          'من ${model.priceFrom} الي ${model.priceTo} ريال',
                           textAlign: TextAlign.center,
                           style: AppTextStyles.bold14MainColor.copyWith(
                             fontSize: 16,

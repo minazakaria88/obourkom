@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../../core/helpers/validation_inputs_class.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/my_text_form_field.dart';
@@ -11,10 +10,12 @@ import '../../cubit/find_and_chat_with_driver_cubit.dart';
 class SendMessageWidget extends StatelessWidget {
   const SendMessageWidget({
     super.key,
-    required this.cubit,
+    required this.cubit, required this.driverId, required this.orderId,
   });
 
   final FindAndChatWithDriverCubit cubit;
+  final String driverId;
+  final String orderId;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +31,8 @@ class SendMessageWidget extends StatelessWidget {
           prefixIcon: IconButton(
             onPressed: () {
               cubit.sendMessage(
-                driverId: '8',
-                orderId: '14',
+                driverId: driverId,
+                orderId: orderId,
                 message: cubit.messageController.text,
               );
             },

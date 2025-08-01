@@ -50,6 +50,7 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
   void listenForOffers({required String orderId}) async {
     try {
       offerStream?.cancel();
+
       offerStream = findAndChatWithDriverRepository
           .getOffersForOrder(orderId: orderId)
           .listen((offers) {
@@ -131,6 +132,19 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
   void cancelOrder({required String orderId}) async {
     try {
       await findAndChatWithDriverRepository.cancelOrder(orderId: orderId);
+    } on ApiException catch (e) {
+      emit(state.copyWith(errorMessage: e.failure.message));
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
+  }
+
+  void acceptOffer({required String orderId, required String offerId}) async {
+    try {
+      await findAndChatWithDriverRepository.acceptOffer(
+        orderId: orderId,
+        offerId: offerId,
+      );
     } on ApiException catch (e) {
       emit(state.copyWith(errorMessage: e.failure.message));
     } catch (e) {

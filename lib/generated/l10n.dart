@@ -1153,6 +1153,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Negotiation`
+  String get negotiation {
+    return Intl.message('Negotiation', name: 'negotiation', desc: '', args: []);
+  }
+
+  /// `Pay Now`
+  String get payNow {
+    return Intl.message('Pay Now', name: 'payNow', desc: '', args: []);
+  }
+
+  /// `Change Supplier`
+  String get changeSupplier {
+    return Intl.message(
+      'Change Supplier',
+      name: 'changeSupplier',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you want to change supplier?`
+  String get doYouWantToChangeSupplier {
+    return Intl.message(
+      'Do you want to change supplier?',
+      name: 'doYouWantToChangeSupplier',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Yes`
+  String get yes {
+    return Intl.message('Yes', name: 'yes', desc: '', args: []);
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message('No', name: 'no', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

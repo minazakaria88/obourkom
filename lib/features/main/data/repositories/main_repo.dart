@@ -3,6 +3,7 @@ import 'package:oborkom/core/api/api_helper.dart';
 import 'package:oborkom/features/main/data/models/car_model.dart';
 import 'package:oborkom/features/main/data/models/categories_model.dart';
 import 'package:oborkom/features/main/data/models/slider_model.dart';
+import 'package:oborkom/features/main/data/models/truck_size.dart';
 
 import '../../../../core/api/end_point.dart';
 import '../../../../core/api/failure.dart';
@@ -50,6 +51,25 @@ class MainRepository {
         cars.add(CarModel.fromJson(element.data['data']));
       }
       return cars;
+    } catch (e) {
+      logger.e(e);
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
+
+  Future<List<TruckSizeModel>> getTruckSize() async {
+    List<TruckSizeModel> truckSizes = [];
+    try {
+      final response = await apiHelper.getData(url: EndPoints.trucksSize);
+      logger.d(response.data);
+      for (var element in response.data['data']) {
+        truckSizes.add(TruckSizeModel.fromJson(element));
+      }
+      return truckSizes;
     } catch (e) {
       logger.e(e);
       if (e is DioException) {
