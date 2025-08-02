@@ -8,8 +8,9 @@ import '../../../../profile/presentation/widgets/profile_screen_widgets/backgrou
 
 class CompleteOrderNotesWidget extends StatelessWidget {
   const CompleteOrderNotesWidget({
-    super.key,
+    super.key, required this.notes,
   });
+  final String notes;
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +25,19 @@ class CompleteOrderNotesWidget extends StatelessWidget {
               style: AppTextStyles.bold18Black,
             ),
             10.height,
+            const SizedBox(
+              width: double.infinity,
+            ),
             Container(
-              margin: const EdgeInsets.all(10),
-              padding: const EdgeInsets.all(10),
+              margin: const EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 color: AppColors.mainColor.withAlpha(60),
               ),
               child: Text(
-                'تفاصيل الطلب مثال للنص يكتب هنا في هذه المساحة او امثر اذا تطلب الأمر',
-                style: AppTextStyles.regular12Grey,
+                notes,
+                style: AppTextStyles.regular16Black,
               ),
             ),
           ],

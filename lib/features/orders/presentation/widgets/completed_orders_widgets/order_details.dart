@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oborkom/features/orders/data/models/order_model.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../find_and_chat_with_driver/presentation/widgets/finding_driver_widgets/order_details_item_widget.dart';
@@ -6,8 +7,9 @@ import '../../../../profile/presentation/widgets/profile_screen_widgets/backgrou
 
 class CompleteOrderDetailsWidget extends StatelessWidget {
   const CompleteOrderDetailsWidget({
-    super.key,
+    super.key, required this.model,
   });
+  final OrderDataModel model;
 
   @override
   Widget build(BuildContext context) {
@@ -24,30 +26,29 @@ class CompleteOrderDetailsWidget extends StatelessWidget {
             ),
             const Divider(thickness: 1.2, color: Colors.grey),
             OrderDetailsItemWidget(
-              value: '#100',
+              value: '#${model.id}',
               title: S.of(context).orderNumber,
             ),
             OrderDetailsItemWidget(
-              value: 'نقل أثاث',
+              value: '${model.truckSize?.name}',
               title: S.of(context).serviceType,
             ),
             OrderDetailsItemWidget(
-              value: 'كبيرة',
+              value: '${model.truckSize?.name}',
               title: S.of(context).carType,
             ),
             OrderDetailsItemWidget(
-              value: 'أبل باي',
+                value: '${model.paymentType}',
               title: S.of(context).paymentMethod,
             ),
             OrderDetailsItemWidget(
-              value: '13/11/2024',
+              value: '${model.createdAt}',
               title: S.of(context).orderDate,
             ),
             OrderDetailsItemWidget(
-              value: 'تم التوصيل',
+              value: '${model.status}',
               title: S.of(context).orderStatus,
             ),
-
           ],
         ),
       ),

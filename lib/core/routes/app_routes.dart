@@ -12,6 +12,7 @@ import 'package:oborkom/features/locations/presentation/pages/pick_location_scre
 import 'package:oborkom/features/main/data/models/truck_size.dart';
 import 'package:oborkom/features/notification/presentation/pages/notification_screen.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/pages/finding_drivers.dart';
+import 'package:oborkom/features/orders/data/models/order_model.dart';
 import 'package:oborkom/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:oborkom/features/profile/presentation/pages/edit_profile_screen.dart';
 import 'package:oborkom/features/profile/presentation/pages/profile_features_screens/about_us_screen.dart';
@@ -160,12 +161,9 @@ class AppRoues {
           ),
         );
       case Routes.completedOrderDetails:
-        final arguments = setting.arguments as OrdersCubit;
+        final arguments = setting.arguments as OrderDataModel;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider.value(
-            value: arguments,
-            child: const CompletedOrderDetailsScreen(),
-          ),
+          builder: (context) =>  CompletedOrderDetailsScreen(model: arguments,),
         );
       case Routes.noInternet:
         return MaterialPageRoute(builder: (context) => const NoInternet());

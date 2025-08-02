@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
-import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
 import '../../../../../core/routes/routes.dart';
@@ -20,32 +19,39 @@ class OrderListviewItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        logger.i(model.offers![0].price);
-        logger.d(model.offers![0].driverId);
-        model.status=='delivered'  ?context.pushNamed(
-          Routes.completedOrderDetails,
-        ): context.pushNamed(
-        Routes.orderDetails,
-        arguments: {
-          'order':SubmitOrderModel(
-            id: model.id,
-            fromLat: model.fromLat,
-            fromLng: model.fromLng,
-            toLat: model.toLat,
-            toLng: model.toLng,
-            paymentType: model.paymentType,
-            notes: model.notes,
-            code: model.code,
-            truckTypeId: model.truckType?.id.toString(),
-            truckSizeId: model.truckSize?.id.toString(),
-            createdAt: model.createdAt,
-          ),
-          'driver': OfferModel(
-            driverId: model.offers![0].driverId,
-            price: model.price,
-          ),
-        },
-      );
+        if(model.status=='delivered'){
+          context.pushNamed(
+            Routes.completedOrderDetails,
+            arguments: model
+          );
+        }
+        else
+          {
+            Offer offer= model.offers!.where((e)=>e.id==model.acceptedOfferId).first;
+            context.pushNamed(
+              Routes.orderDetails,
+              arguments: {
+                'order':SubmitOrderModel(
+                  id: model.id,
+                  fromLat: model.fromLat,
+                  fromLng: model.fromLng,
+                  toLat: model.toLat,
+                  toLng: model.toLng,
+                  paymentType: model.paymentType,
+                  notes: model.notes,
+                  code: model.code,
+                  truckTypeId: model.truckType?.id.toString(),
+                  truckSizeId: model.truckSize?.id.toString(),
+                  createdAt: model.createdAt,
+                ),
+                'driver': OfferModel(
+                  driverId: offer.driverId,
+                  price: offer.price,
+                ),
+              },
+            );
+          }
+
       },
       child: BackgroundProfileWidget(
         child: Padding(

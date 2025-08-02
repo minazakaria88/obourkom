@@ -17,8 +17,7 @@ import '../../data/repositories/order_repo.dart';
 part 'orders_state.dart';
 
 class OrdersCubit extends Cubit<OrdersState> {
-  OrdersCubit({required this.orderRepository})
-    : super(OrdersState());
+  OrdersCubit({required this.orderRepository}) : super(OrdersState());
   final OrderRepository orderRepository;
   final formKey = GlobalKey<FormState>();
   final TextEditingController notesController = TextEditingController();
@@ -57,8 +56,13 @@ class OrdersCubit extends Cubit<OrdersState> {
     try {
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.loading));
       final model = await getNewOrderModel(truckSize);
-     final result = await orderRepository.makeOrder(model.toJson());
-      emit(state.copyWith(makeOrderStatus: MakeOrderStatus.success,orderDataModel: result));
+      final result = await orderRepository.makeOrder(model.toJson());
+      emit(
+        state.copyWith(
+          makeOrderStatus: MakeOrderStatus.success,
+          orderDataModel: result,
+        ),
+      );
     } on ApiException catch (e) {
       emit(
         state.copyWith(
@@ -102,11 +106,10 @@ class OrdersCubit extends Cubit<OrdersState> {
       final completedOrder = List<OrderDataModel>.from([]);
       final orders = result.data ?? [];
       for (var element in orders) {
+          completedOrder.add(element);
+
           recentOrder.add(element);
 
-         if (element.status == 'delivered') {
-          completedOrder.add(element);
-        }
       }
       emit(
         state.copyWith(
@@ -147,8 +150,6 @@ class OrdersCubit extends Cubit<OrdersState> {
       }
     });
   }
-
-
 
   disposeControllers() {
     codeController.dispose();

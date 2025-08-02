@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/features/orders/data/models/order_model.dart';
 import '../../../../core/widgets/my_app_bar.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/completed_orders_widgets/driver_widget.dart';
@@ -9,8 +10,8 @@ import '../widgets/completed_orders_widgets/order_notes_widget.dart';
 import '../widgets/completed_orders_widgets/payment_summary.dart';
 
 class CompletedOrderDetailsScreen extends StatelessWidget {
-  const CompletedOrderDetailsScreen({super.key});
-
+  const CompletedOrderDetailsScreen({super.key, required this.model});
+    final OrderDataModel model;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,13 +29,13 @@ class CompletedOrderDetailsScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const CompleteOrderDetailsWidget(),
+                   CompleteOrderDetailsWidget(model: model,),
                   20.height,
-                  const CompleteOrderNotesWidget(),
+                   CompleteOrderNotesWidget(notes: model.notes??'',),
                   20.height,
-                  const CompleteOrderDriverWidget(),
+                   CompleteOrderDriverWidget(driver: model.driver!),
                   20.height,
-                  const CompleteOrderPaymentSummaryWidget(),
+                   CompleteOrderPaymentSummaryWidget(model: model,),
                 ],
               ),
             ),

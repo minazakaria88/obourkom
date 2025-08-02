@@ -6,11 +6,13 @@ import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/profile_image.dart';
+import '../../../data/models/order_model.dart';
 
 class CompleteOrderDriverWidget extends StatelessWidget {
   const CompleteOrderDriverWidget({
-    super.key,
+    super.key, required this.driver,
   });
+  final Driver driver;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class CompleteOrderDriverWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Mina Zakaria', style: AppTextStyles.bold18Black),
+              Text(driver.name?? '', style: AppTextStyles.bold18Black),
               Row(
                 children: [
                   SvgPicture.asset(Assets.imagesStars),
