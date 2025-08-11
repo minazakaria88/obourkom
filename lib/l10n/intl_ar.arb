@@ -146,7 +146,9 @@
     "changeSupplier": "تغيير المزود",
     "doYouWantToChangeSupplier": "هل تريد تغيير المزود ؟",
     "yes": "نعم",
-    "no": "لا"
+    "no": "لا",
+    "available": "متاح"
+
 
 
 

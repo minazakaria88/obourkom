@@ -25,6 +25,25 @@ class OrderListviewItemWidget extends StatelessWidget {
             arguments: model
           );
         }
+        else if(model.status=='available')
+          {
+            context.pushNamed(
+              Routes.findDriver,
+              arguments: SubmitOrderModel(
+                id: model.id,
+                fromLat: model.fromLat,
+                fromLng: model.fromLng,
+                toLat: model.toLat,
+                toLng: model.toLng,
+                paymentType: model.paymentType,
+                notes: model.notes,
+                code: model.code,
+                truckTypeId: model.truckType?.id.toString(),
+                truckSizeId: model.truckSize?.id.toString(),
+                createdAt: model.createdAt,
+              ),
+            );
+          }
         else
           {
             if(model.offers==null||model.offers!.isEmpty){

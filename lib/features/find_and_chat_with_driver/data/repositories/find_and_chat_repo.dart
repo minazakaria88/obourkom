@@ -105,4 +105,24 @@ class FindAndChatWithDriverRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
+  Future<void> rejectOffer({
+    required String orderId,
+    required String offerId,
+  }) {
+    try {
+      logger.d('${EndPoints.orders}/$orderId/offers/$offerId/reject');
+      return apiHelper.postData(
+        url: '${EndPoints.orders}/$orderId/offers/$offerId/reject',
+        data: {},
+      );
+    } catch (e) {
+      logger.e(e);
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
+
 }

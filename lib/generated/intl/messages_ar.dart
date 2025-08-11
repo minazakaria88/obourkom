@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureLogout": MessageLookupByLibrary.simpleMessage(
       "هل انت متأكد من تسجيل الخروج؟",
     ),
+    "available": MessageLookupByLibrary.simpleMessage("متاح"),
     "bigCars": MessageLookupByLibrary.simpleMessage(" شاحنة كبيرة"),
     "call": MessageLookupByLibrary.simpleMessage("اتصال"),
     "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),

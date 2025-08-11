@@ -39,6 +39,10 @@ class OrderDetailsWidget extends StatelessWidget {
               title: S.of(context).carType,
             ),
             OrderDetailsItemWidget(
+              value: S.of(context).available,
+              title: S.of(context).orderStatus,
+            ),
+            OrderDetailsItemWidget(
               value: model.paymentType ??'',
               title: S.of(context).paymentMethod,
             ),

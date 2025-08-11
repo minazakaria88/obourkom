@@ -28,7 +28,7 @@ class AboutUsScreen extends StatelessWidget {
               buildWhen: (previous, current) =>
                   previous.getFaqStatus != current.getFaqStatus,
               builder: (context, state) {
-                final list = state.faqs ?? [];
+                final list = state.faqs?.questions ?? [];
                 if(state.getFaqStatus == GetFaqStatus.failure) {
                   return const ErrorAppWidget();
                 }

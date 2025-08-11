@@ -91,7 +91,7 @@ class OrdersCubit extends Cubit<OrdersState> {
       toLng: state.deliveryLocation!.longitude,
       notes: notesController.text,
       paymentType: state.paymentMethod,
-      status: 'pending',
+      status: 'available',
       statusPaid: 'unpaid',
       typeService: serviceController.text,
       truckSizeId: truckSize.id.toString(),

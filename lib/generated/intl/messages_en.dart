@@ -44,6 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "areYouSureLogout": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to logout?",
     ),
+    "available": MessageLookupByLibrary.simpleMessage("Available"),
     "bigCars": MessageLookupByLibrary.simpleMessage("Big Car"),
     "call": MessageLookupByLibrary.simpleMessage("Call"),
     "callUs": MessageLookupByLibrary.simpleMessage("Call US"),

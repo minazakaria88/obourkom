@@ -28,7 +28,7 @@ class ProfileState extends Equatable {
   EditProfileStatus? editProfileStatus;
   String? errorMessage;
   ImageStatus? imageStatus;
-  List<FaqModel> ? faqs ;
+  FaqModel ? faqs ;
   GetFaqStatus? getFaqStatus;
 
   ProfileState({
@@ -47,7 +47,7 @@ class ProfileState extends Equatable {
     EditProfileStatus? editProfileStatus,
     String? errorMessage,
     ImageStatus? imageStatus,
-    List<FaqModel>? faqs,
+    FaqModel? faqs,
     GetFaqStatus? getFaqStatus
   }) {
     return ProfileState(

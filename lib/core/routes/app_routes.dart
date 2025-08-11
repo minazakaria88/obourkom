@@ -121,7 +121,7 @@ class AppRoues {
         final arguments = setting.arguments as ProfileCubit;
         return MaterialPageRoute(
           builder: (context) => BlocProvider.value(
-            value: arguments,
+            value: arguments..getFaq(),
             child: const AboutUsScreen(),
           ),
         );

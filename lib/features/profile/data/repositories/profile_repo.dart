@@ -35,14 +35,10 @@ class ProfileRepository {
     }
   }
 
-  Future<List<FaqModel>> getFaq() async {
-    List<FaqModel> faq = [];
+  Future<FaqModel> getFaq() async {
     try {
       final response = await apiHelper.getData(url: EndPoints.faq);
-      response.data.forEach((element) {
-        faq.add(FaqModel.fromJson(element));
-      });
-      return faq;
+      return FaqModel.fromJson(response.data);
     } catch (e) {
       if (e is DioException) {
         throw ApiException(failure: ServerFailure.serverError(e));

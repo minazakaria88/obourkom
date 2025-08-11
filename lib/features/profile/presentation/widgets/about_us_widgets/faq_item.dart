@@ -7,7 +7,7 @@ class FaqItem extends StatelessWidget {
   const FaqItem({
     super.key, required this.model,
   });
-  final FaqModel model;
+  final Questions model;
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +18,13 @@ class FaqItem extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         title: Text(
-          model.question??'',
+          model.title??'',
           style: AppTextStyles.regular16Black,
         ),
         childrenPadding: const EdgeInsets.all(10),
         children: [
           Text(
-            model.answer??'',
+            model.content??'',
             style: AppTextStyles.regular12Grey,
           ),
         ],

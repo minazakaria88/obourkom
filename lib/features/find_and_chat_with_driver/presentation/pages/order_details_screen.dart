@@ -78,11 +78,15 @@ class OrderDetailsScreen extends StatelessWidget {
                                     context: context,
                                     builder: (_) => ChangeSupplierWidget(
                                       onTap: () {
+                                        cubit.rejectOffer(
+                                          orderId: orderModel.id.toString(),
+                                          offerId: offerModel.id.toString(),
+                                        ).then((value) =>
                                         context.pushNamedAndRemoveUntil(
                                           Routes.findDriver,
                                           arguments: orderModel,
                                           (route) => false,
-                                        );
+                                        ));
                                       },
                                     ),
                                   );

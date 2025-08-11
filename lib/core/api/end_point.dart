@@ -24,6 +24,7 @@ class EndPoints
   static const profile = 'api/profile';
   static const notification='api/notifications';
   static const seenNotifications='api/notifications/seen';
+  static const faq='api/questions';
   static const cancelOrder='cancelOrder';
   static const rateDriver='rateDriver';
   static const categories='api/categories';
@@ -33,5 +34,4 @@ class EndPoints
   static const slider='api/sliders';
 
 
-  static const faq='';
 }

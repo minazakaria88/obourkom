@@ -152,6 +152,20 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
     }
   }
 
+
+  Future<void> rejectOffer({required String orderId, required String offerId}) async {
+    try {
+      await findAndChatWithDriverRepository.rejectOffer(
+        orderId: orderId,
+        offerId: offerId,
+      );
+    } on ApiException catch (e) {
+      emit(state.copyWith(errorMessage: e.failure.message));
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
+  }
+
   @override
   Future<void> close() {
     cancelTimer();
