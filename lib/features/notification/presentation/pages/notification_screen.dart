@@ -6,6 +6,7 @@ import 'package:oborkom/core/utils/app_styles.dart';
 import 'package:oborkom/core/widgets/error_widget.dart';
 import 'package:oborkom/features/notification/presentation/cubit/notification_cubit.dart';
 import 'package:oborkom/generated/assets.dart';
+import '../../../../core/utils/constant.dart';
 import '../../../../core/widgets/shimmer_listview.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/notification_item_widget.dart';
@@ -18,6 +19,7 @@ class NotificationScreen extends StatelessWidget {
     return BlocConsumer<NotificationCubit, NotificationState>(
       listener: (context, state) {},
       builder: (context, state) {
+        final cubit = context.read<NotificationCubit>();
         if (state.isLoading) {
           return const ShimmerListview();
         }
@@ -27,10 +29,17 @@ class NotificationScreen extends StatelessWidget {
               ? Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: ListView.separated(
-                    itemCount: state.notifications!.length,
+                    itemCount: list.length,
                     separatorBuilder: (context, index) => 30.height,
                     itemBuilder: (context, index) => NotificationItemWidget(
-                      notificationModel: state.notifications![index],
+                      onTap: () {
+                        logger.i(list[index].id);
+                       cubit.readNotification(
+                          list[index].id ?? '',
+                          index,
+                        );
+                      },
+                      notificationModel: list[index],
                     ),
                   ),
                 )
@@ -53,4 +62,3 @@ class NotificationScreen extends StatelessWidget {
     );
   }
 }
-

@@ -12,14 +12,14 @@ extension NotificationStatusX on NotificationState
 
 class NotificationState extends Equatable {
   NotificationStatus? notificationStatus;
-  List<NotificationModel>? notifications;
+  List<DataNotificationModel>? notifications;
   String ? errorMessage;
 
   NotificationState({this.notificationStatus, this.notifications,this.errorMessage});
 
   NotificationState copyWith({
     NotificationStatus? notificationStatus,
-    List<NotificationModel>? notifications,
+    List<DataNotificationModel>? notifications,
     String ? errorMessage
   }) {
     return NotificationState(

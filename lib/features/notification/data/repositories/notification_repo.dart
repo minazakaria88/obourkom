@@ -4,19 +4,18 @@ import 'package:oborkom/core/api/end_point.dart';
 import 'package:oborkom/core/api/failure.dart';
 import 'package:oborkom/features/notification/data/models/notification_model.dart';
 
+import '../../../../core/utils/constant.dart';
+
 class NotificationRepository {
   final ApiHelper apiHelper;
 
   NotificationRepository({required this.apiHelper});
 
-  Future<List<NotificationModel>> getNotification() async {
-    List<NotificationModel> notifications = [];
+  Future<NotificationModel> getNotification() async {
     try {
       final response = await apiHelper.getData(url: EndPoints.notification);
-      response.data.forEach((e) {
-        notifications.add(NotificationModel.fromJson(e));
-      });
-      return notifications;
+      logger.i(response);
+      return NotificationModel.fromJson(response.data);
     } catch (e) {
       if (e is DioException) {
         throw ApiException(failure: ServerFailure.serverError(e));
@@ -24,6 +23,19 @@ class NotificationRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
+
+
+  Future<void> markNotificationAsRead(String id) async {
+    try {
+      await apiHelper.postData(url: '${EndPoints.seenNotifications}/$id',data: {});
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
 
 
 

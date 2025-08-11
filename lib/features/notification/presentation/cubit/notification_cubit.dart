@@ -15,14 +15,11 @@ class NotificationCubit extends Cubit<NotificationState> {
   void getNotification() async {
     try {
       emit(state.copyWith(notificationStatus: NotificationStatus.loading));
-     // final result = await notificationRepository.getNotification();
-      await Future.delayed(const Duration(seconds: 5));
+      final result = await notificationRepository.getNotification();
       emit(
         state.copyWith(
           notificationStatus: NotificationStatus.success,
-          notifications: [
-            NotificationModel('title', 'description1', 1, false, 'dateTime'),
-            NotificationModel('title', 'description2', 1, true, 'dateTime'),],
+          notifications: result.data,
         ),
       );
     } on ApiException catch (e) {
@@ -39,6 +36,17 @@ class NotificationCubit extends Cubit<NotificationState> {
           errorMessage: e.toString(),
         ),
       );
+    }
+  }
+
+  void readNotification(String id, int index) async {
+    try {
+      await notificationRepository.markNotificationAsRead(id);
+      getNotification();
+    } on ApiException catch (e) {
+      emit(state.copyWith(errorMessage: e.failure.message));
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
     }
   }
 }
