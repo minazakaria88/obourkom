@@ -35,3 +35,10 @@ List<LocationTypeModel> locationTypes = [
     image: Assets.imagesOtherAddLocations,
   ),
 ];
+
+
+Map<int,String> idToLocationType={
+  1:'home',
+  2:'office',
+  3:'other',
+};

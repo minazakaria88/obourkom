@@ -13,9 +13,11 @@ enum PaymentMethods { applePay, card }
 
 Map<String, String> addressToImage = {
   'home': Assets.imagesProfileHome,
-  'work': Assets.imagesWork,
+  'office': Assets.imagesWork,
   'other': Assets.imagesOtherAddLocations,
 };
+
+
 
 enum OtpType { login, register }
 

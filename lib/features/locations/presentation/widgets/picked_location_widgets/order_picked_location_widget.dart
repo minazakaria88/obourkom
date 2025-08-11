@@ -4,7 +4,9 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_styles.dart';
+import 'package:oborkom/features/locations/data/models/location_model.dart';
 import 'package:oborkom/features/locations/data/models/location_order_model.dart';
+import '../../../../../core/functions/get_places_mark.dart';
 import '../../../../../core/routes/routes.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/my_button.dart';
@@ -37,8 +39,24 @@ class OrderPickLocation extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           InkWell(
-            onTap: () {
-              context.pushNamed(Routes.locations);
+            onTap: () async {
+              final result =
+                  await context.pushNamed(Routes.locations) as LocationModel;
+              final location = await getAddressFromLatAndLng(
+                LatLng(
+                  double.parse(result.lat ?? ''),
+                  double.parse(result.lng ?? ''),
+                ),
+              );
+              context.pop(
+                LocationOrderModel(
+                  position: LatLng(
+                    double.parse(result.lat ?? ''),
+                    double.parse(result.lng ?? ''),
+                  ),
+                  address: location.first,
+                ),
+              );
             },
             child: Center(
               child: Text(

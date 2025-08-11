@@ -1,4 +1,3 @@
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
 
@@ -7,22 +6,40 @@ class LocationModel
 {
   int? id;
   String? name;
-  LatLng? latLng;
+  String ?lat;
+  String?lng;
   String? type;
+  String? typeLabel;
 
 
   LocationModel({
     this.id,
     this.name,
-    this.latLng,
-    this.type
+    this.lat,
+    this.lng,
+    this.type,
+    this.typeLabel
   });
 
     LocationModel.fromJson(Map<String,dynamic> json)
     {
       id = json['id'];
       name = json['name'];
-      latLng = LatLng(json['latitude'], json['longitude']);
+      lat=json['location_latitude'];
+      lng=json['location_longitude'];
+      typeLabel=json['type_label'];
       type = json['type'];
     }
+
+
+    Map<String,dynamic> toJson()
+    {
+      final data=<String,dynamic>{};
+      data['location_longitude']=lng;
+      data['location_latitude']=lat;
+      data['name']=name;
+      data['type']=type;
+      return data;
+    }
+
 }

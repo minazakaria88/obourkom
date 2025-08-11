@@ -2,10 +2,22 @@ part of 'locations_cubit.dart';
 
 enum LocationsStatus { loading, success, error }
 
+
+enum PostLocationState {loading, success,error}
+
+enum DeleteLocationState {loading, success,error}
+
+
 extension LocationsStatusX on LocationsState {
   bool get isLoading => locationsStatus == LocationsStatus.loading;
   bool get isSuccess => locationsStatus == LocationsStatus.success;
   bool get isError => locationsStatus == LocationsStatus.error;
+  bool get isPostLocationsSuccess => postLocationState==PostLocationState.success;
+  bool get isPostLocationsError => postLocationState==PostLocationState.error;
+  bool get isPostLocationsLoading => postLocationState==PostLocationState.loading;
+  bool get isDeleteLocationSuccess => deleteLocationState==DeleteLocationState.success;
+  bool get isDeleteLocationError => deleteLocationState==DeleteLocationState.error;
+  bool get isDeleteLocationLoading => deleteLocationState==DeleteLocationState.loading;
 }
 
 
@@ -14,8 +26,10 @@ class LocationsState extends Equatable {
   Placemark? locationData;
   List<LocationModel>? locations;
   LocationsStatus? locationsStatus;
+  PostLocationState ? postLocationState;
   String? errorMessage;
   int? locationType;
+  DeleteLocationState ? deleteLocationState;
 
   LocationsState({
     this.pickedLocation,
@@ -24,6 +38,8 @@ class LocationsState extends Equatable {
     this.locationsStatus,
     this.errorMessage,
     this.locationType,
+    this.postLocationState,
+    this.deleteLocationState
   });
 
   LocationsState copyWith({
@@ -33,6 +49,8 @@ class LocationsState extends Equatable {
     LocationsStatus? locationsStatus,
     String? errorMessage,
     int? locationType,
+    PostLocationState ? postLocationState,
+    DeleteLocationState ? deleteLocationState
   }) {
     return LocationsState(
       pickedLocation: pickedLocation ?? this.pickedLocation,
@@ -41,6 +59,9 @@ class LocationsState extends Equatable {
       errorMessage: errorMessage ?? this.errorMessage,
       locationsStatus: locationsStatus ?? this.locationsStatus,
       locationType: locationType ?? this.locationType,
+      postLocationState:  postLocationState ?? this.postLocationState,
+      deleteLocationState:  deleteLocationState ?? this.deleteLocationState
+
     );
   }
 
@@ -52,5 +73,7 @@ class LocationsState extends Equatable {
     errorMessage,
     locationsStatus,
     locationType,
+    postLocationState,
+    deleteLocationState
   ];
 }

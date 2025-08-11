@@ -21,11 +21,16 @@ class LocationsScreen extends StatelessWidget {
         title: S.of(context).addresses,
         actions: [
           IconButton(
-            onPressed: () {
-              context.pushNamed(
+            onPressed: () async {
+              final result = await context.pushNamed(
                 Routes.pickLocation,
                 arguments: MapContext(type: MapTypes.addLocation),
               );
+              if (result == true) {
+                if (context.mounted) {
+                  context.read<LocationsCubit>().getLocations();
+                }
+              }
             },
             icon: SvgPicture.asset(
               Assets.imagesAddCircle,
@@ -40,7 +45,7 @@ class LocationsScreen extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: BlocBuilder<LocationsCubit, LocationsState>(
           builder: (context, state) {
-            if(state.isLoading) {
+            if (state.isLoading) {
               return const ShimmerListview();
             }
             final list = state.locations ?? [];
@@ -60,9 +65,8 @@ class LocationsScreen extends StatelessWidget {
             }
             return ListView.builder(
               itemCount: list.length,
-              itemBuilder: (context, index) =>  LocationListviewItem(
-                model: state.locations![index],
-              ),
+              itemBuilder: (context, index) =>
+                  LocationListviewItem(model: state.locations![index]),
             );
           },
         ),

@@ -15,13 +15,16 @@ class EndPoints
   static const orders='api/orders';
 
 
+  //locations
+
+  static const addresses='api/addresses';
+
+
 
   static const profile = 'api/profile';
-  static const notification='notification';
-  static const makeOrder='makeOrder';
+  static const notification='api/notification';
   static const cancelOrder='cancelOrder';
   static const rateDriver='rateDriver';
-
   static const categories='api/categories';
   static const trucks='api/truck';
   static const trucksSize='api/truck-size';

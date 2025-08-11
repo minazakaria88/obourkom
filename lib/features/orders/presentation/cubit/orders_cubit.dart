@@ -91,7 +91,7 @@ class OrdersCubit extends Cubit<OrdersState> {
       toLng: state.deliveryLocation!.longitude,
       notes: notesController.text,
       paymentType: state.paymentMethod,
-      status: 'pending',
+      status: 'available',
       statusPaid: 'unpaid',
       typeService: serviceController.text,
       truckSizeId: truckSize.id.toString(),
@@ -106,7 +106,9 @@ class OrdersCubit extends Cubit<OrdersState> {
       final completedOrder = List<OrderDataModel>.from([]);
       final orders = result.data ?? [];
       for (var element in orders) {
+        if (element.status == 'delivered') {
           completedOrder.add(element);
+        }
 
           recentOrder.add(element);
 

@@ -1,11 +1,16 @@
+import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/functions/concatenate_placemark.dart';
+import 'package:oborkom/core/functions/show_snack_bar.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_styles.dart';
+import 'package:oborkom/core/widgets/loader_widget.dart';
+import 'package:oborkom/features/locations/data/models/location_model.dart';
+import 'package:oborkom/features/locations/data/models/location_type_model.dart';
 import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/my_button.dart';
@@ -74,12 +79,36 @@ class AddNewLocationWidget extends StatelessWidget {
             10.height,
             const ChooseLocationTypeWidget(),
             5.height,
-            MyButton(
-              title: S.of(context).save,
-              onTap: () {
-                if (cubit.formKey.currentState!.validate()) {
-                  context.pop(pickedLocation);
+            BlocConsumer<LocationsCubit, LocationsState>(
+              listener: (context, state) {
+                if (state.isPostLocationsSuccess) {
+                  showSnackBar(
+                    message: 'location add Successfully',
+                    context: context,
+                    title: 'location add Successfully',
+                    contentType: ContentType.success,
+                  );
+                  context.pop(true);
                 }
+              },
+              builder: (context, state) {
+                return state.isPostLocationsLoading
+                    ? const LoaderWidget()
+                    : MyButton(
+                        title: S.of(context).save,
+                        onTap: () {
+                          if (cubit.formKey.currentState!.validate()) {
+                            LocationModel model = LocationModel(
+                              name: concatenatePlacemark(place: location),
+                              type: idToLocationType[state.locationType],
+                              lat: pickedLocation?.latitude.toString(),
+                              lng: pickedLocation?.longitude.toString(),
+                            );
+                            cubit.postLocations(model);
+                            //context.pop();
+                          }
+                        },
+                      );
               },
             ),
           ],
@@ -88,4 +117,3 @@ class AddNewLocationWidget extends StatelessWidget {
     );
   }
 }
-

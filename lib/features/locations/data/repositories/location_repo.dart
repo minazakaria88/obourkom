@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/api/api_helper.dart';
 import 'package:oborkom/core/api/end_point.dart';
 import 'package:oborkom/core/api/failure.dart';
 
+import '../../../../core/utils/constant.dart';
 import '../models/location_model.dart';
 
 class LocationRepository {
@@ -14,40 +14,11 @@ class LocationRepository {
   Future<List<LocationModel>> getLocations() async {
     final List<LocationModel> locations = [];
     try {
-      // final response = await apiHelper.getData(url: EndPoints.locations);
-      // response.data.forEach((e) {
-      //   locations.add(LocationModel.fromJson(e));
-      // });
-      locations.add(
-        LocationModel(
-          id: 1,
-          name:
-              'PM8G+HVJ حي الورد، الأمير فيصل بن سعد بن عبدالرحمن، الورود، الرياض 12251، المملكة العربية السعودية',
-          latLng: const LatLng(30.0444, 31.2357),
-          type: 'home',
-        ),
-      );
-      locations.add(
-        LocationModel(
-          id: 2,
-          name:
-              'PM8G+HVJ حي الورد، الأمير فيصل بن سعد بن عبدالرحمن، الورود، الرياض 12251، المملكة العربية السعودية',
-
-          latLng: const LatLng(30.0444, 31.2357),
-          type: 'work',
-        ),
-      );
-      locations.add(
-        LocationModel(
-          id: 3,
-          name:
-              'PM8G+HVJ حي الورد، الأمير فيصل بن سعد بن عبدالرحمن، الورود، الرياض 12251، المملكة العربية السعودية',
-
-          latLng: const LatLng(30.0444, 31.2357),
-          type: 'other',
-        ),
-      );
-      await Future.delayed(const Duration(seconds: 2));
+      final response = await apiHelper.getData(url: EndPoints.addresses);
+      response.data.forEach((e) {
+        locations.add(LocationModel.fromJson(e));
+      });
+      logger.d(response.data);
       return locations;
     } catch (e) {
       if (e is DioException) {
@@ -56,4 +27,42 @@ class LocationRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
+
+  Future<void> postAddresses(LocationModel model) async {
+    try {
+
+      final response = await apiHelper.postData(url: EndPoints.addresses, data: model.toJson());
+      logger.d(response.data);
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
+  Future<void> deleteAddress(int id) async {
+    try {
+      await apiHelper.deleteData(url: '${EndPoints.addresses}/$id');
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+  Future<void> updateAddresses(LocationModel model) async {
+    try {
+      await apiHelper.putData(url: EndPoints.addresses, data: model.toJson());
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
+
+
+
 }

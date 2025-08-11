@@ -27,6 +27,9 @@ class OrderListviewItemWidget extends StatelessWidget {
         }
         else
           {
+            if(model.offers==null||model.offers!.isEmpty){
+              return;
+            }
             Offer offer= model.offers!.where((e)=>e.id==model.acceptedOfferId).first;
             context.pushNamed(
               Routes.orderDetails,

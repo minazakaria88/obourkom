@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 
@@ -9,13 +10,16 @@ import '../../../../../generated/l10n.dart';
 
 class LocationItemDeleteWidget extends StatelessWidget {
   const LocationItemDeleteWidget({
-    super.key,
+    super.key, required this.onDelete,
   });
+  final Function() onDelete;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        onDelete();
+      },
       child: Row(
         children: [
           SvgPicture.asset(Assets.imagesDelete),

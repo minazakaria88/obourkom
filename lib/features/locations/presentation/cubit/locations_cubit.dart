@@ -91,11 +91,52 @@ class LocationsCubit extends Cubit<LocationsState> {
     }
   }
 
+  void postLocations(LocationModel model) async {
+    try {
+      emit(state.copyWith(postLocationState: PostLocationState.loading));
+      await locationRepository.postAddresses(model);
+      logger.i(model.toJson());
+      emit(state.copyWith(postLocationState: PostLocationState.success));
+    } on ApiException catch (e) {
+      emit(
+        state.copyWith(
+          postLocationState: PostLocationState.error,
+          errorMessage: e.failure.message,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          postLocationState: PostLocationState.error,
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
+
+  void deleteLocation(int id) async {
+    try {
+      await locationRepository.deleteAddress(id);
+      final location = state.locations!.where((element) => element.id != id);
+      emit(state.copyWith(deleteLocationState: DeleteLocationState.success,locations: location.toList()));
+    } on ApiException catch (e) {
+      emit(
+        state.copyWith(
+          deleteLocationState: DeleteLocationState.error,
+          errorMessage: e.failure.message,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          deleteLocationState: DeleteLocationState.error,
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
 
   void selectLocationType(int locationType) {
     emit(state.copyWith(locationType: locationType));
   }
-
-
-
 }
