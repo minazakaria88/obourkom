@@ -28,7 +28,7 @@ class DriverDetails extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Mina Zakaria', style: AppTextStyles.bold18Black),
+                Text('', style: AppTextStyles.bold18Black),
                 Row(
                   children: [
                     SvgPicture.asset(Assets.imagesStars),
@@ -41,7 +41,7 @@ class DriverDetails extends StatelessWidget {
             const Spacer(),
             InkWell(
               onTap: () {
-                makePhoneCall(phoneNumber: '+201064687742');
+                makePhoneCall(phoneNumber: '');
               },
               child: Container(
                 padding: const EdgeInsets.all(7),

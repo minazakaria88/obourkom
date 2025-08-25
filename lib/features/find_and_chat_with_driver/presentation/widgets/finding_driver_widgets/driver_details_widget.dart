@@ -37,7 +37,7 @@ class DriverDetailsWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Mina Zakaria',
+                        '${model.name} ',
                         style: AppTextStyles.bold18Black,
                       ),
                       5.height,

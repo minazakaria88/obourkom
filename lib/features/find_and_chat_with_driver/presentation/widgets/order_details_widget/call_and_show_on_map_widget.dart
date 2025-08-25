@@ -20,7 +20,7 @@ class CallAndShowOnMapWidget extends StatelessWidget {
         Expanded(
           child: InkWell(
             onTap: (){
-              makePhoneCall(phoneNumber: '+201064687742');
+              makePhoneCall(phoneNumber: '');
             },
             child: Container(
               padding: const EdgeInsets.all(8),
