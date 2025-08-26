@@ -30,6 +30,7 @@ class DriverDetailsWidget extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 const ProfileImage(),
                 10.width,
                 Flexible(
