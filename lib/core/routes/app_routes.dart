@@ -67,6 +67,7 @@ class AppRoues {
         );
       case Routes.home:
         return MaterialPageRoute(
+          settings: const RouteSettings(name: Routes.home),
           builder: (context) => BlocProvider(
             create: (context) => getIt<HomeCubit>(),
             child: const HomeScreen(),

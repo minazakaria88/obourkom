@@ -85,7 +85,8 @@ class OrderDetailsScreen extends StatelessWidget {
                                         context.pushNamedAndRemoveUntil(
                                           Routes.findDriver,
                                           arguments: orderModel,
-                                          (route) => false,
+                                          (route) => route.settings.name ==
+                                              Routes.home,
                                         ));
                                       },
                                     ),
