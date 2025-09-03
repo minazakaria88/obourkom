@@ -25,55 +25,59 @@ class FindingDriversScreen extends StatelessWidget {
               builder: (context, state) {
                 final cubit = context.read<FindAndChatWithDriverCubit>();
                 final offers = state.offers ?? [];
-                return Column(
-                  children: [
-                    20.height,
-                    OrderDetailsWidget(model: model),
-                    20.height,
-                    offers.isEmpty
-                        ? OrderTimerWidget(model: model)
-                        : Expanded(
-                            child: ListView.builder(
-                              itemCount: offers.length,
-                              itemBuilder: (context, index) =>
-                                  DriverDetailsWidget(
-                                    model: offers[index],
-                                    accept: () {
-                                      cubit.acceptOffer(
-                                        orderId: model.id.toString(),
-                                        offerId: offers[index].id.toString(),
-                                      );
-                                      cubit.cancelTimer();
-                                      context.pushNamed(
-                                        Routes.orderDetails,
-                                        arguments: {
-                                          'cubit': cubit,
-                                          'order': model,
-                                          'driver': offers[index],
-                                        },
-                                      );
-                                    },
-                                    decline: () {},
-                                  ),
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      20.height,
+                      OrderDetailsWidget(model: model),
+                      20.height,
+                      offers.isEmpty
+                          ? OrderTimerWidget(model: model)
+                          : Expanded(
+                              child: ListView.builder(
+                                itemCount: offers.length,
+                                itemBuilder: (context, index) =>
+                                    DriverDetailsWidget(
+                                      model: offers[index],
+                                      accept: () {
+                                        cubit.acceptOffer(
+                                          orderId: model.id.toString(),
+                                          offerId: offers[index].id.toString(),
+                                        );
+                                        cubit.cancelTimer();
+                                        context.pushNamed(
+                                          Routes.orderDetails,
+                                          arguments: {
+                                            'cubit': cubit,
+                                            'order': model,
+                                            'driver': offers[index],
+                                          },
+                                        );
+                                      },
+                                      decline: () {},
+                                    ),
+                              ),
                             ),
-                          ),
-                    if (offers.isEmpty) const Spacer(),
-                    TextButton(
-                      onPressed: () {
-                        cubit.cancelTimer();
-                        context.pop();
-                      },
-                      child: Text(
-                        S.of(context).cancelOrder,
-                        style: AppTextStyles.regular16Black.copyWith(
-                          decoration: TextDecoration.underline,
-                        ),
-                      ),
-                    ),
-                  ],
+                      
+                    ],
+                  ),
                 );
               },
             ),
+      ),
+      bottomNavigationBar: SafeArea(
+        child: TextButton(
+          onPressed: () {
+            context.read<FindAndChatWithDriverCubit>().cancelTimer();
+            context.pop();
+          },
+          child: Text(
+            S.of(context).cancelOrder,
+            style: AppTextStyles.regular16Black.copyWith(
+              decoration: TextDecoration.underline,
+            ),
+          ),
+        ),
       ),
     );
   }

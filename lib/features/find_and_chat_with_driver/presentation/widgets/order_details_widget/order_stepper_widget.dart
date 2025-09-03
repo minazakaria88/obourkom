@@ -20,7 +20,7 @@ class OrderStepperWidget extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(28),
+          padding: const EdgeInsets.all(25),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             color: isActive ? AppColors.mainColor : Colors.white,

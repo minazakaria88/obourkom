@@ -5,6 +5,7 @@ import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/cubit/find_and_chat_with_driver_cubit.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
+import 'dotted_widget.dart';
 import 'order_stepper_widget.dart';
 
 class OrderStatusWidget extends StatelessWidget {
@@ -17,69 +18,50 @@ class OrderStatusWidget extends StatelessWidget {
           previous.orderStatus != current.orderStatus,
       builder: (context, state) {
         return SliverToBoxAdapter(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              OrderStepperWidget(
-                isActive: state.orderStatus == null
-                    ? false
-                    : statusToNumber[state.orderStatus]! >= 0,
-                title: S.of(context).negotiation,
-                image: Assets.imagesNegoti,
-              ),
-              const Expanded(
-                child: SizedBox(
-                  height: 100,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: DottedLine(alignment: WrapAlignment.center),
-                  ),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                OrderStepperWidget(
+                  isActive: state.orderStatus == null
+                      ? false
+                      : statusToNumber[state.orderStatus]! >= 0,
+                  title: S.of(context).negotiation,
+                  image: Assets.imagesNegoti,
                 ),
-              ),
-              OrderStepperWidget(
-                isActive: state.orderStatus == null
-                    ? false
-                    : statusToNumber[state.orderStatus]! >= 1,
-                title: S.of(context).onYourWay,
-                image: Assets.imagesDriverOnWay,
-              ),
-              const Expanded(
-                child: SizedBox(
-                  height: 100,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: DottedLine(alignment: WrapAlignment.center),
-                  ),
+                const DottedWidget(),
+                OrderStepperWidget(
+                  isActive: state.orderStatus == null
+                      ? false
+                      : statusToNumber[state.orderStatus]! >= 1,
+                  title: S.of(context).onYourWay,
+                  image: Assets.imagesDriverOnWay,
                 ),
-              ),
-              OrderStepperWidget(
-                isActive: state.orderStatus == null
-                    ? false
-                    : statusToNumber[state.orderStatus]! >= 2,
-                title: S.of(context).theDriverHasArrived,
-                image: Assets.imagesDriverArrive,
-              ),
-              const Expanded(
-                child: SizedBox(
-                  height: 100,
-                  child: Align(
-                    alignment: Alignment.center,
-                    child: DottedLine(),
-                  ),
+                const DottedWidget(),
+                OrderStepperWidget(
+                  isActive: state.orderStatus == null
+                      ? false
+                      : statusToNumber[state.orderStatus]! >= 2,
+                  title: S.of(context).theDriverHasArrived,
+                  image: Assets.imagesDriverArrive,
                 ),
-              ),
-              OrderStepperWidget(
-                isActive: state.orderStatus == null
-                    ? false
-                    : statusToNumber[state.orderStatus]! >= 3,
-                title: S.of(context).theShipmentHasArrived,
-                image: Assets.imagesShipmentArrive,
-              ),
-            ],
+                const DottedWidget(),
+                OrderStepperWidget(
+                  isActive: state.orderStatus == null
+                      ? false
+                      : statusToNumber[state.orderStatus]! >= 3,
+                  title: S.of(context).theShipmentHasArrived,
+                  image: Assets.imagesShipmentArrive,
+                ),
+              ],
+            ),
           ),
         );
       },
     );
   }
 }
+
+
