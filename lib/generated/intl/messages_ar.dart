@@ -153,7 +153,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
-    "onYourWay": MessageLookupByLibrary.simpleMessage("في الطريق اليك"),
+    "onYourWay": MessageLookupByLibrary.simpleMessage("بالطريق لاستلام طلبك"),
     "openGps": MessageLookupByLibrary.simpleMessage(
       "لتقديم افضل خدمة وسهولة في الوصول يرجي تفعيل الموقع",
     ),
@@ -238,10 +238,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "thanksForYourReview": MessageLookupByLibrary.simpleMessage(
       "شكرا علي تقييمك !",
     ),
-    "theDriverHasArrived": MessageLookupByLibrary.simpleMessage("المندوب وصل"),
-    "theShipmentHasArrived": MessageLookupByLibrary.simpleMessage(
-      "وصلت الشحنه للموقع المحدد",
+    "theDriverHasArrived": MessageLookupByLibrary.simpleMessage(
+      "بالطريق لتوصيل الطلب",
     ),
+    "theShipmentHasArrived": MessageLookupByLibrary.simpleMessage("تم التوصيل"),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي:"),
     "transferServices": MessageLookupByLibrary.simpleMessage(" خدمة نقل "),
     "transportOfGoods": MessageLookupByLibrary.simpleMessage("نقل بضائع"),
