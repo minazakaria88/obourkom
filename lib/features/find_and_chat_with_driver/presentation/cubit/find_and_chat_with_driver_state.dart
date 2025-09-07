@@ -1,18 +1,27 @@
 part of 'find_and_chat_with_driver_cubit.dart';
 
+enum UploadPickImageStatus{loading,success,failure}
+
+enum UploadDeliveryImageStatus{loading,success,failure}
+
+
 class FindAndChatWithDriverState extends Equatable {
   Duration? orderTimerDuration;
   List<OfferModel>? offers;
   List<MessageModel>? messages;
   String? errorMessage;
   String ? orderStatus;
+  UploadDeliveryImageStatus ?uploadDeliveryImageStatus;
+  UploadPickImageStatus? uploadPickImageStatus;
 
   FindAndChatWithDriverState({
     this.orderTimerDuration,
     this.offers,
     this.messages,
     this.errorMessage,
-    this.orderStatus
+    this.orderStatus,
+    this.uploadPickImageStatus,
+    this.uploadDeliveryImageStatus
   });
 
   FindAndChatWithDriverState copyWith({
@@ -20,14 +29,18 @@ class FindAndChatWithDriverState extends Equatable {
     List<OfferModel>? offers,
     List<MessageModel>? messages,
     String? errorMessage,
-    String? orderStatus
+    String? orderStatus,
+    UploadDeliveryImageStatus ?uploadDeliveryImageStatus,
+    UploadPickImageStatus? uploadPickImageStatus,
   }) {
     return FindAndChatWithDriverState(
       orderTimerDuration: orderTimerDuration ?? this.orderTimerDuration,
       offers: offers ?? this.offers,
       messages: messages ?? this.messages,
       errorMessage: errorMessage ?? this.errorMessage,
-      orderStatus: orderStatus ?? this.orderStatus
+      orderStatus: orderStatus ?? this.orderStatus,
+      uploadDeliveryImageStatus: uploadDeliveryImageStatus ?? this.uploadDeliveryImageStatus,
+      uploadPickImageStatus: uploadPickImageStatus ?? this.uploadPickImageStatus
     );
   }
 
@@ -37,6 +50,8 @@ class FindAndChatWithDriverState extends Equatable {
     offers,
     messages,
     errorMessage,
-    orderStatus
+    orderStatus,
+    uploadPickImageStatus,
+    uploadDeliveryImageStatus
   ];
 }

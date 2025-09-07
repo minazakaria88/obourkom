@@ -43,7 +43,7 @@ class ApiHelper {
 
   Future<Response> postData({
     required String url,
-    required Map<String, dynamic> data,
+    dynamic data,
   }) async {
     return await dio!.post(url, data: data);
   }

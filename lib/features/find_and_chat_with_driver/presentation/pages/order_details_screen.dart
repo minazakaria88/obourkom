@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_colors.dart';
+import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/core/widgets/my_button.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/widgets/order_details_widget/change_supplier_widget.dart';
@@ -25,8 +26,10 @@ class OrderDetailsScreen extends StatelessWidget {
     required this.orderModel,
     required this.offerModel,
   });
+
   final SubmitOrderModel orderModel;
   final OfferModel offerModel;
+
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<FindAndChatWithDriverCubit>();
@@ -57,7 +60,6 @@ class OrderDetailsScreen extends StatelessWidget {
                     child: OrderDetailsWidget(model: orderModel),
                   ),
                   SliverToBoxAdapter(child: 10.height),
-
                   SliverToBoxAdapter(
                     child: BackgroundProfileWidget(
                       child: SizedBox(
@@ -67,7 +69,12 @@ class OrderDetailsScreen extends StatelessWidget {
                             Expanded(
                               child: MyButton(
                                 title: S.of(context).payNow,
-                                onTap: () {},
+                                onTap: () {
+                                  cubit.changeOrderStatus(
+                                    orderId: orderModel.id.toString(),
+                                    status: onTheWayToDelivery,
+                                  );
+                                },
                               ),
                             ),
                             Expanded(
@@ -78,16 +85,22 @@ class OrderDetailsScreen extends StatelessWidget {
                                     context: context,
                                     builder: (_) => ChangeSupplierWidget(
                                       onTap: () {
-                                        cubit.rejectOffer(
-                                          orderId: orderModel.id.toString(),
-                                          offerId: offerModel.id.toString(),
-                                        ).then((value) =>
-                                        context.pushNamedAndRemoveUntil(
-                                          Routes.findDriver,
-                                          arguments: orderModel,
-                                          (route) => route.settings.name ==
-                                              Routes.home,
-                                        ));
+                                        logger.i(orderModel.status);
+                                        cubit
+                                            .rejectOffer(
+                                              orderId: orderModel.id.toString(),
+                                              offerId: offerModel.id.toString(),
+                                            )
+                                            .then(
+                                              (value) => context
+                                                  .pushNamedAndRemoveUntil(
+                                                    Routes.findDriver,
+                                                    arguments: orderModel,
+                                                    (route) =>
+                                                        route.settings.name ==
+                                                        Routes.home,
+                                                  ),
+                                            );
                                       },
                                     ),
                                   );

@@ -94,7 +94,6 @@ class FindAndChatWithDriverRepository {
       logger.d('${EndPoints.orders}/$orderId/offers/$offerId/accept');
       final response = await apiHelper.postData(
         url: '${EndPoints.orders}/$orderId/offers/$offerId/accept',
-        data: {},
       );
       logger.d(response.data);
     } catch (e) {
@@ -105,16 +104,34 @@ class FindAndChatWithDriverRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
-  Future<void> rejectOffer({
-    required String orderId,
-    required String offerId,
-  }) {
+
+  Future<void> rejectOffer({required String orderId, required String offerId}) {
     try {
       logger.d('${EndPoints.orders}/$orderId/offers/$offerId/reject');
       return apiHelper.postData(
         url: '${EndPoints.orders}/$orderId/offers/$offerId/reject',
-        data: {},
       );
+    } catch (e) {
+      logger.e(e);
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
+  Future<void> changeOrderStatus({
+    required String orderId,
+    required String status,
+    String? imageUrl,
+  }) async {
+    try {
+      final data = {'status': status, if (imageUrl != null) 'image': imageUrl};
+      final response = await apiHelper.postData(
+        url: '${EndPoints.orders}/change-status/$orderId',
+        data: data,
+      );
+      logger.d(response);
     } catch (e) {
       logger.e(e);
       if (e is DioException) {

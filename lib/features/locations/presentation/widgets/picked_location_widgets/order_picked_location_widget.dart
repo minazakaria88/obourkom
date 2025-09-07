@@ -48,6 +48,7 @@ class OrderPickLocation extends StatelessWidget {
                   double.parse(result.lng ?? ''),
                 ),
               );
+              if(context.mounted){
               context.pop(
                 LocationOrderModel(
                   position: LatLng(
@@ -56,7 +57,7 @@ class OrderPickLocation extends StatelessWidget {
                   ),
                   address: location.first,
                 ),
-              );
+              );}
             },
             child: Center(
               child: Text(

@@ -63,11 +63,13 @@ class CallAndShowOnMapWidget extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SvgPicture.asset(
-                    Assets.imagesCompassBig,
-                    colorFilter: const ColorFilter.mode(
-                      AppColors.darkMainColor,
-                      BlendMode.srcIn,
+                  Flexible(
+                    child: SvgPicture.asset(
+                      Assets.imagesCompassBig,
+                      colorFilter: const ColorFilter.mode(
+                        AppColors.darkMainColor,
+                        BlendMode.srcIn,
+                      ),
                     ),
                   ),
                   10.width,

@@ -12,6 +12,8 @@ class NewOrderModel {
   String ? typeService;
   String ? truckTypeId;
   String ? truckSizeId;
+  String ? fromAddress;
+  String ? toAddress;
 
 
 
@@ -29,6 +31,8 @@ class NewOrderModel {
     this.typeService,
     this.truckTypeId,
     this.truckSizeId,
+    this.fromAddress,
+    this.toAddress
   });
 
 
@@ -46,6 +50,8 @@ class NewOrderModel {
     typeService = json['type_service'];
     truckTypeId = json['truck_type_id'];
     truckSizeId = json['truck_size_id'];
+    fromAddress = json['from_address'];
+    toAddress = json['to_address'];
   }
 
 
@@ -63,6 +69,8 @@ class NewOrderModel {
     data['customer_id'] = customerId;
     data['type_service'] = typeService;
     data['truck_size_id'] = truckSizeId;
+    data['from_address'] = fromAddress;
+    data['to_address'] = toAddress;
     return data;
   }
 

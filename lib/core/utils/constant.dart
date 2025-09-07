@@ -17,16 +17,20 @@ Map<String, String> addressToImage = {
   'other': Assets.imagesOtherAddLocations,
 };
 
-
-
 enum OtpType { login, register }
 
 Map<String, int> statusToNumber = {
-  'available': -1,
-  'negotiating': 0,
-  'on_the_way_to_pickup': 1,
-  'on_the_way_to_delivery': 2,
-  'delivered': 3,
+  available: -1,
+  negotiating: 0,
+  onTheWayToPickup: 1,
+  onTheWayToDelivery: 2,
+  delivered: 3,
 };
+
+const available = 'available';
+const negotiating = 'negotiating';
+const onTheWayToPickup = 'on_the_way_to_pickup';
+const onTheWayToDelivery = 'on_the_way_to_delivery';
+const delivered = 'delivered';
 
 var logger = Logger();

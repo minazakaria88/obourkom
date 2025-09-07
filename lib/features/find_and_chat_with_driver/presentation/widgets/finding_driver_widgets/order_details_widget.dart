@@ -44,7 +44,7 @@ class OrderDetailsWidget extends StatelessWidget {
                   title: S.of(context).carType,
                 ),
                 OrderDetailsItemWidget(
-                  value: state.orderStatus.toString(),
+                  value: state.orderStatus?? model.status ??'',
                   title: S.of(context).orderStatus,
                 ),
                 OrderDetailsItemWidget(

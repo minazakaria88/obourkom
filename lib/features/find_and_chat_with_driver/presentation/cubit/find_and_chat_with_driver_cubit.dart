@@ -129,15 +129,7 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
     }
   }
 
-  void cancelOrder({required String orderId}) async {
-    try {
-      await findAndChatWithDriverRepository.cancelOrder(orderId: orderId);
-    } on ApiException catch (e) {
-      emit(state.copyWith(errorMessage: e.failure.message));
-    } catch (e) {
-      emit(state.copyWith(errorMessage: e.toString()));
-    }
-  }
+
 
   void acceptOffer({required String orderId, required String offerId}) async {
     try {
@@ -152,8 +144,10 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
     }
   }
 
-
-  Future<void> rejectOffer({required String orderId, required String offerId}) async {
+  Future<void> rejectOffer({
+    required String orderId,
+    required String offerId,
+  }) async {
     try {
       await findAndChatWithDriverRepository.rejectOffer(
         orderId: orderId,
@@ -165,6 +159,25 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
       emit(state.copyWith(errorMessage: e.toString()));
     }
   }
+
+  Future<void> changeOrderStatus({
+    required String orderId,
+    required String status,
+  }) async {
+    try {
+      await findAndChatWithDriverRepository.changeOrderStatus(
+        orderId: orderId,
+        status: status,
+      );
+    } on ApiException catch (e) {
+      emit(state.copyWith(errorMessage: e.failure.message));
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
+  }
+
+
+
 
   @override
   Future<void> close() {

@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/locations/data/models/location_order_model.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
@@ -85,6 +85,8 @@ class OrdersCubit extends Cubit<OrdersState> {
       customerId: CacheHelper.getData(
         key: CacheHelperKeys.customerId,
       ).toString(),
+      fromAddress: concatenatePlacemark(place: state.pickedLocationData!),
+      toAddress: concatenatePlacemark(place: state.deliveryLocationData!),
       fromLat: state.pickedLocation!.latitude,
       fromLng: state.pickedLocation!.longitude,
       toLat: state.deliveryLocation!.latitude,
@@ -110,8 +112,7 @@ class OrdersCubit extends Cubit<OrdersState> {
           completedOrder.add(element);
         }
 
-          recentOrder.add(element);
-
+        recentOrder.add(element);
       }
       emit(
         state.copyWith(

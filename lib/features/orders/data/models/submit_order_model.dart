@@ -14,6 +14,7 @@ class SubmitOrderModel {
   String ? typeService;
   String? updatedAt;
   String? createdAt;
+  String? status;
   int? id;
 
   SubmitOrderModel(
@@ -32,6 +33,7 @@ class SubmitOrderModel {
         this.typeService,
         this.updatedAt,
         this.createdAt,
+        this.status,
         this.id});
 
   SubmitOrderModel.fromJson(Map<String, dynamic> json) {
@@ -51,6 +53,7 @@ class SubmitOrderModel {
     updatedAt = json['updated_at'];
     createdAt = json['created_at'];
     id = json['id'];
+    status = json['status'];
   }
 
   Map<String, dynamic> toJson() {
@@ -71,6 +74,7 @@ class SubmitOrderModel {
     data['updated_at'] = updatedAt;
     data['created_at'] = createdAt;
     data['id'] = id;
+    data['status'] = status;
     return data;
   }
 }

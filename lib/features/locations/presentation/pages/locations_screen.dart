@@ -22,12 +22,14 @@ class LocationsScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async {
+              // how to know that add the new location is success if the result is true
               final result = await context.pushNamed(
                 Routes.pickLocation,
                 arguments: MapContext(type: MapTypes.addLocation),
               );
               if (result == true) {
                 if (context.mounted) {
+                  //so get the new locations
                   context.read<LocationsCubit>().getLocations();
                 }
               }

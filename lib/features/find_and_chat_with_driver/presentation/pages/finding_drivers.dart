@@ -33,31 +33,31 @@ class FindingDriversScreen extends StatelessWidget {
                       20.height,
                       offers.isEmpty
                           ? OrderTimerWidget(model: model)
-                          : Expanded(
-                              child: ListView.builder(
-                                itemCount: offers.length,
-                                itemBuilder: (context, index) =>
-                                    DriverDetailsWidget(
-                                      model: offers[index],
-                                      accept: () {
-                                        cubit.acceptOffer(
-                                          orderId: model.id.toString(),
-                                          offerId: offers[index].id.toString(),
-                                        );
-                                        cubit.cancelTimer();
-                                        context.pushNamed(
-                                          Routes.orderDetails,
-                                          arguments: {
-                                            'cubit': cubit,
-                                            'order': model,
-                                            'driver': offers[index],
-                                          },
-                                        );
+                          : ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: offers.length,
+                            itemBuilder: (context, index) =>
+                                DriverDetailsWidget(
+                                  model: offers[index],
+                                  accept: () {
+                                    cubit.acceptOffer(
+                                      orderId: model.id.toString(),
+                                      offerId: offers[index].id.toString(),
+                                    );
+                                    cubit.cancelTimer();
+                                    context.pushNamed(
+                                      Routes.orderDetails,
+                                      arguments: {
+                                        'cubit': cubit,
+                                        'order': model,
+                                        'driver': offers[index],
                                       },
-                                      decline: () {},
-                                    ),
-                              ),
-                            ),
+                                    );
+                                  },
+                                  decline: () {},
+                                ),
+                          ),
                       
                     ],
                   ),
