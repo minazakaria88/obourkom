@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:oborkom/core/functions/show_snack_bar.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/features/main/presentation/cubit/main_cubit.dart';
 import 'package:oborkom/features/main/presentation/widgets/services_widget.dart';
+import 'package:toastification/toastification.dart';
 import '../../../../core/helpers/cache_helper.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../generated/assets.dart';
@@ -19,14 +21,14 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-
   @override
   void initState() {
-    if(CacheHelper.getData(key: CacheHelperKeys.locationEnabled) == true){
+    if (CacheHelper.getData(key: CacheHelperKeys.locationEnabled) == true) {
       BlocProvider.of<MainCubit>(context).getUserCurrentLocation();
     }
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -76,7 +78,18 @@ class _MainScreenState extends State<MainScreen> {
             ],
           ),
           20.height,
-          BlocBuilder<MainCubit, MainState>(
+          BlocConsumer<MainCubit, MainState>(
+            listenWhen: (previous, current) =>
+                previous.getLocationState != current.getLocationState,
+            listener: (context, state) {
+              if (state.getLocationState == GetLocationState.failure) {
+                showToastification(
+                  message: state.errorMessage ?? '',
+                  context: context,
+                  type: ToastificationType.error,
+                );
+              }
+            },
             buildWhen: (previous, current) =>
                 previous.getLocationState != current.getLocationState,
             builder: (context, state) =>

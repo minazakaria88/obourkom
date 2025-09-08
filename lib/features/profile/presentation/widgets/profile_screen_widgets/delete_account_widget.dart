@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/features/profile/presentation/widgets/profile_screen_widgets/logout_widget.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/widgets/my_button.dart';
@@ -48,6 +49,7 @@ class DeleteAccountWidget extends StatelessWidget {
               title: S.of(context).delete,
               color: AppColors.red,
               onTap: () {
+                logout(context);
               },
             ),
           ],

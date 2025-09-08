@@ -54,7 +54,7 @@ class NewOrder extends StatelessWidget {
                         previous.makeOrderStatus != current.makeOrderStatus,
                     listener: (context, state) {
                       if (state.isSuccess) {
-                        context.pushNamed(
+                        context.pushReplacementNamed(
                           Routes.findDriver,
                           arguments: state.orderDataModel,
                         );

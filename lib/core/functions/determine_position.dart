@@ -6,7 +6,11 @@ Future<Position> determinePosition() async {
 
   serviceEnabled = await Geolocator.isLocationServiceEnabled();
   if (!serviceEnabled) {
-    return Future.error('Location services are disabled.');
+    await Geolocator.openLocationSettings();
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Please enable location services(GPS).');
+    }
   }
 
   permission = await Geolocator.checkPermission();
@@ -23,7 +27,7 @@ Future<Position> determinePosition() async {
     );
   }
   return await Geolocator.getCurrentPosition(
-    locationSettings: const LocationSettings(accuracy: LocationAccuracy.medium),
+    locationSettings: const LocationSettings(accuracy: LocationAccuracy.high),
   );
 }
 
