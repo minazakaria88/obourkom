@@ -61,58 +61,65 @@ class OrderDetailsScreen extends StatelessWidget {
                   ),
                   SliverToBoxAdapter(child: 10.height),
                   SliverToBoxAdapter(
-                    child: BackgroundProfileWidget(
-                      child: SizedBox(
-                        height: 65,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: MyButton(
-                                title: S.of(context).payNow,
-                                onTap: () {
-                                  cubit.changeOrderStatus(
-                                    orderId: orderModel.id.toString(),
-                                    status: onTheWayToDelivery,
-                                  );
-                                },
-                              ),
-                            ),
-                            Expanded(
-                              child: MyButton(
-                                title: S.of(context).changeSupplier,
-                                onTap: () {
-                                  showDialog(
-                                    context: context,
-                                    builder: (_) => ChangeSupplierWidget(
-                                      onTap: () {
-                                        logger.i(orderModel.status);
-                                        cubit
-                                            .rejectOffer(
+                    child: BlocConsumer<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
+                      listener: (context, state) {
+                        
+                      },
+                      builder: (context, state) {
+                        return statusToNumber[state.orderStatus]==null||statusToNumber[state.orderStatus]!>0?Container():BackgroundProfileWidget(
+                          child: SizedBox(
+                            height: 65,
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: MyButton(
+                                    title: S.of(context).payNow,
+                                    onTap: () {
+                                      cubit.changeOrderStatus(
+                                        orderId: orderModel.id.toString(),
+                                        status: onTheWayToPickup,
+                                      );
+                                    },
+                                  ),
+                                ),
+                                Expanded(
+                                  child: MyButton(
+                                    title: S.of(context).changeSupplier,
+                                    onTap: () {
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => ChangeSupplierWidget(
+                                          onTap: () {
+                                            logger.i(orderModel.status);
+                                            cubit
+                                                .rejectOffer(
                                               orderId: orderModel.id.toString(),
                                               offerId: offerModel.id.toString(),
                                             )
-                                            .then((value) {
+                                                .then((value) {
                                               if (context.mounted) {
                                                 context.pushNamedAndRemoveUntil(
                                                   Routes.findDriver,
                                                   arguments: orderModel,
-                                                  (route) =>
-                                                      route.settings.name ==
+                                                      (route) =>
+                                                  route.settings.name ==
                                                       Routes.home,
                                                 );
                                               }
                                             });
-                                      },
-                                    ),
-                                  );
-                                },
-                                textColor: Colors.black,
-                                color: AppColors.greyColor,
-                              ),
+                                          },
+                                        ),
+                                      );
+                                    },
+                                    textColor: Colors.black,
+                                    color: AppColors.greyColor,
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   ),
                   SliverToBoxAdapter(child: 20.height),

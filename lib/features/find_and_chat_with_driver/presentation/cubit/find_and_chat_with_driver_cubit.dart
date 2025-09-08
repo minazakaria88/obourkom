@@ -122,7 +122,7 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
 
 
 
-  void acceptOffer({required String orderId, required String offerId}) async {
+  Future<void> acceptOffer({required String orderId, required String offerId}) async {
     try {
       await findAndChatWithDriverRepository.acceptOffer(
         orderId: orderId,

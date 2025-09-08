@@ -33,7 +33,7 @@ class LocationsCubit extends Cubit<LocationsState> {
 
   void getUserCurrentLocation() async {
     try {
-      log('getUserCurrentLocation');
+      logger.i('getUserCurrentLocation');
       final userLocation = await determinePosition();
       final locationData = await getAddressFromLatAndLng(
         LatLng(userLocation.latitude, userLocation.longitude),

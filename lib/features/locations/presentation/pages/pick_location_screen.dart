@@ -90,7 +90,7 @@ class _PickOrderLocationScreenState extends State<PickOrderLocationScreen> {
                 rotateGesturesEnabled: true,
                 scrollGesturesEnabled: true,
               ),
-              const SearchWidget(),
+             // const SearchWidget(),
               if (state.pickedLocation != null)
                 widget.mapContext.type == MapTypes.orderPick
                     ? OrderPickLocation(

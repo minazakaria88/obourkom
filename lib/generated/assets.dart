@@ -45,6 +45,7 @@ class Assets {
   static const String imagesNewOrder = 'assets/images/newOrder.png';
   static const String imagesNoNotifications = 'assets/images/NoNotifications.svg';
   static const String imagesNotification = 'assets/images/notification.svg';
+  static const String imagesOrderComplete = 'assets/images/orderComplete.svg';
   static const String imagesOrderNumber = 'assets/images/orderNumber.svg';
   static const String imagesOrders = 'assets/images/orders.svg';
   static const String imagesOtherAddLocations = 'assets/images/otherAddLocations.svg';

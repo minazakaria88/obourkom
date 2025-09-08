@@ -95,7 +95,7 @@ class FindAndChatWithDriverRepository {
       final response = await apiHelper.postData(
         url: '${EndPoints.orders}/$orderId/offers/$offerId/accept',
       );
-      logger.d(response.data);
+      logger.i(response.data);
     } catch (e) {
       logger.e(e);
       if (e is DioException) {

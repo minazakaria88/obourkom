@@ -31,29 +31,30 @@ class FindingDriversScreen extends StatelessWidget {
                       20.height,
                       OrderDetailsWidget(model: model),
                       20.height,
-                      offers.isEmpty
-                          ? OrderTimerWidget(model: model)
-                          : ListView.builder(
+                      if (offers.isEmpty) OrderTimerWidget(model: model) else ListView.builder(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemCount: offers.length,
                             itemBuilder: (context, index) =>
                                 DriverDetailsWidget(
                                   model: offers[index],
-                                  accept: () {
-                                    cubit.acceptOffer(
+                                  accept: ()async {
+                                    cubit.cancelTimer();
+                                    await cubit.acceptOffer(
                                       orderId: model.id.toString(),
                                       offerId: offers[index].id.toString(),
                                     );
-                                    cubit.cancelTimer();
-                                    context.pushNamed(
-                                      Routes.orderDetails,
-                                      arguments: {
-                                        'cubit': cubit,
-                                        'order': model,
-                                        'driver': offers[index],
-                                      },
-                                    );
+                                    if(context.mounted)
+                                    {
+                                      context.pushReplacementNamed(
+                                        Routes.orderDetails,
+                                        arguments: {
+                                          'cubit': cubit,
+                                          'order': model,
+                                          'driver': offers[index],
+                                        },
+                                      );
+                                    }
                                   },
                                   decline: () {},
                                 ),
