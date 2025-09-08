@@ -147,7 +147,10 @@
     "doYouWantToChangeSupplier": "هل تريد تغيير المزود ؟",
     "yes": "نعم",
     "no": "لا",
-    "available": "متاح"
+    "available": "متاح",
+    "from": "من",
+    "to": "إلى",
+    "sar": "ريال"
 
 
 

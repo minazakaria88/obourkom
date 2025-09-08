@@ -109,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "faq": MessageLookupByLibrary.simpleMessage("الاسئلة الشائعة"),
     "findingDrivers": MessageLookupByLibrary.simpleMessage("البحث عن مندوب"),
+    "from": MessageLookupByLibrary.simpleMessage("من"),
     "haveFun": MessageLookupByLibrary.simpleMessage(
       "استمتع بتجربة نقل سهلة وخالية من المتاعب.",
     ),
@@ -226,6 +227,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "request": MessageLookupByLibrary.simpleMessage("طلب"),
     "resend": MessageLookupByLibrary.simpleMessage("اعادة الارسال"),
+    "sar": MessageLookupByLibrary.simpleMessage("ريال"),
     "save": MessageLookupByLibrary.simpleMessage("حفظ"),
     "searchOnMap": MessageLookupByLibrary.simpleMessage("ابحث في الخريطة"),
     "serviceType": MessageLookupByLibrary.simpleMessage("نوع الخدمة"),
@@ -242,6 +244,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "بالطريق لتوصيل الطلب",
     ),
     "theShipmentHasArrived": MessageLookupByLibrary.simpleMessage("تم التوصيل"),
+    "to": MessageLookupByLibrary.simpleMessage("إلى"),
     "total": MessageLookupByLibrary.simpleMessage("الإجمالي:"),
     "transferServices": MessageLookupByLibrary.simpleMessage(" خدمة نقل "),
     "transportOfGoods": MessageLookupByLibrary.simpleMessage("نقل بضائع"),

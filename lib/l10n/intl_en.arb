@@ -145,7 +145,10 @@
   "doYouWantToChangeSupplier": "Do you want to change supplier?",
   "yes": "Yes",
   "no": "No",
-  "available": "Available"
+  "available": "Available",
+  "from": "From",
+  "to": "To",
+  "sar": "SAR"
 
 
 

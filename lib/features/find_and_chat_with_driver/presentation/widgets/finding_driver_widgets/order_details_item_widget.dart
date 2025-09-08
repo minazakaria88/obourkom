@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oborkom/core/helpers/extension.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -21,10 +22,15 @@ class OrderDetailsItemWidget extends StatelessWidget {
             '$title :',
             style: AppTextStyles.bold14Grey,
           ),
-          Text(
-            value,
-            style: AppTextStyles.bold14Grey.copyWith(
-              color: AppColors.darkMainColor,
+          5.width,
+          Flexible(
+            child: Text(
+              value,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppTextStyles.bold14Grey.copyWith(
+                color: AppColors.darkMainColor,
+              ),
             ),
           ),
         ],

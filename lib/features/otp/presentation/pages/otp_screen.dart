@@ -7,6 +7,7 @@ import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/core/widgets/loading_widget.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import 'package:toastification/toastification.dart';
+import '../../../../core/functions/hide_keyboard.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../generated/l10n.dart';
@@ -152,6 +153,9 @@ class _OtpScreenState extends State<OtpScreen> {
           otpCode = code ?? '';
           logger.i(code);
           if ((code ?? '').length == 4) {
+            if(context.mounted) {
+              hideKeyboard(context);
+            }
             await context.read<OtpCubit>().verifyOtp(
               otp: code ?? '',
               otpType: widget.otpType,

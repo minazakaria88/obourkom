@@ -27,22 +27,22 @@ class CompleteOrderPaymentSummaryWidget extends StatelessWidget {
             ),
             const Divider(thickness: 1.2, color: Colors.grey),
             OrderDetailsItemWidget(
-              value: ' ${model.price ?? ''}ريال ',
+              value: ' ${model.price ?? ''} ${S.of(context).sar} ',
               title: S.of(context).orderValue,
             ),
             OrderDetailsItemWidget(
-              value: ' ${model.price ?? ''}ريال ',
+              value: ' ${model.price ?? ''}${S.of(context).sar} ',
               title: S.of(context).shipmentValue,
             ),
             OrderDetailsItemWidget(
-              value: ' ${model.price ?? ''}ريال ',
+              value: ' ${model.price ?? ''}${S.of(context).sar} ',
               title: S.of(context).discount,
             ),
             const Divider(thickness: 1.2, color: Colors.grey),
             5.height,
             OrderDetailsItemWidget(
               title: S.of(context).total,
-              value: ' ${model.price ?? ''}ريال ',
+              value: ' ${model.price ?? ''}${S.of(context).sar} ',
             ),
           ],
         ),

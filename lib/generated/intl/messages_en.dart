@@ -115,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "faq": MessageLookupByLibrary.simpleMessage("FAQ"),
     "findingDrivers": MessageLookupByLibrary.simpleMessage("Finding Drivers"),
+    "from": MessageLookupByLibrary.simpleMessage("From"),
     "haveFun": MessageLookupByLibrary.simpleMessage(
       "Enjoy a smooth and hassle-free moving experience.",
     ),
@@ -231,6 +232,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "request": MessageLookupByLibrary.simpleMessage("Request"),
     "resend": MessageLookupByLibrary.simpleMessage("Resend"),
+    "sar": MessageLookupByLibrary.simpleMessage("SAR"),
     "save": MessageLookupByLibrary.simpleMessage("Save"),
     "searchOnMap": MessageLookupByLibrary.simpleMessage("Search on Map"),
     "serviceType": MessageLookupByLibrary.simpleMessage("Service Type"),
@@ -251,6 +253,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "theShipmentHasArrived": MessageLookupByLibrary.simpleMessage(
       "The Shipment Has Arrived",
     ),
+    "to": MessageLookupByLibrary.simpleMessage("To"),
     "total": MessageLookupByLibrary.simpleMessage("Total:"),
     "transferServices": MessageLookupByLibrary.simpleMessage(
       "Transfer Services",

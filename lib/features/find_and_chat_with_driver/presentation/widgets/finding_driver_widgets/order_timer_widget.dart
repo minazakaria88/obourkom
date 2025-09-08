@@ -73,22 +73,24 @@ class OrderTimerWidget extends StatelessWidget {
                     color: AppColors.shadowColor.withAlpha(20),
                   ),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        S.of(context).expectedTransportationCost,
-                        style: AppTextStyles.bold14Grey.copyWith(
-                          color: Colors.black,
+                      Expanded(
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          S.of(context).expectedTransportationCost,
+                          style: AppTextStyles.bold14Grey.copyWith(
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                       10.width,
-                      Flexible(
+                      Expanded(
                         child: Text(
-                          'من ${model.priceFrom} الي ${model.priceTo} ريال',
+                          '${S.of(context).from} ${model.priceFrom}  ${S.of(context).to} ${model.priceTo} ${S.of(context).sar}',
                           textAlign: TextAlign.center,
                           style: AppTextStyles.bold14MainColor.copyWith(
                             fontSize: 16,
-
                           ),
                         ),
                       ),
