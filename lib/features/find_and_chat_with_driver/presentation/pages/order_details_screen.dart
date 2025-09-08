@@ -91,16 +91,17 @@ class OrderDetailsScreen extends StatelessWidget {
                                               orderId: orderModel.id.toString(),
                                               offerId: offerModel.id.toString(),
                                             )
-                                            .then(
-                                              (value) => context
-                                                  .pushNamedAndRemoveUntil(
-                                                    Routes.findDriver,
-                                                    arguments: orderModel,
-                                                    (route) =>
-                                                        route.settings.name ==
-                                                        Routes.home,
-                                                  ),
-                                            );
+                                            .then((value) {
+                                              if (context.mounted) {
+                                                context.pushNamedAndRemoveUntil(
+                                                  Routes.findDriver,
+                                                  arguments: orderModel,
+                                                  (route) =>
+                                                      route.settings.name ==
+                                                      Routes.home,
+                                                );
+                                              }
+                                            });
                                       },
                                     ),
                                   );

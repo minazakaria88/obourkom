@@ -118,16 +118,7 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
     }
   }
 
-  void getOrderDetails({required String orderId}) async {
-    try {
-      final result = await findAndChatWithDriverRepository.getOrderData(
-        orderId: orderId,
-      );
-      // emit(state);
-    } catch (e) {
-      emit(state.copyWith(errorMessage: e.toString()));
-    }
-  }
+
 
 
 

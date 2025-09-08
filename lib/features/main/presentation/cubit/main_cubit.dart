@@ -4,7 +4,6 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/helpers/cache_helper.dart';
-import 'package:oborkom/features/main/data/models/car_model.dart';
 import 'package:oborkom/features/main/data/models/slider_model.dart';
 import 'package:oborkom/features/main/data/models/truck_size.dart';
 import 'package:oborkom/features/main/data/repositories/main_repo.dart';

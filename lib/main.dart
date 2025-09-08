@@ -14,7 +14,6 @@ import 'package:oborkom/features/language/presentation/cubit/language_cubit.dart
 import 'package:oborkom/injection.dart';
 import 'package:toastification/toastification.dart';
 import 'core/api/api_helper.dart';
-import 'core/helpers/error_handler.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
 
