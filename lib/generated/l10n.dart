@@ -1223,6 +1223,21 @@ class S {
       args: [],
     );
   }
+
+  /// `Details`
+  String get details {
+    return Intl.message('Details', name: 'details', desc: '', args: []);
+  }
+
+  /// `Order completed successfully`
+  String get orderCompletedSuccessfully {
+    return Intl.message(
+      'Order completed successfully',
+      name: 'orderCompletedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

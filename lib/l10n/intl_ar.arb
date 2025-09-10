@@ -151,7 +151,9 @@
     "from": "من",
     "to": "إلى",
     "sar": "ريال",
-    "locationAddedSuccessfully": "تمت إضافة الموقع بنجاح"
+    "locationAddedSuccessfully": "تمت إضافة الموقع بنجاح",
+    "details": "التفاصيل",
+    "orderCompletedSuccessfully": "تم اكمال الطلب بنجاح"
 
 
 

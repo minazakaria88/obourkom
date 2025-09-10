@@ -4,6 +4,7 @@ import 'package:oborkom/core/routes/routes.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/cubit/find_and_chat_with_driver_cubit.dart';
+import 'package:oborkom/features/find_and_chat_with_driver/presentation/pages/finished_order_screen.dart';
 import 'package:oborkom/features/home/presentation/cubit/home_cubit.dart';
 import 'package:oborkom/features/home/presentation/pages/home_screen.dart';
 import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.dart';
@@ -172,6 +173,10 @@ class AppRoues {
         final arguments = setting.arguments as String;
         return MaterialPageRoute(
           builder: (context) => CustomErrorWidget(error: arguments),
+        );
+      case Routes.finishOrderScreen:
+        return MaterialPageRoute(
+          builder: (context) => const FinishOrderScreen(),
         );
       default:
         return null;

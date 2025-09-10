@@ -80,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "We will permanently delete your account, which will result in the loss of your order history and all your data. Are you sure you want to delete it?",
     ),
     "deliveryTo": MessageLookupByLibrary.simpleMessage("Delivery To"),
+    "details": MessageLookupByLibrary.simpleMessage("Details"),
     "determineLocationManually": MessageLookupByLibrary.simpleMessage(
       "Determine Location Manually",
     ),
@@ -165,6 +166,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "onYourWay": MessageLookupByLibrary.simpleMessage("On Your Way"),
     "openGps": MessageLookupByLibrary.simpleMessage(
       "To provide the best service and ease of access, please enable your location",
+    ),
+    "orderCompletedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Order completed successfully",
     ),
     "orderDate": MessageLookupByLibrary.simpleMessage("Order Date"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("Order Details"),

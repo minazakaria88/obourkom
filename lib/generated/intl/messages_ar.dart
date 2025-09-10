@@ -80,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "سنقوم بحذف الحساب الخاص بك بشكل نهائي مما سيؤدي الي فقدان سجل الطلبات وكافة البيانات الخاصة بك، هل انت متأكد من القيام بعملية الحذف ؟",
     ),
     "deliveryTo": MessageLookupByLibrary.simpleMessage("توصيل إلى:"),
+    "details": MessageLookupByLibrary.simpleMessage("التفاصيل"),
     "determineLocationManually": MessageLookupByLibrary.simpleMessage(
       "حدد الموقع يدويا",
     ),
@@ -160,6 +161,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "onYourWay": MessageLookupByLibrary.simpleMessage("بالطريق لاستلام طلبك"),
     "openGps": MessageLookupByLibrary.simpleMessage(
       "لتقديم افضل خدمة وسهولة في الوصول يرجي تفعيل الموقع",
+    ),
+    "orderCompletedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تم اكمال الطلب بنجاح",
     ),
     "orderDate": MessageLookupByLibrary.simpleMessage("تاريخ الطلب"),
     "orderDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الطلب"),

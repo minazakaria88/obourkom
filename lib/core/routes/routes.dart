@@ -18,4 +18,5 @@ class Routes {
   static const String completedOrderDetails = '/completedOrderDetails';
   static const String noInternet = '/noInternet';
   static const String error = '/error';
+  static const String finishOrderScreen = '/finishOrderScreen';
 }

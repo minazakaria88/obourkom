@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/cubit/find_and_chat_with_driver_cubit.dart';
+import '../../../../../core/routes/routes.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 import 'dotted_widget.dart';
@@ -12,7 +14,14 @@ class OrderStatusWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
+    return BlocConsumer<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
+      listenWhen: (previous, current) => previous.orderStatus != current.orderStatus,
+      listener: (context, state) {
+        if (state.orderStatus == delivered) {
+          context.pushNamedAndRemoveUntil(Routes.finishOrderScreen, (r) => false);
+        }
+
+      },
       buildWhen: (previous, current) =>
           previous.orderStatus != current.orderStatus,
       builder: (context, state) {
