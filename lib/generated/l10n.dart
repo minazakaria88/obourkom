@@ -1213,6 +1213,16 @@ class S {
   String get sar {
     return Intl.message('SAR', name: 'sar', desc: '', args: []);
   }
+
+  /// `Location added successfully`
+  String get locationAddedSuccessfully {
+    return Intl.message(
+      'Location added successfully',
+      name: 'locationAddedSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

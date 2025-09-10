@@ -7,6 +7,7 @@ class OfferModel
   String? createdAt;
   String? updatedAt;
   String ? name;
+  String ?phone;
 
 
   OfferModel({
@@ -16,7 +17,8 @@ class OfferModel
     this.price,
     this.createdAt,
     this.updatedAt,
-    this.name
+    this.name,
+    this.phone
   });
 
   OfferModel.fromJson(Map<String, dynamic> json) {
@@ -26,7 +28,8 @@ class OfferModel
     price = json['price'].toString();
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
-    name=json['name'];
+    name=json['driver_name'];
+    phone=json['driver_phone'];
   }
 
 }

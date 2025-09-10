@@ -69,7 +69,7 @@ class _ChooseCarScreenState extends State<ChooseCarScreen> {
                             (e) => Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: _buildItem(e, () {
-                                context.pushNamed(Routes.newOrder,arguments: e);
+                                context.pushReplacementNamed(Routes.newOrder,arguments: e);
                               }),
                             ),
                           )

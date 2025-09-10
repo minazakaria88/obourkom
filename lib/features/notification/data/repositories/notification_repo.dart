@@ -27,7 +27,7 @@ class NotificationRepository {
 
   Future<void> markNotificationAsRead(String id) async {
     try {
-      await apiHelper.postData(url: '${EndPoints.seenNotifications}/$id',data: {});
+      await apiHelper.postData(url: '${EndPoints.seenNotifications}/$id');
     } catch (e) {
       if (e is DioException) {
         throw ApiException(failure: ServerFailure.serverError(e));

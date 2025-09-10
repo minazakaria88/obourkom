@@ -130,6 +130,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "language": MessageLookupByLibrary.simpleMessage("English"),
     "location": MessageLookupByLibrary.simpleMessage("Location"),
+    "locationAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "Location added successfully",
+    ),
     "login": MessageLookupByLibrary.simpleMessage("Login"),
     "loginSuccessfully": MessageLookupByLibrary.simpleMessage(
       "Login Successfully",

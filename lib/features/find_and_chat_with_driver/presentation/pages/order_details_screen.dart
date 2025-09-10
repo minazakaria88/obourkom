@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_colors.dart';
 import 'package:oborkom/core/utils/constant.dart';
@@ -9,7 +8,6 @@ import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_mod
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/widgets/order_details_widget/change_supplier_widget.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/widgets/my_app_bar.dart';
-import '../../../../generated/assets.dart';
 import '../../../../generated/l10n.dart';
 import '../../../orders/data/models/submit_order_model.dart';
 import '../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
@@ -36,12 +34,6 @@ class OrderDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: MyAppBar(
         title: S.of(context).orderDetails,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: SvgPicture.asset(Assets.imagesQuestionCircle),
-          ),
-        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -63,7 +55,7 @@ class OrderDetailsScreen extends StatelessWidget {
                   SliverToBoxAdapter(
                     child: BlocConsumer<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
                       listener: (context, state) {
-                        
+
                       },
                       builder: (context, state) {
                         return statusToNumber[state.orderStatus]==null||statusToNumber[state.orderStatus]!>0?Container():BackgroundProfileWidget(
@@ -123,7 +115,7 @@ class OrderDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   SliverToBoxAdapter(child: 20.height),
-                  const SliverToBoxAdapter(child: DriverDetails()),
+                   SliverToBoxAdapter(child: DriverDetails(model: offerModel,)),
                   SliverToBoxAdapter(child: 20.height),
                   const ChatListview(),
                   SliverToBoxAdapter(child: 20.height),

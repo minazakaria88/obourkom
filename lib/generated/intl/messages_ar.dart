@@ -122,6 +122,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "labelHint": MessageLookupByLibrary.simpleMessage("مثال: منزل عمي"),
     "language": MessageLookupByLibrary.simpleMessage("العربية"),
     "location": MessageLookupByLibrary.simpleMessage("الموقع"),
+    "locationAddedSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "تمت إضافة الموقع بنجاح",
+    ),
     "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
     "loginSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم تسجيل الدخول بنجاح",

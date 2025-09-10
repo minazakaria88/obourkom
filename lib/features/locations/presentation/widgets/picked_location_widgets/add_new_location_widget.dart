@@ -1,4 +1,3 @@
-import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,6 +11,7 @@ import 'package:oborkom/core/widgets/loader_widget.dart';
 import 'package:oborkom/features/locations/data/models/location_model.dart';
 import 'package:oborkom/features/locations/data/models/location_type_model.dart';
 import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.dart';
+import 'package:toastification/toastification.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/widgets/my_button.dart';
 import '../../../../../generated/assets.dart';
@@ -82,11 +82,10 @@ class AddNewLocationWidget extends StatelessWidget {
             BlocConsumer<LocationsCubit, LocationsState>(
               listener: (context, state) {
                 if (state.isPostLocationsSuccess) {
-                  showSnackBar(
-                    message: 'location add Successfully',
+                  showToastification(
+                    message: S.of(context).locationAddedSuccessfully,
                     context: context,
-                    title: 'location add Successfully',
-                    contentType: ContentType.success,
+                    type: ToastificationType.success,
                   );
                   context.pop(true);
                 }
