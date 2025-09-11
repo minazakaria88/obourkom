@@ -41,7 +41,7 @@ class OrderListviewItemWidget extends StatelessWidget {
                 priceFrom: double.tryParse(model.priceFrom??''),
                 priceTo: double.tryParse(model.priceTo ??''),
                 status: model.status,
-                truckTypeId: model.truckType?.id.toString(),
+                truckTypeId: model.truckSize?.name.toString(),
                 truckSizeId: model.truckSize?.id.toString(),
                 createdAt: model.createdAt,
               ),
