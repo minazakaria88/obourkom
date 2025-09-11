@@ -11,15 +11,18 @@ class CachedImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: imageUrl,
-      fit: BoxFit.fill,
-      placeholder: (context, url) =>  Center(
-        child: Image.asset(Assets.imagesLoading,fit: BoxFit.fill,),
-      ),
-      errorWidget: (context, url, error) => const Icon(
-        Icons.error,
-        color: Colors.red,
+    return SizedBox(
+      width: double.infinity,
+      child: CachedNetworkImage(
+        imageUrl: imageUrl,
+        fit: BoxFit.fill,
+        placeholder: (context, url) =>  Center(
+          child: Image.asset(Assets.imagesLoading,fit: BoxFit.fill,),
+        ),
+        errorWidget: (context, url, error) => const Icon(
+          Icons.error,
+          color: Colors.red,
+        ),
       ),
     );
   }

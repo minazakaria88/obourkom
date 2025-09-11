@@ -17,7 +17,6 @@ class MyServicesWidget extends StatelessWidget {
       builder: (context, state) {
         final servicesList = state.categoriesModel?.data ?? [];
         final sliderList = state.sliderModel?.data ?? [];
-        final cubit = context.read<MainCubit>();
         return CustomScrollView(
           slivers: [
             SliverToBoxAdapter(
@@ -67,13 +66,14 @@ class MyServicesWidget extends StatelessWidget {
                         context.pushNamed(
                           Routes.chooseYourCar,
                           arguments: {
-                            'cubit': cubit,
-                            'ids': servicesList[index].truckId
+                            'cars':servicesList[index].trucks,
+                            'serviceName':servicesList[index].name
                           },
                         );
                       },
                     ),
                   ),
+             SliverToBoxAdapter(child: 100.height),
           ],
         );
       },

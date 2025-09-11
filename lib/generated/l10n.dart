@@ -1238,6 +1238,11 @@ class S {
       args: [],
     );
   }
+
+  /// `No Trucks`
+  String get noTrucks {
+    return Intl.message('No Trucks', name: 'noTrucks', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

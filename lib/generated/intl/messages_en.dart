@@ -161,6 +161,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noSavedAddresses": MessageLookupByLibrary.simpleMessage(
       "No Saved Addresses",
     ),
+    "noTrucks": MessageLookupByLibrary.simpleMessage("No Trucks"),
     "notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
     "onYourWay": MessageLookupByLibrary.simpleMessage("On Your Way"),

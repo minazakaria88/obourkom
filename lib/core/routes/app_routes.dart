@@ -10,7 +10,7 @@ import 'package:oborkom/features/home/presentation/pages/home_screen.dart';
 import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.dart';
 import 'package:oborkom/features/login/presentation/pages/login_screen.dart';
 import 'package:oborkom/features/locations/presentation/pages/pick_location_screen.dart';
-import 'package:oborkom/features/main/data/models/truck_size.dart';
+import 'package:oborkom/features/main/data/models/categories_model.dart';
 import 'package:oborkom/features/notification/presentation/pages/notification_screen.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/pages/finding_drivers.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
@@ -23,7 +23,6 @@ import 'package:oborkom/features/register/presentation/cubit/register_cubit.dart
 import 'package:oborkom/features/register/presentation/pages/register_screen.dart';
 import '../../features/locations/presentation/pages/locations_screen.dart';
 import '../../features/login/presentation/cubit/login_cubit.dart';
-import '../../features/main/presentation/cubit/main_cubit.dart';
 import '../../features/main/presentation/pages/choose_car_screen.dart';
 import '../../features/orders/data/models/submit_order_model.dart';
 import '../../features/orders/presentation/cubit/orders_cubit.dart';
@@ -76,18 +75,21 @@ class AppRoues {
         );
       case Routes.chooseYourCar:
         final arguments = setting.arguments as Map<String, dynamic>;
+        final cars = arguments['cars'] as List<TruckModel>;
+        final servicesName = arguments['serviceName'] as String;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider.value(
-            value: arguments['cubit'] as MainCubit,
-            child: const ChooseCarScreen(),
-          ),
+          builder: (context) =>
+              ChooseCarScreen(cars: cars, servicesName: servicesName),
         );
       case Routes.newOrder:
-        final arguments = setting.arguments as TruckSizeModel;
+        final arguments = setting.arguments as Map<String, dynamic>;
+        final truckModel = arguments['truckModel'] as TruckModel;
+        final servicesName = arguments['serviceName'] as String;
+
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<OrdersCubit>(),
-            child:  NewOrder(truckSize: arguments,),
+            child: NewOrder(truckModel: truckModel,serviceName: servicesName,),
           ),
         );
       case Routes.pickLocation:
@@ -165,7 +167,7 @@ class AppRoues {
       case Routes.completedOrderDetails:
         final arguments = setting.arguments as OrderDataModel;
         return MaterialPageRoute(
-          builder: (context) =>  CompletedOrderDetailsScreen(model: arguments,),
+          builder: (context) => CompletedOrderDetailsScreen(model: arguments),
         );
       case Routes.noInternet:
         return MaterialPageRoute(builder: (context) => const NoInternet());

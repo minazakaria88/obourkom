@@ -156,6 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "noSavedAddresses": MessageLookupByLibrary.simpleMessage(
       "لا يوجد عناوين محفوظة",
     ),
+    "noTrucks": MessageLookupByLibrary.simpleMessage("لا يوجد شاحنات"),
     "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
     "onYourWay": MessageLookupByLibrary.simpleMessage("بالطريق لاستلام طلبك"),

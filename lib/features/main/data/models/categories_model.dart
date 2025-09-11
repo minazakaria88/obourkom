@@ -16,45 +16,46 @@ class CategoriesModel {
     meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (this.data != null) {
-      data['data'] = this.data!.map((v) => v.toJson()).toList();
-    }
-    if (links != null) {
-      data['links'] = links!.toJson();
-    }
-    if (meta != null) {
-      data['meta'] = meta!.toJson();
-    }
-    return data;
-  }
+
 }
 
 class CategoryModel {
   int? id;
   String? name;
   String? image;
-  List<String>? truckId;
+  List<TruckModel>? trucks;
 
-  CategoryModel({this.id, this.name, this.image, this.truckId});
+  CategoryModel({this.id, this.name, this.image, this.trucks});
 
   CategoryModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
     image = json['image'];
-    truckId = json['truck_id'].cast<String>();
+    if (json['trucks'] != null) {
+      trucks = <TruckModel>[];
+      json['trucks'].forEach((v) {
+        trucks!.add(TruckModel.fromJson(v));
+      });
+    }
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['name'] = name;
-    data['image'] = image;
-    data['truck_id'] = truckId;
-    return data;
+
+}
+
+class TruckModel
+{
+  int ? id;
+  String ? name;
+  String ? image;
+
+  TruckModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    image = json['image'];
   }
 }
+
+
 
 class Links {
   String? first;

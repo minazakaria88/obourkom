@@ -11,7 +11,7 @@ import 'package:oborkom/features/orders/data/models/order_model.dart';
 import 'package:oborkom/features/orders/data/models/submit_order_model.dart';
 import '../../../../core/api/failure.dart';
 import '../../../../core/helpers/cache_helper.dart';
-import '../../../main/data/models/truck_size.dart';
+import '../../../main/data/models/categories_model.dart';
 import '../../data/models/new_order_model.dart';
 import '../../data/repositories/order_repo.dart';
 part 'orders_state.dart';
@@ -22,7 +22,6 @@ class OrdersCubit extends Cubit<OrdersState> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController notesController = TextEditingController();
   final TextEditingController codeController = TextEditingController();
-  final TextEditingController serviceController = TextEditingController();
 
   void pickDeliveryLocation(LocationOrderModel model) async {
     emit(
@@ -52,10 +51,10 @@ class OrdersCubit extends Cubit<OrdersState> {
     emit(state.copyWith(paymentMethod: applePay));
   }
 
-  void makeOrder(TruckSizeModel truckSize) async {
+  void makeOrder(TruckModel truckModel,String servicesName) async {
     try {
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.loading));
-      final model = await getNewOrderModel(truckSize);
+      final model = await getNewOrderModel(truckModel,servicesName);
       final result = await orderRepository.makeOrder(model.toJson());
       emit(
         state.copyWith(
@@ -80,7 +79,7 @@ class OrdersCubit extends Cubit<OrdersState> {
     }
   }
 
-  Future<NewOrderModel> getNewOrderModel(TruckSizeModel truckSize) async {
+  Future<NewOrderModel> getNewOrderModel(TruckModel truckModel,String serviceName) async {
     return NewOrderModel(
       customerId: CacheHelper.getData(
         key: CacheHelperKeys.customerId,
@@ -95,8 +94,8 @@ class OrdersCubit extends Cubit<OrdersState> {
       paymentType: state.paymentMethod,
       status: 'available',
       statusPaid: 'unpaid',
-      typeService: serviceController.text,
-      truckSizeId: truckSize.id.toString(),
+      typeService: serviceName,
+      truckSizeId: truckModel.id.toString(),
     );
   }
 
@@ -158,7 +157,6 @@ class OrdersCubit extends Cubit<OrdersState> {
   disposeControllers() {
     codeController.dispose();
     notesController.dispose();
-    serviceController.dispose();
   }
 
   @override

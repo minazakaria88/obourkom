@@ -41,6 +41,7 @@ class OneServicesWidget extends StatelessWidget {
             10.height,
             Text(
               model.name!,
+              textAlign: TextAlign.center,
               style: const TextStyle(
                 color: AppColors.mainColor,
                 fontSize: 16,

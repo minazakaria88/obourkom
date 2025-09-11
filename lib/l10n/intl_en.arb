@@ -151,7 +151,8 @@
   "sar": "SAR",
   "locationAddedSuccessfully": "Location added successfully",
   "details": "Details",
-  "orderCompletedSuccessfully": "Order completed successfully"
+  "orderCompletedSuccessfully": "Order completed successfully",
+  "noTrucks": "No Trucks"
 
 
 

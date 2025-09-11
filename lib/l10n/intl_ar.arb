@@ -153,7 +153,8 @@
     "sar": "ريال",
     "locationAddedSuccessfully": "تمت إضافة الموقع بنجاح",
     "details": "التفاصيل",
-    "orderCompletedSuccessfully": "تم اكمال الطلب بنجاح"
+    "orderCompletedSuccessfully": "تم اكمال الطلب بنجاح",
+    "noTrucks": "لا يوجد شاحنات"
 
 
 
