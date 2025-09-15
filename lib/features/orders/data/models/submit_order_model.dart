@@ -3,8 +3,8 @@ class SubmitOrderModel {
   double? fromLng;
   double? toLat;
   double? toLng;
-  double? priceFrom;
-  double? priceTo;
+  num? priceFrom;
+  num? priceTo;
   int? customerId;
   String? paymentType;
   String? notes;

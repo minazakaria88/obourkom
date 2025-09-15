@@ -4,6 +4,7 @@ import 'package:oborkom/features/find_and_chat_with_driver/presentation/cubit/fi
 import 'package:oborkom/features/orders/data/models/submit_order_model.dart';
 
 import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/constant.dart';
 import '../../../../../generated/l10n.dart';
 import 'order_details_item_widget.dart';
 
@@ -40,11 +41,11 @@ class OrderDetailsWidget extends StatelessWidget {
                   title: S.of(context).serviceType,
                 ),
                 OrderDetailsItemWidget(
-                  value: '${model.truckTypeId}',
+                  value: '${model.truckSizeId}',
                   title: S.of(context).carType,
                 ),
                 OrderDetailsItemWidget(
-                  value: state.orderStatus?? model.status ??'',
+                  value: state.orderStatus?? getStatusText(context, state.orderStatus),
                   title: S.of(context).orderStatus,
                 ),
                 OrderDetailsItemWidget(

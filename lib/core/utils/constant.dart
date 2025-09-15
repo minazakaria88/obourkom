@@ -1,6 +1,7 @@
 import 'package:logger/logger.dart';
 
 import '../../generated/assets.dart';
+import '../../generated/l10n.dart';
 
 enum MapTypes { orderPick, addLocation }
 
@@ -26,6 +27,20 @@ Map<String, int> statusToNumber = {
   onTheWayToDelivery: 2,
   delivered: 3,
 };
+
+String getStatusText(context,value)
+{
+  Map<String, String> mapToText={
+    available: S.of(context).available,
+    negotiating: S.of(context).negotiation,
+    onTheWayToPickup: S.of(context).onTheWayToPickup,
+    onTheWayToDelivery: S.of(context).onTheWayToDelivery,
+    delivered: S.of(context).delivered
+  };
+
+  return mapToText[value] ??'';
+
+}
 
 const available = 'available';
 const negotiating = 'negotiating';

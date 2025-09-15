@@ -79,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteAccountDesc": MessageLookupByLibrary.simpleMessage(
       "We will permanently delete your account, which will result in the loss of your order history and all your data. Are you sure you want to delete it?",
     ),
+    "delivered": MessageLookupByLibrary.simpleMessage("Delivered"),
     "deliveryTo": MessageLookupByLibrary.simpleMessage("Delivery To"),
     "details": MessageLookupByLibrary.simpleMessage("Details"),
     "determineLocationManually": MessageLookupByLibrary.simpleMessage(
@@ -164,6 +165,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "noTrucks": MessageLookupByLibrary.simpleMessage("No Trucks"),
     "notes": MessageLookupByLibrary.simpleMessage("Notes"),
     "notifications": MessageLookupByLibrary.simpleMessage("Notifications"),
+    "onTheWayToDelivery": MessageLookupByLibrary.simpleMessage(
+      "On The Way To Delivery",
+    ),
+    "onTheWayToPickup": MessageLookupByLibrary.simpleMessage(
+      "On The Way To Pickup",
+    ),
     "onYourWay": MessageLookupByLibrary.simpleMessage("On Your Way"),
     "openGps": MessageLookupByLibrary.simpleMessage(
       "To provide the best service and ease of access, please enable your location",

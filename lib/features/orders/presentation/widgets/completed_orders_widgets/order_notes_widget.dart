@@ -37,6 +37,7 @@ class CompleteOrderNotesWidget extends StatelessWidget {
               ),
               child: Text(
                 notes,
+                textAlign: TextAlign.center,
                 style: AppTextStyles.regular16Black,
               ),
             ),

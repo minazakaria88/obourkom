@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 
+import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../generated/l10n.dart';
 
@@ -55,7 +56,9 @@ class SignUpPolicyText extends StatelessWidget {
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {},
+                        recognizer: TapGestureRecognizer()..onTap = () {
+                          context.pushNamed(Routes.termsAndConditions);
+                        },
                       ),
                       TextSpan(
                         text: S.of(context).and,
@@ -73,7 +76,9 @@ class SignUpPolicyText extends StatelessWidget {
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {},
+                        recognizer: TapGestureRecognizer()..onTap = () {
+                          context.pushNamed(Routes.privacyPolicy);
+                        },
                       ),
                     ],
                   ),

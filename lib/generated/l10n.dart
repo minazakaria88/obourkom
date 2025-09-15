@@ -1243,6 +1243,31 @@ class S {
   String get noTrucks {
     return Intl.message('No Trucks', name: 'noTrucks', desc: '', args: []);
   }
+
+  /// `On The Way To Pickup`
+  String get onTheWayToPickup {
+    return Intl.message(
+      'On The Way To Pickup',
+      name: 'onTheWayToPickup',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `On The Way To Delivery`
+  String get onTheWayToDelivery {
+    return Intl.message(
+      'On The Way To Delivery',
+      name: 'onTheWayToDelivery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delivered`
+  String get delivered {
+    return Intl.message('Delivered', name: 'delivered', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -1252,6 +1277,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'ar'),
+      Locale.fromSubtags(languageCode: 'ur'),
     ];
   }
 

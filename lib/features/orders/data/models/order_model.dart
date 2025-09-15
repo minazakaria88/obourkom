@@ -52,6 +52,7 @@ class OrderDataModel {
   List<Offer>? offers;
   TruckSize ?truckSize;
   TruckType ?truckType;
+  String ? typeService;
 
   OrderDataModel({
     this.id,
@@ -73,7 +74,8 @@ class OrderDataModel {
     this.offers,
     this.truckSize,
     this.truckType,
-    this.acceptedOfferId
+    this.acceptedOfferId,
+    this.typeService
   });
 
   OrderDataModel.fromJson(Map<String, dynamic> json) {
@@ -91,6 +93,7 @@ class OrderDataModel {
     paymentType = json['payment_type'];
     notes = json['notes'];
     acceptedOfferId = json['accepted_offer_id'];
+    typeService = json['type_service'];
     driver = json['driver'] != null ? Driver.fromJson(json['driver']) : null;
     customer = json['customer'] != null
         ? Customer.fromJson(json['customer'])

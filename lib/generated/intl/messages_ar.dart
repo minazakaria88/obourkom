@@ -79,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "deleteAccountDesc": MessageLookupByLibrary.simpleMessage(
       "سنقوم بحذف الحساب الخاص بك بشكل نهائي مما سيؤدي الي فقدان سجل الطلبات وكافة البيانات الخاصة بك، هل انت متأكد من القيام بعملية الحذف ؟",
     ),
+    "delivered": MessageLookupByLibrary.simpleMessage("تم التوصيل"),
     "deliveryTo": MessageLookupByLibrary.simpleMessage("توصيل إلى:"),
     "details": MessageLookupByLibrary.simpleMessage("التفاصيل"),
     "determineLocationManually": MessageLookupByLibrary.simpleMessage(
@@ -159,6 +160,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "noTrucks": MessageLookupByLibrary.simpleMessage("لا يوجد شاحنات"),
     "notes": MessageLookupByLibrary.simpleMessage("ملاحظات"),
     "notifications": MessageLookupByLibrary.simpleMessage("الاشعارات"),
+    "onTheWayToDelivery": MessageLookupByLibrary.simpleMessage(
+      "بالطريق لتوصيل الطلب",
+    ),
+    "onTheWayToPickup": MessageLookupByLibrary.simpleMessage(
+      "بالطريق لاستلام طلبك",
+    ),
     "onYourWay": MessageLookupByLibrary.simpleMessage("بالطريق لاستلام طلبك"),
     "openGps": MessageLookupByLibrary.simpleMessage(
       "لتقديم افضل خدمة وسهولة في الوصول يرجي تفعيل الموقع",

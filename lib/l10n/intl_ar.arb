@@ -154,7 +154,10 @@
     "locationAddedSuccessfully": "تمت إضافة الموقع بنجاح",
     "details": "التفاصيل",
     "orderCompletedSuccessfully": "تم اكمال الطلب بنجاح",
-    "noTrucks": "لا يوجد شاحنات"
+    "noTrucks": "لا يوجد شاحنات",
+    "onTheWayToPickup": "بالطريق لاستلام طلبك",
+    "onTheWayToDelivery": "بالطريق لتوصيل الطلب",
+    "delivered": "تم التوصيل"
 
 
 

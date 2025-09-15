@@ -70,6 +70,7 @@ class NavigatorClass {
 }
 
 Future<void> checkIfUserLoggedIn() async {
+  await Future.delayed(const Duration(seconds: 2));
   String? token = await CacheHelper.getSecureString(CacheHelperKeys.token);
   logger.i(token);
   if (!token.isNullOrEmpty()) {

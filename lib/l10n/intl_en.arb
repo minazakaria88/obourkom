@@ -152,7 +152,10 @@
   "locationAddedSuccessfully": "Location added successfully",
   "details": "Details",
   "orderCompletedSuccessfully": "Order completed successfully",
-  "noTrucks": "No Trucks"
+  "noTrucks": "No Trucks",
+  "onTheWayToPickup": "On The Way To Pickup",
+  "onTheWayToDelivery": "On The Way To Delivery",
+  "delivered": "Delivered"
 
 
 
