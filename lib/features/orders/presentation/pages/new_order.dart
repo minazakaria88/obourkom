@@ -40,13 +40,15 @@ class NewOrder extends StatelessWidget {
             width: double.infinity,
             fit: BoxFit.fill,
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 30.0),
-            child: MyBackButton(),
-          ),
           CustomScrollView(
             slivers: [
-              SliverToBoxAdapter(child: SizedBox(height: height * 0.3)),
+              const SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 30.0),
+                  child: MyBackButton(),
+                ),
+              ),
+              SliverToBoxAdapter(child: SizedBox(height: height * 0.2)),
               SliverToBoxAdapter(
                 child: Container(
                   padding: const EdgeInsets.all(12),

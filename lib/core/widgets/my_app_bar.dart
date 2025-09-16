@@ -18,6 +18,8 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      surfaceTintColor: Colors.transparent,
+      scrolledUnderElevation: 0,
       leading: canPop
           ? IconButton(
         onPressed: () {
