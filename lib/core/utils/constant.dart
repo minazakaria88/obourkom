@@ -10,7 +10,7 @@ class MapContext {
   MapContext({required this.type});
 }
 
-enum PaymentMethods { applePay, card }
+enum PaymentMethods { applePay, card ,mada}
 
 Map<String, String> addressToImage = {
   'home': Assets.imagesProfileHome,

@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addresses": MessageLookupByLibrary.simpleMessage("پتے"),
     "all": MessageLookupByLibrary.simpleMessage("سب"),
     "and": MessageLookupByLibrary.simpleMessage(" اور "),
+    "applePay": MessageLookupByLibrary.simpleMessage("اپل پی"),
     "areYouSureLogout": MessageLookupByLibrary.simpleMessage(
       "کیا آپ لاگ آؤٹ کرنا چاہتے ہیں؟",
     ),
@@ -51,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("منسوخ کریں"),
     "cancelOrder": MessageLookupByLibrary.simpleMessage("آرڈر منسوخ کریں"),
     "carType": MessageLookupByLibrary.simpleMessage("ٹرک کی قسم"),
+    "card": MessageLookupByLibrary.simpleMessage("بطاقہ"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("زبان تبدیل کریں"),
     "changeSupplier": MessageLookupByLibrary.simpleMessage("سپلائر تبدیل کریں"),
     "checkPrivacyPolicy": MessageLookupByLibrary.simpleMessage(
@@ -58,6 +60,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "chooseFromSavedLocations": MessageLookupByLibrary.simpleMessage(
       "محفوظ کردہ پتے منتخب کریں",
+    ),
+    "choosePaymentMethod": MessageLookupByLibrary.simpleMessage(
+      "ادائیگی کا طریقہ انتخاب کریں",
     ),
     "chooseYourService": MessageLookupByLibrary.simpleMessage(
       "اپنی مطلوبہ خدمت منتخب کریں",
@@ -145,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lookingForOffers": MessageLookupByLibrary.simpleMessage(
       "آفرز تلاش کی جا رہی ہیں...",
     ),
+    "mada": MessageLookupByLibrary.simpleMessage("مدى"),
     "main": MessageLookupByLibrary.simpleMessage("مرکزی صفحہ"),
     "name": MessageLookupByLibrary.simpleMessage("نام *"),
     "negotiation": MessageLookupByLibrary.simpleMessage("مذاکرات جاری ہیں"),

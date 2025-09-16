@@ -155,7 +155,11 @@
   "noTrucks": "No Trucks",
   "onTheWayToPickup": "On The Way To Pickup",
   "onTheWayToDelivery": "On The Way To Delivery",
-  "delivered": "Delivered"
+  "delivered": "Delivered",
+  "choosePaymentMethod": "Choose Payment Method",
+  "applePay": "Apple Pay",
+  "card": "Card",
+  "mada": "Mada"
 
 
 

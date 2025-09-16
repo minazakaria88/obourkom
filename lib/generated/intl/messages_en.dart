@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addresses": MessageLookupByLibrary.simpleMessage("Addresses"),
     "all": MessageLookupByLibrary.simpleMessage("All"),
     "and": MessageLookupByLibrary.simpleMessage(" and "),
+    "applePay": MessageLookupByLibrary.simpleMessage("Apple Pay"),
     "areYouSureLogout": MessageLookupByLibrary.simpleMessage(
       "Are you sure you want to logout?",
     ),
@@ -51,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
     "cancelOrder": MessageLookupByLibrary.simpleMessage("Cancel Order"),
     "carType": MessageLookupByLibrary.simpleMessage("Car Type"),
+    "card": MessageLookupByLibrary.simpleMessage("Card"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("Change Language"),
     "changeSupplier": MessageLookupByLibrary.simpleMessage("Change Supplier"),
     "checkPrivacyPolicy": MessageLookupByLibrary.simpleMessage(
@@ -58,6 +60,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "chooseFromSavedLocations": MessageLookupByLibrary.simpleMessage(
       "choose From Saved Locations",
+    ),
+    "choosePaymentMethod": MessageLookupByLibrary.simpleMessage(
+      "Choose Payment Method",
     ),
     "chooseYourService": MessageLookupByLibrary.simpleMessage(
       "Choose Your Service",
@@ -143,6 +148,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lookingForOffers": MessageLookupByLibrary.simpleMessage(
       "Looking for offers ...",
     ),
+    "mada": MessageLookupByLibrary.simpleMessage("Mada"),
     "main": MessageLookupByLibrary.simpleMessage("Main"),
     "name": MessageLookupByLibrary.simpleMessage("Name *"),
     "negotiation": MessageLookupByLibrary.simpleMessage("Negotiation"),

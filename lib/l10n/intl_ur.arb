@@ -157,5 +157,9 @@
   "noTrucks": "کوئی ٹرک دستیاب نہیں",
   "onTheWayToPickup": "اپنے پیک اپ کی طرح",
   "onTheWayToDelivery": "اپنے دلیوی کی طرح",
-  "delivered": "مکمل ہو گیا"
+  "delivered": "مکمل ہو گیا",
+  "choosePaymentMethod": "ادائیگی کا طریقہ انتخاب کریں",
+  "applePay": "اپل پی",
+  "card": "بطاقہ",
+  "mada": "مدى"
 }

@@ -1268,6 +1268,31 @@ class S {
   String get delivered {
     return Intl.message('Delivered', name: 'delivered', desc: '', args: []);
   }
+
+  /// `Choose Payment Method`
+  String get choosePaymentMethod {
+    return Intl.message(
+      'Choose Payment Method',
+      name: 'choosePaymentMethod',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Apple Pay`
+  String get applePay {
+    return Intl.message('Apple Pay', name: 'applePay', desc: '', args: []);
+  }
+
+  /// `Card`
+  String get card {
+    return Intl.message('Card', name: 'card', desc: '', args: []);
+  }
+
+  /// `Mada`
+  String get mada {
+    return Intl.message('Mada', name: 'mada', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

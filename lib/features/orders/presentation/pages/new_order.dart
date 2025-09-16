@@ -4,6 +4,7 @@ import 'package:oborkom/core/functions/concatenate_placemark.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_styles.dart';
 import 'package:oborkom/core/utils/constant.dart';
+import 'package:oborkom/core/widgets/my_back_button.dart';
 import 'package:oborkom/core/widgets/validate_widget.dart';
 import 'package:oborkom/features/main/data/models/categories_model.dart';
 import 'package:toastification/toastification.dart';
@@ -14,12 +15,17 @@ import '../../../../core/widgets/my_button.dart';
 import '../../../../generated/assets.dart';
 import '../../../../generated/l10n.dart';
 import '../cubit/orders_cubit.dart';
+import '../widgets/new_order_widget/choose_payment_widget.dart';
 import '../widgets/new_order_widget/discount_input_widget.dart';
 import '../widgets/new_order_widget/new_order_input_widget.dart';
 import '../widgets/new_order_widget/notes_input_widget.dart';
 
 class NewOrder extends StatelessWidget {
-  const NewOrder({super.key, required this.truckModel, required this.serviceName});
+  const NewOrder({
+    super.key,
+    required this.truckModel,
+    required this.serviceName,
+  });
   final TruckModel truckModel;
   final String serviceName;
   @override
@@ -33,6 +39,10 @@ class NewOrder extends StatelessWidget {
             Assets.imagesNewOrder,
             width: double.infinity,
             fit: BoxFit.fill,
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 30.0),
+            child: MyBackButton(),
           ),
           CustomScrollView(
             slivers: [
@@ -85,17 +95,6 @@ class NewOrder extends StatelessWidget {
                               S.of(context).transferServices,
                               style: AppTextStyles.bold18Black,
                             ),
-                            // 20.height,
-                            // MyTextFormField(
-                            //   controller: cubit.serviceController,
-                            //   hint: S.of(context).chooseYourService,
-                            //   validator: (String? value) {
-                            //     return ValidationClass.validateText(
-                            //       value,
-                            //       S.of(context).chooseYourService,
-                            //     );
-                            //   },
-                            // ),
                             20.height,
                             Text(
                               S.of(context).DeterminePickupLocation,
@@ -188,11 +187,14 @@ class NewOrder extends StatelessWidget {
                                 }
                               },
                               child: NewOrderInputWidget(
-                                title: 'أبل باي',
+                                title: S.of(context).choosePaymentMethod,
                                 value: state.paymentMethod ?? '',
                                 onTap: () {
-                                  cubit.pickPaymentMethod(
-                                    PaymentMethods.applePay.toString(),
+                                  showBottomSheet(
+                                    context: context,
+                                    builder: (context) {
+                                      return ChoosePaymentWidget(cubit: cubit);
+                                    },
                                   );
                                 },
                               ),
@@ -218,7 +220,10 @@ class NewOrder extends StatelessWidget {
                                     onTap: () {
                                       if (cubit.formKey.currentState!
                                           .validate()) {
-                                        cubit.makeOrder(truckModel,serviceName);
+                                        cubit.makeOrder(
+                                          truckModel,
+                                          serviceName,
+                                        );
                                       }
                                     },
                                   ),
@@ -232,8 +237,11 @@ class NewOrder extends StatelessWidget {
               ),
             ],
           ),
+
         ],
       ),
     );
   }
 }
+
+

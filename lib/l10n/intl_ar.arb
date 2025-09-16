@@ -157,7 +157,11 @@
     "noTrucks": "لا يوجد شاحنات",
     "onTheWayToPickup": "بالطريق لاستلام طلبك",
     "onTheWayToDelivery": "بالطريق لتوصيل الطلب",
-    "delivered": "تم التوصيل"
+    "delivered": "تم التوصيل",
+    "choosePaymentMethod": "اختر طريقة الدفع",
+    "applePay": "آبل بي",
+    "card": "بطاقة",
+    "mada": "مدى"
 
 
 

@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "addresses": MessageLookupByLibrary.simpleMessage("العناوين"),
     "all": MessageLookupByLibrary.simpleMessage("الكل"),
     "and": MessageLookupByLibrary.simpleMessage(" و "),
+    "applePay": MessageLookupByLibrary.simpleMessage("آبل بي"),
     "areYouSureLogout": MessageLookupByLibrary.simpleMessage(
       "هل انت متأكد من تسجيل الخروج؟",
     ),
@@ -51,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
     "cancelOrder": MessageLookupByLibrary.simpleMessage("إلغاء الطلب"),
     "carType": MessageLookupByLibrary.simpleMessage("نوع الشاحنة"),
+    "card": MessageLookupByLibrary.simpleMessage("بطاقة"),
     "changeLanguage": MessageLookupByLibrary.simpleMessage("تغيير اللغة"),
     "changeSupplier": MessageLookupByLibrary.simpleMessage("تغيير المزود"),
     "checkPrivacyPolicy": MessageLookupByLibrary.simpleMessage(
@@ -58,6 +60,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "chooseFromSavedLocations": MessageLookupByLibrary.simpleMessage(
       "اختر من العناويين المحفوظة",
+    ),
+    "choosePaymentMethod": MessageLookupByLibrary.simpleMessage(
+      "اختر طريقة الدفع",
     ),
     "chooseYourService": MessageLookupByLibrary.simpleMessage(
       "اختر الخدمة المناسبة لك",
@@ -135,6 +140,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "lookingForOffers": MessageLookupByLibrary.simpleMessage(
       "جاري البحث عن عروض ...",
     ),
+    "mada": MessageLookupByLibrary.simpleMessage("مدى"),
     "main": MessageLookupByLibrary.simpleMessage("الرئيسية"),
     "name": MessageLookupByLibrary.simpleMessage("الاسم *"),
     "negotiation": MessageLookupByLibrary.simpleMessage("قيد التفاوض"),

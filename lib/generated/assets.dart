@@ -9,6 +9,7 @@ class Assets {
   static const String imagesAboutUsFaq = 'assets/images/aboutUsFaq.svg';
   static const String imagesAddCircle = 'assets/images/AddCircle.svg';
   static const String imagesAddLocation = 'assets/images/addLocation.svg';
+  static const String imagesApple = 'assets/images/apple.svg';
   static const String imagesBanknote = 'assets/images/Banknote.svg';
   static const String imagesBell = 'assets/images/Bell.svg';
   static const String imagesBigCar = 'assets/images/bigCar.png';
@@ -38,7 +39,9 @@ class Assets {
   static const String imagesLocation = 'assets/images/location.svg';
   static const String imagesLogo = 'assets/images/logo.png';
   static const String imagesLogout = 'assets/images/logout.svg';
+  static const String imagesMadaLogo = 'assets/images/Mada_Logo.svg';
   static const String imagesMarker = 'assets/images/marker.png';
+  static const String imagesMastercardLogo = 'assets/images/Mastercard-logo.svg';
   static const String imagesMicrophoneIcon = 'assets/images/MicrophoneIcon.svg';
   static const String imagesMoneyBag = 'assets/images/MoneyBag.svg';
   static const String imagesNegoti = 'assets/images/negoti.svg';
