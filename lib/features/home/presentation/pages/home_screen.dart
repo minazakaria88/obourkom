@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen>  with WidgetsBindingObserver{
                   bottom: const BottomAppBarWidget(),
                   backgroundColor: Colors.white,
                   centerTitle: true,
-                  title: Text(cubit.titles[state.currentIndex]),
+                  title: Text(cubit.titles(context)[state.currentIndex]),
                 ),
           bottomNavigationBar: MyBottomNavigationBar(
             currentIndex: state.currentIndex,

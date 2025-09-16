@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
-import '../../../../../core/helpers/validation_inputs_class.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/widgets/my_text_form_field.dart';
 import '../../../../../generated/l10n.dart';
@@ -71,10 +70,7 @@ class _DiscountInputWidgetState extends State<DiscountInputWidget> {
       ),
       hint: S.of(context).enterDiscountCode,
       validator: (value) {
-        return ValidationClass.validateText(
-          value,
-          S.of(context).enterDiscountCode,
-        );
+        return null;
       },
     );
   }

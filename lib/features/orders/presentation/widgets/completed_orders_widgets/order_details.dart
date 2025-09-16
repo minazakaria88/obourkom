@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
 import '../../../../../core/utils/app_styles.dart';
+import '../../../../../core/utils/constant.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../find_and_chat_with_driver/presentation/widgets/finding_driver_widgets/order_details_item_widget.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
@@ -30,11 +31,11 @@ class CompleteOrderDetailsWidget extends StatelessWidget {
               title: S.of(context).orderNumber,
             ),
             OrderDetailsItemWidget(
-              value: '${model.truckSize?.name}',
+              value: model.typeService ?? '',
               title: S.of(context).serviceType,
             ),
             OrderDetailsItemWidget(
-              value: '${model.truckSize?.name}',
+              value: model.truckSize?.name ?? '',
               title: S.of(context).carType,
             ),
             OrderDetailsItemWidget(
@@ -46,7 +47,7 @@ class CompleteOrderDetailsWidget extends StatelessWidget {
               title: S.of(context).orderDate,
             ),
             OrderDetailsItemWidget(
-              value: '${model.status}',
+              value: getStatusText(context, model.status),
               title: S.of(context).orderStatus,
             ),
           ],

@@ -206,25 +206,6 @@ class NewOrder extends StatelessWidget {
                             DiscountInputWidget(
                               controller: cubit.codeController,
                             ),
-                            20.height,
-                            // Text(
-                            //   S.of(context).expectedTransportationCost,
-                            //   style: AppTextStyles.bold18Black.copyWith(
-                            //     fontSize: 16,
-                            //   ),
-                            // ),
-                            // 10.height,
-                            // Text(
-                            //   'من 200 الي 300 ريال',
-                            //   style: AppTextStyles.bold14MainColor.copyWith(
-                            //     fontSize: 16,
-                            //   ),
-                            // ),
-                            // 10.height,
-                            // Text(
-                            //   S.of(context).costEstimate,
-                            //   style: AppTextStyles.regular12Grey,
-                            // ),
                             30.height,
                             state.isLoading
                                 ? const Center(

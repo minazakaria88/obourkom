@@ -97,7 +97,7 @@ class OrderListviewItemWidget extends StatelessWidget {
                         ),
                         10.width,
                         Text(
-                          S.of(context).pending,
+                         model.status == 'delivered' ? S.of(context).delivered : S.of(context).pending,
                           style: AppTextStyles.bold18Black,
                         ),
                       ],

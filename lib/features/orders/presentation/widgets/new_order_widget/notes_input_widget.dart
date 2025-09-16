@@ -21,7 +21,7 @@ class NotesInputWidget extends StatelessWidget {
       decoration: InputDecoration(
         hintText: S.of(context).writeYourNotesHere,
         filled: true,
-        fillColor: AppColors.newOrderGrey,
+        fillColor:const Color(0xffF5FAFA),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
           borderSide:

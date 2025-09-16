@@ -112,10 +112,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               MyTextFormField(
                                 controller: cubit.nameController,
                                 validator: (String? value) {
-                                  return ValidationClass.validateText(
-                                    value,
-                                    S.of(context).pleaseEnterAValidName,
-                                  );
+                                  return null;
                                 },
                                 hint: S.of(context).writeYourNameHere,
                               ),

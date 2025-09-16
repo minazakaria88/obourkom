@@ -52,10 +52,12 @@ class HomeCubit extends Cubit<HomeState> {
     emit(state.copyWith(currentIndex: index, isVisited: isVisited));
   }
 
-  final List<String> titles = [
-    S.of(NavigatorClass.navigatorKey.currentState!.context).main,
-    S.of(NavigatorClass.navigatorKey.currentState!.context).orders,
-    S.of(NavigatorClass.navigatorKey.currentState!.context).notifications,
-    S.of(NavigatorClass.navigatorKey.currentState!.context).profile,
-  ];
+  List<String> titles(BuildContext context) {
+    return [
+      S.of(context).main,
+      S.of(context).orders,
+      S.of(context).notifications,
+      S.of(context).profile,
+    ];
+  }
 }
