@@ -42,7 +42,7 @@ class OrderListviewItemWidget extends StatelessWidget {
                 priceTo: double.tryParse(model.priceTo ??''),
                 status: model.status,
                 truckTypeId: model.truckSize?.name.toString(),
-                truckSizeId: model.truckSize?.id.toString(),
+                truckSizeId: model.truckSize?.name.toString(),
                 createdAt: model.createdAt,
               ),
             );
@@ -66,8 +66,8 @@ class OrderListviewItemWidget extends StatelessWidget {
                   notes: model.notes,
                   code: model.code,
                   status: model.status,
-                  truckTypeId: model.truckType?.id.toString(),
-                  truckSizeId: model.truckSize?.id.toString(),
+                  truckTypeId: model.truckType?.name.toString(),
+                  truckSizeId: model.truckSize?.name.toString(),
                   createdAt: model.createdAt,
                 ),
                 'driver': OfferModel(

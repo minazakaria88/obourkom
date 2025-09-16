@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/helpers/validation_inputs_class.dart';
-import '../../../../../core/utils/app_colors.dart';
 import '../../../../../generated/l10n.dart';
 
 class NotesInputWidget extends StatelessWidget {
