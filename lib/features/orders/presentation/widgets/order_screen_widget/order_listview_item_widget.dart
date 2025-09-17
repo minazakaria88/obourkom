@@ -9,7 +9,7 @@ import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../find_and_chat_with_driver/presentation/widgets/finding_driver_widgets/order_details_item_widget.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
-import '../../../data/models/submit_order_model.dart';
+import '../../../data/models/order_adapter_model.dart';
 
 class OrderListviewItemWidget extends StatelessWidget {
   const OrderListviewItemWidget({super.key, required this.model});
@@ -29,22 +29,7 @@ class OrderListviewItemWidget extends StatelessWidget {
           {
             context.pushNamed(
               Routes.findDriver,
-              arguments: SubmitOrderModel(
-                id: model.id,
-                fromLat: model.fromLat,
-                fromLng: model.fromLng,
-                toLat: model.toLat,
-                toLng: model.toLng,
-                paymentType: model.paymentType,
-                notes: model.notes,
-                code: model.code,
-                priceFrom: double.tryParse(model.priceFrom??''),
-                priceTo: double.tryParse(model.priceTo ??''),
-                status: model.status,
-                truckTypeId: model.truckSize?.name.toString(),
-                truckSizeId: model.truckSize?.name.toString(),
-                createdAt: model.createdAt,
-              ),
+              arguments: OrderAdapterModel.fromOrderModel(model),
             );
           }
         else
@@ -56,22 +41,11 @@ class OrderListviewItemWidget extends StatelessWidget {
             context.pushNamed(
               Routes.orderDetails,
               arguments: {
-                'order':SubmitOrderModel(
-                  id: model.id,
-                  fromLat: model.fromLat,
-                  fromLng: model.fromLng,
-                  toLat: model.toLat,
-                  toLng: model.toLng,
-                  paymentType: model.paymentType,
-                  notes: model.notes,
-                  code: model.code,
-                  status: model.status,
-                  truckTypeId: model.truckType?.name.toString(),
-                  truckSizeId: model.truckSize?.name.toString(),
-                  createdAt: model.createdAt,
-                ),
+                'order': OrderAdapterModel.fromOrderModel(model),
                 'driver': OfferModel(
                   driverId: offer.driverId,
+                  name: model.driver?.name,
+                  phone: model.driver?.phone,
                   price: offer.price,
                 ),
               },

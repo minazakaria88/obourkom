@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:oborkom/core/functions/show_snack_bar.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/widgets/loader_widget.dart';
 import 'package:oborkom/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:oborkom/features/profile/presentation/widgets/profile_screen_widgets/profile_image.dart';
 import 'package:oborkom/generated/assets.dart';
+import 'package:toastification/toastification.dart';
 import '../../../../core/helpers/validation_inputs_class.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_styles.dart';
@@ -25,7 +27,23 @@ class EditProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: MyAppBar(title: S.of(context).personalAccount),
       body: BlocConsumer<ProfileCubit, ProfileState>(
-        listener: (context, state) {},
+        listenWhen: (previous, current) => previous.editProfileStatus !=current.editProfileStatus,
+        listener: (context, state) {
+          if (state.isEditProfileSuccess) {
+            showToastification(
+              message: 'S.of(context).editProfileSuccessfully',
+              context: context,
+              type: ToastificationType.success,
+            );
+          }
+          if (state.isEditProfileFailure) {
+            showToastification(
+              message: state.errorMessage ?? '',
+              context: context,
+              type: ToastificationType.error,
+            );
+          }
+        },
         builder: (context, state) {
           final cubit = context.read<ProfileCubit>();
           return Padding(
@@ -144,7 +162,7 @@ class EditProfileScreen extends StatelessWidget {
                           hint: 'name@example.com',
                         ),
                         15.height,
-                        state.editProfileStatus == EditProfileStatus.loading
+                        state.isEditProfileLoading
                             ? const Center(
                                 child: CircularProgressIndicator(
                                   color: AppColors.mainColor,

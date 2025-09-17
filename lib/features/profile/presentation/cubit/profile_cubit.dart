@@ -56,12 +56,13 @@ class ProfileCubit extends Cubit<ProfileState> {
   void updateProfile() async {
     emit(state.copyWith(editProfileStatus: EditProfileStatus.loading));
     try {
-      final user = CachedUserModel(
-        email: emailController.text,
-        name: nameController.text,
-        phone: phoneController.text,
-      );
-      await profileRepository.updateProfile(user.toJson());
+      final data = {
+        'name': nameController.text,
+        'email': emailController.text,
+        'phone': '+966${phoneController.text}',
+      };
+     final result = await profileRepository.updateProfile(data);
+      await CacheHelper.saveUser(result);
       emit(state.copyWith(editProfileStatus: EditProfileStatus.success));
     } on ApiException catch (e) {
       emit(

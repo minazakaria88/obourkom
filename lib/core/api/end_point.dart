@@ -20,11 +20,18 @@ class EndPoints
   static const addresses='api/addresses';
 
 
-
+  //profile
   static const profile = 'api/profile';
+  static const updateProfile = 'api/update/profile';
+
+  //notification
   static const notification='api/notifications';
   static const seenNotifications='api/notifications/seen';
+
+  //faq
   static const faq='api/questions';
+
+
   static const cancelOrder='cancelOrder';
   static const rateDriver='rateDriver';
   static const categories='api/categories';

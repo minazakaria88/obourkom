@@ -33,59 +33,59 @@ class OrderModel {
 
 class OrderDataModel {
   int? id;
-  int ?acceptedOfferId;
   String? code;
+  String? fromAddress;
+  String? toAddress;
   double? fromLat;
   double? fromLng;
   double? toLat;
   double? toLng;
   String? priceFrom;
   String? priceTo;
-  String? price;
+  String ? price;
   String? status;
   String? statusPaid;
   String? paymentType;
   String? notes;
+  String? typeService;
+  int? acceptedOfferId;
+  TruckType? truckType;
+  TruckSize? truckSize;
   Driver? driver;
   Customer? customer;
   String? createdAt;
   List<Offer>? offers;
-  TruckSize ?truckSize;
-  TruckType ?truckType;
-  String ? typeService;
-  String? addressFrom;
-  String? addressTo;
 
-  OrderDataModel({
-    this.id,
-    this.code,
-    this.fromLat,
-    this.fromLng,
-    this.toLat,
-    this.toLng,
-    this.priceFrom,
-    this.priceTo,
-    this.price,
-    this.status,
-    this.statusPaid,
-    this.paymentType,
-    this.notes,
-    this.driver,
-    this.customer,
-    this.createdAt,
-    this.offers,
-    this.truckSize,
-    this.truckType,
-    this.acceptedOfferId,
-    this.typeService,
-    this.addressFrom,
-    this.addressTo
-
-  });
+  OrderDataModel(
+      {this.id,
+        this.code,
+        this.fromAddress,
+        this.toAddress,
+        this.fromLat,
+        this.fromLng,
+        this.toLat,
+        this.toLng,
+        this.priceFrom,
+        this.priceTo,
+        this.price,
+        this.status,
+        this.statusPaid,
+        this.paymentType,
+        this.notes,
+        this.typeService,
+        this.acceptedOfferId,
+        this.truckType,
+        this.truckSize,
+        this.driver,
+        this.customer,
+        this.createdAt,
+        this.offers});
 
   OrderDataModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     code = json['code'];
+    fromAddress = json['from_address'];
+    toAddress = json['to_address'];
     fromLat = json['from_lat'];
     fromLng = json['from_lng'];
     toLat = json['to_lat'];
@@ -97,11 +97,16 @@ class OrderDataModel {
     statusPaid = json['status_paid'];
     paymentType = json['payment_type'];
     notes = json['notes'];
-    acceptedOfferId = json['accepted_offer_id'];
     typeService = json['type_service'];
-    addressFrom = json['address_from'];
-    addressTo = json['address_to'];
-    driver = json['driver'] != null ? Driver.fromJson(json['driver']) : null;
+    acceptedOfferId = json['accepted_offer_id'];
+    truckType = json['truckType'] != null
+        ? TruckType.fromJson(json['truckType'])
+        : null;
+    truckSize = json['truckSize'] != null
+        ? TruckSize.fromJson(json['truckSize'])
+        : null;
+    driver =
+    json['driver'] != null ? Driver.fromJson(json['driver']) : null;
     customer = json['customer'] != null
         ? Customer.fromJson(json['customer'])
         : null;
@@ -112,18 +117,14 @@ class OrderDataModel {
         offers!.add(Offer.fromJson(v));
       });
     }
-    if (json['truckSize'] != null) {
-      truckSize = TruckSize.fromJson(json['truckSize']);
-    }
-    if (json['truckType'] != null) {
-      truckType = TruckType.fromJson(json['truckType']);
-    }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['code'] = code;
+    data['from_address'] = fromAddress;
+    data['to_address'] = toAddress;
     data['from_lat'] = fromLat;
     data['from_lng'] = fromLng;
     data['to_lat'] = toLat;
@@ -135,7 +136,14 @@ class OrderDataModel {
     data['status_paid'] = statusPaid;
     data['payment_type'] = paymentType;
     data['notes'] = notes;
+    data['type_service'] = typeService;
     data['accepted_offer_id'] = acceptedOfferId;
+    if (truckType != null) {
+      data['truckType'] = truckType!.toJson();
+    }
+    if (truckSize != null) {
+      data['truckSize'] = truckSize!.toJson();
+    }
     if (driver != null) {
       data['driver'] = driver!.toJson();
     }
@@ -169,7 +177,6 @@ class TruckType {
   }
 }
 
-
 class TruckSize {
   int? id;
   String? name;
@@ -180,42 +187,33 @@ class TruckSize {
     id = json['id'];
     name = json['name'];
   }
-}
 
-class Offer {
-  int? id;
-  String? price;
-  int? driverId;
-  Offer({this.id, this.price,this.driverId});
-
-  Offer.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    price = json['price'];
-    driverId = json['driver_id'];
-  }
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['price'] = price;
+    data['name'] = name;
     return data;
   }
 }
 
 class Driver {
-  int? id;
+  int ? id;
   String? name;
+  String? phone;
 
-  Driver({this.id, this.name});
+  Driver({this.id, this.name, this.phone});
 
   Driver.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
+    phone = json['phone'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
+    data['phone'] = phone;
     return data;
   }
 }
@@ -223,18 +221,78 @@ class Driver {
 class Customer {
   int? id;
   String? name;
+  String? phone;
 
-  Customer({this.id, this.name});
+  Customer({this.id, this.name, this.phone});
 
   Customer.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
+    phone = json['phone'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['name'] = name;
+    data['phone'] = phone;
+    return data;
+  }
+}
+
+class Offer {
+  int? id;
+  int? driverId;
+  int? customerId;
+  String ? title;
+  String ? description;
+  String? price;
+  String? status;
+  String? createdAt;
+  String? updatedAt;
+  int? orderId;
+  int? isAccepted;
+
+  Offer(
+      {this.id,
+        this.driverId,
+        this.customerId,
+        this.title,
+        this.description,
+        this.price,
+        this.status,
+        this.createdAt,
+        this.updatedAt,
+        this.orderId,
+        this.isAccepted});
+
+  Offer.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    driverId = json['driver_id'];
+    customerId = json['customer_id'];
+    title = json['title'];
+    description = json['description'];
+    price = json['price'];
+    status = json['status'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    orderId = json['order_id'];
+    isAccepted = json['is_accepted'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['driver_id'] = driverId;
+    data['customer_id'] = customerId;
+    data['title'] = title;
+    data['description'] = description;
+    data['price'] = price;
+    data['status'] = status;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['order_id'] = orderId;
+    data['is_accepted'] = isAccepted;
     return data;
   }
 }
@@ -242,7 +300,7 @@ class Customer {
 class Links {
   String? first;
   String? last;
-  String? prev;
+  String ? prev;
   String? next;
 
   Links({this.first, this.last, this.prev, this.next});
@@ -274,16 +332,15 @@ class Meta {
   int? to;
   int? total;
 
-  Meta({
-    this.currentPage,
-    this.from,
-    this.lastPage,
-    this.links,
-    this.path,
-    this.perPage,
-    this.to,
-    this.total,
-  });
+  Meta(
+      {this.currentPage,
+        this.from,
+        this.lastPage,
+        this.links,
+        this.path,
+        this.perPage,
+        this.to,
+        this.total});
 
   Meta.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
@@ -316,3 +373,5 @@ class Meta {
     return data;
   }
 }
+
+

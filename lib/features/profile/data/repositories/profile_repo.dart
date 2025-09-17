@@ -23,10 +23,10 @@ class ProfileRepository {
     }
   }
 
-  Future<UserModel> updateProfile(data) async {
+  Future<User> updateProfile(data) async {
     try {
-      final response = await apiHelper.putData(url: EndPoints.profile, data: data);
-      return UserModel.fromJson(response.data);
+      final response = await apiHelper.postData(url: EndPoints.updateProfile, data: data);
+      return User.fromJson(response.data['data']);
     } catch (e) {
       if (e is DioException) {
         throw ApiException(failure: ServerFailure.serverError(e));

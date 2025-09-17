@@ -22,6 +22,7 @@ class OrderRepository {
     } catch (e) {
       if (e is DioException) {
         logger.e(e.response?.statusCode?? '');
+        logger.e(e.response?.data?? '');
         throw ApiException(failure: ServerFailure.serverError(e));
       }
       throw ApiException(failure: Failure(message: e.toString()));
