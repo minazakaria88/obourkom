@@ -1293,6 +1293,16 @@ class S {
   String get mada {
     return Intl.message('Mada', name: 'mada', desc: '', args: []);
   }
+
+  /// `Edit profile successfully`
+  String get editProfileSuccessfully {
+    return Intl.message(
+      'Edit profile successfully',
+      name: 'editProfileSuccessfully',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

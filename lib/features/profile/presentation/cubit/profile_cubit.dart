@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -56,19 +57,28 @@ class ProfileCubit extends Cubit<ProfileState> {
   void updateProfile() async {
     emit(state.copyWith(editProfileStatus: EditProfileStatus.loading));
     try {
-      final data = {
+      final data = FormData.fromMap({
         'name': nameController.text,
         'email': emailController.text,
         'phone': '+966${phoneController.text}',
-      };
-     final result = await profileRepository.updateProfile(data);
+        'phone_code': '+966',
+        if(state.image !=null)
+          'avatar': await MultipartFile.fromFile(state.image!)
+      });
+      final result = await profileRepository.updateProfile(data);
       await CacheHelper.saveUser(result);
-      emit(state.copyWith(editProfileStatus: EditProfileStatus.success));
+      emit(
+        state.copyWith(
+          editProfileStatus: EditProfileStatus.success,
+          userModel: CachedUserModel.fromUserModel(result),
+        ),
+      );
     } on ApiException catch (e) {
       emit(
         state.copyWith(
           editProfileStatus: EditProfileStatus.failure,
           errorMessage: e.failure.message,
+          image: ''
         ),
       );
     } catch (e) {
@@ -85,10 +95,8 @@ class ProfileCubit extends Cubit<ProfileState> {
     emit(state.copyWith(imageStatus: ImageStatus.loading));
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
-      await Future.delayed(const Duration(seconds: 2));
-      emit(state.copyWith(imageStatus: ImageStatus.success));
-    }
-    else {
+      emit(state.copyWith(imageStatus: ImageStatus.success,image: image.path));
+    } else {
       emit(state.copyWith(imageStatus: ImageStatus.failure));
     }
   }

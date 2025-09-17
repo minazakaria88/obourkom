@@ -112,6 +112,9 @@ class MessageLookup extends MessageLookupByLibrary {
       "کیا آپ کو کوڈ نہیں ملا؟",
     ),
     "edit": MessageLookupByLibrary.simpleMessage("ترمیم"),
+    "editProfileSuccessfully": MessageLookupByLibrary.simpleMessage(
+      "پروفائل کامیابی سے ترمیم کیا گیا",
+    ),
     "email": MessageLookupByLibrary.simpleMessage("ای میل *"),
     "enter": MessageLookupByLibrary.simpleMessage("داخل ہوں"),
     "enterDiscountCode": MessageLookupByLibrary.simpleMessage(

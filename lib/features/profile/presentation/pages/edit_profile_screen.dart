@@ -1,9 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/functions/show_snack_bar.dart';
 import 'package:oborkom/core/helpers/extension.dart';
-import 'package:oborkom/core/widgets/loader_widget.dart';
 import 'package:oborkom/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:oborkom/features/profile/presentation/widgets/profile_screen_widgets/profile_image.dart';
 import 'package:oborkom/generated/assets.dart';
@@ -27,11 +28,12 @@ class EditProfileScreen extends StatelessWidget {
     return Scaffold(
       appBar: MyAppBar(title: S.of(context).personalAccount),
       body: BlocConsumer<ProfileCubit, ProfileState>(
-        listenWhen: (previous, current) => previous.editProfileStatus !=current.editProfileStatus,
+        listenWhen: (previous, current) =>
+            previous.editProfileStatus != current.editProfileStatus,
         listener: (context, state) {
           if (state.isEditProfileSuccess) {
             showToastification(
-              message: 'S.of(context).editProfileSuccessfully',
+              message: S.of(context).editProfileSuccessfully,
               context: context,
               type: ToastificationType.success,
             );
@@ -57,8 +59,22 @@ class EditProfileScreen extends StatelessWidget {
                   Stack(
                     alignment: Alignment.bottomRight,
                     children: [
-                      state.isImageLoading
-                          ? const LoaderWidget()
+                      state.image != null && state.image !=''
+                          ? Container(
+                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                              width: 117,
+                              height: 117,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  width: 2,
+                                  color: AppColors.mainColor,
+                                ),
+                              ),
+                              child: CircleAvatar(
+                                  radius: 60,
+                                  backgroundImage: FileImage(File(state.image!))),
+                            )
                           : state.userModel != null
                           ? Hero(
                               tag: state.userModel!.image!,

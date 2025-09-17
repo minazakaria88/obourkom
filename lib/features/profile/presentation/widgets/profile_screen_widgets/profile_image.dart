@@ -13,22 +13,30 @@ class ProfileImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
       width: width ?? 80,
       height: height ?? 80,
+      padding: const EdgeInsets.all(2),
+      clipBehavior: Clip.antiAliasWithSaveLayer,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(width: 2, color: AppColors.mainColor),
       ),
       child: image != null
           ? Container(
-              clipBehavior: Clip.antiAliasWithSaveLayer,
-              width: width ?? 80,
-              height: height ?? 80,
-              decoration: const BoxDecoration(shape: BoxShape.circle),
-              child: CachedImageWidget(imageUrl: image!),
-            )
-          : Image.asset(Assets.imagesLogo),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        width: width ?? 80,
+        height: height ?? 80,
+        decoration: const BoxDecoration(shape: BoxShape.circle),
+        child: CachedImageWidget(imageUrl: image!),
+      )
+          : Container(
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        width: width ?? 80,
+        height: height ?? 80,
+        padding: const EdgeInsets.all(10),
+        decoration: const BoxDecoration(shape: BoxShape.circle),
+        child: Image.asset(Assets.imagesLogo),
+      ),
     );
   }
 }
