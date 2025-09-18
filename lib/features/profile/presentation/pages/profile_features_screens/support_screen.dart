@@ -22,7 +22,7 @@ class SupportScreen extends StatelessWidget {
           20.height,
           SupportItemWidget(
             onTap: (){
-              makePhoneCall(phoneNumber: '+201064687742');
+              makePhoneCall(phoneNumber: '');
             },
             title: S.of(context).callUs,
             image: Assets.imagesCall,
@@ -30,7 +30,7 @@ class SupportScreen extends StatelessWidget {
           10.height,
           SupportItemWidget(
             onTap: (){
-              whatsapp(phoneNumber: '+201064687742');
+              whatsapp(phoneNumber: '');
             },
             title: S.of(context).whatsapp,
             image: Assets.imagesWhatsapp,
