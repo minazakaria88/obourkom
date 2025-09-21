@@ -174,9 +174,9 @@ class S {
     );
   }
 
-  /// `Email *`
+  /// `Email `
   String get email {
-    return Intl.message('Email *', name: 'email', desc: '', args: []);
+    return Intl.message('Email ', name: 'email', desc: '', args: []);
   }
 
   /// `Please enter a valid email`

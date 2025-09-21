@@ -52,7 +52,7 @@ class SubmitOrderModel {
     notes = json['notes'];
     code = json['code'];
     truckTypeId = json['truck_type_id'];
-    truckSizeId = json['truck_size_id'];
+    truckSizeId = json['truckSize']['name'];
     typeService = json['type_service'];
     updatedAt = json['updated_at'];
     createdAt = json['created_at'];

@@ -18,7 +18,7 @@ class OrderRepository {
         data: data,
       );
       logger.d(response.data);
-      return SubmitOrderModel.fromJson(response.data['order']);
+      return SubmitOrderModel.fromJson(response.data['data']);
     } catch (e) {
       if (e is DioException) {
         logger.e(e.response?.statusCode?? '');

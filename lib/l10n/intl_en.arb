@@ -14,7 +14,7 @@
   "name" : "Name *",
   "writeYourNameHere" : "Write your name here",
   "pleaseEnterAValidName": "Please enter a valid name",
-  "email" : "Email *",
+  "email" : "Email ",
   "pleaseEnterAValidEmail" : "Please enter a valid email",
   "iAgreeToThe" : "I agree to the",
   "TermsAndConditions" : " Terms and Conditions ",

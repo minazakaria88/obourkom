@@ -109,7 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "editProfileSuccessfully": MessageLookupByLibrary.simpleMessage(
       "تم تعديل الملف الشخصي بنجاح",
     ),
-    "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني *"),
+    "email": MessageLookupByLibrary.simpleMessage("البريد الالكتروني "),
     "enter": MessageLookupByLibrary.simpleMessage("دخول"),
     "enterDiscountCode": MessageLookupByLibrary.simpleMessage("ادخل كود الخصم"),
     "evaluation": MessageLookupByLibrary.simpleMessage("تقييم"),

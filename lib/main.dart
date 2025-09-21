@@ -14,6 +14,7 @@ import 'package:oborkom/features/language/presentation/cubit/language_cubit.dart
 import 'package:oborkom/injection.dart';
 import 'package:toastification/toastification.dart';
 import 'core/api/api_helper.dart';
+import 'core/helpers/notification_helper.dart';
 import 'firebase_options.dart';
 import 'generated/l10n.dart';
 
@@ -26,6 +27,8 @@ void main() async {
   );
   await CacheHelper.init();
   ApiHelper.init();
+  NotificationService.init();
+
   await checkIfUserLoggedIn();
   setupServicesLocator();
   Bloc.observer = MyBlocObserver();

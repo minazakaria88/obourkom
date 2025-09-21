@@ -14,7 +14,7 @@
     "name": "الاسم *",
     "writeYourNameHere": "اكتب اسمك هنا",
     "pleaseEnterAValidName":"الرجاء ادخال اسم صحيح",
-    "email": "البريد الالكتروني *",
+    "email": "البريد الالكتروني ",
     "pleaseEnterAValidEmail":"الرجاء ادخال بريدالكتروني صحيح",
     "iAgreeToThe": " اوافق على ",
     "TermsAndConditions": "الشروط والاحكام ",
