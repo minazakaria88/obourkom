@@ -28,9 +28,7 @@ class MyServicesWidget extends StatelessWidget {
                           height: 200,
                           margin: 12,
                         )
-                      : ImageSlider(
-                          images: sliderList
-                        ),
+                      : ImageSlider(images: sliderList),
                   20.height,
                   const ChooseYourServices(),
                   10.height,
@@ -66,14 +64,14 @@ class MyServicesWidget extends StatelessWidget {
                         context.pushNamed(
                           Routes.chooseYourCar,
                           arguments: {
-                            'cars':servicesList[index].trucks,
-                            'serviceName':servicesList[index].name
+                            'cars': servicesList[index].trucks,
+                            'serviceName': servicesList[index].name,
                           },
                         );
                       },
                     ),
                   ),
-             SliverToBoxAdapter(child: 100.height),
+            SliverToBoxAdapter(child: 100.height),
           ],
         );
       },

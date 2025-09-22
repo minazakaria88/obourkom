@@ -9,9 +9,7 @@ import '../../../../profile/presentation/widgets/profile_screen_widgets/profile_
 import '../../../data/models/order_model.dart';
 
 class CompleteOrderDriverWidget extends StatelessWidget {
-  const CompleteOrderDriverWidget({
-    super.key, required this.driver,
-  });
+  const CompleteOrderDriverWidget({super.key, required this.driver});
   final Driver driver;
 
   @override
@@ -24,7 +22,7 @@ class CompleteOrderDriverWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(driver.name?? '', style: AppTextStyles.bold18Black),
+              Text(driver.name ?? '', style: AppTextStyles.bold18Black),
               Row(
                 children: [
                   SvgPicture.asset(Assets.imagesStars),

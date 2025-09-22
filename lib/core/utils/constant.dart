@@ -10,7 +10,7 @@ class MapContext {
   MapContext({required this.type});
 }
 
-enum PaymentMethods { applePay, card ,mada}
+enum PaymentMethods { applePay, card, mada }
 
 Map<String, String> addressToImage = {
   'home': Assets.imagesProfileHome,
@@ -28,18 +28,16 @@ Map<String, int> statusToNumber = {
   delivered: 3,
 };
 
-String getStatusText(context,value)
-{
-  Map<String, String> mapToText={
+String getStatusText(context, value) {
+  Map<String, String> mapToText = {
     available: S.of(context).available,
     negotiating: S.of(context).negotiation,
     onTheWayToPickup: S.of(context).onTheWayToPickup,
     onTheWayToDelivery: S.of(context).onTheWayToDelivery,
-    delivered: S.of(context).delivered
+    delivered: S.of(context).delivered,
   };
 
-  return mapToText[value] ??'';
-
+  return mapToText[value] ?? '';
 }
 
 const available = 'available';

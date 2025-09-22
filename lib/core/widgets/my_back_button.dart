@@ -5,9 +5,7 @@ import '../helpers/cache_helper.dart';
 import '../utils/app_colors.dart';
 
 class MyBackButton extends StatelessWidget {
-  const MyBackButton({
-    super.key,
-  });
+  const MyBackButton({super.key});
 
   @override
   Widget build(BuildContext context) {

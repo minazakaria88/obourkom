@@ -90,7 +90,7 @@ class AppRoues {
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<OrdersCubit>(),
-            child: NewOrder(truckModel: truckModel,serviceName: servicesName,),
+            child: NewOrder(truckModel: truckModel, serviceName: servicesName),
           ),
         );
       case Routes.pickLocation:
@@ -131,9 +131,7 @@ class AppRoues {
           ),
         );
       case Routes.aboutUs:
-        return MaterialPageRoute(
-          builder: (context) => const AboutUsScreen(),
-        );
+        return MaterialPageRoute(builder: (context) => const AboutUsScreen());
       case Routes.termsAndConditions:
         return MaterialPageRoute(
           builder: (context) => const TermsAndConditionsScreen(),

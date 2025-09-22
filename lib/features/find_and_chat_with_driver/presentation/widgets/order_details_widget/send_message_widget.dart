@@ -10,7 +10,9 @@ import '../../cubit/find_and_chat_with_driver_cubit.dart';
 class SendMessageWidget extends StatelessWidget {
   const SendMessageWidget({
     super.key,
-    required this.cubit, required this.driverId, required this.orderId,
+    required this.cubit,
+    required this.driverId,
+    required this.orderId,
   });
 
   final FindAndChatWithDriverCubit cubit;
@@ -23,10 +25,7 @@ class SendMessageWidget extends StatelessWidget {
       alignment: Alignment.bottomCenter,
       child: Container(
         color: Colors.white,
-        padding: const EdgeInsets.symmetric(
-          horizontal: 15,
-          vertical: 10,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: MyTextFormField(
           prefixIcon: IconButton(
             onPressed: () {

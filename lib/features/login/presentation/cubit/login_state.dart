@@ -1,11 +1,6 @@
 part of 'login_cubit.dart';
 
-enum LoginStatus {
-  loading,
-  success,
-  failure,
-}
-
+enum LoginStatus { loading, success, failure }
 
 extension LoginStatusX on LoginState {
   bool get isLoading => loginStatus == LoginStatus.loading;
@@ -13,27 +8,19 @@ extension LoginStatusX on LoginState {
   bool get isFailure => loginStatus == LoginStatus.failure;
 }
 
-class LoginState  extends Equatable{
-  LoginStatus ? loginStatus;
-  String ? errorMessage;
+class LoginState extends Equatable {
+  LoginStatus? loginStatus;
+  String? errorMessage;
 
+  LoginState({this.loginStatus, this.errorMessage});
 
-  LoginState({this.loginStatus,this.errorMessage});
-
-
-  LoginState copyWith({
-    LoginStatus ? loginStatus,
-    String ? errorMessage
-})
-  {
+  LoginState copyWith({LoginStatus? loginStatus, String? errorMessage}) {
     return LoginState(
       errorMessage: errorMessage ?? this.errorMessage,
-      loginStatus: loginStatus ?? this.loginStatus
+      loginStatus: loginStatus ?? this.loginStatus,
     );
-
   }
 
   @override
-  List<Object?> get props => [loginStatus,errorMessage];
+  List<Object?> get props => [loginStatus, errorMessage];
 }
-

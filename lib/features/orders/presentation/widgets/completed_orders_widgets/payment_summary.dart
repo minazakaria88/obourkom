@@ -7,9 +7,7 @@ import '../../../../find_and_chat_with_driver/presentation/widgets/finding_drive
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 
 class CompleteOrderPaymentSummaryWidget extends StatelessWidget {
-  const CompleteOrderPaymentSummaryWidget({
-    super.key, required this.model,
-  });
+  const CompleteOrderPaymentSummaryWidget({super.key, required this.model});
   final OrderDataModel model;
 
   @override

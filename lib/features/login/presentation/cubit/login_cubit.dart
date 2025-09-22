@@ -12,7 +12,7 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit({required this.loginRepository}) : super(LoginState());
   final LoginRepository loginRepository;
 
- final TextEditingController phoneController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   void login() async {
@@ -38,11 +38,9 @@ class LoginCubit extends Cubit<LoginState> {
     }
   }
 
-
   dispose() {
     phoneController.dispose();
   }
-
 
   @override
   Future<void> close() {

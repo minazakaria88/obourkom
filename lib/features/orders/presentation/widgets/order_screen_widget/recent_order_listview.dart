@@ -5,7 +5,6 @@ import '../../../data/models/order_model.dart';
 import '../../cubit/orders_cubit.dart';
 import 'order_listview_item_widget.dart';
 
-
 class RecentOrderList extends StatelessWidget {
   const RecentOrderList({
     super.key,
@@ -31,7 +30,7 @@ class RecentOrderList extends StatelessWidget {
           ? const LoaderWidget()
           : const SizedBox(),
       separatorBuilder: (BuildContext context, int index) => 20.height,
-      itemCount: recentOrders.length+1,
+      itemCount: recentOrders.length + 1,
     );
   }
 }

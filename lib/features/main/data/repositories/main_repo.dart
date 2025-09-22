@@ -44,7 +44,9 @@ class MainRepository {
   Future<List<CarModel>> getCars(List<String> ids) async {
     List<CarModel> cars = [];
     try {
-      final future =ids.map((e) => apiHelper.getData(url: '${EndPoints.trucks}/$e')).toList();
+      final future = ids
+          .map((e) => apiHelper.getData(url: '${EndPoints.trucks}/$e'))
+          .toList();
       final responses = await Future.wait(future);
       for (var element in responses) {
         logger.i(element);
@@ -59,7 +61,6 @@ class MainRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
-
 
   Future<List<TruckSizeModel>> getTruckSize() async {
     List<TruckSizeModel> truckSizes = [];

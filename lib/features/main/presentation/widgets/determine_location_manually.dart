@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 
 class DetermineLocationManually extends StatelessWidget {
-  const DetermineLocationManually({
-    super.key, required this.onTap,
-  });
+  const DetermineLocationManually({super.key, required this.onTap});
   final Function onTap;
   @override
   Widget build(BuildContext context) {

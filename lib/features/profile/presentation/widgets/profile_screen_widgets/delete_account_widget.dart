@@ -9,9 +9,7 @@ import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 
 class DeleteAccountWidget extends StatelessWidget {
-  const DeleteAccountWidget({
-    super.key,
-  });
+  const DeleteAccountWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +32,7 @@ class DeleteAccountWidget extends StatelessWidget {
               child: SvgPicture.asset(Assets.imagesDeleteAccount),
             ),
             10.height,
-            Text(
-              S.of(context).deleteAccount,
-              style: AppTextStyles.bold18Black,
-            ),
+            Text(S.of(context).deleteAccount, style: AppTextStyles.bold18Black),
             20.height,
             Text(
               S.of(context).deleteAccountDesc,

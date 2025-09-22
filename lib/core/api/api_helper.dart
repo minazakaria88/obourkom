@@ -17,13 +17,12 @@ class ApiHelper {
     addHeaders();
   }
 
-  static void addHeaders()async {
+  static void addHeaders() async {
     dio?.options.headers = {
       'Accept': 'application/json',
       'Authorization':
           'Bearer ${await CacheHelper.getSecureString(CacheHelperKeys.token)}',
     };
-
   }
 
   void setTokenIntoHeadersAfterLogin(String token) {
@@ -41,17 +40,11 @@ class ApiHelper {
     return await dio!.get(url, queryParameters: queryParameters);
   }
 
-  Future<Response> postData({
-    required String url,
-    dynamic data,
-  }) async {
+  Future<Response> postData({required String url, dynamic data}) async {
     return await dio!.post(url, data: data);
   }
 
-  Future<Response> putData({
-    required String url,
-    required Map<String, dynamic> data,
-  }) async {
+  Future<Response> putData({required String url, dynamic data}) async {
     return await dio!.put(url, data: data);
   }
 

@@ -34,13 +34,14 @@ class SliderData {
   String? paragraph;
   String? image;
 
-  SliderData(
-      {this.id,
-        this.link,
-        this.userId,
-        this.pageId,
-        this.paragraph,
-        this.image});
+  SliderData({
+    this.id,
+    this.link,
+    this.userId,
+    this.pageId,
+    this.paragraph,
+    this.image,
+  });
 
   SliderData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -62,6 +63,7 @@ class SliderData {
     return data;
   }
 }
+
 class Meta {
   int? currentPage;
   int? from;

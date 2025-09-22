@@ -20,12 +20,8 @@ class ValidateWidget extends StatelessWidget {
           if (field.errorText != null)
             Text(
               field.errorText!,
-              style: const TextStyle(
-                color: Colors.red,
-                fontSize: 12,
-              ),
-            )
-
+              style: const TextStyle(color: Colors.red, fontSize: 12),
+            ),
         ],
       ),
       validator: (value) => validator(),

@@ -12,7 +12,10 @@ import '../../../../profile/presentation/widgets/profile_screen_widgets/profile_
 
 class DriverDetailsWidget extends StatelessWidget {
   const DriverDetailsWidget({
-    super.key, required this.accept, required this.decline, required this.model,
+    super.key,
+    required this.accept,
+    required this.decline,
+    required this.model,
   });
 
   final Function accept;
@@ -29,7 +32,6 @@ class DriverDetailsWidget extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 const ProfileImage(),
                 10.width,
                 Flexible(
@@ -45,40 +47,27 @@ class DriverDetailsWidget extends StatelessWidget {
                         children: [
                           SvgPicture.asset(Assets.imagesStars),
                           5.width,
-                          Text(
-                            '4.5',
-                            style: AppTextStyles.bold18Black,
-                          ),
+                          Text('4.5', style: AppTextStyles.bold18Black),
                           20.width,
-                          SvgPicture.asset(
-                            Assets.imagesDocuments,
-                          ),
+                          SvgPicture.asset(Assets.imagesDocuments),
                           5.width,
-                          Text(
-                            '500',
-                            style: AppTextStyles.bold18Black,
-                          ),
+                          Text('500', style: AppTextStyles.bold18Black),
                         ],
                       ),
                       5.height,
-                      const Divider(
-                        color: AppColors.greyColor,
-                        thickness: 2,
-                      ),
+                      const Divider(color: AppColors.greyColor, thickness: 2),
                       Row(
                         children: [
                           SvgPicture.asset(Assets.imagesBanknote),
                           10.width,
                           Text(
                             '${model.price} ريال',
-                            style: AppTextStyles.bold18Black
-                                .copyWith(
+                            style: AppTextStyles.bold18Black.copyWith(
                               color: AppColors.mainColor,
                             ),
                           ),
                         ],
                       ),
-
                     ],
                   ),
                 ),

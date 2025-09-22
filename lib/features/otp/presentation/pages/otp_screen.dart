@@ -149,11 +149,11 @@ class _OtpScreenState extends State<OtpScreen> {
         onCodeSubmitted: (String code) {
           otpCode = code;
         },
-        onCodeChanged: (String? code)async {
+        onCodeChanged: (String? code) async {
           otpCode = code ?? '';
           logger.i(code);
           if ((code ?? '').length == 4) {
-            if(context.mounted) {
+            if (context.mounted) {
               hideKeyboard(context);
             }
             await context.read<OtpCubit>().verifyOtp(

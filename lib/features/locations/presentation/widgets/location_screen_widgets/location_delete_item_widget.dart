@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
@@ -8,9 +7,7 @@ import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 
 class LocationItemDeleteWidget extends StatelessWidget {
-  const LocationItemDeleteWidget({
-    super.key, required this.onDelete,
-  });
+  const LocationItemDeleteWidget({super.key, required this.onDelete});
   final Function() onDelete;
 
   @override
@@ -23,10 +20,7 @@ class LocationItemDeleteWidget extends StatelessWidget {
         children: [
           SvgPicture.asset(Assets.imagesDelete),
           5.width,
-          Text(
-            S.of(context).delete,
-            style: AppTextStyles.regular12Grey,
-          ),
+          Text(S.of(context).delete, style: AppTextStyles.regular12Grey),
         ],
       ),
     );

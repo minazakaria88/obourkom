@@ -59,7 +59,7 @@ class EditProfileScreen extends StatelessWidget {
                   Stack(
                     alignment: Alignment.bottomRight,
                     children: [
-                      state.image != null && state.image !=''
+                      state.image != null && state.image != ''
                           ? Container(
                               clipBehavior: Clip.antiAliasWithSaveLayer,
                               width: 117,
@@ -72,8 +72,9 @@ class EditProfileScreen extends StatelessWidget {
                                 ),
                               ),
                               child: CircleAvatar(
-                                  radius: 60,
-                                  backgroundImage: FileImage(File(state.image!))),
+                                radius: 60,
+                                backgroundImage: FileImage(File(state.image!)),
+                              ),
                             )
                           : state.userModel != null
                           ? Hero(

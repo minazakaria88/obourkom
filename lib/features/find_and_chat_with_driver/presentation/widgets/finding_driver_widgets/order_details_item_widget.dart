@@ -6,7 +6,9 @@ import '../../../../../core/utils/app_styles.dart';
 
 class OrderDetailsItemWidget extends StatelessWidget {
   const OrderDetailsItemWidget({
-    super.key, required this.title, required this.value,
+    super.key,
+    required this.title,
+    required this.value,
   });
   final String title;
   final String value;
@@ -18,10 +20,7 @@ class OrderDetailsItemWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            '$title :',
-            style: AppTextStyles.bold14Grey,
-          ),
+          Text('$title :', style: AppTextStyles.bold14Grey),
           5.width,
           Flexible(
             child: Text(

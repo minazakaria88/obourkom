@@ -3,8 +3,6 @@ import 'package:oborkom/generated/assets.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../main.dart';
 
-
-
 /// home , work , other
 class LocationTypeModel {
   final int id;
@@ -36,9 +34,4 @@ List<LocationTypeModel> locationTypes = [
   ),
 ];
 
-
-Map<int,String> idToLocationType={
-  1:'home',
-  2:'office',
-  3:'other',
-};
+Map<int, String> idToLocationType = {1: 'home', 2: 'office', 3: 'other'};

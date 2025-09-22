@@ -4,9 +4,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../generated/l10n.dart';
 
 class ChooseYourServices extends StatelessWidget {
-  const ChooseYourServices({
-    super.key,
-  });
+  const ChooseYourServices({super.key});
 
   @override
   Widget build(BuildContext context) {

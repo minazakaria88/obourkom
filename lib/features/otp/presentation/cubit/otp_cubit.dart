@@ -42,7 +42,10 @@ class OtpCubit extends Cubit<OtpState> {
     });
   }
 
-  Future<void> verifyOtp({required String otp, required OtpType otpType}) async {
+  Future<void> verifyOtp({
+    required String otp,
+    required OtpType otpType,
+  }) async {
     try {
       _timer?.cancel();
       emit(state.copyWith(otpStatus: VerifyOtpStatus.loading));
@@ -51,7 +54,7 @@ class OtpCubit extends Cubit<OtpState> {
         otpType: otpType,
       );
       CacheHelper.setSecureString(CacheHelperKeys.token, result.token);
-     await CacheHelper.saveUser(result.user!);
+      await CacheHelper.saveUser(result.user!);
       getIt<ApiHelper>().setTokenIntoHeadersAfterLogin(result.token ?? '');
       emit(state.copyWith(otpStatus: VerifyOtpStatus.success));
     } on ApiException catch (e) {
@@ -79,7 +82,10 @@ class OtpCubit extends Cubit<OtpState> {
       _timer?.cancel();
       startTimerDuration();
       emit(state.copyWith(resendOtpStatus: ResendOtpStatus.loading));
-      await otpRepository.resendOtp(phoneNumber: '+966$phoneNumber', otpType: otpType);
+      await otpRepository.resendOtp(
+        phoneNumber: '+966$phoneNumber',
+        otpType: otpType,
+      );
       emit(state.copyWith(resendOtpStatus: ResendOtpStatus.success));
     } on ApiException catch (e) {
       emit(

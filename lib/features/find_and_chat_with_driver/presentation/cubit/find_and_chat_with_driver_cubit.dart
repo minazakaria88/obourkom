@@ -50,12 +50,14 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
   void listenForOffers({required String orderId}) async {
     try {
       offerStream?.cancel();
-
       offerStream = findAndChatWithDriverRepository
           .getOffersForOrder(orderId: orderId)
           .listen((offers) {
             if (offers.isNotEmpty) {
               cancelTimer();
+            }
+            if (offers.isEmpty) {
+              startTimer();
             }
             emit(state.copyWith(offers: offers));
           });
@@ -119,19 +121,45 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
   }
 
 
+  void assignOffer(OfferModel offer) {
+    emit(
+      state.copyWith(
+        selectedOffer: offer,
+      ),
+    );
+  }
 
-
-
-  Future<void> acceptOffer({required String orderId, required String offerId}) async {
+  Future<void> acceptOffer({
+    required String orderId,
+    required String offerId,
+  }) async {
     try {
+      cancelTimer();
+      emit(
+        state.copyWith(
+          acceptOfferStatus: AcceptOfferStatus.loading,
+          selectedOfferId: offerId,
+        ),
+      );
       await findAndChatWithDriverRepository.acceptOffer(
         orderId: orderId,
         offerId: offerId,
       );
+      emit(state.copyWith(acceptOfferStatus: AcceptOfferStatus.success));
     } on ApiException catch (e) {
-      emit(state.copyWith(errorMessage: e.failure.message));
+      emit(
+        state.copyWith(
+          errorMessage: e.failure.message,
+          acceptOfferStatus: AcceptOfferStatus.failure,
+        ),
+      );
     } catch (e) {
-      emit(state.copyWith(errorMessage: e.toString()));
+      emit(
+        state.copyWith(
+          errorMessage: e.toString(),
+          acceptOfferStatus: AcceptOfferStatus.failure,
+        ),
+      );
     }
   }
 
@@ -140,14 +168,31 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
     required String offerId,
   }) async {
     try {
+      emit(
+        state.copyWith(
+          rejectOfferStatus: RejectOfferStatus.loading,
+          selectedOfferId: offerId,
+        ),
+      );
       await findAndChatWithDriverRepository.rejectOffer(
         orderId: orderId,
         offerId: offerId,
       );
+      emit(state.copyWith(rejectOfferStatus: RejectOfferStatus.success));
     } on ApiException catch (e) {
-      emit(state.copyWith(errorMessage: e.failure.message));
+      emit(
+        state.copyWith(
+          errorMessage: e.failure.message,
+          rejectOfferStatus: RejectOfferStatus.failure,
+        ),
+      );
     } catch (e) {
-      emit(state.copyWith(errorMessage: e.toString()));
+      emit(
+        state.copyWith(
+          errorMessage: e.toString(),
+          rejectOfferStatus: RejectOfferStatus.failure,
+        ),
+      );
     }
   }
 
@@ -156,19 +201,28 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
     required String status,
   }) async {
     try {
+      emit(state.copyWith(changeOrderStatus: ChangeOrderStatus.loading));
       await findAndChatWithDriverRepository.changeOrderStatus(
         orderId: orderId,
         status: status,
       );
+      emit(state.copyWith(changeOrderStatus: ChangeOrderStatus.success));
     } on ApiException catch (e) {
-      emit(state.copyWith(errorMessage: e.failure.message));
+      emit(
+        state.copyWith(
+          errorMessage: e.failure.message,
+          changeOrderStatus: ChangeOrderStatus.failure,
+        ),
+      );
     } catch (e) {
-      emit(state.copyWith(errorMessage: e.toString()));
+      emit(
+        state.copyWith(
+          errorMessage: e.toString(),
+          changeOrderStatus: ChangeOrderStatus.failure,
+        ),
+      );
     }
   }
-
-
-
 
   @override
   Future<void> close() {

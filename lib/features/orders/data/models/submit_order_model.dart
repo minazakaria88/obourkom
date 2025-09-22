@@ -11,34 +11,35 @@ class SubmitOrderModel {
   String? code;
   String? truckTypeId;
   String? truckSizeId;
-  String ? typeService;
+  String? typeService;
   String? updatedAt;
   String? createdAt;
   String? status;
-  String ? addressFrom;
-  String ? addressTo;
+  String? addressFrom;
+  String? addressTo;
   int? id;
 
-  SubmitOrderModel(
-      {this.fromLat,
-        this.fromLng,
-        this.toLat,
-        this.toLng,
-        this.priceFrom,
-        this.priceTo,
-        this.customerId,
-        this.paymentType,
-        this.notes,
-        this.code,
-        this.truckTypeId,
-        this.truckSizeId,
-        this.typeService,
-        this.updatedAt,
-        this.createdAt,
-        this.status,
-        this.addressFrom,
-        this.addressTo,
-        this.id});
+  SubmitOrderModel({
+    this.fromLat,
+    this.fromLng,
+    this.toLat,
+    this.toLng,
+    this.priceFrom,
+    this.priceTo,
+    this.customerId,
+    this.paymentType,
+    this.notes,
+    this.code,
+    this.truckTypeId,
+    this.truckSizeId,
+    this.typeService,
+    this.updatedAt,
+    this.createdAt,
+    this.status,
+    this.addressFrom,
+    this.addressTo,
+    this.id,
+  });
 
   SubmitOrderModel.fromJson(Map<String, dynamic> json) {
     fromLat = json['from_lat'];

@@ -11,7 +11,7 @@ import '../widgets/completed_orders_widgets/payment_summary.dart';
 
 class CompletedOrderDetailsScreen extends StatelessWidget {
   const CompletedOrderDetailsScreen({super.key, required this.model});
-    final OrderDataModel model;
+  final OrderDataModel model;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,13 +29,13 @@ class CompletedOrderDetailsScreen extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                   CompleteOrderDetailsWidget(model: model,),
+                  CompleteOrderDetailsWidget(model: model),
                   20.height,
-                   CompleteOrderNotesWidget(notes: model.notes??'',),
+                  CompleteOrderNotesWidget(notes: model.notes ?? ''),
                   20.height,
-                   CompleteOrderDriverWidget(driver: model.driver!),
+                  CompleteOrderDriverWidget(driver: model.driver!),
                   20.height,
-                   CompleteOrderPaymentSummaryWidget(model: model,),
+                  CompleteOrderPaymentSummaryWidget(model: model),
                 ],
               ),
             ),

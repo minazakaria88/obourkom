@@ -35,9 +35,7 @@ class DetermineLocationWidget extends StatelessWidget {
         BlocBuilder<MainCubit, MainState>(
           builder: (context, state) =>
               state.getLocationState == GetLocationState.loading
-              ? const CircularProgressIndicator(
-                color: AppColors.mainColor,
-              )
+              ? const CircularProgressIndicator(color: AppColors.mainColor)
               : MyButton(
                   title: S.of(context).activeLocation,
                   onTap: () {

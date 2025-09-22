@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/app_colors.dart';
 
 class BackgroundProfileWidget extends StatelessWidget {
-  const BackgroundProfileWidget({
-    super.key, required this.child,
-  });
+  const BackgroundProfileWidget({super.key, required this.child});
   final Widget child;
   @override
   Widget build(BuildContext context) {

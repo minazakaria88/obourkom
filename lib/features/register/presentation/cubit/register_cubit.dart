@@ -41,14 +41,11 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
   }
 
-
-
   dispose() {
     emailController.dispose();
     nameController.dispose();
     phoneController.dispose();
   }
-
 
   @override
   Future<void> close() {

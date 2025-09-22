@@ -15,12 +15,15 @@ class OrderStatusWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
-      listenWhen: (previous, current) => previous.orderStatus != current.orderStatus,
+      listenWhen: (previous, current) =>
+          previous.orderStatus != current.orderStatus,
       listener: (context, state) {
         if (state.orderStatus == delivered) {
-          context.pushNamedAndRemoveUntil(Routes.finishOrderScreen, (r) => false);
+          context.pushNamedAndRemoveUntil(
+            Routes.finishOrderScreen,
+            (r) => false,
+          );
         }
-
       },
       buildWhen: (previous, current) =>
           previous.orderStatus != current.orderStatus,
@@ -71,5 +74,3 @@ class OrderStatusWidget extends StatelessWidget {
     );
   }
 }
-
-

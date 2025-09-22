@@ -9,9 +9,7 @@ import '../../../../language/presentation/cubit/language_cubit.dart';
 import 'choose_laguage_profile_widget.dart';
 
 class LanguageModelSheetWidget extends StatelessWidget {
-  const LanguageModelSheetWidget({
-    super.key,
-  });
+  const LanguageModelSheetWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,39 +18,28 @@ class LanguageModelSheetWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        Text(
-          S.of(context).changeLanguage,
-          style: AppTextStyles.bold24Black,
-        ),
+        Text(S.of(context).changeLanguage, style: AppTextStyles.bold24Black),
         40.height,
         BlocBuilder<LanguageCubit, LanguageState>(
           builder: (context, state) {
             return ListView.separated(
               itemCount: profileLanguages.length,
               shrinkWrap: true,
-              physics:
-              const NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemBuilder: (context, index) {
                 profileLanguages[index].isSelected =
-                    CacheHelper.getData(
-                      key: CacheHelperKeys.lang,
-                    ) ==
-                        profileLanguages[index].code;
+                    CacheHelper.getData(key: CacheHelperKeys.lang) ==
+                    profileLanguages[index].code;
                 return ChooseLanguageProfileWidget(
                   onTap: () {
-                    context
-                        .read<LanguageCubit>()
-                        .changeLanguage(
+                    context.read<LanguageCubit>().changeLanguage(
                       profileLanguages[index].code,
                     );
                   },
-                  profileLanguages:
-                  profileLanguages[index],
+                  profileLanguages: profileLanguages[index],
                 );
               },
-              separatorBuilder:
-                  (BuildContext context, int index) =>
-              20.height,
+              separatorBuilder: (BuildContext context, int index) => 20.height,
             );
           },
         ),

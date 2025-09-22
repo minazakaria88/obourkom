@@ -21,8 +21,8 @@ class OrderRepository {
       return SubmitOrderModel.fromJson(response.data['data']);
     } catch (e) {
       if (e is DioException) {
-        logger.e(e.response?.statusCode?? '');
-        logger.e(e.response?.data?? '');
+        logger.e(e.response?.statusCode ?? '');
+        logger.e(e.response?.data ?? '');
         throw ApiException(failure: ServerFailure.serverError(e));
       }
       throw ApiException(failure: Failure(message: e.toString()));
@@ -31,9 +31,10 @@ class OrderRepository {
 
   Future<OrderModel> getOrders(int page) async {
     try {
-      final response = await apiHelper.getData(url: EndPoints.orders,queryParameters:{
-        'page': page,
-      });
+      final response = await apiHelper.getData(
+        url: EndPoints.orders,
+        queryParameters: {'page': page},
+      );
       logger.d(response.data);
       return OrderModel.fromJson(response.data);
     } catch (e) {
@@ -59,6 +60,4 @@ class OrderRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
-
-
 }

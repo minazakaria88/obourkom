@@ -16,15 +16,12 @@ class OtpHeaderWidget extends StatelessWidget {
         20.height,
         Image.asset(Assets.imagesOtp),
         20.height,
-        Text(
-          S.of(context).otp,
-          style: AppTextStyles.bold24Black,
-        ),
+        Text(S.of(context).otp, style: AppTextStyles.bold24Black),
         20.height,
         Text(
           S.of(context).otpText,
           textAlign: TextAlign.center,
-          style: AppTextStyles.regular16Black
+          style: AppTextStyles.regular16Black,
         ),
         25.height,
       ],

@@ -4,9 +4,7 @@ import 'package:flutter/material.dart';
 import '../../generated/assets.dart';
 
 class CachedImageWidget extends StatelessWidget {
-  const CachedImageWidget({
-    super.key, required this.imageUrl,
-  });
+  const CachedImageWidget({super.key, required this.imageUrl});
   final String imageUrl;
 
   @override
@@ -16,13 +14,10 @@ class CachedImageWidget extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: imageUrl,
         fit: BoxFit.fill,
-        placeholder: (context, url) =>  Center(
-          child: Image.asset(Assets.imagesLoading,fit: BoxFit.fill,),
-        ),
-        errorWidget: (context, url, error) => const Icon(
-          Icons.error,
-          color: Colors.red,
-        ),
+        placeholder: (context, url) =>
+            Center(child: Image.asset(Assets.imagesLoading, fit: BoxFit.fill)),
+        errorWidget: (context, url, error) =>
+            const Icon(Icons.error, color: Colors.red),
       ),
     );
   }

@@ -29,7 +29,7 @@ class FaqScreen extends StatelessWidget {
                   previous.getFaqStatus != current.getFaqStatus,
               builder: (context, state) {
                 final list = state.faqs?.questions ?? [];
-                if(state.getFaqStatus == GetFaqStatus.failure) {
+                if (state.getFaqStatus == GetFaqStatus.failure) {
                   return const ErrorAppWidget();
                 }
                 return list.isEmpty

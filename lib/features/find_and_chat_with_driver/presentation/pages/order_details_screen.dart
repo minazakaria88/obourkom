@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/app_colors.dart';
 import 'package:oborkom/core/utils/constant.dart';
+import 'package:oborkom/core/widgets/loader_widget.dart';
+import 'package:oborkom/core/widgets/loading_widget.dart';
 import 'package:oborkom/core/widgets/my_button.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/widgets/order_details_widget/change_supplier_widget.dart';
@@ -32,9 +34,7 @@ class OrderDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final cubit = context.read<FindAndChatWithDriverCubit>();
     return Scaffold(
-      appBar: MyAppBar(
-        title: S.of(context).orderDetails,
-      ),
+      appBar: MyAppBar(title: S.of(context).orderDetails),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Stack(
@@ -53,69 +53,94 @@ class OrderDetailsScreen extends StatelessWidget {
                   ),
                   SliverToBoxAdapter(child: 10.height),
                   SliverToBoxAdapter(
-                    child: BlocConsumer<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
-                      listener: (context, state) {
-
-                      },
-                      builder: (context, state) {
-                        return statusToNumber[state.orderStatus]==null||statusToNumber[state.orderStatus]!>0?Container():BackgroundProfileWidget(
-                          child: SizedBox(
-                            height: 65,
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: MyButton(
-                                    title: S.of(context).payNow,
-                                    onTap: () {
-                                      cubit.changeOrderStatus(
-                                        orderId: orderModel.id.toString(),
-                                        status: onTheWayToPickup,
-                                      );
-                                    },
-                                  ),
-                                ),
-                                Expanded(
-                                  child: MyButton(
-                                    title: S.of(context).changeSupplier,
-                                    onTap: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (_) => ChangeSupplierWidget(
-                                          onTap: () {
-                                            logger.i(orderModel.status);
-                                            cubit
-                                                .rejectOffer(
-                                              orderId: orderModel.id.toString(),
-                                              offerId: offerModel.id.toString(),
-                                            )
-                                                .then((value) {
-                                              if (context.mounted) {
-                                                context.pushNamedAndRemoveUntil(
-                                                  Routes.findDriver,
-                                                  arguments: orderModel,
-                                                      (route) =>
-                                                  route.settings.name ==
-                                                      Routes.home,
+                    child:
+                        BlocConsumer<
+                          FindAndChatWithDriverCubit,
+                          FindAndChatWithDriverState
+                        >(
+                          listenWhen: (previous, current) =>
+                              previous.rejectOfferStatus !=
+                              current.rejectOfferStatus,
+                          listener: (context, state) {
+                            if (state.rejectOfferStatus ==
+                                RejectOfferStatus.success) {
+                              context.pushNamedAndRemoveUntil(
+                                Routes.findDriver,
+                                arguments: orderModel,
+                                (route) => route.settings.name == Routes.home,
+                              );
+                            }
+                          },
+                          builder: (context, state) {
+                            return statusToNumber[state.orderStatus] == null ||
+                                    statusToNumber[state.orderStatus]! > 0
+                                ? Container()
+                                : BackgroundProfileWidget(
+                                    child: SizedBox(
+                                      height: 65,
+                                      child: Row(
+                                        children: [
+                                          Expanded(
+                                            child:
+                                                state.changeOrderStatus ==
+                                                    ChangeOrderStatus.loading
+                                                ? const LoaderWidget()
+                                                : MyButton(
+                                                    title: S.of(context).payNow,
+                                                    onTap: () {
+                                                      cubit.changeOrderStatus(
+                                                        orderId: orderModel.id
+                                                            .toString(),
+                                                        status:
+                                                            onTheWayToPickup,
+                                                      );
+                                                    },
+                                                  ),
+                                          ),
+                                          Expanded(
+                                            child: MyButton(
+                                              title: S
+                                                  .of(context)
+                                                  .changeSupplier,
+                                              onTap: () {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (_) => Stack(
+                                                    children: [
+                                                      ChangeSupplierWidget(
+                                                        onTap: () {
+                                                          cubit.rejectOffer(
+                                                            orderId: orderModel
+                                                                .id
+                                                                .toString(),
+                                                            offerId: offerModel
+                                                                .id
+                                                                .toString(),
+                                                          );
+                                                        },
+                                                      ),
+                                                      if (state
+                                                              .rejectOfferStatus ==
+                                                          RejectOfferStatus
+                                                              .loading)
+                                                        const LoadingWidget(),
+                                                    ],
+                                                  ),
                                                 );
-                                              }
-                                            });
-                                          },
-                                        ),
-                                      );
-                                    },
-                                    textColor: Colors.black,
-                                    color: AppColors.greyColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+                                              },
+                                              textColor: Colors.black,
+                                              color: AppColors.greyColor,
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                          },
+                        ),
                   ),
                   SliverToBoxAdapter(child: 20.height),
-                   SliverToBoxAdapter(child: DriverDetails(model: offerModel,)),
+                  SliverToBoxAdapter(child: DriverDetails(model: offerModel)),
                   SliverToBoxAdapter(child: 20.height),
                   const ChatListview(),
                   SliverToBoxAdapter(child: 20.height),

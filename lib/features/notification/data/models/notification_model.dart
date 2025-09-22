@@ -35,26 +35,29 @@ class DataNotificationModel {
   String? readAt;
   String? readAtFormated;
 
-  DataNotificationModel(
-      {this.id,
-        this.image,
-        this.name,
-        this.body,
-        this.data,
-        this.isRead,
-        this.tab,
-        this.createdAt,
-        this.createdAtFormated,
-        this.links,
-        this.readAt,
-        this.readAtFormated});
+  DataNotificationModel({
+    this.id,
+    this.image,
+    this.name,
+    this.body,
+    this.data,
+    this.isRead,
+    this.tab,
+    this.createdAt,
+    this.createdAtFormated,
+    this.links,
+    this.readAt,
+    this.readAtFormated,
+  });
 
   DataNotificationModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     image = json['image'];
     name = json['name'];
     body = json['body'];
-    data = json['data'] != null ? NotificationData.fromJson(json['data']) : null;
+    data = json['data'] != null
+        ? NotificationData.fromJson(json['data'])
+        : null;
     isRead = json['is_read'];
     tab = json['tab'];
     createdAt = json['created_at'];

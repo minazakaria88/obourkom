@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:oborkom/core/utils/app_colors.dart';
 
-class BottomAppBarWidget extends StatelessWidget  implements PreferredSizeWidget {
+class BottomAppBarWidget extends StatelessWidget
+    implements PreferredSizeWidget {
   const BottomAppBarWidget({super.key});
 
   @override

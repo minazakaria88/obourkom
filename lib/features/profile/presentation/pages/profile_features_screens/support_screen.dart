@@ -21,7 +21,7 @@ class SupportScreen extends StatelessWidget {
         children: [
           20.height,
           SupportItemWidget(
-            onTap: (){
+            onTap: () {
               makePhoneCall(phoneNumber: '');
             },
             title: S.of(context).callUs,
@@ -29,13 +29,12 @@ class SupportScreen extends StatelessWidget {
           ),
           10.height,
           SupportItemWidget(
-            onTap: (){
+            onTap: () {
               whatsapp(phoneNumber: '');
             },
             title: S.of(context).whatsapp,
             image: Assets.imagesWhatsapp,
           ),
-
         ],
       ),
     );
@@ -44,7 +43,10 @@ class SupportScreen extends StatelessWidget {
 
 class SupportItemWidget extends StatelessWidget {
   const SupportItemWidget({
-    super.key, required this.image, required this.title, required this.onTap,
+    super.key,
+    required this.image,
+    required this.title,
+    required this.onTap,
   });
   final String image;
   final String title;
@@ -53,7 +55,7 @@ class SupportItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         onTap();
       },
       child: Container(
@@ -67,21 +69,18 @@ class SupportItemWidget extends StatelessWidget {
               color: AppColors.shadowColor.withAlpha(100),
               offset: const Offset(0, 1),
               blurRadius: 2,
-              spreadRadius: 2
+              spreadRadius: 2,
             ),
-          ]
+          ],
         ),
         child: Row(
           children: [
             SvgPicture.asset(image),
             20.width,
-            Text(title,style: AppTextStyles.regular16Black,),
+            Text(title, style: AppTextStyles.regular16Black),
           ],
         ),
       ),
     );
   }
 }
-
-
-

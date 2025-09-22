@@ -7,9 +7,7 @@ import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 
 class LocationItemEditWidget extends StatelessWidget {
-  const LocationItemEditWidget({
-    super.key,
-  });
+  const LocationItemEditWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +17,7 @@ class LocationItemEditWidget extends StatelessWidget {
         children: [
           SvgPicture.asset(Assets.imagesEdit),
           5.width,
-          Text(
-            S.of(context).edit,
-            style: AppTextStyles.regular12Grey,
-          ),
+          Text(S.of(context).edit, style: AppTextStyles.regular12Grey),
         ],
       ),
     );

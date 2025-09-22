@@ -4,10 +4,8 @@ import '../../../../../core/helpers/validation_inputs_class.dart';
 import '../../../../../generated/l10n.dart';
 
 class NotesInputWidget extends StatelessWidget {
-  const NotesInputWidget({
-    super.key, required this.controller,
-  });
-  final TextEditingController controller ;
+  const NotesInputWidget({super.key, required this.controller});
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +13,18 @@ class NotesInputWidget extends StatelessWidget {
       controller: controller,
       maxLines: 5,
       validator: (String? value) {
-        return ValidationClass.validateText(value, S.of(context).pleaseWriteYourNotes);
+        return ValidationClass.validateText(
+          value,
+          S.of(context).pleaseWriteYourNotes,
+        );
       },
       decoration: InputDecoration(
         hintText: S.of(context).writeYourNotesHere,
         filled: true,
-        fillColor:const Color(0xffF5FAFA),
+        fillColor: const Color(0xffF5FAFA),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide:
-          BorderSide.none, // No visible border line
+          borderSide: BorderSide.none, // No visible border line
         ),
         contentPadding: const EdgeInsets.all(
           12,

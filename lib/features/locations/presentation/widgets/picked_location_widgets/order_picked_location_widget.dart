@@ -48,16 +48,17 @@ class OrderPickLocation extends StatelessWidget {
                   double.parse(result.lng ?? ''),
                 ),
               );
-              if(context.mounted){
-              context.pop(
-                LocationOrderModel(
-                  position: LatLng(
-                    double.parse(result.lat ?? ''),
-                    double.parse(result.lng ?? ''),
+              if (context.mounted) {
+                context.pop(
+                  LocationOrderModel(
+                    position: LatLng(
+                      double.parse(result.lat ?? ''),
+                      double.parse(result.lng ?? ''),
+                    ),
+                    address: location.first,
                   ),
-                  address: location.first,
-                ),
-              );}
+                );
+              }
             },
             child: Center(
               child: Text(

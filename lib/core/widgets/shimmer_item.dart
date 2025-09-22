@@ -26,6 +26,5 @@ class ShimmerItem extends StatelessWidget {
         ),
       ),
     );
-
   }
 }

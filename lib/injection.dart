@@ -7,6 +7,7 @@ import 'package:oborkom/features/notification/data/repositories/notification_rep
 import 'package:oborkom/features/otp/data/repositories/otp_repo.dart';
 
 import 'core/api/api_helper.dart';
+import 'core/helpers/location_service.dart';
 import 'features/find_and_chat_with_driver/data/repositories/find_and_chat_repo.dart';
 import 'features/find_and_chat_with_driver/presentation/cubit/find_and_chat_with_driver_cubit.dart';
 import 'features/login/data/repositories/login_repo.dart';
@@ -33,60 +34,55 @@ void setupServicesLocator() {
   //api
   getIt.registerLazySingleton(() => ApiHelper());
 
-
   //login
   getIt.registerFactory(() => LoginCubit(loginRepository: getIt()));
   getIt.registerLazySingleton(() => LoginRepository(apiHelper: getIt()));
-
 
   //register
   getIt.registerFactory(() => RegisterCubit(registerRepository: getIt()));
   getIt.registerLazySingleton(() => RegisterRepository(apiHelper: getIt()));
 
-
   //otp
   getIt.registerFactory(() => OtpCubit(otpRepository: getIt()));
-  getIt.registerLazySingleton(()=>OtpRepository(apiHelper: getIt()));
-
+  getIt.registerLazySingleton(() => OtpRepository(apiHelper: getIt()));
 
   //home
-  getIt.registerFactory(()=>HomeCubit());
-
+  getIt.registerFactory(() => HomeCubit());
 
   //main
   getIt.registerFactory(() => MainCubit(mainRepository: getIt()));
   getIt.registerLazySingleton(() => MainRepository(apiHelper: getIt()));
 
   //notifications
-  getIt.registerFactory(() => NotificationCubit(notificationRepository: getIt()));
-  getIt.registerLazySingleton(()=>NotificationRepository(apiHelper: getIt()));
-
+  getIt.registerFactory(
+    () => NotificationCubit(notificationRepository: getIt()),
+  );
+  getIt.registerLazySingleton(() => NotificationRepository(apiHelper: getIt()));
 
   //orders
   getIt.registerFactory(() => OrdersCubit(orderRepository: getIt()));
-  getIt.registerLazySingleton(()=>OrderRepository(apiHelper: getIt()));
-
+  getIt.registerLazySingleton(() => OrderRepository(apiHelper: getIt()));
 
   //Profile
   getIt.registerFactory(() => ProfileCubit(profileRepository: getIt()));
   getIt.registerLazySingleton(() => ProfileRepository(apiHelper: getIt()));
 
   //locations
-  getIt.registerFactory(()=>LocationsCubit(locationRepository: getIt()));
-  getIt.registerLazySingleton(() => LocationRepository(apiHelper: getIt()));
-
+  getIt.registerFactory(() => LocationsCubit(locationRepository: getIt()));
+  getIt.registerLazySingleton(() => LocationService());
+  getIt.registerLazySingleton(
+    () => LocationRepository(locationService: getIt(), apiHelper: getIt()),
+  );
 
   //rating
   getIt.registerFactory(() => RatingCubit(ratingRepository: getIt()));
   getIt.registerLazySingleton(() => RatingRepository(apiHelper: getIt()));
 
-
   //findAndChatWithDriver
-  getIt.registerFactory(() => FindAndChatWithDriverCubit(findAndChatWithDriverRepository: getIt()));
-  getIt.registerLazySingleton(() => FindAndChatWithDriverRepository(apiHelper: getIt()));
-
-
-
-
-
+  getIt.registerFactory(
+    () => FindAndChatWithDriverCubit(findAndChatWithDriverRepository: getIt()),
+  );
+  getIt.registerLazySingleton(
+    () => FindAndChatWithDriverRepository(apiHelper: getIt()),
+  );
 }

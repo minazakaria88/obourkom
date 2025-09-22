@@ -11,7 +11,7 @@ import 'call_and_show_on_map_widget.dart';
 
 class DriverDetails extends StatelessWidget {
   const DriverDetails({super.key, required this.model});
- final OfferModel model;
+  final OfferModel model;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -29,7 +29,7 @@ class DriverDetails extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(model.name ??'', style: AppTextStyles.bold18Black),
+                Text(model.name ?? '', style: AppTextStyles.bold18Black),
                 Row(
                   children: [
                     SvgPicture.asset(Assets.imagesStars),
@@ -42,7 +42,7 @@ class DriverDetails extends StatelessWidget {
             const Spacer(),
             InkWell(
               onTap: () {
-                makePhoneCall(phoneNumber: model.phone ??'');
+                makePhoneCall(phoneNumber: model.phone ?? '');
               },
               child: Container(
                 padding: const EdgeInsets.all(7),
@@ -84,4 +84,3 @@ class DriverDetails extends StatelessWidget {
     );
   }
 }
-

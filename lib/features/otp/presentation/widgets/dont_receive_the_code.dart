@@ -5,9 +5,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../generated/l10n.dart';
 
 class DontReceiveTheCodeWidget extends StatelessWidget {
-  const DontReceiveTheCodeWidget({
-    super.key, required this.onTap,
-  });
+  const DontReceiveTheCodeWidget({super.key, required this.onTap});
   final Function onTap;
 
   @override

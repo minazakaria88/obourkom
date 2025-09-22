@@ -20,7 +20,7 @@ class SignUpPolicyText extends StatelessWidget {
         }
         return null;
       },
-      builder:(field) =>  Column(
+      builder: (field) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
@@ -56,9 +56,10 @@ class SignUpPolicyText extends StatelessWidget {
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {
-                          context.pushNamed(Routes.termsAndConditions);
-                        },
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            context.pushNamed(Routes.termsAndConditions);
+                          },
                       ),
                       TextSpan(
                         text: S.of(context).and,
@@ -76,9 +77,10 @@ class SignUpPolicyText extends StatelessWidget {
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {
-                          context.pushNamed(Routes.privacyPolicy);
-                        },
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            context.pushNamed(Routes.privacyPolicy);
+                          },
                       ),
                     ],
                   ),
@@ -89,10 +91,7 @@ class SignUpPolicyText extends StatelessWidget {
           if (field.errorText != null)
             Text(
               field.errorText!,
-              style: const TextStyle(
-                color: Colors.red,
-                fontSize: 12,
-              ),
+              style: const TextStyle(color: Colors.red, fontSize: 12),
             ),
         ],
       ),

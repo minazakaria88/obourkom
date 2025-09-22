@@ -10,7 +10,8 @@ import '../../../../language/data/models/profile_language_model.dart';
 class ChooseLanguageProfileWidget extends StatelessWidget {
   const ChooseLanguageProfileWidget({
     super.key,
-    required this.profileLanguages, required this.onTap,
+    required this.profileLanguages,
+    required this.onTap,
   });
 
   final ProfileLanguageModel profileLanguages;
@@ -18,7 +19,7 @@ class ChooseLanguageProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         onTap();
       },
       child: Container(
@@ -41,7 +42,8 @@ class ChooseLanguageProfileWidget extends StatelessWidget {
                 style: AppTextStyles.bold18Black,
               ),
             ),
-            if (profileLanguages.isSelected) SvgPicture.asset(Assets.imagesRadio),
+            if (profileLanguages.isSelected)
+              SvgPicture.asset(Assets.imagesRadio),
             20.width,
           ],
         ),

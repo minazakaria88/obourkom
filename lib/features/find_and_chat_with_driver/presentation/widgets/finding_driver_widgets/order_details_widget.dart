@@ -9,15 +9,14 @@ import '../../../../../generated/l10n.dart';
 import 'order_details_item_widget.dart';
 
 class OrderDetailsWidget extends StatelessWidget {
-  const OrderDetailsWidget({
-    super.key, required this.model,
-  });
+  const OrderDetailsWidget({super.key, required this.model});
   final SubmitOrderModel model;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FindAndChatWithDriverCubit,FindAndChatWithDriverState>(
-      buildWhen: (previous, current) => previous.orderStatus!=current.orderStatus,
+    return BlocBuilder<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
+      buildWhen: (previous, current) =>
+          previous.orderStatus != current.orderStatus,
       builder: (context, state) {
         return Card(
           color: Colors.white,
@@ -37,7 +36,7 @@ class OrderDetailsWidget extends StatelessWidget {
                   title: S.of(context).orderNumber,
                 ),
                 OrderDetailsItemWidget(
-                  value: model.typeService ??'',
+                  value: model.typeService ?? '',
                   title: S.of(context).serviceType,
                 ),
                 OrderDetailsItemWidget(
@@ -45,11 +44,14 @@ class OrderDetailsWidget extends StatelessWidget {
                   title: S.of(context).carType,
                 ),
                 OrderDetailsItemWidget(
-                  value:  getStatusText(context, state.orderStatus ?? model.status ?? ''),
+                  value: getStatusText(
+                    context,
+                    state.orderStatus ?? model.status ?? '',
+                  ),
                   title: S.of(context).orderStatus,
                 ),
                 OrderDetailsItemWidget(
-                  value: model.paymentType ??'',
+                  value: model.paymentType ?? '',
                   title: S.of(context).paymentMethod,
                 ),
               ],

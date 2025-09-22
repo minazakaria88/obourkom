@@ -8,8 +8,6 @@ class AboutUsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MyAppBar(title: S.of(context).aboutUs),
-    );
+    return Scaffold(appBar: MyAppBar(title: S.of(context).aboutUs));
   }
 }

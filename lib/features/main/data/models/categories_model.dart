@@ -15,8 +15,6 @@ class CategoriesModel {
     links = json['links'] != null ? Links.fromJson(json['links']) : null;
     meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
   }
-
-
 }
 
 class CategoryModel {
@@ -38,15 +36,12 @@ class CategoryModel {
       });
     }
   }
-
-
 }
 
-class TruckModel
-{
-  int ? id;
-  String ? name;
-  String ? image;
+class TruckModel {
+  int? id;
+  String? name;
+  String? image;
 
   TruckModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -54,8 +49,6 @@ class TruckModel
     image = json['image'];
   }
 }
-
-
 
 class Links {
   String? first;

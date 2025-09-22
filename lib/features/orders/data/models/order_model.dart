@@ -42,7 +42,7 @@ class OrderDataModel {
   double? toLng;
   String? priceFrom;
   String? priceTo;
-  String ? price;
+  String? price;
   String? status;
   String? statusPaid;
   String? paymentType;
@@ -56,30 +56,31 @@ class OrderDataModel {
   String? createdAt;
   List<Offer>? offers;
 
-  OrderDataModel(
-      {this.id,
-        this.code,
-        this.fromAddress,
-        this.toAddress,
-        this.fromLat,
-        this.fromLng,
-        this.toLat,
-        this.toLng,
-        this.priceFrom,
-        this.priceTo,
-        this.price,
-        this.status,
-        this.statusPaid,
-        this.paymentType,
-        this.notes,
-        this.typeService,
-        this.acceptedOfferId,
-        this.truckType,
-        this.truckSize,
-        this.driver,
-        this.customer,
-        this.createdAt,
-        this.offers});
+  OrderDataModel({
+    this.id,
+    this.code,
+    this.fromAddress,
+    this.toAddress,
+    this.fromLat,
+    this.fromLng,
+    this.toLat,
+    this.toLng,
+    this.priceFrom,
+    this.priceTo,
+    this.price,
+    this.status,
+    this.statusPaid,
+    this.paymentType,
+    this.notes,
+    this.typeService,
+    this.acceptedOfferId,
+    this.truckType,
+    this.truckSize,
+    this.driver,
+    this.customer,
+    this.createdAt,
+    this.offers,
+  });
 
   OrderDataModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -105,8 +106,7 @@ class OrderDataModel {
     truckSize = json['truckSize'] != null
         ? TruckSize.fromJson(json['truckSize'])
         : null;
-    driver =
-    json['driver'] != null ? Driver.fromJson(json['driver']) : null;
+    driver = json['driver'] != null ? Driver.fromJson(json['driver']) : null;
     customer = json['customer'] != null
         ? Customer.fromJson(json['customer'])
         : null;
@@ -197,7 +197,7 @@ class TruckSize {
 }
 
 class Driver {
-  int ? id;
+  int? id;
   String? name;
   String? phone;
 
@@ -244,8 +244,8 @@ class Offer {
   int? id;
   int? driverId;
   int? customerId;
-  String ? title;
-  String ? description;
+  String? title;
+  String? description;
   String? price;
   String? status;
   String? createdAt;
@@ -253,18 +253,19 @@ class Offer {
   int? orderId;
   int? isAccepted;
 
-  Offer(
-      {this.id,
-        this.driverId,
-        this.customerId,
-        this.title,
-        this.description,
-        this.price,
-        this.status,
-        this.createdAt,
-        this.updatedAt,
-        this.orderId,
-        this.isAccepted});
+  Offer({
+    this.id,
+    this.driverId,
+    this.customerId,
+    this.title,
+    this.description,
+    this.price,
+    this.status,
+    this.createdAt,
+    this.updatedAt,
+    this.orderId,
+    this.isAccepted,
+  });
 
   Offer.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -300,7 +301,7 @@ class Offer {
 class Links {
   String? first;
   String? last;
-  String ? prev;
+  String? prev;
   String? next;
 
   Links({this.first, this.last, this.prev, this.next});
@@ -332,15 +333,16 @@ class Meta {
   int? to;
   int? total;
 
-  Meta(
-      {this.currentPage,
-        this.from,
-        this.lastPage,
-        this.links,
-        this.path,
-        this.perPage,
-        this.to,
-        this.total});
+  Meta({
+    this.currentPage,
+    this.from,
+    this.lastPage,
+    this.links,
+    this.path,
+    this.perPage,
+    this.to,
+    this.total,
+  });
 
   Meta.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
@@ -373,5 +375,3 @@ class Meta {
     return data;
   }
 }
-
-

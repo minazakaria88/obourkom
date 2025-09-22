@@ -23,20 +23,20 @@ class ProfileImage extends StatelessWidget {
       ),
       child: image != null
           ? Container(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        width: width ?? 80,
-        height: height ?? 80,
-        decoration: const BoxDecoration(shape: BoxShape.circle),
-        child: CachedImageWidget(imageUrl: image!),
-      )
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              width: width ?? 80,
+              height: height ?? 80,
+              decoration: const BoxDecoration(shape: BoxShape.circle),
+              child: CachedImageWidget(imageUrl: image!),
+            )
           : Container(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        width: width ?? 80,
-        height: height ?? 80,
-        padding: const EdgeInsets.all(10),
-        decoration: const BoxDecoration(shape: BoxShape.circle),
-        child: Image.asset(Assets.imagesLogo),
-      ),
+              clipBehavior: Clip.antiAliasWithSaveLayer,
+              width: width ?? 80,
+              height: height ?? 80,
+              padding: const EdgeInsets.all(10),
+              decoration: const BoxDecoration(shape: BoxShape.circle),
+              child: Image.asset(Assets.imagesLogo),
+            ),
     );
   }
 }

@@ -43,74 +43,76 @@ class AddNewLocationWidget extends StatelessWidget {
       ),
       child: Form(
         key: cubit.formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              S.of(context).determinedLocation,
-              style: AppTextStyles.bold18Black,
-            ),
-            10.height,
-            Container(
-              width: double.infinity,
-              padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                border: Border.all(color: AppColors.mainColor),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                S.of(context).determinedLocation,
+                style: AppTextStyles.bold18Black,
               ),
-              child: Row(
-                children: [
-                  SvgPicture.asset(Assets.imagesLocation),
-                  10.width,
-                  Flexible(
-                    child: Text(
-                      concatenatePlacemark(place: location) ?? '',
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: AppTextStyles.regular12Grey,
+              10.height,
+              Container(
+                width: double.infinity,
+                padding: const EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(color: AppColors.mainColor),
+                ),
+                child: Row(
+                  children: [
+                    SvgPicture.asset(Assets.imagesLocation),
+                    10.width,
+                    Flexible(
+                      child: Text(
+                        concatenatePlacemark(place: location) ?? '',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: AppTextStyles.regular12Grey,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            5.height,
-            Text(S.of(context).type, style: AppTextStyles.bold18Black),
-            10.height,
-            const ChooseLocationTypeWidget(),
-            5.height,
-            BlocConsumer<LocationsCubit, LocationsState>(
-              listener: (context, state) {
-                if (state.isPostLocationsSuccess) {
-                  showToastification(
-                    message: S.of(context).locationAddedSuccessfully,
-                    context: context,
-                    type: ToastificationType.success,
-                  );
-                  context.pop(true);
-                }
-              },
-              builder: (context, state) {
-                return state.isPostLocationsLoading
-                    ? const LoaderWidget()
-                    : MyButton(
-                        title: S.of(context).save,
-                        onTap: () {
-                          if (cubit.formKey.currentState!.validate()) {
-                            LocationModel model = LocationModel(
-                              name: concatenatePlacemark(place: location),
-                              type: idToLocationType[state.locationType],
-                              lat: pickedLocation?.latitude.toString(),
-                              lng: pickedLocation?.longitude.toString(),
-                            );
-                            cubit.postLocations(model);
-                            //context.pop();
-                          }
-                        },
-                      );
-              },
-            ),
-          ],
+              5.height,
+              Text(S.of(context).type, style: AppTextStyles.bold18Black),
+              10.height,
+              const ChooseLocationTypeWidget(),
+              5.height,
+              BlocConsumer<LocationsCubit, LocationsState>(
+                listener: (context, state) {
+                  if (state.isPostLocationsSuccess) {
+                    showToastification(
+                      message: S.of(context).locationAddedSuccessfully,
+                      context: context,
+                      type: ToastificationType.success,
+                    );
+                    context.pop(true);
+                  }
+                },
+                builder: (context, state) {
+                  return state.isPostLocationsLoading
+                      ? const LoaderWidget()
+                      : MyButton(
+                          title: S.of(context).save,
+                          onTap: () {
+                            if (cubit.formKey.currentState!.validate()) {
+                              LocationModel model = LocationModel(
+                                name: concatenatePlacemark(place: location),
+                                type: idToLocationType[state.locationType],
+                                lat: pickedLocation?.latitude.toString(),
+                                lng: pickedLocation?.longitude.toString(),
+                              );
+                              cubit.postLocations(model);
+                              //context.pop();
+                            }
+                          },
+                        );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

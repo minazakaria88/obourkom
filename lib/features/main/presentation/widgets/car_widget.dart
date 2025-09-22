@@ -8,11 +8,7 @@ class TruckItem extends StatelessWidget {
   final TruckModel truck;
   final VoidCallback onTap;
 
-  const TruckItem({
-    super.key,
-    required this.truck,
-    required this.onTap,
-  });
+  const TruckItem({super.key, required this.truck, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +32,7 @@ class TruckItem extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: CachedImageWidget(imageUrl: truck.image ?? ''),
-            ),
+            Expanded(child: CachedImageWidget(imageUrl: truck.image ?? '')),
             const SizedBox(height: 10),
             Flexible(
               child: Text(

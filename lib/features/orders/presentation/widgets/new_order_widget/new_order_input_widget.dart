@@ -7,17 +7,20 @@ class NewOrderInputWidget extends StatelessWidget {
   const NewOrderInputWidget({
     super.key,
     required this.title,
-     this.value,
+    this.value,
     required this.onTap,
   });
   final String title;
-  final String ? value;
+  final String? value;
   final Function onTap;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical:value != null ? 10 : 20),
+      padding: EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: value != null ? 10 : 20,
+      ),
       decoration: BoxDecoration(
         border: Border.all(color: const Color(0xffDCE0E0)),
         borderRadius: BorderRadius.circular(16),
@@ -33,14 +36,10 @@ class NewOrderInputWidget extends StatelessWidget {
                   title,
                   style: AppTextStyles.bold18Black.copyWith(fontSize: 14),
                 ),
-                if(value != null)...[
+                if (value != null) ...[
                   10.height,
-                  Text(
-                    value ?? '',
-                    style: AppTextStyles.regular12MainColor,
-                  ),
+                  Text(value ?? '', style: AppTextStyles.regular12MainColor),
                 ],
-
               ],
             ),
           ),

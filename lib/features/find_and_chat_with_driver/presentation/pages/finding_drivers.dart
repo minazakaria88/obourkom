@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/core/widgets/loading_widget.dart';
 import 'package:oborkom/core/widgets/my_app_bar.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/cubit/find_and_chat_with_driver_cubit.dart';
 import '../../../../core/routes/routes.dart';
@@ -31,35 +32,78 @@ class FindingDriversScreen extends StatelessWidget {
                       20.height,
                       OrderDetailsWidget(model: model),
                       20.height,
-                      if (offers.isEmpty) OrderTimerWidget(model: model) else ListView.builder(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: offers.length,
-                            itemBuilder: (context, index) =>
-                                DriverDetailsWidget(
-                                  model: offers[index],
-                                  accept: ()async {
-                                    cubit.cancelTimer();
-                                    await cubit.acceptOffer(
-                                      orderId: model.id.toString(),
-                                      offerId: offers[index].id.toString(),
-                                    );
-                                    if(context.mounted)
-                                    {
-                                      context.pushReplacementNamed(
-                                        Routes.orderDetails,
-                                        arguments: {
-                                          'cubit': cubit,
-                                          'order': model,
-                                          'driver': offers[index],
+                      if (offers.isEmpty) OrderTimerWidget(model: model),
+
+                      BlocListener<
+                        FindAndChatWithDriverCubit,
+                        FindAndChatWithDriverState
+                      >(
+                        listenWhen: (previous, current) =>
+                            previous.acceptOfferStatus !=
+                                current.acceptOfferStatus ||
+                            previous.rejectOfferStatus !=
+                                current.rejectOfferStatus,
+                        listener: (context, state) {
+                          if (state.acceptOfferStatus ==AcceptOfferStatus.success )
+                            {
+
+                              context.pushReplacementNamed(
+                                Routes.orderDetails,
+                                arguments: {
+                                  'cubit': context
+                                      .read<FindAndChatWithDriverCubit>(),
+                                  'order': model,
+                                  'driver': state.selectedOffer,
+                                },
+                              );
+                            }
+                        },
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: offers.length,
+                          itemBuilder: (context, index) =>
+                              BlocSelector<
+                                FindAndChatWithDriverCubit,
+                                FindAndChatWithDriverState,
+                                bool
+                              >(
+                                selector: (state) {
+                                  return (state.acceptOfferStatus ==
+                                              AcceptOfferStatus.loading ||
+                                          state.rejectOfferStatus ==
+                                              RejectOfferStatus.loading) &&
+                                      state.selectedOfferId ==
+                                          offers[index].id.toString();
+                                },
+                                builder: (context, isLoading) {
+                                  return Stack(
+                                    children: [
+                                      DriverDetailsWidget(
+                                        model: offers[index],
+                                        accept: () {
+                                          cubit.assignOffer(offers[index]);
+                                          cubit.acceptOffer(
+                                            orderId: model.id.toString(),
+                                            offerId: offers[index].id
+                                                .toString(),
+                                          );
                                         },
-                                      );
-                                    }
-                                  },
-                                  decline: () {},
-                                ),
-                          ),
-                      
+                                        decline: () {
+                                          cubit.rejectOffer(
+                                            orderId: model.id.toString(),
+                                            offerId: offers[index].id
+                                                .toString(),
+                                          );
+                                        },
+                                      ),
+                                      if (isLoading) const LoadingWidget(),
+                                    ],
+                                  );
+                                },
+                              ),
+                        ),
+                      ),
                     ],
                   ),
                 );

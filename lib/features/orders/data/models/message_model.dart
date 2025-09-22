@@ -10,7 +10,7 @@ class MessageModel {
   });
 
   MessageModel.fromJson(Map<String, dynamic> json)
-      : sender = json['sender'],
-        message = json['message'],
-        time = json['time'];
+    : sender = json['sender'],
+      message = json['message'],
+      time = json['time'];
 }

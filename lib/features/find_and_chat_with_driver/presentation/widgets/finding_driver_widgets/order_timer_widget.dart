@@ -12,9 +12,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 
 class OrderTimerWidget extends StatelessWidget {
-  const OrderTimerWidget({
-    super.key, required this.model,
-  });
+  const OrderTimerWidget({super.key, required this.model});
   final SubmitOrderModel model;
 
   @override
@@ -22,7 +20,7 @@ class OrderTimerWidget extends StatelessWidget {
     return BackgroundProfileWidget(
       child: BlocBuilder<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
         buildWhen: (previous, current) =>
-        previous.orderTimerDuration != current.orderTimerDuration,
+            previous.orderTimerDuration != current.orderTimerDuration,
         builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
@@ -54,9 +52,7 @@ class OrderTimerWidget extends StatelessWidget {
                 10.height,
                 Text(
                   S.of(context).lookingForOffers,
-                  style: AppTextStyles.bold14Grey.copyWith(
-                    color: Colors.black,
-                  ),
+                  style: AppTextStyles.bold14Grey.copyWith(color: Colors.black),
                 ),
                 10.height,
                 Text(

@@ -1,33 +1,14 @@
 part of 'orders_cubit.dart';
 
+enum MakeOrderStatus { initial, loading, success, failure }
 
-enum MakeOrderStatus {
-  initial,
-  loading,
-  success,
-  failure,
-}
-
-
-enum GetOrdersStatus {
-  initial,
-  loading,
-  success,
-  failure,
-}
-
-
-
+enum GetOrdersStatus { initial, loading, success, failure }
 
 extension MakeOrderStatusX on OrdersState {
   bool get isLoading => makeOrderStatus == MakeOrderStatus.loading;
   bool get isSuccess => makeOrderStatus == MakeOrderStatus.success;
   bool get isFailure => makeOrderStatus == MakeOrderStatus.failure;
-
 }
-
-
-
 
 class OrdersState extends Equatable {
   LatLng? pickedLocation;
@@ -35,9 +16,9 @@ class OrdersState extends Equatable {
   LatLng? deliveryLocation;
   Placemark? deliveryLocationData;
   String? paymentMethod;
-  MakeOrderStatus ? makeOrderStatus;
+  MakeOrderStatus? makeOrderStatus;
   String? errorMessage;
-  GetOrdersStatus ? getOrdersStatus;
+  GetOrdersStatus? getOrdersStatus;
   List<OrderDataModel>? recentOrdersList;
   List<OrderDataModel>? completedOrdersList;
   SubmitOrderModel? orderDataModel;
@@ -52,7 +33,7 @@ class OrdersState extends Equatable {
     this.getOrdersStatus,
     this.completedOrdersList,
     this.recentOrdersList,
-    this.orderDataModel
+    this.orderDataModel,
   });
 
   OrdersState copyWith({
@@ -67,7 +48,7 @@ class OrdersState extends Equatable {
     GetOrdersStatus? getOrdersStatus,
     List<OrderDataModel>? recentOrdersList,
     List<OrderDataModel>? completedOrdersList,
-    SubmitOrderModel? orderDataModel
+    SubmitOrderModel? orderDataModel,
   }) {
     return OrdersState(
       pickedLocation: pickedLocation ?? this.pickedLocation,
@@ -80,7 +61,7 @@ class OrdersState extends Equatable {
       getOrdersStatus: getOrdersStatus ?? this.getOrdersStatus,
       recentOrdersList: recentOrdersList ?? this.recentOrdersList,
       completedOrdersList: completedOrdersList ?? this.completedOrdersList,
-      orderDataModel: orderDataModel ?? this.orderDataModel
+      orderDataModel: orderDataModel ?? this.orderDataModel,
     );
   }
 
@@ -96,6 +77,6 @@ class OrdersState extends Equatable {
     getOrdersStatus,
     recentOrdersList,
     completedOrdersList,
-    orderDataModel
+    orderDataModel,
   ];
 }

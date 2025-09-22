@@ -2,34 +2,38 @@ part of 'locations_cubit.dart';
 
 enum LocationsStatus { loading, success, error }
 
+enum PostLocationState { loading, success, error }
 
-enum PostLocationState {loading, success,error}
-
-enum DeleteLocationState {loading, success,error}
-
+enum DeleteLocationState { loading, success, error }
 
 extension LocationsStatusX on LocationsState {
   bool get isLoading => locationsStatus == LocationsStatus.loading;
   bool get isSuccess => locationsStatus == LocationsStatus.success;
   bool get isError => locationsStatus == LocationsStatus.error;
-  bool get isPostLocationsSuccess => postLocationState==PostLocationState.success;
-  bool get isPostLocationsError => postLocationState==PostLocationState.error;
-  bool get isPostLocationsLoading => postLocationState==PostLocationState.loading;
-  bool get isDeleteLocationSuccess => deleteLocationState==DeleteLocationState.success;
-  bool get isDeleteLocationError => deleteLocationState==DeleteLocationState.error;
-  bool get isDeleteLocationLoading => deleteLocationState==DeleteLocationState.loading;
+  bool get isPostLocationsSuccess =>
+      postLocationState == PostLocationState.success;
+  bool get isPostLocationsError => postLocationState == PostLocationState.error;
+  bool get isPostLocationsLoading =>
+      postLocationState == PostLocationState.loading;
+  bool get isDeleteLocationSuccess =>
+      deleteLocationState == DeleteLocationState.success;
+  bool get isDeleteLocationError =>
+      deleteLocationState == DeleteLocationState.error;
+  bool get isDeleteLocationLoading =>
+      deleteLocationState == DeleteLocationState.loading;
 }
-
 
 class LocationsState extends Equatable {
   LatLng? pickedLocation;
   Placemark? locationData;
   List<LocationModel>? locations;
   LocationsStatus? locationsStatus;
-  PostLocationState ? postLocationState;
+  PostLocationState? postLocationState;
   String? errorMessage;
   int? locationType;
-  DeleteLocationState ? deleteLocationState;
+  DeleteLocationState? deleteLocationState;
+  List<AutoCompleteLocationModel>? autoCompleteLocations;
+  bool isShowPickerWidget = true;
 
   LocationsState({
     this.pickedLocation,
@@ -39,7 +43,9 @@ class LocationsState extends Equatable {
     this.errorMessage,
     this.locationType,
     this.postLocationState,
-    this.deleteLocationState
+    this.deleteLocationState,
+    this.autoCompleteLocations,
+    this.isShowPickerWidget = true,
   });
 
   LocationsState copyWith({
@@ -49,8 +55,10 @@ class LocationsState extends Equatable {
     LocationsStatus? locationsStatus,
     String? errorMessage,
     int? locationType,
-    PostLocationState ? postLocationState,
-    DeleteLocationState ? deleteLocationState
+    PostLocationState? postLocationState,
+    DeleteLocationState? deleteLocationState,
+    List<AutoCompleteLocationModel>? autoCompleteLocations,
+    bool? isShowPickerWidget,
   }) {
     return LocationsState(
       pickedLocation: pickedLocation ?? this.pickedLocation,
@@ -59,9 +67,11 @@ class LocationsState extends Equatable {
       errorMessage: errorMessage ?? this.errorMessage,
       locationsStatus: locationsStatus ?? this.locationsStatus,
       locationType: locationType ?? this.locationType,
-      postLocationState:  postLocationState ?? this.postLocationState,
-      deleteLocationState:  deleteLocationState ?? this.deleteLocationState
-
+      postLocationState: postLocationState ?? this.postLocationState,
+      deleteLocationState: deleteLocationState ?? this.deleteLocationState,
+      autoCompleteLocations:
+          autoCompleteLocations ?? this.autoCompleteLocations,
+      isShowPickerWidget: isShowPickerWidget ?? this.isShowPickerWidget,
     );
   }
 
@@ -74,6 +84,8 @@ class LocationsState extends Equatable {
     locationsStatus,
     locationType,
     postLocationState,
-    deleteLocationState
+    deleteLocationState,
+    autoCompleteLocations,
+    isShowPickerWidget,
   ];
 }

@@ -22,14 +22,14 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       scrolledUnderElevation: 0,
       leading: canPop
           ? IconButton(
-        onPressed: () {
-          context.pop();
-        },
-        icon: const Icon(
-          Icons.arrow_back_ios,
-          color: AppColors.mainColor,
-        ),
-      )
+              onPressed: () {
+                context.pop();
+              },
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: AppColors.mainColor,
+              ),
+            )
           : null,
       title: Text(title),
       actions: actions,

@@ -10,10 +10,14 @@ import '../../../../generated/assets.dart';
 import '../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 
 class NotificationItemWidget extends StatelessWidget {
-  const NotificationItemWidget({super.key, required this.notificationModel, required this.onTap});
+  const NotificationItemWidget({
+    super.key,
+    required this.notificationModel,
+    required this.onTap,
+  });
 
   final DataNotificationModel notificationModel;
-  final Function  onTap;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +44,13 @@ class NotificationItemWidget extends StatelessWidget {
                             ),
                     ),
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         onTap();
                       },
                       child: SvgPicture.asset(
                         Assets.imagesCloseCircle,
                         colorFilter: ColorFilter.mode(
-                         ! isRead ? AppColors.red : AppColors.greyColor,
+                          !isRead ? AppColors.red : AppColors.greyColor,
                           BlendMode.srcIn,
                         ),
                       ),

@@ -9,9 +9,7 @@ import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 
 class CallAndShowOnMapWidget extends StatelessWidget {
-  const CallAndShowOnMapWidget({
-    super.key,
-  });
+  const CallAndShowOnMapWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +17,7 @@ class CallAndShowOnMapWidget extends StatelessWidget {
       children: [
         Expanded(
           child: InkWell(
-            onTap: (){
+            onTap: () {
               makePhoneCall(phoneNumber: '');
             },
             child: Container(
@@ -53,7 +51,7 @@ class CallAndShowOnMapWidget extends StatelessWidget {
         10.width,
         Expanded(
           child: InkWell(
-            onTap: (){},
+            onTap: () {},
             child: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(

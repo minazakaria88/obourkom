@@ -34,10 +34,7 @@ class NotificationScreen extends StatelessWidget {
                     itemBuilder: (context, index) => NotificationItemWidget(
                       onTap: () {
                         logger.i(list[index].id);
-                       cubit.readNotification(
-                          list[index].id ?? '',
-                          index,
-                        );
+                        cubit.readNotification(list[index].id ?? '', index);
                       },
                       notificationModel: list[index],
                     ),

@@ -9,9 +9,7 @@ import '../../../language/data/models/language_model.dart';
 import '../../../language/presentation/cubit/language_cubit.dart';
 
 class ChooseLanguageWidget extends StatelessWidget {
-  const ChooseLanguageWidget({
-    super.key,
-  });
+  const ChooseLanguageWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -24,7 +24,6 @@ class NotificationRepository {
     }
   }
 
-
   Future<void> markNotificationAsRead(String id) async {
     try {
       await apiHelper.postData(url: '${EndPoints.seenNotifications}/$id');
@@ -35,8 +34,4 @@ class NotificationRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
-
-
-
-
 }

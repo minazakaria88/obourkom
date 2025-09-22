@@ -6,7 +6,7 @@ class UserModel {
   UserModel({this.user, this.token, this.message});
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    user = json['user'] != null ?  User.fromJson(json['user']) : null;
+    user = json['user'] != null ? User.fromJson(json['user']) : null;
     token = json['token'];
     message = json['message'];
   }
@@ -23,16 +23,17 @@ class User {
   String? createdAt;
   String? createdAtFormatted;
 
-  User(
-      {this.id,
-        this.name,
-        this.email,
-        this.phone,
-        this.type,
-        this.avatar,
-        this.localedType,
-        this.createdAt,
-        this.createdAtFormatted});
+  User({
+    this.id,
+    this.name,
+    this.email,
+    this.phone,
+    this.type,
+    this.avatar,
+    this.localedType,
+    this.createdAt,
+    this.createdAtFormatted,
+  });
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];

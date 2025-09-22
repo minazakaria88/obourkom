@@ -4,7 +4,7 @@ class ProfileLanguageModel {
   final String name;
   final String code;
   final String image;
-   bool isSelected;
+  bool isSelected;
 
   ProfileLanguageModel(
     this.image, {

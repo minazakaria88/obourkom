@@ -1,21 +1,19 @@
 class NewOrderModel {
-  double ? fromLng;
-  double ? fromLat;
-  double ? toLng;
-  double ? toLat;
-  String ? paymentType;
-  String ? notes;
-  String ? status;
-  String ? statusPaid;
-  String ? driverId;
-  String ? customerId;
-  String ? typeService;
-  String ? truckTypeId;
-  String ? truckSizeId;
-  String ? fromAddress;
-  String ? toAddress;
-
-
+  double? fromLng;
+  double? fromLat;
+  double? toLng;
+  double? toLat;
+  String? paymentType;
+  String? notes;
+  String? status;
+  String? statusPaid;
+  String? driverId;
+  String? customerId;
+  String? typeService;
+  String? truckTypeId;
+  String? truckSizeId;
+  String? fromAddress;
+  String? toAddress;
 
   NewOrderModel({
     this.fromLng,
@@ -32,9 +30,8 @@ class NewOrderModel {
     this.truckTypeId,
     this.truckSizeId,
     this.fromAddress,
-    this.toAddress
+    this.toAddress,
   });
-
 
   NewOrderModel.fromJson(Map<String, dynamic> json) {
     fromLng = json['from_lng'];
@@ -54,7 +51,6 @@ class NewOrderModel {
     toAddress = json['to_address'];
   }
 
-
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['from_lng'] = fromLng;
@@ -73,11 +69,6 @@ class NewOrderModel {
     data['to_address'] = toAddress;
     return data;
   }
-
-
-
-
-
 }
 //truck_type_id
 //  truck_size_id

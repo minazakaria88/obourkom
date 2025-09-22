@@ -94,24 +94,35 @@ class _OrderScreenState extends State<OrderScreen> {
               if (recentOrders.isEmpty && selectedIndex == 0) {
                 return Expanded(
                   child: Center(
-                    child: Text(S.of(context).noOrders,style: AppTextStyles.bold18Black,),
+                    child: Text(
+                      S.of(context).noOrders,
+                      style: AppTextStyles.bold18Black,
+                    ),
                   ),
                 );
               }
               if (completedOrders.isEmpty && selectedIndex == 1) {
                 return Expanded(
                   child: Center(
-                    child: Text(S.of(context).noOrders,style: AppTextStyles.bold18Black,),
+                    child: Text(
+                      S.of(context).noOrders,
+                      style: AppTextStyles.bold18Black,
+                    ),
                   ),
                 );
               }
               return Expanded(
                 child: selectedIndex == 0
-                    ? RecentOrderList(
-                        selectedIndex: selectedIndex,
-                        scrollController: _scrollController,
-                        recentOrders: recentOrders,
-                        state: state,
+                    ? RefreshIndicator(
+                        onRefresh: () async {
+                          context.read<OrdersCubit>().getOrders(1);
+                        },
+                        child: RecentOrderList(
+                          selectedIndex: selectedIndex,
+                          scrollController: _scrollController,
+                          recentOrders: recentOrders,
+                          state: state,
+                        ),
                       )
                     : CompletedOrderList(
                         state: state,

@@ -6,9 +6,7 @@ import '../../../../core/utils/app_colors.dart';
 import '../../../../generated/l10n.dart';
 
 class DontHaveAnAccount extends StatelessWidget {
-  const DontHaveAnAccount({
-    super.key,
-  });
+  const DontHaveAnAccount({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,7 @@ class DontHaveAnAccount extends StatelessWidget {
         10.width,
         TextButton(
           onPressed: () {
-             context.pushNamed(Routes.register);
+            context.pushNamed(Routes.register);
           },
           child: Text(
             S.of(context).createAccount,

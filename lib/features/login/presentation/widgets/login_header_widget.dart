@@ -18,10 +18,7 @@ class LoginHeaderWidget extends StatelessWidget {
         20.height,
         Image.asset(Assets.imagesLogo),
         30.height,
-        Text(
-          S.of(context).welcomeBack,
-          style: AppTextStyles.bold24Black,
-        ),
+        Text(S.of(context).welcomeBack, style: AppTextStyles.bold24Black),
         20.height,
         Text(
           S.of(context).haveFun,

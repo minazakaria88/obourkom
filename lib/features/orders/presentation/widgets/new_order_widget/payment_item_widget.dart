@@ -29,9 +29,10 @@ class PaymentItemWidget extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-                width: 40,
-                height: 35,
-                child: SvgPicture.asset(image, fit: BoxFit.fill)),
+              width: 40,
+              height: 35,
+              child: SvgPicture.asset(image, fit: BoxFit.fill),
+            ),
             20.width,
             Text(
               title,

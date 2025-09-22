@@ -11,9 +11,7 @@ import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 
 class LogoutWidget extends StatelessWidget {
-  const LogoutWidget({
-    super.key,
-  });
+  const LogoutWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +32,7 @@ class LogoutWidget extends StatelessWidget {
             child: SvgPicture.asset(Assets.imagesLogout),
           ),
           10.height,
-          Text(
-            S.of(context).logout,
-            style: AppTextStyles.bold18Black,
-          ),
+          Text(S.of(context).logout, style: AppTextStyles.bold18Black),
           20.height,
           Text(
             S.of(context).areYouSureLogout,
@@ -64,7 +59,6 @@ class LogoutWidget extends StatelessWidget {
     );
   }
 }
-
 
 void logout(BuildContext context) {
   CacheHelper.clearData();

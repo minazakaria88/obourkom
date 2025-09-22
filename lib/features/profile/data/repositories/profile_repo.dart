@@ -13,7 +13,7 @@ class ProfileRepository {
     try {
       final response = await apiHelper.getData(url: EndPoints.profile);
       logger.d(response.data);
-       return User.fromJson(response.data['data']);
+      return User.fromJson(response.data['data']);
     } catch (e) {
       logger.e(e);
       if (e is DioException) {
@@ -25,7 +25,10 @@ class ProfileRepository {
 
   Future<User> updateProfile(data) async {
     try {
-      final response = await apiHelper.postData(url: EndPoints.updateProfile, data: data);
+      final response = await apiHelper.postData(
+        url: EndPoints.updateProfile,
+        data: data,
+      );
       return User.fromJson(response.data['data']);
     } catch (e) {
       if (e is DioException) {

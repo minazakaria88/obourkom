@@ -239,11 +239,8 @@ class NewOrder extends StatelessWidget {
               ),
             ],
           ),
-
         ],
       ),
     );
   }
 }
-
-

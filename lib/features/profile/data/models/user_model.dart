@@ -1,18 +1,12 @@
 import 'package:oborkom/features/otp/data/models/user_model.dart';
 
-class CachedUserModel
-{
+class CachedUserModel {
   String? name;
   String? email;
   String? phone;
   String? image;
 
-  CachedUserModel({
-    this.name,
-    this.email,
-    this.phone,
-    this.image,
-  });
+  CachedUserModel({this.name, this.email, this.phone, this.image});
 
   CachedUserModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -21,14 +15,11 @@ class CachedUserModel
     image = json['image'];
   }
 
-
-
-  CachedUserModel.fromUserModel(User user)
-  {
-    name=user.name;
-    email=user.email;
-    phone=user.phone;
-    image=user.avatar;
+  CachedUserModel.fromUserModel(User user) {
+    name = user.name;
+    email = user.email;
+    phone = user.phone;
+    image = user.avatar;
   }
 
   Map<String, dynamic> toJson() {

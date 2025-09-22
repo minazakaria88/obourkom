@@ -30,14 +30,15 @@ class Questions {
   String? content;
   List<Translations>? translations;
 
-  Questions(
-      {this.id,
-        this.userId,
-        this.createdAt,
-        this.updatedAt,
-        this.title,
-        this.content,
-        this.translations});
+  Questions({
+    this.id,
+    this.userId,
+    this.createdAt,
+    this.updatedAt,
+    this.title,
+    this.content,
+    this.translations,
+  });
 
   Questions.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -76,8 +77,13 @@ class Translations {
   String? content;
   String? locale;
 
-  Translations(
-      {this.id, this.questionId, this.title, this.content, this.locale});
+  Translations({
+    this.id,
+    this.questionId,
+    this.title,
+    this.content,
+    this.locale,
+  });
 
   Translations.fromJson(Map<String, dynamic> json) {
     id = json['id'];

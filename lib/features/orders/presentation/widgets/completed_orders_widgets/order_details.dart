@@ -7,9 +7,7 @@ import '../../../../find_and_chat_with_driver/presentation/widgets/finding_drive
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 
 class CompleteOrderDetailsWidget extends StatelessWidget {
-  const CompleteOrderDetailsWidget({
-    super.key, required this.model,
-  });
+  const CompleteOrderDetailsWidget({super.key, required this.model});
   final OrderDataModel model;
 
   @override
@@ -21,10 +19,7 @@ class CompleteOrderDetailsWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              S.of(context).orderDetails,
-              style: AppTextStyles.bold18Black,
-            ),
+            Text(S.of(context).orderDetails, style: AppTextStyles.bold18Black),
             const Divider(thickness: 1.2, color: Colors.grey),
             OrderDetailsItemWidget(
               value: '#${model.id}',
@@ -39,7 +34,7 @@ class CompleteOrderDetailsWidget extends StatelessWidget {
               title: S.of(context).carType,
             ),
             OrderDetailsItemWidget(
-                value: '${model.paymentType}',
+              value: '${model.paymentType}',
               title: S.of(context).paymentMethod,
             ),
             OrderDetailsItemWidget(

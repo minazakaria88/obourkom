@@ -97,7 +97,8 @@ class _MyRatingWidgetState extends State<MyRatingWidget> {
                                   : MyButton(
                                       title: S.of(context).evaluation,
                                       onTap: () {
-                                        if (cubit.formKey.currentState!.validate()) {
+                                        if (cubit.formKey.currentState!
+                                            .validate()) {
                                           cubit.rateDriver(rate);
                                         }
                                       },

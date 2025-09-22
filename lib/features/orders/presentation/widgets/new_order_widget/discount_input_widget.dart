@@ -45,7 +45,7 @@ class _DiscountInputWidgetState extends State<DiscountInputWidget> {
         valueListenable: inputValue,
         builder: (context, value, child) => InkWell(
           onTap: () {
-            if(value.isNullOrEmpty()) return;
+            if (value.isNullOrEmpty()) return;
             context.read<OrdersCubit>().setDiscountCode(value);
           },
           child: Container(

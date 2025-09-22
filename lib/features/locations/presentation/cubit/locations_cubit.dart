@@ -8,9 +8,12 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/api/failure.dart';
 import 'package:oborkom/core/functions/determine_position.dart';
 import 'package:oborkom/core/functions/get_places_mark.dart';
+import 'package:oborkom/core/helpers/location_service.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/locations/data/models/location_model.dart';
 import 'package:oborkom/features/locations/data/repositories/location_repo.dart';
+
+import '../../data/models/auto_complete_location_model.dart';
 
 part 'locations_state.dart';
 
@@ -23,7 +26,8 @@ class LocationsCubit extends Cubit<LocationsState> {
 
   final formKey = GlobalKey<FormState>();
 
-  TextEditingController nameController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController searchController = TextEditingController();
 
   void changeCameraPosition(LatLng position) async {
     controller.future
@@ -58,8 +62,9 @@ class LocationsCubit extends Cubit<LocationsState> {
     changeCameraPosition(position);
     emit(
       state.copyWith(
-        pickedLocation: LatLng(position.latitude, position.longitude),
+        pickedLocation: position,
         locationData: locationData.first,
+        isShowPickerWidget: true,
       ),
     );
   }
@@ -118,7 +123,12 @@ class LocationsCubit extends Cubit<LocationsState> {
     try {
       await locationRepository.deleteAddress(id);
       final location = state.locations!.where((element) => element.id != id);
-      emit(state.copyWith(deleteLocationState: DeleteLocationState.success,locations: location.toList()));
+      emit(
+        state.copyWith(
+          deleteLocationState: DeleteLocationState.success,
+          locations: location.toList(),
+        ),
+      );
     } on ApiException catch (e) {
       emit(
         state.copyWith(
@@ -138,5 +148,53 @@ class LocationsCubit extends Cubit<LocationsState> {
 
   void selectLocationType(int locationType) {
     emit(state.copyWith(locationType: locationType));
+  }
+
+  void getAutoCompleteLocation() async {
+    try {
+      emit(state.copyWith(isShowPickerWidget: false));
+      final data = {
+        'key': LocationService.key,
+        'input': searchController.text,
+        'components': 'country:sa|country:eg',
+      };
+      final result = await locationRepository.getAuCompleteLocations(data);
+      if (result.isEmpty) {
+        emit(
+          state.copyWith(
+            autoCompleteLocations: result,
+            isShowPickerWidget: true,
+          ),
+        );
+      } else {
+        emit(state.copyWith(autoCompleteLocations: result));
+      }
+    } on ApiException catch (e) {
+      emit(state.copyWith(errorMessage: e.failure.message));
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
+  }
+
+  void getDetailsLocation(String placeId) async {
+    try {
+      final data = {'key': LocationService.key, 'place_id': placeId};
+      emit(state.copyWith(autoCompleteLocations: []));
+      final result = await locationRepository.getDetailsLocation(data);
+      final location = result.result!.geometry!.location!;
+      pickUserLocation(LatLng(location.lat!, location.lng!));
+    } on ApiException catch (e) {
+      emit(state.copyWith(errorMessage: e.failure.message));
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
+  }
+
+  @override
+  Future<void> close() {
+    searchController.dispose();
+    nameController.dispose();
+    controller.future.then((value) => value.dispose());
+    return super.close();
   }
 }

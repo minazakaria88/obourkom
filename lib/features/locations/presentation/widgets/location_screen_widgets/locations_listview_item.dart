@@ -79,18 +79,21 @@ class LocationListviewItem extends StatelessWidget {
                         ),
                       ),
                 if (model.type != 'home') const LocationItemEditWidget(),
-                 LocationItemDeleteWidget(
-                   onDelete: (){
-                     context.read<LocationsCubit>().deleteLocation(model.id!);
-                   },
-                 ),
+                LocationItemDeleteWidget(
+                  onDelete: () {
+                    context.read<LocationsCubit>().deleteLocation(model.id!);
+                  },
+                ),
               ],
             ),
             30.height,
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(S.of(context).location, style: AppTextStyles.regular12Grey),
+                Text(
+                  S.of(context).location,
+                  style: AppTextStyles.regular12Grey,
+                ),
                 20.width,
                 Flexible(
                   child: Text(

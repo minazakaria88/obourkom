@@ -9,24 +9,16 @@ part 'language_state.dart';
 class LanguageCubit extends Cubit<LanguageState> {
   LanguageCubit() : super(LanguageInitial());
 
-
-
-
-
-  void initLanguage()
-  {
+  void initLanguage() {
     String? lang = CacheHelper.getData(key: CacheHelperKeys.lang);
-    if(lang == null) {
+    if (lang == null) {
       CacheHelper.saveData(key: CacheHelperKeys.lang, value: 'ar');
     }
-
   }
 
-  void changeLanguage(String languageCode)async {
-   await CacheHelper.saveData(key: CacheHelperKeys.lang, value: languageCode);
-   getIt<ApiHelper>().setLanguageIntoHeaders(languageCode);
+  void changeLanguage(String languageCode) async {
+    await CacheHelper.saveData(key: CacheHelperKeys.lang, value: languageCode);
+    getIt<ApiHelper>().setLanguageIntoHeaders(languageCode);
     emit(LanguageChanged(languageCode: languageCode));
   }
 }
-
-

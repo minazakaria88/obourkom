@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
@@ -10,6 +11,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../find_and_chat_with_driver/presentation/widgets/finding_driver_widgets/order_details_item_widget.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 import '../../../data/models/order_adapter_model.dart';
+import '../../cubit/orders_cubit.dart';
 
 class OrderListviewItemWidget extends StatelessWidget {
   const OrderListviewItemWidget({super.key, required this.model});
@@ -18,40 +20,38 @@ class OrderListviewItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        if(model.status=='delivered'){
-          context.pushNamed(
-            Routes.completedOrderDetails,
-            arguments: model
+      onTap: () async {
+        if (model.status == 'delivered') {
+          context.pushNamed(Routes.completedOrderDetails, arguments: model);
+        } else if (model.status == 'available') {
+          await context.pushNamed(
+            Routes.findDriver,
+            arguments: OrderAdapterModel.fromOrderModel(model),
+          );
+        } else {
+          if (model.offers == null || model.offers!.isEmpty) {
+            return;
+          }
+          Offer offer = model.offers!
+              .where((e) => e.id == model.acceptedOfferId)
+              .first;
+          await context.pushNamed(
+            Routes.orderDetails,
+            arguments: {
+              'order': OrderAdapterModel.fromOrderModel(model),
+              'driver': OfferModel(
+                driverId: offer.driverId,
+                name: model.driver?.name,
+                phone: model.driver?.phone,
+                price: offer.price,
+                id: offer.id,
+              ),
+            },
           );
         }
-        else if(model.status=='available')
-          {
-            context.pushNamed(
-              Routes.findDriver,
-              arguments: OrderAdapterModel.fromOrderModel(model),
-            );
-          }
-        else
-          {
-            if(model.offers==null||model.offers!.isEmpty){
-              return;
-            }
-            Offer offer= model.offers!.where((e)=>e.id==model.acceptedOfferId).first;
-            context.pushNamed(
-              Routes.orderDetails,
-              arguments: {
-                'order': OrderAdapterModel.fromOrderModel(model),
-                'driver': OfferModel(
-                  driverId: offer.driverId,
-                  name: model.driver?.name,
-                  phone: model.driver?.phone,
-                  price: offer.price,
-                ),
-              },
-            );
-          }
-
+        // if(context.mounted) {
+        //   context.read<OrdersCubit>().getOrders(1);
+        // }
       },
       child: BackgroundProfileWidget(
         child: Padding(
@@ -71,7 +71,9 @@ class OrderListviewItemWidget extends StatelessWidget {
                         ),
                         10.width,
                         Text(
-                         model.status == 'delivered' ? S.of(context).delivered : S.of(context).pending,
+                          model.status == 'delivered'
+                              ? S.of(context).delivered
+                              : S.of(context).pending,
                           style: AppTextStyles.bold18Black,
                         ),
                       ],
@@ -86,7 +88,7 @@ class OrderListviewItemWidget extends StatelessWidget {
                       title: S.of(context).serviceType,
                     ),
                     OrderDetailsItemWidget(
-                      value: model.truckSize!.name  ?? '',
+                      value: model.truckSize!.name ?? '',
                       title: S.of(context).carType,
                     ),
                     OrderDetailsItemWidget(

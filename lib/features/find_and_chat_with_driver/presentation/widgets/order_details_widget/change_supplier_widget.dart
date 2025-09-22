@@ -44,7 +44,7 @@ class ChangeSupplierWidget extends StatelessWidget {
                 child: MyButton(
                   title: S.of(context).yes,
                   color: AppColors.mainColor,
-                  onTap: (){
+                  onTap: () {
                     onTap();
                   },
                 ),

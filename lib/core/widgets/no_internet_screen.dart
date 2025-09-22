@@ -22,10 +22,11 @@ class NoInternet extends StatelessWidget {
                 children: [
                   55.height,
                   Center(
-                      child: Text(
-                        S.of(context).noInternetConnection,
-                        style: const TextStyle(color: Colors.white),
-                      )),
+                    child: Text(
+                      S.of(context).noInternetConnection,
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
                 ],
               ),
             ),

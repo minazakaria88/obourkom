@@ -35,16 +35,16 @@ class _ImageSliderState extends State<ImageSlider> {
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xff065C73).withAlpha((0.1 * 255).toInt()),
+                          color: const Color(
+                            0xff065C73,
+                          ).withAlpha((0.1 * 255).toInt()),
                           spreadRadius: 0,
                           blurRadius: 24,
                           offset: const Offset(0, 8),
                         ),
                       ],
                     ),
-                    child: CachedImageWidget(
-                      imageUrl: e.image!,
-                    ),
+                    child: CachedImageWidget(imageUrl: e.image!),
                   ),
                 ),
               )
@@ -86,4 +86,3 @@ class _ImageSliderState extends State<ImageSlider> {
     );
   }
 }
-

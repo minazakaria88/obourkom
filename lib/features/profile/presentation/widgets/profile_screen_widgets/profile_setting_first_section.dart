@@ -13,9 +13,7 @@ import '../language/language_model_sheet_widget.dart';
 import 'background_profile_widget.dart';
 
 class ProfileSettingsFirstSection extends StatelessWidget {
-  const ProfileSettingsFirstSection({
-    super.key,
-  });
+  const ProfileSettingsFirstSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,10 @@ class ProfileSettingsFirstSection extends StatelessWidget {
             ProfileButtonWidget(
               title: S.of(context).personalAccount,
               onTap: () {
-                context.pushNamed(Routes.editProfile,arguments: context.read<ProfileCubit>());
+                context.pushNamed(
+                  Routes.editProfile,
+                  arguments: context.read<ProfileCubit>(),
+                );
               },
               image: Assets.imagesProfile,
             ),
@@ -66,6 +67,7 @@ class ProfileSettingsFirstSection extends StatelessWidget {
       ),
     );
   }
+
   Future<dynamic> buildShowModalBottomSheet(BuildContext context) {
     return showModalBottomSheet(
       context: context,
@@ -83,5 +85,4 @@ class ProfileSettingsFirstSection extends StatelessWidget {
       ),
     );
   }
-
 }

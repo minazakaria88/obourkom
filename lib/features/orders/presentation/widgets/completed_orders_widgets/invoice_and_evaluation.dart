@@ -6,9 +6,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../rating/presentation/pages/rating_widget.dart';
 
 class CompleteOrderInvoiceAndEvaluationWidget extends StatelessWidget {
-  const CompleteOrderInvoiceAndEvaluationWidget({
-    super.key,
-  });
+  const CompleteOrderInvoiceAndEvaluationWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

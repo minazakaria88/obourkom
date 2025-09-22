@@ -8,10 +8,7 @@ import '../../../../../generated/l10n.dart';
 import '../../cubit/orders_cubit.dart';
 
 class ChoosePaymentWidget extends StatelessWidget {
-  const ChoosePaymentWidget({
-    super.key,
-    required this.cubit,
-  });
+  const ChoosePaymentWidget({super.key, required this.cubit});
 
   final OrdersCubit cubit;
 
@@ -39,20 +36,15 @@ class ChoosePaymentWidget extends StatelessWidget {
           20.height,
           PaymentItemWidget(
             onTap: () {
-              cubit.pickPaymentMethod(
-                  PaymentMethods.card.name
-              );
+              cubit.pickPaymentMethod(S.of(context).card);
               context.pop();
             },
             title: S.of(context).card,
-            image:
-            Assets.imagesMastercardLogo,
+            image: Assets.imagesMastercardLogo,
           ),
           PaymentItemWidget(
             onTap: () {
-              cubit.pickPaymentMethod(
-                PaymentMethods.mada.name,
-              );
+              cubit.pickPaymentMethod(S.of(context).mada);
               context.pop();
             },
             title: S.of(context).mada,
@@ -60,10 +52,7 @@ class ChoosePaymentWidget extends StatelessWidget {
           ),
           PaymentItemWidget(
             onTap: () {
-              cubit.pickPaymentMethod(
-                  PaymentMethods.applePay
-                      .name
-              );
+              cubit.pickPaymentMethod(S.of(context).applePay);
               context.pop();
             },
             title: S.of(context).applePay,

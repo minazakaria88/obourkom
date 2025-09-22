@@ -8,6 +8,7 @@ import 'package:oborkom/generated/l10n.dart';
 import '../../../../core/widgets/my_app_bar.dart';
 import '../../../../generated/assets.dart';
 import '../widgets/picked_location_widgets/order_picked_location_widget.dart';
+import '../widgets/picked_location_widgets/search_widget.dart';
 
 class PickOrderLocationScreen extends StatefulWidget {
   const PickOrderLocationScreen({super.key, required this.mapContext});
@@ -46,7 +47,8 @@ class _PickOrderLocationScreenState extends State<PickOrderLocationScreen> {
       ),
       body: BlocBuilder<LocationsCubit, LocationsState>(
         buildWhen: (previous, current) =>
-            previous.pickedLocation != current.pickedLocation,
+            previous.pickedLocation != current.pickedLocation ||
+            previous.isShowPickerWidget != current.isShowPickerWidget,
         builder: (context, state) {
           final cubit = context.read<LocationsCubit>();
           return Stack(
@@ -89,8 +91,7 @@ class _PickOrderLocationScreenState extends State<PickOrderLocationScreen> {
                 rotateGesturesEnabled: true,
                 scrollGesturesEnabled: true,
               ),
-             // const SearchWidget(),
-              if (state.pickedLocation != null)
+              if (state.pickedLocation != null && state.isShowPickerWidget!)
                 widget.mapContext.type == MapTypes.orderPick
                     ? OrderPickLocation(
                         location: state.locationData,
@@ -100,6 +101,7 @@ class _PickOrderLocationScreenState extends State<PickOrderLocationScreen> {
                         location: state.locationData,
                         pickedLocation: state.pickedLocation,
                       ),
+              const SearchWidget(),
             ],
           );
         },
@@ -107,4 +109,3 @@ class _PickOrderLocationScreenState extends State<PickOrderLocationScreen> {
     );
   }
 }
-

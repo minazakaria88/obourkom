@@ -14,8 +14,7 @@ class RatingCubit extends Cubit<RatingState> {
 
   final formKey = GlobalKey<FormState>();
 
-
-  void rateDriver(double rate)async {
+  void rateDriver(double rate) async {
     try {
       emit(state.copyWith(rateDriverStatus: RateDriverStatus.loading));
       await Future.delayed(const Duration(seconds: 2));

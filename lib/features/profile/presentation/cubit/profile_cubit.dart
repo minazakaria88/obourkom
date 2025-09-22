@@ -62,8 +62,8 @@ class ProfileCubit extends Cubit<ProfileState> {
         'email': emailController.text,
         'phone': '+966${phoneController.text}',
         'phone_code': '+966',
-        if(state.image !=null)
-          'avatar': await MultipartFile.fromFile(state.image!)
+        if (state.image != null)
+          'avatar': await MultipartFile.fromFile(state.image!),
       });
       final result = await profileRepository.updateProfile(data);
       await CacheHelper.saveUser(result);
@@ -78,7 +78,7 @@ class ProfileCubit extends Cubit<ProfileState> {
         state.copyWith(
           editProfileStatus: EditProfileStatus.failure,
           errorMessage: e.failure.message,
-          image: ''
+          image: '',
         ),
       );
     } catch (e) {
@@ -95,7 +95,7 @@ class ProfileCubit extends Cubit<ProfileState> {
     emit(state.copyWith(imageStatus: ImageStatus.loading));
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (image != null) {
-      emit(state.copyWith(imageStatus: ImageStatus.success,image: image.path));
+      emit(state.copyWith(imageStatus: ImageStatus.success, image: image.path));
     } else {
       emit(state.copyWith(imageStatus: ImageStatus.failure));
     }
@@ -121,5 +121,13 @@ class ProfileCubit extends Cubit<ProfileState> {
         ),
       );
     }
+  }
+
+  @override
+  Future<void> close() {
+    emailController.dispose();
+    nameController.dispose();
+    phoneController.dispose();
+    return super.close();
   }
 }

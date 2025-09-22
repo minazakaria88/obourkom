@@ -19,11 +19,31 @@ class FindAndChatWithDriverRepository {
     return firestore
         .doc(orderId)
         .collection('offers')
+        .where('status', isNotEqualTo: 'cancelled')
         .snapshots()
         .map(
           (event) =>
               event.docs.map((e) => OfferModel.fromJson(e.data())).toList(),
         );
+  }
+
+  Future<void> updateOffer({
+    required String orderId,
+    required String offerId,
+    dynamic data,
+  }) async {
+    try {
+      await apiHelper.putData(
+        url: '${EndPoints.orders}/$orderId/offers/$offerId',
+        data: data,
+      );
+    } catch (e) {
+      logger.e(e);
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
   }
 
   Stream<List<MessageModel>> getMessages({
@@ -105,12 +125,16 @@ class FindAndChatWithDriverRepository {
     }
   }
 
-  Future<void> rejectOffer({required String orderId, required String offerId}) {
+  Future<void> rejectOffer({
+    required String orderId,
+    required String offerId,
+  }) async {
     try {
       logger.d('${EndPoints.orders}/$orderId/offers/$offerId/reject');
-      return apiHelper.postData(
+      final response = await apiHelper.postData(
         url: '${EndPoints.orders}/$orderId/offers/$offerId/reject',
       );
+      logger.d(response.data);
     } catch (e) {
       logger.e(e);
       if (e is DioException) {
@@ -140,6 +164,4 @@ class FindAndChatWithDriverRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
-
-
 }

@@ -2,9 +2,7 @@ import 'package:dotted_line/dotted_line.dart';
 import 'package:flutter/material.dart';
 
 class DottedWidget extends StatelessWidget {
-  const DottedWidget({
-    super.key,
-  });
+  const DottedWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

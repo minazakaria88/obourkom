@@ -32,7 +32,5 @@ Future<Position> determinePosition() async {
 }
 
 Future<Stream<Position>> listenForLocationChanges() async {
-  return  Geolocator.getPositionStream();
+  return Geolocator.getPositionStream();
 }
-
-

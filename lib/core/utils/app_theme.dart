@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oborkom/core/utils/app_colors.dart';
 
-ThemeData appTheme () => ThemeData(
+ThemeData appTheme() => ThemeData(
   fontFamily: 'Cairo',
   primaryColor: Colors.white,
   scaffoldBackgroundColor: Colors.white,
@@ -15,6 +15,5 @@ ThemeData appTheme () => ThemeData(
       fontSize: 20,
       fontWeight: FontWeight.w700,
     ),
-
   ),
 );

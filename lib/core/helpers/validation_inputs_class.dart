@@ -14,7 +14,7 @@ class ValidationClass {
     }
   }
 
-  static String? validatePhone(String? value,BuildContext context) {
+  static String? validatePhone(String? value, BuildContext context) {
     String pattern = r'(^5\d{8}$)';
     RegExp regex = RegExp(pattern);
     if (value == null || value.isEmpty || !regex.hasMatch(value)) {
@@ -24,14 +24,10 @@ class ValidationClass {
     }
   }
 
-
-  static String? validateText(String ?value,String errorMessage)
-  {
-    if(value==null || value.isEmpty)
-      {
-        return errorMessage;
-      }
+  static String? validateText(String? value, String errorMessage) {
+    if (value == null || value.isEmpty) {
+      return errorMessage;
+    }
     return null;
   }
-
 }
