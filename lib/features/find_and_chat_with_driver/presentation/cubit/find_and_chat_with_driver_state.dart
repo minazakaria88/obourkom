@@ -11,20 +11,20 @@ enum RejectOfferStatus { loading, success, failure }
 enum ChangeOrderStatus { loading, success, failure }
 
 class FindAndChatWithDriverState extends Equatable {
-  Duration? orderTimerDuration;
-  List<OfferModel>? offers;
-  List<MessageModel>? messages;
-  String? errorMessage;
-  String? orderStatus;
-  UploadDeliveryImageStatus? uploadDeliveryImageStatus;
-  UploadPickImageStatus? uploadPickImageStatus;
-  AcceptOfferStatus? acceptOfferStatus;
-  RejectOfferStatus? rejectOfferStatus;
-  String? selectedOfferId;
-  ChangeOrderStatus? changeOrderStatus;
-  OfferModel ? selectedOffer;
+final  Duration? orderTimerDuration;
+final List<OfferModel>? offers;
+final List<MessageModel>? messages;
+final String? errorMessage;
+final  String? orderStatus;
+final UploadDeliveryImageStatus? uploadDeliveryImageStatus;
+final  UploadPickImageStatus? uploadPickImageStatus;
+final  AcceptOfferStatus? acceptOfferStatus;
+final  RejectOfferStatus? rejectOfferStatus;
+final  String? selectedOfferId;
+final  ChangeOrderStatus? changeOrderStatus;
+final OfferModel ? selectedOffer;
 
-  FindAndChatWithDriverState({
+  const FindAndChatWithDriverState({
     this.orderTimerDuration,
     this.offers,
     this.messages,

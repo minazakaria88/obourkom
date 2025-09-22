@@ -13,8 +13,8 @@ part 'find_and_chat_with_driver_state.dart';
 class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
   FindAndChatWithDriverCubit({required this.findAndChatWithDriverRepository})
     : super(
-        FindAndChatWithDriverState(
-          orderTimerDuration: const Duration(minutes: 5),
+        const FindAndChatWithDriverState(
+          orderTimerDuration: Duration(minutes: 5),
         ),
       );
 
