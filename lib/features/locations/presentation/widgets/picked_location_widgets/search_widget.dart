@@ -58,7 +58,7 @@ class SearchWidget extends StatelessWidget {
                             color: Colors.red,
                           ),
                           title: Text(
-                            autoCompleteList[index].description ?? '',
+                            autoCompleteList[index].description,
                           ),
                           onTap: () {
                             cubit.getDetailsLocation(

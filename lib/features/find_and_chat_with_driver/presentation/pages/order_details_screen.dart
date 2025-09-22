@@ -62,8 +62,7 @@ class OrderDetailsScreen extends StatelessWidget {
                               previous.rejectOfferStatus !=
                               current.rejectOfferStatus,
                           listener: (context, state) {
-                            if (state.rejectOfferStatus ==
-                                RejectOfferStatus.success) {
+                            if (state.rejectOfferStatus == RejectOfferStatus.success) {
                               context.pushNamedAndRemoveUntil(
                                 Routes.findDriver,
                                 arguments: orderModel,
@@ -74,7 +73,7 @@ class OrderDetailsScreen extends StatelessWidget {
                           builder: (context, state) {
                             return statusToNumber[state.orderStatus] == null ||
                                     statusToNumber[state.orderStatus]! > 0
-                                ? Container()
+                                ? const SizedBox.shrink()
                                 : BackgroundProfileWidget(
                                     child: SizedBox(
                                       height: 65,
@@ -105,26 +104,34 @@ class OrderDetailsScreen extends StatelessWidget {
                                               onTap: () {
                                                 showDialog(
                                                   context: context,
-                                                  builder: (_) => Stack(
-                                                    children: [
-                                                      ChangeSupplierWidget(
-                                                        onTap: () {
-                                                          cubit.rejectOffer(
-                                                            orderId: orderModel
-                                                                .id
-                                                                .toString(),
-                                                            offerId: offerModel
-                                                                .id
-                                                                .toString(),
-                                                          );
-                                                        },
-                                                      ),
-                                                      if (state
-                                                              .rejectOfferStatus ==
-                                                          RejectOfferStatus
-                                                              .loading)
-                                                        const LoadingWidget(),
-                                                    ],
+                                                  builder: (_) => BlocProvider.value(
+                                                    value: cubit,
+                                                    child: BlocBuilder<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
+                                                      buildWhen: (previous, current) => previous.rejectOfferStatus != current.rejectOfferStatus,
+                                                      builder: (context, state) {
+                                                        return Stack(
+                                                          children: [
+                                                            ChangeSupplierWidget(
+                                                              onTap: () {
+                                                                cubit.rejectOffer(
+                                                                  orderId: orderModel
+                                                                      .id
+                                                                      .toString(),
+                                                                  offerId: offerModel
+                                                                      .id
+                                                                      .toString(),
+                                                                );
+                                                              },
+                                                            ),
+                                                            if (state
+                                                                .rejectOfferStatus ==
+                                                                RejectOfferStatus
+                                                                    .loading)
+                                                              const LoadingWidget(),
+                                                          ],
+                                                        );
+                                                      },
+                                                    ),
                                                   ),
                                                 );
                                               },

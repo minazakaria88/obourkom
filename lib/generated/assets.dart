@@ -13,6 +13,7 @@ class Assets {
   static const String imagesBanknote = 'assets/images/Banknote.svg';
   static const String imagesBell = 'assets/images/Bell.svg';
   static const String imagesBigCar = 'assets/images/bigCar.png';
+  static const String imagesBokking = 'assets/images/bokking.png';
   static const String imagesCalendar = 'assets/images/Calendar.svg';
   static const String imagesCall = 'assets/images/call.svg';
   static const String imagesCar = 'assets/images/car.svg';
@@ -26,8 +27,7 @@ class Assets {
   static const String imagesDriverOnWay = 'assets/images/driverOnWay.svg';
   static const String imagesEdit = 'assets/images/edit.svg';
   static const String imagesEditImage = 'assets/images/editImage.svg';
-  static const String imagesEnableLocation =
-      'assets/images/enable_location.svg';
+  static const String imagesEnableLocation = 'assets/images/enable_location.svg';
   static const String imagesError = 'assets/images/error.gif';
   static const String imagesExit = 'assets/images/exit.svg';
   static const String imagesFaq = 'assets/images/faq.svg';
@@ -42,20 +42,17 @@ class Assets {
   static const String imagesLogout = 'assets/images/logout.svg';
   static const String imagesMadaLogo = 'assets/images/Mada_Logo.svg';
   static const String imagesMarker = 'assets/images/marker.png';
-  static const String imagesMastercardLogo =
-      'assets/images/Mastercard-logo.svg';
+  static const String imagesMastercardLogo = 'assets/images/Mastercard-logo.svg';
   static const String imagesMicrophoneIcon = 'assets/images/MicrophoneIcon.svg';
   static const String imagesMoneyBag = 'assets/images/MoneyBag.svg';
   static const String imagesNegoti = 'assets/images/negoti.svg';
   static const String imagesNewOrder = 'assets/images/newOrder.png';
-  static const String imagesNoNotifications =
-      'assets/images/NoNotifications.svg';
+  static const String imagesNoNotifications = 'assets/images/NoNotifications.svg';
   static const String imagesNotification = 'assets/images/notification.svg';
   static const String imagesOrderComplete = 'assets/images/orderComplete.svg';
   static const String imagesOrderNumber = 'assets/images/orderNumber.svg';
   static const String imagesOrders = 'assets/images/orders.svg';
-  static const String imagesOtherAddLocations =
-      'assets/images/otherAddLocations.svg';
+  static const String imagesOtherAddLocations = 'assets/images/otherAddLocations.svg';
   static const String imagesOtp = 'assets/images/otp.png';
   static const String imagesPending = 'assets/images/Pending.svg';
   static const String imagesPendingOnWay = 'assets/images/PendingOnWay.svg';
@@ -63,12 +60,12 @@ class Assets {
   static const String imagesPrivacy = 'assets/images/privacy.svg';
   static const String imagesProfile = 'assets/images/profile.svg';
   static const String imagesProfileHome = 'assets/images/profileHome.svg';
-  static const String imagesProfileNotification =
-      'assets/images/profileNotification.svg';
+  static const String imagesProfileNotification = 'assets/images/profileNotification.svg';
   static const String imagesQuestionCircle = 'assets/images/QuestionCircle.svg';
   static const String imagesRadio = 'assets/images/radio.svg';
   static const String imagesReceived = 'assets/images/received.svg';
   static const String imagesReview = 'assets/images/Review.svg';
+  static const String imagesRightNow = 'assets/images/rightNow.png';
   static const String imagesRoundGraph = 'assets/images/RoundGraph.svg';
   static const String imagesSaudi = 'assets/images/saudi.svg';
   static const String imagesSendButton = 'assets/images/SendButton.svg';
@@ -76,8 +73,7 @@ class Assets {
   static const String imagesShipmentArrive = 'assets/images/shipmentArrive.svg';
   static const String imagesSmallCar = 'assets/images/smallCar.png';
   static const String imagesStars = 'assets/images/Stars.svg';
-  static const String imagesStarsMinimalistic =
-      'assets/images/StarsMinimalistic.svg';
+  static const String imagesStarsMinimalistic = 'assets/images/StarsMinimalistic.svg';
   static const String imagesSupport = 'assets/images/support.svg';
   static const String imagesTerms = 'assets/images/terms.svg';
   static const String imagesTram = 'assets/images/Tram.svg';
@@ -86,4 +82,5 @@ class Assets {
   static const String imagesUser = 'assets/images/User.svg';
   static const String imagesWhatsapp = 'assets/images/whatsapp.svg';
   static const String imagesWork = 'assets/images/work.svg';
+
 }

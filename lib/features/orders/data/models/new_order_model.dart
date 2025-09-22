@@ -14,6 +14,7 @@ class NewOrderModel {
   String? truckSizeId;
   String? fromAddress;
   String? toAddress;
+  String ? type;
 
   NewOrderModel({
     this.fromLng,
@@ -31,6 +32,7 @@ class NewOrderModel {
     this.truckSizeId,
     this.fromAddress,
     this.toAddress,
+    this.type,
   });
 
   NewOrderModel.fromJson(Map<String, dynamic> json) {
@@ -49,6 +51,7 @@ class NewOrderModel {
     truckSizeId = json['truck_size_id'];
     fromAddress = json['from_address'];
     toAddress = json['to_address'];
+    type = json['type'];
   }
 
   Map<String, dynamic> toJson() {
@@ -67,6 +70,7 @@ class NewOrderModel {
     data['truck_size_id'] = truckSizeId;
     data['from_address'] = fromAddress;
     data['to_address'] = toAddress;
+    data['type'] = type;
     return data;
   }
 }

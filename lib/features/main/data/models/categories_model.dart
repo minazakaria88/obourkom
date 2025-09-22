@@ -43,6 +43,10 @@ class TruckModel {
   String? name;
   String? image;
 
+  TruckModel(
+  {this.name,this.image}
+      );
+
   TruckModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];

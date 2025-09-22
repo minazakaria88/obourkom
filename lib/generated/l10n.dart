@@ -1004,9 +1004,9 @@ class S {
     return Intl.message('Discount', name: 'discount', desc: '', args: []);
   }
 
-  /// `Total:`
+  /// `Total`
   String get total {
-    return Intl.message('Total:', name: 'total', desc: '', args: []);
+    return Intl.message('Total', name: 'total', desc: '', args: []);
   }
 
   /// `Invoice`

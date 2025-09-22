@@ -121,7 +121,7 @@
   "orderValue": "Order Value",
   "shipmentValue": "Shipment Value",
   "discount": "Discount",
-  "total": "Total:",
+  "total": "Total",
   "Invoice": "Invoice",
   "evaluation": "Evaluation",
   "delegationEvaluation": "Delegation Evaluation",

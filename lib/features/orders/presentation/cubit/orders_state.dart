@@ -22,6 +22,7 @@ class OrdersState extends Equatable {
   List<OrderDataModel>? recentOrdersList;
   List<OrderDataModel>? completedOrdersList;
   SubmitOrderModel? orderDataModel;
+  String ?type;
   OrdersState({
     this.pickedLocation,
     this.pickedLocationData,
@@ -34,6 +35,7 @@ class OrdersState extends Equatable {
     this.completedOrdersList,
     this.recentOrdersList,
     this.orderDataModel,
+    this.type
   });
 
   OrdersState copyWith({
@@ -49,6 +51,7 @@ class OrdersState extends Equatable {
     List<OrderDataModel>? recentOrdersList,
     List<OrderDataModel>? completedOrdersList,
     SubmitOrderModel? orderDataModel,
+    String ? type,
   }) {
     return OrdersState(
       pickedLocation: pickedLocation ?? this.pickedLocation,
@@ -62,6 +65,7 @@ class OrdersState extends Equatable {
       recentOrdersList: recentOrdersList ?? this.recentOrdersList,
       completedOrdersList: completedOrdersList ?? this.completedOrdersList,
       orderDataModel: orderDataModel ?? this.orderDataModel,
+      type: type ?? this.type
     );
   }
 

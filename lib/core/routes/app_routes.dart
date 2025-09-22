@@ -11,6 +11,7 @@ import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.da
 import 'package:oborkom/features/login/presentation/pages/login_screen.dart';
 import 'package:oborkom/features/locations/presentation/pages/pick_location_screen.dart';
 import 'package:oborkom/features/main/data/models/categories_model.dart';
+import 'package:oborkom/features/main/presentation/pages/choose_type_screen.dart';
 import 'package:oborkom/features/notification/presentation/pages/notification_screen.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/pages/finding_drivers.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
@@ -86,11 +87,15 @@ class AppRoues {
         final arguments = setting.arguments as Map<String, dynamic>;
         final truckModel = arguments['truckModel'] as TruckModel;
         final servicesName = arguments['serviceName'] as String;
-
+        final type = arguments['type'] as String;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) => getIt<OrdersCubit>(),
-            child: NewOrder(truckModel: truckModel, serviceName: servicesName),
+            child: NewOrder(
+              truckModel: truckModel,
+              serviceName: servicesName,
+              type: type,
+            ),
           ),
         );
       case Routes.pickLocation:
@@ -182,6 +187,14 @@ class AppRoues {
       case Routes.finishOrderScreen:
         return MaterialPageRoute(
           builder: (context) => const FinishOrderScreen(),
+        );
+      case Routes.chooseTypeScreen:
+        final arguments = setting.arguments as Map<String, dynamic>;
+        final serviceName = arguments['serviceName'];
+        final model=arguments['model'];
+        return MaterialPageRoute(
+          builder: (context) =>
+              ChooseTypeScreen(serviceName: serviceName, model: model),
         );
       default:
         return null;

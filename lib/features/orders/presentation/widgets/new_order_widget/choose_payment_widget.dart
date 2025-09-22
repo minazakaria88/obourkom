@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/features/orders/presentation/widgets/new_order_widget/payment_item_widget.dart';
-
-import '../../../../../core/utils/constant.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 import '../../cubit/orders_cubit.dart';

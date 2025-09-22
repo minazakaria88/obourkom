@@ -51,10 +51,15 @@ class OrdersCubit extends Cubit<OrdersState> {
     emit(state.copyWith(paymentMethod: applePay));
   }
 
-  void makeOrder(TruckModel truckModel, String servicesName) async {
+  void pickType(String type)
+  {
+    emit(state.copyWith(type: type));
+  }
+
+  void makeOrder(TruckModel truckModel, String servicesName,String type) async {
     try {
       emit(state.copyWith(makeOrderStatus: MakeOrderStatus.loading));
-      final model = await getNewOrderModel(truckModel, servicesName);
+      final model = await getNewOrderModel(truckModel, servicesName,type);
       final result = await orderRepository.makeOrder(model.toJson());
       emit(
         state.copyWith(
@@ -82,7 +87,9 @@ class OrdersCubit extends Cubit<OrdersState> {
   Future<NewOrderModel> getNewOrderModel(
     TruckModel truckModel,
     String serviceName,
+      String type,
   ) async {
+    logger.d(type);
     return NewOrderModel(
       customerId: CacheHelper.getData(
         key: CacheHelperKeys.customerId,
@@ -98,6 +105,7 @@ class OrdersCubit extends Cubit<OrdersState> {
       status: 'available',
       statusPaid: 'unpaid',
       typeService: serviceName,
+      type: type,
       truckSizeId: truckModel.id.toString(),
     );
   }

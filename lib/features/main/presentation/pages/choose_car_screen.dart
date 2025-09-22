@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/core/routes/routes.dart';
 import 'package:oborkom/features/main/data/models/categories_model.dart';
 import 'package:oborkom/features/main/presentation/widgets/car_widget.dart';
 import 'package:oborkom/generated/l10n.dart';
-import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/app_styles.dart';
 import '../../../../core/widgets/my_app_bar.dart';
 
@@ -37,9 +37,9 @@ class ChooseCarScreen extends StatelessWidget {
                 truck: cars[index],
                 onTap: () {
                   context.pushReplacementNamed(
-                    Routes.newOrder,
+                    Routes.chooseTypeScreen,
                     arguments: {
-                      'truckModel': cars[index],
+                      'model': cars[index],
                       'serviceName': servicesName,
                     },
                   );

@@ -49,9 +49,9 @@ class OrderListviewItemWidget extends StatelessWidget {
             },
           );
         }
-        // if(context.mounted) {
-        //   context.read<OrdersCubit>().getOrders(1);
-        // }
+        if(context.mounted) {
+          context.read<OrdersCubit>().getOrders(1);
+        }
       },
       child: BackgroundProfileWidget(
         child: Padding(

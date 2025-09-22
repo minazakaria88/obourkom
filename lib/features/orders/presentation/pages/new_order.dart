@@ -24,13 +24,15 @@ class NewOrder extends StatelessWidget {
   const NewOrder({
     super.key,
     required this.truckModel,
-    required this.serviceName,
+    required this.serviceName, required this.type,
   });
   final TruckModel truckModel;
   final String serviceName;
+  final String type;
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
+    logger.i(type);
     return Scaffold(
       body: Stack(
         children: [
@@ -225,6 +227,7 @@ class NewOrder extends StatelessWidget {
                                         cubit.makeOrder(
                                           truckModel,
                                           serviceName,
+                                          type
                                         );
                                       }
                                     },
