@@ -22,4 +22,6 @@ class Routes {
   static const String finishOrderScreen = '/finishOrderScreen';
   static const String chooseTypeScreen='/chooseTypeScreen';
   static const String driverLocationScreen='/driverLocationScreen';
+  static const String splashScreen='/splashScreen';
+
 }

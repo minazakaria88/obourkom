@@ -36,6 +36,7 @@ import '../../features/otp/presentation/pages/otp_screen.dart';
 import '../../features/profile/presentation/pages/profile_features_screens/about_us_screen.dart';
 import '../../features/profile/presentation/pages/profile_features_screens/terms_and_conditions_screen.dart';
 import '../../injection.dart';
+import '../../splash_screen.dart';
 import '../helpers/error_handler.dart';
 import '../widgets/no_internet_screen.dart';
 
@@ -203,6 +204,8 @@ class AppRoues {
             create: (context) => getIt<LocationsCubit>()..getUserCurrentLocation(),
               child: const ShowDriverLocation()),
         );
+      case Routes.splashScreen:
+        return MaterialPageRoute(builder: (context) => const SplashScreen());
 
       default:
         return null;

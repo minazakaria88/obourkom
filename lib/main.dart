@@ -59,7 +59,7 @@ class OborKom extends StatelessWidget {
             supportedLocales: S.delegate.supportedLocales,
             debugShowCheckedModeBanner: false,
             onGenerateRoute: AppRoues.onGenerateRoute,
-            initialRoute: isLoggedIn ? Routes.home : Routes.login,
+            initialRoute: Routes.splashScreen,
           ),
         ),
       ),
