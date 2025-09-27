@@ -10,13 +10,14 @@ extension CheckStatus on OtpState {
   bool get failureVerifyOtp => otpStatus == VerifyOtpStatus.error;
 }
 
+@immutable
 class OtpState extends Equatable {
-  VerifyOtpStatus? otpStatus;
-  ResendOtpStatus? resendOtpStatus;
-  Duration? otpTimerDuration;
-  String? errorMessage;
+ final VerifyOtpStatus? otpStatus;
+ final ResendOtpStatus? resendOtpStatus;
+ final Duration? otpTimerDuration;
+ final String? errorMessage;
 
-  OtpState({
+  const OtpState({
     this.otpTimerDuration,
     this.otpStatus,
     this.errorMessage,

@@ -9,7 +9,7 @@ import '../../../../core/utils/constant.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit({required this.loginRepository}) : super(LoginState());
+  LoginCubit({required this.loginRepository}) : super(const LoginState());
   final LoginRepository loginRepository;
 
   final TextEditingController phoneController = TextEditingController();

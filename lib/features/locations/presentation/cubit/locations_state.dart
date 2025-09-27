@@ -24,18 +24,18 @@ extension LocationsStatusX on LocationsState {
 }
 
 class LocationsState extends Equatable {
-  LatLng? pickedLocation;
-  Placemark? locationData;
-  List<LocationModel>? locations;
-  LocationsStatus? locationsStatus;
-  PostLocationState? postLocationState;
-  String? errorMessage;
-  int? locationType;
-  DeleteLocationState? deleteLocationState;
-  List<AutoCompleteLocationModel>? autoCompleteLocations;
-  bool isShowPickerWidget = true;
+ final LatLng? pickedLocation;
+ final Placemark? locationData;
+ final List<LocationModel>? locations;
+ final LocationsStatus? locationsStatus;
+ final PostLocationState? postLocationState;
+ final String? errorMessage;
+ final int? locationType;
+ final DeleteLocationState? deleteLocationState;
+ final List<AutoCompleteLocationModel>? autoCompleteLocations;
+ final bool ? isShowPickerWidget;
 
-  LocationsState({
+  const LocationsState({
     this.pickedLocation,
     this.locationData,
     this.locations,
@@ -45,7 +45,7 @@ class LocationsState extends Equatable {
     this.postLocationState,
     this.deleteLocationState,
     this.autoCompleteLocations,
-    this.isShowPickerWidget = true,
+    this.isShowPickerWidget=true,
   });
 
   LocationsState copyWith({

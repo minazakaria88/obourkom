@@ -8,7 +8,7 @@ import '../../../../core/api/failure.dart';
 part 'rating_state.dart';
 
 class RatingCubit extends Cubit<RatingState> {
-  RatingCubit({required this.ratingRepository}) : super(RatingState());
+  RatingCubit({required this.ratingRepository}) : super(const RatingState());
 
   final RatingRepository ratingRepository;
 

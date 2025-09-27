@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:oborkom/core/functions/concatenate_placemark.dart';
@@ -15,7 +16,7 @@ import '../../data/models/categories_model.dart';
 part 'main_state.dart';
 
 class MainCubit extends Cubit<MainState> {
-  MainCubit({required this.mainRepository}) : super(MainState(location: ''));
+  MainCubit({required this.mainRepository}) : super(const MainState(location: ''));
   final MainRepository mainRepository;
 
   void getUserCurrentLocation() async {

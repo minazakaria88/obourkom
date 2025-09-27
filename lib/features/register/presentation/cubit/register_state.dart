@@ -9,9 +9,9 @@ extension RegisterStatusX on RegisterState {
 }
 
 class RegisterState extends Equatable {
-  RegisterStatus? registerStatus;
-  String? errorMessage;
-  RegisterState({this.registerStatus, this.errorMessage});
+  final RegisterStatus? registerStatus;
+  final String? errorMessage;
+  const RegisterState({this.registerStatus, this.errorMessage});
 
   RegisterState copyWith({
     RegisterStatus? registerStatus,

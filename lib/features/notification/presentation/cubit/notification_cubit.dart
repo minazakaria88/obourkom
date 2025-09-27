@@ -8,7 +8,7 @@ part 'notification_state.dart';
 
 class NotificationCubit extends Cubit<NotificationState> {
   NotificationCubit({required this.notificationRepository})
-    : super(NotificationState());
+    : super(const NotificationState());
 
   final NotificationRepository notificationRepository;
 

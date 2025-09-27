@@ -11,19 +11,19 @@ extension MakeOrderStatusX on OrdersState {
 }
 
 class OrdersState extends Equatable {
-  LatLng? pickedLocation;
-  Placemark? pickedLocationData;
-  LatLng? deliveryLocation;
-  Placemark? deliveryLocationData;
-  String? paymentMethod;
-  MakeOrderStatus? makeOrderStatus;
-  String? errorMessage;
-  GetOrdersStatus? getOrdersStatus;
-  List<OrderDataModel>? recentOrdersList;
-  List<OrderDataModel>? completedOrdersList;
-  SubmitOrderModel? orderDataModel;
-  String ?type;
-  OrdersState({
+  final LatLng? pickedLocation;
+  final Placemark? pickedLocationData;
+  final LatLng? deliveryLocation;
+  final Placemark? deliveryLocationData;
+  final String? paymentMethod;
+  final MakeOrderStatus? makeOrderStatus;
+  final String? errorMessage;
+  final GetOrdersStatus? getOrdersStatus;
+  final List<OrderDataModel>? recentOrdersList;
+  final List<OrderDataModel>? completedOrdersList;
+  final SubmitOrderModel? orderDataModel;
+  final String ?type;
+  const OrdersState({
     this.pickedLocation,
     this.pickedLocationData,
     this.deliveryLocation,

@@ -17,7 +17,7 @@ import '../../data/repositories/order_repo.dart';
 part 'orders_state.dart';
 
 class OrdersCubit extends Cubit<OrdersState> {
-  OrdersCubit({required this.orderRepository}) : super(OrdersState());
+  OrdersCubit({required this.orderRepository}) : super(const OrdersState());
   final OrderRepository orderRepository;
   final formKey = GlobalKey<FormState>();
   final TextEditingController notesController = TextEditingController();

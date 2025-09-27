@@ -9,9 +9,9 @@ extension RateDriverStatusX on RatingState {
 }
 
 class RatingState extends Equatable {
-  RateDriverStatus? rateDriverStatus;
-  String? errorMessage;
-  RatingState({this.rateDriverStatus, this.errorMessage});
+  final  RateDriverStatus? rateDriverStatus;
+  final  String? errorMessage;
+  const RatingState({this.rateDriverStatus, this.errorMessage});
 
   RatingState copyWith({
     RateDriverStatus? rateDriverStatus,

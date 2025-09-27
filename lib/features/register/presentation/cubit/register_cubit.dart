@@ -6,7 +6,7 @@ import 'package:oborkom/features/register/data/repositories/register_repo.dart';
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit({required this.registerRepository}) : super(RegisterState());
+  RegisterCubit({required this.registerRepository}) : super(const RegisterState());
   final RegisterRepository registerRepository;
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();

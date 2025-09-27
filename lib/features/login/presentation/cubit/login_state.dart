@@ -9,10 +9,10 @@ extension LoginStatusX on LoginState {
 }
 
 class LoginState extends Equatable {
-  LoginStatus? loginStatus;
-  String? errorMessage;
+  final LoginStatus? loginStatus;
+  final String? errorMessage;
 
-  LoginState({this.loginStatus, this.errorMessage});
+  const LoginState({this.loginStatus, this.errorMessage});
 
   LoginState copyWith({LoginStatus? loginStatus, String? errorMessage}) {
     return LoginState(

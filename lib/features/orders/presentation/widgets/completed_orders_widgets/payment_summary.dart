@@ -25,12 +25,8 @@ class CompleteOrderPaymentSummaryWidget extends StatelessWidget {
             ),
             const Divider(thickness: 1.2, color: Colors.grey),
             OrderDetailsItemWidget(
-              value: '${0.00} ${S.of(context).sar} ',
-              title: S.of(context).orderValue,
-            ),
-            OrderDetailsItemWidget(
               value: ' ${model.price ?? ''} ${S.of(context).sar} ',
-              title: S.of(context).shipmentValue,
+              title: S.of(context).orderValue,
             ),
             OrderDetailsItemWidget(
               value: ' ${0.00} ${S.of(context).sar} ',

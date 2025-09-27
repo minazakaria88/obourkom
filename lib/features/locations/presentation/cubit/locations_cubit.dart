@@ -18,7 +18,7 @@ import '../../data/models/auto_complete_location_model.dart';
 part 'locations_state.dart';
 
 class LocationsCubit extends Cubit<LocationsState> {
-  LocationsCubit({required this.locationRepository}) : super(LocationsState());
+  LocationsCubit({required this.locationRepository}) : super(const LocationsState());
   final LocationRepository locationRepository;
 
   final Completer<GoogleMapController> controller =

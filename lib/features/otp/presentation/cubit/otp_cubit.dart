@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:oborkom/core/api/api_helper.dart';
 import 'package:oborkom/core/api/failure.dart';
 import 'package:oborkom/core/helpers/cache_helper.dart';
@@ -17,8 +18,8 @@ part 'otp_state.dart';
 class OtpCubit extends Cubit<OtpState> {
   OtpCubit({required this.otpRepository})
     : super(
-        OtpState(
-          otpTimerDuration: const Duration(seconds: 60),
+        const OtpState(
+          otpTimerDuration: Duration(seconds: 60),
           otpStatus: VerifyOtpStatus.initial,
           resendOtpStatus: ResendOtpStatus.initial,
         ),

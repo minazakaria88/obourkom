@@ -13,7 +13,7 @@ import '../../data/models/user_model.dart';
 part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
-  ProfileCubit({required this.profileRepository}) : super(ProfileState());
+  ProfileCubit({required this.profileRepository}) : super(const ProfileState());
 
   TextEditingController emailController = TextEditingController();
   TextEditingController nameController = TextEditingController();
