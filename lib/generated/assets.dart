@@ -39,6 +39,7 @@ class Assets {
   static const String imagesLoading = 'assets/images/loading.gif';
   static const String imagesLocation = 'assets/images/location.svg';
   static const String imagesLogo = 'assets/images/logo.png';
+  static const String imagesLogoRider = 'assets/images/logo_rider.jpg';
   static const String imagesLogout = 'assets/images/logout.svg';
   static const String imagesMadaLogo = 'assets/images/Mada_Logo.svg';
   static const String imagesMarker = 'assets/images/marker.png';

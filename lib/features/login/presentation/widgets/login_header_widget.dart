@@ -16,7 +16,12 @@ class LoginHeaderWidget extends StatelessWidget {
         50.height,
         const ChooseLanguageWidget(),
         20.height,
-        Image.asset(Assets.imagesLogo),
+        Image.asset(
+          Assets.imagesLogoRider,
+          width: 120,
+          height: 100,
+          fit: BoxFit.fill,
+        ),
         30.height,
         Text(S.of(context).welcomeBack, style: AppTextStyles.bold24Black),
         20.height,

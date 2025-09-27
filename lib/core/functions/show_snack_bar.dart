@@ -6,11 +6,13 @@ void showToastification({
   required BuildContext context,
   required ToastificationType type,
 }) {
-  toastification.show(
+  if(context.mounted) {
+    toastification.show(
     type: type,
     title: Text(message),
     context: context,
     style: ToastificationStyle.flatColored,
     autoCloseDuration: const Duration(seconds: 3),
   );
+  }
 }

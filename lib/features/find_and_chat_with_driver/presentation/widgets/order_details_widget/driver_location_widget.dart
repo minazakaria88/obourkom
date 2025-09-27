@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/functions/make_phone_call.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
+import '../../../../../core/routes/routes.dart';
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../generated/assets.dart';
@@ -55,7 +56,9 @@ class DriverDetails extends StatelessWidget {
             ),
             10.width,
             InkWell(
-              onTap: () {},
+              onTap: () {
+                context.pushNamed(Routes.driverLocationScreen);
+              },
               child: Container(
                 padding: const EdgeInsets.all(7),
                 decoration: BoxDecoration(

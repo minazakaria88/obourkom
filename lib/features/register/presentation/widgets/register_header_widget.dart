@@ -12,7 +12,12 @@ class RegisterHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(Assets.imagesLogo),
+        Image.asset(
+          Assets.imagesLogoRider,
+          width: 120,
+          height: 100,
+          fit: BoxFit.fill,
+        ),
         15.height,
         Text(S.of(context).createAccount, style: AppTextStyles.bold24Black),
         15.height,

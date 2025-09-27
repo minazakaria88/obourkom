@@ -21,4 +21,5 @@ class Routes {
   static const String error = '/error';
   static const String finishOrderScreen = '/finishOrderScreen';
   static const String chooseTypeScreen='/chooseTypeScreen';
+  static const String driverLocationScreen='/driverLocationScreen';
 }

@@ -52,15 +52,20 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
       offerStream?.cancel();
       offerStream = findAndChatWithDriverRepository
           .getOffersForOrder(orderId: orderId)
-          .listen((offers) {
-            if (offers.isNotEmpty) {
-              cancelTimer();
-            }
-            if (offers.isEmpty) {
-              startTimer();
-            }
-            emit(state.copyWith(offers: offers));
-          });
+          .listen(
+            (offers) {
+              if (offers.isNotEmpty) {
+                cancelTimer();
+              }
+              if (offers.isEmpty) {
+                startTimer();
+              }
+              emit(state.copyWith(offers: offers));
+            },
+            onError: (e) {
+              emit(state.copyWith(errorMessage: e.toString()));
+            },
+          );
       logger.d(state.offers);
     } catch (e) {
       emit(state.copyWith(errorMessage: e.toString()));
@@ -73,9 +78,14 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
       messageStream?.cancel();
       messageStream = findAndChatWithDriverRepository
           .getMessages(orderId: orderId, driverId: driverId)
-          .listen((messages) {
-            emit(state.copyWith(messages: messages));
-          });
+          .listen(
+            (messages) {
+              emit(state.copyWith(messages: messages));
+            },
+            onError: (e) {
+              emit(state.copyWith(errorMessage: e.toString()));
+            },
+          );
       logger.d(state.messages);
     } catch (e) {
       emit(state.copyWith(errorMessage: e.toString()));
@@ -96,13 +106,17 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
       senderId: customerId,
       receiverId: driverId,
     );
-    logger.d(messageModel);
-    await findAndChatWithDriverRepository.sendMessage(
-      driverId: driverId,
-      orderId: orderId,
-      message: messageModel,
-    );
-    messageController.clear();
+    try {
+      logger.d(messageModel);
+      await findAndChatWithDriverRepository.sendMessage(
+        driverId: driverId,
+        orderId: orderId,
+        message: messageModel,
+      );
+      messageController.clear();
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
   }
 
   StreamSubscription? orderStatusStream;
@@ -111,22 +125,22 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
       orderStatusStream?.cancel();
       orderStatusStream = findAndChatWithDriverRepository
           .getOrderStatus(orderId: orderId)
-          .listen((status) {
-            emit(state.copyWith(orderStatus: status));
-          });
+          .listen(
+            (status) {
+              emit(state.copyWith(orderStatus: status));
+            },
+            onError: (e) {
+              emit(state.copyWith(errorMessage: e.toString()));
+            },
+          );
       logger.d(state.orderStatus);
     } catch (e) {
       emit(state.copyWith(errorMessage: e.toString()));
     }
   }
 
-
   void assignOffer(OfferModel offer) {
-    emit(
-      state.copyWith(
-        selectedOffer: offer,
-      ),
-    );
+    emit(state.copyWith(selectedOffer: offer));
   }
 
   Future<void> acceptOffer({

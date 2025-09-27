@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/functions/make_phone_call.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/core/routes/routes.dart';
 
 import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
@@ -51,7 +52,9 @@ class CallAndShowOnMapWidget extends StatelessWidget {
         10.width,
         Expanded(
           child: InkWell(
-            onTap: () {},
+            onTap: () {
+              context.pushNamed(Routes.driverLocationScreen);
+            },
             child: Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(

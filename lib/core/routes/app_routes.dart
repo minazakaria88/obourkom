@@ -22,6 +22,7 @@ import 'package:oborkom/features/profile/presentation/pages/profile_features_scr
 import 'package:oborkom/features/profile/presentation/pages/profile_features_screens/support_screen.dart';
 import 'package:oborkom/features/register/presentation/cubit/register_cubit.dart';
 import 'package:oborkom/features/register/presentation/pages/register_screen.dart';
+import '../../features/find_and_chat_with_driver/presentation/pages/show_driver_location.dart';
 import '../../features/locations/presentation/pages/locations_screen.dart';
 import '../../features/login/presentation/cubit/login_cubit.dart';
 import '../../features/main/presentation/pages/choose_car_screen.dart';
@@ -196,6 +197,13 @@ class AppRoues {
           builder: (context) =>
               ChooseTypeScreen(serviceName: serviceName, model: model),
         );
+      case Routes.driverLocationScreen:
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<LocationsCubit>()..getUserCurrentLocation(),
+              child: const ShowDriverLocation()),
+        );
+
       default:
         return null;
     }
