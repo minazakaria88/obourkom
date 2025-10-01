@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:oborkom/core/helpers/notification_helper.dart';
+import 'package:oborkom/core/utils/app_colors.dart';
+import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/presentation/cubit/find_and_chat_with_driver_cubit.dart';
 import 'package:oborkom/features/orders/data/models/submit_order_model.dart';
-
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constant.dart';
 import '../../../../../generated/l10n.dart';
 import 'order_details_item_widget.dart';
 
 class OrderDetailsWidget extends StatelessWidget {
-  const OrderDetailsWidget({super.key, required this.model});
+  const OrderDetailsWidget({super.key, required this.model, this.offerModel});
   final SubmitOrderModel model;
-
+  final OfferModel? offerModel;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
+    return BlocConsumer<FindAndChatWithDriverCubit, FindAndChatWithDriverState>(
+      listener: (context, state) {
+        NotificationService.showLocalNotification(
+          title: S.of(context).priceChange,
+          body: S.of(context).priceChange,
+        );
+      },
+      listenWhen: (previous, current) =>previous.offer !=null && previous.offer!.price != current.offer!.price,
       buildWhen: (previous, current) =>
-          previous.orderStatus != current.orderStatus,
+          previous.orderStatus != current.orderStatus ||
+          previous.offer != current.offer,
       builder: (context, state) {
         return Card(
           color: Colors.white,
@@ -48,12 +58,19 @@ class OrderDetailsWidget extends StatelessWidget {
                     context,
                     state.orderStatus ?? model.status ?? '',
                   ),
+                  color: AppColors.greenColor,
                   title: S.of(context).orderStatus,
                 ),
                 OrderDetailsItemWidget(
                   value: model.paymentType ?? '',
                   title: S.of(context).paymentMethod,
                 ),
+                if (state.offer != null)
+                  OrderDetailsItemWidget(
+                    value:
+                        '${state.offer!.price ?? offerModel!.price ?? ''} ${S.of(context).sar} ',
+                    title: S.of(context).orderValue,
+                  ),
               ],
             ),
           ),

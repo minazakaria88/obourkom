@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
@@ -11,7 +10,6 @@ import '../../../../../generated/l10n.dart';
 import '../../../../find_and_chat_with_driver/presentation/widgets/finding_driver_widgets/order_details_item_widget.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 import '../../../data/models/order_adapter_model.dart';
-import '../../cubit/orders_cubit.dart';
 
 class OrderListviewItemWidget extends StatelessWidget {
   const OrderListviewItemWidget({super.key, required this.model});
@@ -45,12 +43,13 @@ class OrderListviewItemWidget extends StatelessWidget {
                 phone: model.driver?.phone,
                 price: offer.price,
                 id: offer.id,
+                driverRate: num.tryParse(model.driverRate.isNullOrEmpty()?  '0.0': model.driverRate! ),
               ),
             },
           );
         }
         if(context.mounted) {
-          context.read<OrdersCubit>().getOrders(1);
+          //context.read<OrdersCubit>().getOrders(1);
         }
       },
       child: BackgroundProfileWidget(
@@ -91,8 +90,9 @@ class OrderListviewItemWidget extends StatelessWidget {
                       value: model.truckSize!.name ?? '',
                       title: S.of(context).carType,
                     ),
+                    if(model.status != 'available')
                     OrderDetailsItemWidget(
-                      value: model.price ?? '',
+                      value: '${model.price ?? ''} ${S.of(context).sar} ',
                       title: S.of(context).total,
                     ),
                   ],

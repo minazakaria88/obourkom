@@ -19,14 +19,14 @@ class NotificationService {
     );
 
     InitializationSettings initializationSettings =
-        const InitializationSettings(
-          android: AndroidInitializationSettings('@mipmap/ic_launcher'),
-          iOS: DarwinInitializationSettings(
-            requestAlertPermission: true,
-            requestBadgePermission: true,
-            requestSoundPermission: true,
-          ),
-        );
+    const InitializationSettings(
+      android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+      iOS: DarwinInitializationSettings(
+        requestAlertPermission: true,
+        requestBadgePermission: true,
+        requestSoundPermission: true,
+      ),
+    );
 
     await localNotification.initialize(
       initializationSettings,
@@ -39,8 +39,8 @@ class NotificationService {
     //request ios location permission
     await localNotification
         .resolvePlatformSpecificImplementation<
-          IOSFlutterLocalNotificationsPlugin
-        >()
+        IOSFlutterLocalNotificationsPlugin
+    >()
         ?.requestPermissions(alert: true, badge: true, sound: true);
 
     // request android location permission
@@ -92,10 +92,10 @@ class NotificationService {
 
   static int id = 0;
 
- static void showLocalNotification({
+  static void showLocalNotification({
     required String title,
     required String body,
-    required String payload,
+    String ?payload,
   }) {
     NotificationDetails notificationDetails = const NotificationDetails(
       android: AndroidNotificationDetails(
@@ -103,6 +103,7 @@ class NotificationService {
         'channel_name',
         importance: Importance.max,
         priority: Priority.high,
+        playSound: true,
       ),
       iOS: DarwinNotificationDetails(
         presentAlert: true,

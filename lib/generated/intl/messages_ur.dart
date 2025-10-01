@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "کیا آپ لاگ آؤٹ کرنا چاہتے ہیں؟",
     ),
     "available": MessageLookupByLibrary.simpleMessage("دستیاب"),
+    "back": MessageLookupByLibrary.simpleMessage("پیچھے"),
     "bigCars": MessageLookupByLibrary.simpleMessage("بڑی ٹرک"),
     "call": MessageLookupByLibrary.simpleMessage("کال کریں"),
     "callUs": MessageLookupByLibrary.simpleMessage("ہمیں کال کریں"),
@@ -69,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "close": MessageLookupByLibrary.simpleMessage("بند کریں"),
     "codeExpiredIn": MessageLookupByLibrary.simpleMessage("کوڈ ختم ہوگا "),
+    "comment": MessageLookupByLibrary.simpleMessage("تبصرہ"),
     "confirmLocation": MessageLookupByLibrary.simpleMessage(
       "مقام کی تصدیق کریں",
     ),
@@ -253,6 +255,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "براہ کرم اپنے نوٹس لکھیں",
     ),
     "previous": MessageLookupByLibrary.simpleMessage("سابقہ"),
+    "priceChange": MessageLookupByLibrary.simpleMessage("سعر تبدیل کیا گیا"),
     "profile": MessageLookupByLibrary.simpleMessage("میرا پروفائل"),
     "profileLanguage": MessageLookupByLibrary.simpleMessage("زبان"),
     "register": MessageLookupByLibrary.simpleMessage("رجسٹر کریں"),

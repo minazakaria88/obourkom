@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   bool isChange = false;
 
   void changeTextStyle() {
-    Future.delayed(const Duration(milliseconds: 700), () {
+    Future.delayed(const Duration(milliseconds: 800), () {
       setState(() {
         isChange = true;
       });
@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   void gotoScreen() {
-    Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 3), () {
       if (!mounted) return;
       if (isLoggedIn) {
         context.pushNamedAndRemoveUntil(Routes.home, (route) => false);
@@ -48,21 +48,17 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const SizedBox(width: double.infinity),
-          Container(
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            decoration: const BoxDecoration(shape: BoxShape.circle),
-            child: Image.asset(
-              Assets.imagesLogoRider,
-              width: 200,
-              height: 200,
-              fit: BoxFit.fill,
-            ),
+          Image.asset(
+            Assets.imagesLogoRider,
+            width: 200,
+            height: 200,
+            fit: BoxFit.fill,
           ),
           20.height,
           AnimatedSlide(
             curve: Curves.easeInOut,
             offset: isChange ? const Offset(0, -2) : const Offset(0, 0),
-            duration: const Duration(milliseconds: 700),
+            duration: const Duration(milliseconds: 900),
             child: Text(
               'عبور  كوم',
               style: AppTextStyles.bold14MainColor.copyWith(fontSize: 24),

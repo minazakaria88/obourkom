@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Are you sure you want to logout?",
     ),
     "available": MessageLookupByLibrary.simpleMessage("Available"),
+    "back": MessageLookupByLibrary.simpleMessage("Back"),
     "bigCars": MessageLookupByLibrary.simpleMessage("Big Car"),
     "call": MessageLookupByLibrary.simpleMessage("Call"),
     "callUs": MessageLookupByLibrary.simpleMessage("Call US"),
@@ -69,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "close": MessageLookupByLibrary.simpleMessage("Close"),
     "codeExpiredIn": MessageLookupByLibrary.simpleMessage("Code expired in "),
+    "comment": MessageLookupByLibrary.simpleMessage("Comment"),
     "confirmLocation": MessageLookupByLibrary.simpleMessage("Confirm Location"),
     "costEstimate": MessageLookupByLibrary.simpleMessage(
       "This cost is estimated and varies according to each representative. It may sometimes increase depending on the distance between the pickup and delivery location. ",
@@ -248,6 +250,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Please write your notes",
     ),
     "previous": MessageLookupByLibrary.simpleMessage("Previous"),
+    "priceChange": MessageLookupByLibrary.simpleMessage("Price Change"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profileLanguage": MessageLookupByLibrary.simpleMessage("Language"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),

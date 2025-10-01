@@ -178,6 +178,7 @@ class LocationsCubit extends Cubit<LocationsState> {
 
   void getDetailsLocation(String placeId) async {
     try {
+      searchController.clear();
       final data = {'key': LocationService.key, 'place_id': placeId};
       emit(state.copyWith(autoCompleteLocations: []));
       final result = await locationRepository.getDetailsLocation(data);

@@ -170,7 +170,8 @@ class AppRoues {
                 driverId: driver.driverId.toString(),
                 orderId: order.id.toString(),
               )
-              ..listenForOrderStatus(orderId: order.id.toString()),
+              ..listenForOrderStatus(orderId: order.id.toString())
+             ..listenForMyOffer(orderId: order.id.toString(), offerId: driver.id.toString()),
             child: OrderDetailsScreen(orderModel: order, offerModel: driver),
           ),
         );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
+import '../../../../../core/utils/app_colors.dart';
 import '../../../../../core/utils/app_styles.dart';
 import '../../../../../core/utils/constant.dart';
 import '../../../../../generated/l10n.dart';
@@ -44,6 +45,7 @@ class CompleteOrderDetailsWidget extends StatelessWidget {
             OrderDetailsItemWidget(
               value: getStatusText(context, model.status),
               title: S.of(context).orderStatus,
+              color: AppColors.greenColor,
             ),
           ],
         ),

@@ -22,6 +22,7 @@ class Assets {
   static const String imagesCompassBig = 'assets/images/CompassBig.svg';
   static const String imagesDelete = 'assets/images/delete.svg';
   static const String imagesDeleteAccount = 'assets/images/deleteAccount.svg';
+  static const String imagesDocumentOrder = 'assets/images/Document_order.svg';
   static const String imagesDocuments = 'assets/images/Documents.svg';
   static const String imagesDriverArrive = 'assets/images/driverArrive.svg';
   static const String imagesDriverOnWay = 'assets/images/driverOnWay.svg';
@@ -75,6 +76,7 @@ class Assets {
   static const String imagesSmallCar = 'assets/images/smallCar.png';
   static const String imagesStars = 'assets/images/Stars.svg';
   static const String imagesStarsMinimalistic = 'assets/images/StarsMinimalistic.svg';
+  static const String imagesStarsOrder = 'assets/images/stars_order.svg';
   static const String imagesSupport = 'assets/images/support.svg';
   static const String imagesTerms = 'assets/images/terms.svg';
   static const String imagesTram = 'assets/images/Tram.svg';

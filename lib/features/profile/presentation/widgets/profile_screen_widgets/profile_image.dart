@@ -33,7 +33,7 @@ class ProfileImage extends StatelessWidget {
               clipBehavior: Clip.antiAliasWithSaveLayer,
               width: width ?? 80,
               height: height ?? 80,
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(5),
               decoration: const BoxDecoration(shape: BoxShape.circle),
               child: Image.asset(Assets.imagesLogo),
             ),

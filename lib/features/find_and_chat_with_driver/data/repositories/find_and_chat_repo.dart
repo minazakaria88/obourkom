@@ -7,6 +7,7 @@ import 'package:oborkom/features/find_and_chat_with_driver/data/models/message_m
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
 import '../../../../core/api/api_helper.dart';
+import '../models/firebase_offer_model.dart';
 
 class FindAndChatWithDriverRepository {
   final ApiHelper apiHelper;
@@ -164,4 +165,14 @@ class FindAndChatWithDriverRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
+
+  Stream<FirebaseOfferModel> listenForMyOffer(String orderId, String offerId) {
+    return firestore
+        .doc(orderId)
+        .collection('offers')
+        .doc(offerId)
+        .snapshots()
+        .map((e) => FirebaseOfferModel.fromJson(e.data()!));
+  }
+
 }

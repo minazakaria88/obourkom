@@ -3,6 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:oborkom/core/api/failure.dart';
+import 'package:oborkom/features/find_and_chat_with_driver/data/models/firebase_offer_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/message_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/repositories/find_and_chat_repo.dart';
@@ -238,6 +239,27 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
     }
   }
 
+  StreamSubscription? acceptOfferStream;
+  void listenForMyOffer({required String orderId, required String offerId}) {
+    try {
+      acceptOfferStream?.cancel();
+      acceptOfferStream = findAndChatWithDriverRepository
+          .listenForMyOffer(orderId, offerId)
+          .listen(
+            (data) {
+          emit(state.copyWith(offer: data));
+        },
+        onError: (e) {
+          state.copyWith(errorMessage: e.toString());
+        },
+      );
+    } catch (e) {
+      emit(state.copyWith(errorMessage: e.toString()));
+    }
+  }
+
+
+
   @override
   Future<void> close() {
     cancelTimer();
@@ -245,6 +267,7 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
     messageStream?.cancel();
     orderStatusStream?.cancel();
     messageController.dispose();
+    acceptOfferStream?.cancel();
     return super.close();
   }
 }

@@ -47,11 +47,11 @@ class DriverDetailsWidget extends StatelessWidget {
                         children: [
                           SvgPicture.asset(Assets.imagesStars),
                           5.width,
-                          Text('4.5', style: AppTextStyles.bold18Black),
+                          Text(model.driverRate.toString(), style: AppTextStyles.bold18Black),
                           20.width,
                           SvgPicture.asset(Assets.imagesDocuments),
                           5.width,
-                          Text('500', style: AppTextStyles.bold18Black),
+                          Text(model.ordersNumber.toString(), style: AppTextStyles.bold18Black),
                         ],
                       ),
                       5.height,

@@ -9,9 +9,13 @@ import '../../../../profile/presentation/widgets/profile_screen_widgets/profile_
 import '../../../data/models/order_model.dart';
 
 class CompleteOrderDriverWidget extends StatelessWidget {
-  const CompleteOrderDriverWidget({super.key, required this.driver});
+  const CompleteOrderDriverWidget({
+    super.key,
+    required this.driver,
+    required this.driverRate,
+  });
   final Driver driver;
-
+  final String driverRate;
   @override
   Widget build(BuildContext context) {
     return BackgroundProfileWidget(
@@ -27,7 +31,7 @@ class CompleteOrderDriverWidget extends StatelessWidget {
                 children: [
                   SvgPicture.asset(Assets.imagesStars),
                   5.width,
-                  Text('4.5', style: AppTextStyles.bold18Black),
+                  Text(driverRate, style: AppTextStyles.bold18Black),
                 ],
               ),
             ],

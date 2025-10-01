@@ -23,6 +23,7 @@ final  RejectOfferStatus? rejectOfferStatus;
 final  String? selectedOfferId;
 final  ChangeOrderStatus? changeOrderStatus;
 final OfferModel ? selectedOffer;
+final FirebaseOfferModel ? offer;
 
   const FindAndChatWithDriverState({
     this.orderTimerDuration,
@@ -37,6 +38,7 @@ final OfferModel ? selectedOffer;
     this.rejectOfferStatus,
     this.changeOrderStatus,
     this.selectedOffer,
+    this.offer
   });
 
   FindAndChatWithDriverState copyWith({
@@ -52,6 +54,7 @@ final OfferModel ? selectedOffer;
     RejectOfferStatus? rejectOfferStatus,
     ChangeOrderStatus? changeOrderStatus,
     OfferModel? selectedOffer,
+    FirebaseOfferModel? offer
   }) {
     return FindAndChatWithDriverState(
       orderTimerDuration: orderTimerDuration ?? this.orderTimerDuration,
@@ -68,6 +71,7 @@ final OfferModel ? selectedOffer;
       rejectOfferStatus: rejectOfferStatus ?? this.rejectOfferStatus,
       changeOrderStatus: changeOrderStatus ?? this.changeOrderStatus,
       selectedOffer: selectedOffer ?? this.selectedOffer,
+      offer: offer ?? this.offer
     );
   }
 
@@ -84,6 +88,7 @@ final OfferModel ? selectedOffer;
     selectedOfferId,
     rejectOfferStatus,
     changeOrderStatus,
-    selectedOffer
+    selectedOffer,
+    offer,
   ];
 }

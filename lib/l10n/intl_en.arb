@@ -160,7 +160,10 @@
   "applePay": "Apple Pay",
   "card": "Card",
   "mada": "Mada",
-  "editProfileSuccessfully": "Edit profile successfully"
+  "editProfileSuccessfully": "Edit profile successfully",
+  "comment": "Comment",
+  "priceChange" : "Price Change",
+  "back": "Back"
 
 
 

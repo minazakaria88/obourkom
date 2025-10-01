@@ -1303,6 +1303,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Comment`
+  String get comment {
+    return Intl.message('Comment', name: 'comment', desc: '', args: []);
+  }
+
+  /// `Price Change`
+  String get priceChange {
+    return Intl.message(
+      'Price Change',
+      name: 'priceChange',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back`
+  String get back {
+    return Intl.message('Back', name: 'back', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -33,14 +33,19 @@ class CompletedOrderDetailsScreen extends StatelessWidget {
                   20.height,
                   CompleteOrderNotesWidget(notes: model.notes ?? ''),
                   20.height,
-                  CompleteOrderDriverWidget(driver: model.driver!),
+                  CompleteOrderDriverWidget(
+                    driver: model.driver!,
+                    driverRate: model.driverRate ?? '0.0',
+                  ),
                   20.height,
                   CompleteOrderPaymentSummaryWidget(model: model),
                 ],
               ),
             ),
           ),
-          const CompleteOrderInvoiceAndEvaluationWidget(),
+          CompleteOrderInvoiceAndEvaluationWidget(
+            orderDataModel: model,
+          ),
         ],
       ),
     );

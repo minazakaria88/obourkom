@@ -11,13 +11,17 @@ class RatingCubit extends Cubit<RatingState> {
   RatingCubit({required this.ratingRepository}) : super(const RatingState());
 
   final RatingRepository ratingRepository;
-
+   final TextEditingController controller=TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  void rateDriver(double rate) async {
+  void rateDriver({required String orderId,required String rate}) async {
     try {
+      final data={
+        'score':rate,
+        'comment':controller.text,
+      };
       emit(state.copyWith(rateDriverStatus: RateDriverStatus.loading));
-      await Future.delayed(const Duration(seconds: 2));
+      await ratingRepository.rateDriver(orderId: orderId,data: data);
       emit(state.copyWith(rateDriverStatus: RateDriverStatus.success));
     } on ApiException catch (e) {
       emit(
@@ -35,4 +39,10 @@ class RatingCubit extends Cubit<RatingState> {
       );
     }
   }
+
+  void updateUi()
+  {
+    emit(state.copyWith(rateDriverStatus: RateDriverStatus.initial));
+  }
+
 }

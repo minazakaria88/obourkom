@@ -29,7 +29,7 @@ class EndPoints {
   static const faq = 'api/questions';
 
   static const cancelOrder = 'cancelOrder';
-  static const rateDriver = 'rateDriver';
+  static const rateDriver = '/rate';
   static const categories = 'api/categories';
   static const trucks = 'api/truck';
   static const trucksSize = 'api/truck-size';

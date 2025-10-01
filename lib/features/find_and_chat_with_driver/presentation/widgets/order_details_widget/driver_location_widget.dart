@@ -26,21 +26,22 @@ class DriverDetails extends StatelessWidget {
         title: Row(
           children: [
             const ProfileImage(width: 40, height: 40),
-            20.width,
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(model.name ?? '', style: AppTextStyles.bold18Black),
-                Row(
-                  children: [
-                    SvgPicture.asset(Assets.imagesStars),
-                    5.width,
-                    Text('4.5', style: AppTextStyles.bold18Black),
-                  ],
-                ),
-              ],
+            10.width,
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(model.name ?? '', style: AppTextStyles.bold18Black,maxLines: 1,),
+                  Row(
+                    children: [
+                      SvgPicture.asset(Assets.imagesStars),
+                      5.width,
+                      Flexible(child: Text(model.driverRate.toString(), style: AppTextStyles.bold18Black)),
+                    ],
+                  ),
+                ],
+              ),
             ),
-            const Spacer(),
             InkWell(
               onTap: () {
                 makePhoneCall(phoneNumber: model.phone ?? '');

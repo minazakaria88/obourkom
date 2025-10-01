@@ -162,7 +162,10 @@
     "applePay": "آبل بي",
     "card": "بطاقة",
     "mada": "مدى",
-    "editProfileSuccessfully" : "تم تعديل الملف الشخصي بنجاح"
+    "editProfileSuccessfully" : "تم تعديل الملف الشخصي بنجاح",
+    "comment": "تعليق",
+    "priceChange" : "تم تغيير السعر ",
+    "back": "عودة"
 
 
 

@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "هل انت متأكد من تسجيل الخروج؟",
     ),
     "available": MessageLookupByLibrary.simpleMessage("متاح"),
+    "back": MessageLookupByLibrary.simpleMessage("عودة"),
     "bigCars": MessageLookupByLibrary.simpleMessage(" شاحنة كبيرة"),
     "call": MessageLookupByLibrary.simpleMessage("اتصال"),
     "callUs": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
@@ -69,6 +70,7 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "close": MessageLookupByLibrary.simpleMessage("اغلاق"),
     "codeExpiredIn": MessageLookupByLibrary.simpleMessage("ينتهي الكود خلال "),
+    "comment": MessageLookupByLibrary.simpleMessage("تعليق"),
     "confirmLocation": MessageLookupByLibrary.simpleMessage("تأكيد الموقع"),
     "costEstimate": MessageLookupByLibrary.simpleMessage(
       " هذه التكلفة تقديرية وتختلف حسب كل مندوب فيمكن ان تزيد في بعض الأحيان طبقا للمسافة بين موقع الاستلام والتسليم",
@@ -243,6 +245,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "الرجاء كتابة ملاحظاتك ",
     ),
     "previous": MessageLookupByLibrary.simpleMessage("السابقة"),
+    "priceChange": MessageLookupByLibrary.simpleMessage("تم تغيير السعر "),
     "profile": MessageLookupByLibrary.simpleMessage("حسابي "),
     "profileLanguage": MessageLookupByLibrary.simpleMessage("اللغة"),
     "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
