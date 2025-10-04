@@ -16,16 +16,15 @@ class ChooseTypeWidget extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.all(8),
-        padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color:const Color(0xfff5f6fa),
         ),
         child: Image.asset(
           image,
-          height: 120,
+          height: 190,
           width: double.infinity,
-          fit: BoxFit.cover,
+          fit: BoxFit.fill,
         ),
       ),
     );

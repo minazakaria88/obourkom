@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
+import 'package:oborkom/features/find_and_chat_with_driver/presentation/widgets/order_details_widget/pickup_image.dart';
 import '../../../../core/widgets/my_app_bar.dart';
 import '../../../../generated/l10n.dart';
 import '../../../orders/data/models/submit_order_model.dart';
 import '../cubit/find_and_chat_with_driver_cubit.dart';
 import '../widgets/finding_driver_widgets/order_details_widget.dart';
 import '../widgets/order_details_widget/chat_listview.dart';
+import '../widgets/order_details_widget/delivery_image.dart';
 import '../widgets/order_details_widget/driver_location_widget.dart';
 import '../widgets/order_details_widget/order_status_widget.dart';
 import '../widgets/order_details_widget/pay_or_change_supplier_widget.dart';
@@ -42,12 +44,22 @@ class OrderDetailsScreen extends StatelessWidget {
                   const OrderStatusWidget(),
                   SliverToBoxAdapter(child: 20.height),
                   SliverToBoxAdapter(
-                    child: OrderDetailsWidget(model: orderModel,offerModel: offerModel,),
+                    child: OrderDetailsWidget(
+                      model: orderModel,
+                      offerModel: offerModel,
+                    ),
                   ),
                   SliverToBoxAdapter(child: 10.height),
-                  PayOrChangeSupplier(orderModel: orderModel, offerModel: offerModel),
+                  PayOrChangeSupplier(
+                    orderModel: orderModel,
+                    offerModel: offerModel,
+                  ),
                   SliverToBoxAdapter(child: 20.height),
                   SliverToBoxAdapter(child: DriverDetails(model: offerModel)),
+                  SliverToBoxAdapter(child: 20.height),
+                  const PickUpImageWidget(),
+                  SliverToBoxAdapter(child: 20.height),
+                  const DeliveryImageWidget(),
                   SliverToBoxAdapter(child: 20.height),
                   const ChatListview(),
                   SliverToBoxAdapter(child: 20.height),
@@ -65,6 +77,3 @@ class OrderDetailsScreen extends StatelessWidget {
     );
   }
 }
-
-
-

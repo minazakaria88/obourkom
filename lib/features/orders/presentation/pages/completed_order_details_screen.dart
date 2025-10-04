@@ -8,6 +8,7 @@ import '../widgets/completed_orders_widgets/invoice_and_evaluation.dart';
 import '../widgets/completed_orders_widgets/order_details.dart';
 import '../widgets/completed_orders_widgets/order_notes_widget.dart';
 import '../widgets/completed_orders_widgets/payment_summary.dart';
+import '../widgets/completed_orders_widgets/photo_widget.dart';
 
 class CompletedOrderDetailsScreen extends StatelessWidget {
   const CompletedOrderDetailsScreen({super.key, required this.model});
@@ -36,6 +37,16 @@ class CompletedOrderDetailsScreen extends StatelessWidget {
                   CompleteOrderDriverWidget(
                     driver: model.driver!,
                     driverRate: model.driverRate ?? '0.0',
+                  ),
+                  20.height,
+                  PhotoWidget(
+                    title: S.of(context).delivered,
+                    image: model.finishedImages ??'',
+                  ),
+                  20.height,
+                  PhotoWidget(
+                    title: S.of(context).received,
+                    image: model.processedImages ??'',
                   ),
                   20.height,
                   CompleteOrderPaymentSummaryWidget(model: model),

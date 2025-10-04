@@ -110,8 +110,14 @@ class OrdersCubit extends Cubit<OrdersState> {
     );
   }
 
-  void getOrders(int page) async {
-    emit(state.copyWith(getOrdersStatus: GetOrdersStatus.loading));
+  void getOrders(int page, [bool refresh = false]) async {
+    emit(
+      state.copyWith(
+        getOrdersStatus: GetOrdersStatus.loading,
+        recentOrdersList: refresh ? [] : null,
+        completedOrdersList: refresh ? [] : null,
+      ),
+    );
     try {
       final result = await orderRepository.getOrders(page);
       final recentOrder = List<OrderDataModel>.from([]);
