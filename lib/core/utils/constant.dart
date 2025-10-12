@@ -1,4 +1,5 @@
 import 'package:logger/logger.dart';
+import 'package:oborkom/features/locations/data/models/location_model.dart';
 
 import '../../generated/assets.dart';
 import '../../generated/l10n.dart';
@@ -7,7 +8,8 @@ enum MapTypes { orderPick, addLocation }
 
 class MapContext {
   final MapTypes type;
-  MapContext({required this.type});
+  final LocationModel ? locationModel;
+  MapContext({required this.type,this.locationModel});
 }
 
 enum PaymentMethods { applePay, card, mada }

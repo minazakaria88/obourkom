@@ -17,6 +17,7 @@ class PickUpImageWidget extends StatelessWidget {
         FindAndChatWithDriverCubit,
         FindAndChatWithDriverState
     >(
+      buildWhen: (previous, current) => previous.offer!=current.offer,
       builder: (context, state) {
         if (state.offer == null ||
             state.offer!.processedImages.isNullOrEmpty()) {

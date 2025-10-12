@@ -17,9 +17,7 @@ class DeliveryImageWidget extends StatelessWidget {
         FindAndChatWithDriverState
     >(
       buildWhen: (previous, current) =>
-      previous.offer != null &&
-          previous.offer!.finishedImages !=
-              current.offer!.finishedImages,
+      previous.offer != current.offer,
       builder: (context, state) {
         if (state.offer == null ||
             state.offer!.finishedImages.isNullOrEmpty()) {

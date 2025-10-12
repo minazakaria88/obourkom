@@ -49,7 +49,7 @@ class ProfileSettingSecondSection extends StatelessWidget {
               title: S.of(context).aboutUs,
               image: Assets.imagesAboutUs,
               onTap: () {
-                context.pushNamed(Routes.aboutUs);
+                context.pushNamed(Routes.aboutUs,arguments: context.read<ProfileCubit>()..getAboutUs());
               },
             ),
             10.height,

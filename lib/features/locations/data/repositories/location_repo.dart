@@ -47,6 +47,25 @@ class LocationRepository {
     }
   }
 
+
+  Future<void> putAddresses(LocationModel model, int id) async {
+    try {
+      final response = await apiHelper.putData(
+        url: '${EndPoints.addresses}/$id',
+        data: model.toJson(),
+      );
+      logger.i(response.data);
+    } catch (e) {
+      logger.e(e);
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
+
+
   Future<void> deleteAddress(int id) async {
     try {
       await apiHelper.deleteData(url: '${EndPoints.addresses}/$id');

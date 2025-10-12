@@ -7,12 +7,12 @@ import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
 
 class LocationItemEditWidget extends StatelessWidget {
-  const LocationItemEditWidget({super.key});
-
+  const LocationItemEditWidget({super.key, required this.onTap});
+ final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: onTap,
       child: Row(
         children: [
           SvgPicture.asset(Assets.imagesEdit),

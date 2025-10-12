@@ -11,6 +11,7 @@ import 'package:oborkom/core/functions/get_places_mark.dart';
 import 'package:oborkom/core/helpers/location_service.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/locations/data/models/location_model.dart';
+import 'package:oborkom/features/locations/data/models/location_type_model.dart';
 import 'package:oborkom/features/locations/data/repositories/location_repo.dart';
 
 import '../../data/models/auto_complete_location_model.dart';
@@ -18,7 +19,8 @@ import '../../data/models/auto_complete_location_model.dart';
 part 'locations_state.dart';
 
 class LocationsCubit extends Cubit<LocationsState> {
-  LocationsCubit({required this.locationRepository}) : super(const LocationsState());
+  LocationsCubit({required this.locationRepository})
+    : super(const LocationsState());
   final LocationRepository locationRepository;
 
   final Completer<GoogleMapController> controller =
@@ -30,31 +32,61 @@ class LocationsCubit extends Cubit<LocationsState> {
   final TextEditingController searchController = TextEditingController();
 
   void changeCameraPosition(LatLng position) async {
+    logger.i('changeCameraPosition');
     controller.future
         .then((value) => value.animateCamera(CameraUpdate.newLatLng(position)))
-        .catchError((e) {});
+        .catchError((e) {
+          logger.e(e);
+        });
   }
 
-  void getUserCurrentLocation() async {
+
+
+  void getUserCurrentLocation([LocationModel? model]) async {
     try {
-      logger.i('getUserCurrentLocation');
-      final userLocation = await determinePosition();
-      final locationData = await getAddressFromLatAndLng(
-        LatLng(userLocation.latitude, userLocation.longitude),
-      );
-      logger.i(userLocation);
-      changeCameraPosition(
-        LatLng(userLocation.latitude, userLocation.longitude),
-      );
-      emit(
-        state.copyWith(
-          locationData: locationData.first,
-          pickedLocation: LatLng(userLocation.latitude, userLocation.longitude),
-        ),
-      );
+      if (model == null) {
+        logger.i('getUserCurrentLocation');
+        final userLocation = await determinePosition();
+        final locationData = await getAddressFromLatAndLng(
+          LatLng(userLocation.latitude, userLocation.longitude),
+        );
+        logger.i(userLocation);
+        changeCameraPosition(
+          LatLng(userLocation.latitude, userLocation.longitude),
+        );
+        emit(
+          state.copyWith(
+            locationData: locationData.first,
+            pickedLocation: LatLng(
+              userLocation.latitude,
+              userLocation.longitude,
+            ),
+          ),
+        );
+      } else {
+        fillData(model);
+      }
     } catch (e) {
       log('getUserCurrentLocation : ${e.toString()}');
     }
+  }
+
+  void fillData(LocationModel model)async {
+    await Future.delayed(const Duration(seconds: 2));
+    final lat = double.tryParse(model.lat ?? '');
+    final lng = double.tryParse(model.lng ?? '');
+
+    final typeEntry = idToLocationType.entries.firstWhere(
+      (e) => e.value == model.type,
+    );
+    changeCameraPosition(LatLng(lat ?? 0.0, lng ?? 0.0));
+    emit(
+      state.copyWith(
+        locationData: Placemark(street: model.name),
+        pickedLocation: LatLng(lat ?? 0.0, lng ?? 0.0),
+        locationType: typeEntry.key,
+      ),
+    );
   }
 
   void pickUserLocation(LatLng position) async {
@@ -100,6 +132,29 @@ class LocationsCubit extends Cubit<LocationsState> {
     try {
       emit(state.copyWith(postLocationState: PostLocationState.loading));
       await locationRepository.postAddresses(model);
+      logger.i(model.toJson());
+      emit(state.copyWith(postLocationState: PostLocationState.success));
+    } on ApiException catch (e) {
+      emit(
+        state.copyWith(
+          postLocationState: PostLocationState.error,
+          errorMessage: e.failure.message,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          postLocationState: PostLocationState.error,
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
+
+  void putLocations(LocationModel model,int id) async {
+    try {
+      emit(state.copyWith(postLocationState: PostLocationState.loading));
+      await locationRepository.putAddresses(model,id);
       logger.i(model.toJson());
       emit(state.copyWith(postLocationState: PostLocationState.success));
     } on ApiException catch (e) {

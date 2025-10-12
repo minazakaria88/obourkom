@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:oborkom/core/api/end_point.dart';
+import 'package:oborkom/features/profile/data/models/about_us_model.dart';
 import '../../../../core/api/api_helper.dart';
 import '../../../../core/api/failure.dart';
 import '../../../../core/utils/constant.dart';
@@ -49,4 +50,18 @@ class ProfileRepository {
       throw ApiException(failure: Failure(message: e.toString()));
     }
   }
+
+  Future<AboutUsModel> getAboutUs(int page)async
+  {
+    try {
+      final response = await apiHelper.getData(url: '${EndPoints.aboutUs}/$page');
+      return AboutUsModel.fromJson(response.data['data']);
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
 }
