@@ -13,7 +13,6 @@ import 'package:oborkom/features/locations/data/models/location_type_model.dart'
 import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.dart';
 import 'package:toastification/toastification.dart';
 import '../../../../../core/utils/app_colors.dart';
-import '../../../../../core/utils/constant.dart';
 import '../../../../../core/widgets/my_button.dart';
 import '../../../../../generated/assets.dart';
 import '../../../../../generated/l10n.dart';
