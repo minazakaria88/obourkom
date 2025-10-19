@@ -82,6 +82,25 @@ class FindAndChatWithDriverRepository {
         .add(message.toJson());
   }
 
+  Future<void> sendMessage2({
+    required String type,
+    required String orderId,
+    required String offerId,
+    required MessageModel message,
+  }) async {
+    try {
+      await apiHelper.postData(
+        url: '${EndPoints.orders}/$orderId/offers/$offerId/chat',
+        data: message.toJson()
+      );
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
   Stream<String> getOrderStatus({required String orderId}) {
     return firestore.doc(orderId).snapshots().map((event) => event['status']);
   }
@@ -174,5 +193,4 @@ class FindAndChatWithDriverRepository {
         .snapshots()
         .map((e) => FirebaseOfferModel.fromJson(e.data()!));
   }
-
 }
