@@ -28,6 +28,10 @@ class EndPoints {
   //faq
   static const faq = 'api/questions';
 
+
+  //aboutUs
+  static const aboutUs='api/pages';
+
   static const cancelOrder = 'cancelOrder';
   static const rateDriver = '/rate';
   static const categories = 'api/categories';

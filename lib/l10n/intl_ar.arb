@@ -165,14 +165,6 @@
     "editProfileSuccessfully" : "تم تعديل الملف الشخصي بنجاح",
     "comment": "تعليق",
     "priceChange" : "تم تغيير السعر ",
-    "back": "عودة"
-
-
-
-
-
-
-
-
-
+    "back": "عودة",
+    "received": "تم الإستلام"
 }

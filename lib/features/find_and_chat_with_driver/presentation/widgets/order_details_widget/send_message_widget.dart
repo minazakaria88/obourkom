@@ -45,7 +45,9 @@ class SendMessageWidget extends StatelessWidget {
             ),
           ),
           suffixIcon: IconButton(
-            onPressed: () {},
+            onPressed: () {
+
+            },
             icon: SvgPicture.asset(Assets.imagesMicrophoneIcon),
           ),
           controller: cubit.messageController,

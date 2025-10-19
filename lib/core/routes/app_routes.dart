@@ -104,7 +104,7 @@ class AppRoues {
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
             create: (context) =>
-                getIt<LocationsCubit>()..getUserCurrentLocation(),
+                getIt<LocationsCubit>()..getUserCurrentLocation(arguments.locationModel),
             child: PickOrderLocationScreen(mapContext: arguments as MapContext),
           ),
         );
@@ -138,7 +138,10 @@ class AppRoues {
           ),
         );
       case Routes.aboutUs:
-        return MaterialPageRoute(builder: (context) => const AboutUsScreen());
+        final cubit = setting.arguments as ProfileCubit;
+        return MaterialPageRoute(builder: (context) => BlocProvider.value(
+            value:cubit..getAboutUs() ,
+            child: const AboutUsScreen()));
       case Routes.termsAndConditions:
         return MaterialPageRoute(
           builder: (context) => const TermsAndConditionsScreen(),

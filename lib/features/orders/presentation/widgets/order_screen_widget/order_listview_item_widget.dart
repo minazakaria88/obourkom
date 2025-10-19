@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
@@ -10,6 +11,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../../find_and_chat_with_driver/presentation/widgets/finding_driver_widgets/order_details_item_widget.dart';
 import '../../../../profile/presentation/widgets/profile_screen_widgets/background_profile_widget.dart';
 import '../../../data/models/order_adapter_model.dart';
+import '../../cubit/orders_cubit.dart';
 
 class OrderListviewItemWidget extends StatelessWidget {
   const OrderListviewItemWidget({super.key, required this.model});
@@ -26,6 +28,9 @@ class OrderListviewItemWidget extends StatelessWidget {
             Routes.findDriver,
             arguments: OrderAdapterModel.fromOrderModel(model),
           );
+          if(context.mounted) {
+            context.read<OrdersCubit>().getOrders(1,true);
+          }
         } else {
           if (model.offers == null || model.offers!.isEmpty) {
             return;
@@ -33,7 +38,7 @@ class OrderListviewItemWidget extends StatelessWidget {
           Offer offer = model.offers!
               .where((e) => e.id == model.acceptedOfferId)
               .first;
-          await context.pushNamed(
+           context.pushNamed(
             Routes.orderDetails,
             arguments: {
               'order': OrderAdapterModel.fromOrderModel(model),
@@ -48,9 +53,7 @@ class OrderListviewItemWidget extends StatelessWidget {
             },
           );
         }
-        if(context.mounted) {
-          //context.read<OrdersCubit>().getOrders(1);
-        }
+
       },
       child: BackgroundProfileWidget(
         child: Padding(

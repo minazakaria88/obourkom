@@ -248,6 +248,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "priceChange": MessageLookupByLibrary.simpleMessage("تم تغيير السعر "),
     "profile": MessageLookupByLibrary.simpleMessage("حسابي "),
     "profileLanguage": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "received": MessageLookupByLibrary.simpleMessage("تم الإستلام"),
     "register": MessageLookupByLibrary.simpleMessage("تسجيل"),
     "registerWithUs": MessageLookupByLibrary.simpleMessage(
       "سجل معنا وادخل عالم من الراحة مع عبور كوم",

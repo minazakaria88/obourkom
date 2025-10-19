@@ -98,6 +98,8 @@ class _PickOrderLocationScreenState extends State<PickOrderLocationScreen> {
                         pickedLocation: state.pickedLocation,
                       )
                     : AddNewLocationWidget(
+                  edit:  widget.mapContext.locationModel != null,
+                        id: widget.mapContext.locationModel?.id,
                         location: state.locationData,
                         pickedLocation: state.pickedLocation,
                       ),

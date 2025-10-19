@@ -10,6 +10,8 @@ class FirebaseOfferModel {
   String? status;
   String ?createdAt;
   String ?updatedAt;
+  String ?processedImages;
+  String ? finishedImages;
 
   FirebaseOfferModel({
     this.id,
@@ -23,6 +25,8 @@ class FirebaseOfferModel {
     this.status,
     this.createdAt,
     this.updatedAt,
+    this.processedImages,
+    this.finishedImages
   });
 
   factory FirebaseOfferModel.fromJson(Map<String, dynamic> json) {
@@ -38,6 +42,8 @@ class FirebaseOfferModel {
       status: json['status'],
       createdAt: json['created_at'] ,
       updatedAt: json['updated_at'],
+      processedImages: json['processed_images'],
+      finishedImages: json['finished_images'],
     );
   }
 

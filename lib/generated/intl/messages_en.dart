@@ -253,6 +253,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "priceChange": MessageLookupByLibrary.simpleMessage("Price Change"),
     "profile": MessageLookupByLibrary.simpleMessage("Profile"),
     "profileLanguage": MessageLookupByLibrary.simpleMessage("Language"),
+    "received": MessageLookupByLibrary.simpleMessage("Received"),
     "register": MessageLookupByLibrary.simpleMessage("Register"),
     "registerWithUs": MessageLookupByLibrary.simpleMessage(
       "Register with us and enter a world of comfort with Obourkom",

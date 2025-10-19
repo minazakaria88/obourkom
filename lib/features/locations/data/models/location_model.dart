@@ -31,6 +31,7 @@ class LocationModel {
     data['location_latitude'] = lat;
     data['name'] = name;
     data['type'] = type;
+    data['type_label']=typeLabel;
     return data;
   }
 }

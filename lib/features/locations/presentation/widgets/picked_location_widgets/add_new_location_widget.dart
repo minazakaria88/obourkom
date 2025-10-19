@@ -23,9 +23,13 @@ class AddNewLocationWidget extends StatelessWidget {
     super.key,
     required this.location,
     required this.pickedLocation,
+    this.edit = false,
+    this.id,
   });
   final Placemark? location;
   final LatLng? pickedLocation;
+  final bool edit;
+  final int ? id;
 
   @override
   Widget build(BuildContext context) {
@@ -90,12 +94,20 @@ class AddNewLocationWidget extends StatelessWidget {
                     );
                     context.pop(true);
                   }
+                  if(state.isPostLocationsError)
+                    {
+                      showToastification(
+                        message: state.errorMessage ?? '',
+                        context: context,
+                        type: ToastificationType.error,
+                      );
+                    }
                 },
                 builder: (context, state) {
                   return state.isPostLocationsLoading
                       ? const LoaderWidget()
                       : MyButton(
-                          title: S.of(context).save,
+                          title: edit ? S.of(context).edit : S.of(context).save,
                           onTap: () {
                             if (cubit.formKey.currentState!.validate()) {
                               LocationModel model = LocationModel(
@@ -103,8 +115,11 @@ class AddNewLocationWidget extends StatelessWidget {
                                 type: idToLocationType[state.locationType],
                                 lat: pickedLocation?.latitude.toString(),
                                 lng: pickedLocation?.longitude.toString(),
+                                typeLabel: cubit.nameController.text
                               );
-                              cubit.postLocations(model);
+                              edit
+                                  ? cubit.putLocations(model, id ?? 0)
+                                  : cubit.postLocations(model);
                               //context.pop();
                             }
                           },

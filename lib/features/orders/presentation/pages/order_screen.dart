@@ -91,7 +91,9 @@ class _OrderScreenState extends State<OrderScreen> {
                   state.completedOrdersList == null) {
                 return const Expanded(child: ShimmerListview());
               }
-              if (recentOrders.isEmpty && selectedIndex == 0) {
+              if (recentOrders.isEmpty &&
+                  selectedIndex == 0 &&
+                  state.getOrdersStatus == GetOrdersStatus.success) {
                 return Expanded(
                   child: Center(
                     child: Text(
@@ -101,7 +103,9 @@ class _OrderScreenState extends State<OrderScreen> {
                   ),
                 );
               }
-              if (completedOrders.isEmpty && selectedIndex == 1) {
+              if (completedOrders.isEmpty &&
+                  selectedIndex == 1 &&
+                  state.getOrdersStatus == GetOrdersStatus.success) {
                 return Expanded(
                   child: Center(
                     child: Text(
@@ -115,7 +119,7 @@ class _OrderScreenState extends State<OrderScreen> {
                 child: selectedIndex == 0
                     ? RefreshIndicator(
                         onRefresh: () async {
-                          context.read<OrdersCubit>().getOrders(1);
+                          context.read<OrdersCubit>().getOrders(1,true);
                         },
                         child: RecentOrderList(
                           selectedIndex: selectedIndex,

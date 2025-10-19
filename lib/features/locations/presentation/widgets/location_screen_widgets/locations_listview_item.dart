@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:oborkom/core/helpers/extension.dart';
+import 'package:oborkom/core/routes/routes.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/locations/data/models/location_model.dart';
 import '../../../../../core/utils/app_colors.dart';
@@ -78,7 +79,25 @@ class LocationListviewItem extends StatelessWidget {
                           ),
                         ),
                       ),
-                if (model.type != 'home') const LocationItemEditWidget(),
+                if (model.type != 'home')
+                  LocationItemEditWidget(
+                    onTap: () async {
+                      // how to know that edit the  location is success if the result is true
+                      final result = await context.pushNamed(
+                        Routes.pickLocation,
+                        arguments: MapContext(
+                          type: MapTypes.addLocation,
+                          locationModel: model,
+                        ),
+                      );
+                      if (result == true) {
+                        if (context.mounted) {
+                          //so get the new locations
+                          context.read<LocationsCubit>().getLocations();
+                        }
+                      }
+                    },
+                  ),
                 LocationItemDeleteWidget(
                   onDelete: () {
                     context.read<LocationsCubit>().deleteLocation(model.id!);

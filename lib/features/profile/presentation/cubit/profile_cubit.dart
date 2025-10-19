@@ -8,6 +8,7 @@ import 'package:oborkom/features/profile/data/repositories/profile_repo.dart';
 import '../../../../core/api/failure.dart';
 import '../../../../core/helpers/cache_helper.dart';
 import '../../../../core/utils/constant.dart';
+import '../../data/models/about_us_model.dart';
 import '../../data/models/user_model.dart';
 
 part 'profile_state.dart';
@@ -117,6 +118,28 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(
         state.copyWith(
           getFaqStatus: GetFaqStatus.failure,
+          errorMessage: e.toString(),
+        ),
+      );
+    }
+  }
+
+  void getAboutUs() async {
+    try {
+      emit(state.copyWith(getAboutUs: GetAboutUs.loading));
+      final result = await profileRepository.getAboutUs(3);
+      emit(state.copyWith(aboutUsModel: result, getAboutUs: GetAboutUs.success));
+    } on ApiException catch (e) {
+      emit(
+        state.copyWith(
+          getAboutUs: GetAboutUs.failure,
+          errorMessage: e.failure.message,
+        ),
+      );
+    } catch (e) {
+      emit(
+        state.copyWith(
+          getAboutUs: GetAboutUs.failure,
           errorMessage: e.toString(),
         ),
       );

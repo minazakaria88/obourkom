@@ -1323,6 +1323,11 @@ class S {
   String get back {
     return Intl.message('Back', name: 'back', desc: '', args: []);
   }
+
+  /// `Received`
+  String get received {
+    return Intl.message('Received', name: 'received', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
