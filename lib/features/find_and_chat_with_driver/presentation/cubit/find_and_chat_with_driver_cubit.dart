@@ -2,11 +2,14 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:oborkom/core/api/failure.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/firebase_offer_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/message_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/repositories/find_and_chat_repo.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:record/record.dart';
 import '../../../../core/helpers/cache_helper.dart';
 import '../../../../core/utils/constant.dart';
 part 'find_and_chat_with_driver_state.dart';
@@ -22,6 +25,50 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
   final FindAndChatWithDriverRepository findAndChatWithDriverRepository;
 
   Timer? _timer;
+
+  final AudioRecorder audioRecorder = AudioRecorder();
+  final AudioPlayer audioPlayer = AudioPlayer();
+
+  void startRecording() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final path =
+        '${directory.path}/${DateTime.now().millisecondsSinceEpoch}.m4a';
+    if (await audioRecorder.hasPermission()) {
+      await audioRecorder.start(const RecordConfig(), path: path);
+    }
+  }
+
+  void stopRecording({
+    required String driverId,
+    required String orderId,
+    String? message,
+  }) async {
+    final path = await audioRecorder.stop();
+    if (path != null) {
+      sendMessage(
+        driverId: driverId,
+        orderId: orderId,
+        message: message,
+        voiceMessage: path,
+      );
+    }
+  }
+
+  StreamSubscription? audioStream;
+  void playAudio({required String path}) async {
+    audioStream?.cancel();
+    await audioPlayer.setUrl(path);
+    final duration = audioPlayer.duration;
+   audioStream = audioPlayer.bufferedPositionStream.listen((duration){
+      final bufferedDuration = audioPlayer.bufferedPosition;
+    });
+    await audioPlayer.play();
+  }
+
+
+  void stopAudio() async {
+    await audioPlayer.stop();
+  }
 
   TextEditingController messageController = TextEditingController();
   void startTimer() {
@@ -96,7 +143,8 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
   void sendMessage({
     required String driverId,
     required String orderId,
-    required String message,
+    String? message,
+    String? voiceMessage,
   }) async {
     final String customerId = CacheHelper.getData(
       key: CacheHelperKeys.customerId,
@@ -106,6 +154,7 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
       dateTime: DateTime.now(),
       senderId: customerId,
       receiverId: driverId,
+      type: voiceMessage == null ? 'text' : 'voice',
     );
     try {
       logger.d(messageModel);
@@ -247,18 +296,16 @@ class FindAndChatWithDriverCubit extends Cubit<FindAndChatWithDriverState> {
           .listenForMyOffer(orderId, offerId)
           .listen(
             (data) {
-          emit(state.copyWith(offer: data));
-        },
-        onError: (e) {
-          state.copyWith(errorMessage: e.toString());
-        },
-      );
+              emit(state.copyWith(offer: data));
+            },
+            onError: (e) {
+              state.copyWith(errorMessage: e.toString());
+            },
+          );
     } catch (e) {
       emit(state.copyWith(errorMessage: e.toString()));
     }
   }
-
-
 
   @override
   Future<void> close() {
