@@ -6,16 +6,24 @@ class MessageModel {
   String? receiverId;
   DateTime? dateTime;
   String? voicePath;
-  String ? type;
+  String? type;
 
-  MessageModel({this.message, this.senderId, this.receiverId, this.dateTime,this.type});
+  MessageModel({
+    this.message,
+    this.senderId,
+    this.receiverId,
+    this.dateTime,
+    this.type,
+    this.voicePath,
+  });
 
   MessageModel.fromJson(Map<String, dynamic> json) {
     message = json['message'];
     senderId = json['senderId'];
     receiverId = json['receiverId'];
     dateTime = DateTime.parse(json['created_at']);
-    type=json['type'];
+    type = json['type'];
+    voicePath = json['voice-path'];
   }
 
   dynamic toJson() async {
@@ -24,7 +32,7 @@ class MessageModel {
     final data = FormData.fromMap({
       'senderId': senderId,
       'receiverId': receiverId,
-      'type':type,
+      'type': type,
       'created_at': dateTime.toString(),
       if (message != null) 'message': message,
       if (voicePath != null)
