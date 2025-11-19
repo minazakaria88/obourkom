@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:oborkom/core/api/end_point.dart';
+import 'package:oborkom/core/network/end_point.dart';
 import 'package:oborkom/features/profile/data/models/about_us_model.dart';
-import '../../../../core/api/api_helper.dart';
-import '../../../../core/api/failure.dart';
+import '../../../../core/network/api_helper.dart';
+import '../../../../core/network/failure.dart';
 import '../../../../core/utils/constant.dart';
 import '../../../otp/data/models/user_model.dart';
 import '../models/faq_model.dart';

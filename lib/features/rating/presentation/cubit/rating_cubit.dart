@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:oborkom/features/rating/data/repositories/rating_repo.dart';
 
-import '../../../../core/api/failure.dart';
+import '../../../../core/network/failure.dart';
 
 part 'rating_state.dart';
 

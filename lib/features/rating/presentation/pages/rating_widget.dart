@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:oborkom/core/functions/show_snack_bar.dart';
+import 'package:oborkom/core/helpers/show_snack_bar.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/widgets/my_text_form_field.dart';
 import 'package:oborkom/core/widgets/validate_widget.dart';

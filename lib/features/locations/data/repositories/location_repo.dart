@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:oborkom/core/api/api_helper.dart';
-import 'package:oborkom/core/api/end_point.dart';
-import 'package:oborkom/core/api/failure.dart';
+import 'package:oborkom/core/network/api_helper.dart';
+import 'package:oborkom/core/network/end_point.dart';
+import 'package:oborkom/core/network/failure.dart';
 import 'package:oborkom/core/helpers/location_service.dart';
 import 'package:oborkom/features/locations/data/models/auto_complete_location_model.dart';
 import 'package:oborkom/features/locations/data/models/details_location_model.dart';

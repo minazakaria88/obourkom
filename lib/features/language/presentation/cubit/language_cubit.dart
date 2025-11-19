@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:oborkom/core/helpers/cache_helper.dart';
+import 'package:oborkom/core/storage/cache_helper.dart';
 
-import '../../../../core/api/api_helper.dart';
+import '../../../../core/network/api_helper.dart';
 import '../../../../injection.dart';
 part 'language_state.dart';
 

@@ -6,7 +6,7 @@ import 'package:oborkom/features/locations/presentation/cubit/locations_cubit.da
 import 'package:oborkom/features/notification/data/repositories/notification_repo.dart';
 import 'package:oborkom/features/otp/data/repositories/otp_repo.dart';
 
-import 'core/api/api_helper.dart';
+import 'core/network/api_helper.dart';
 import 'core/helpers/location_service.dart';
 import 'features/find_and_chat_with_driver/data/repositories/find_and_chat_repo.dart';
 import 'features/find_and_chat_with_driver/presentation/cubit/find_and_chat_with_driver_cubit.dart';

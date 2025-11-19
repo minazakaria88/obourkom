@@ -1,12 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:oborkom/core/api/api_helper.dart';
+import 'package:oborkom/core/network/api_helper.dart';
 import 'package:oborkom/features/main/data/models/car_model.dart';
 import 'package:oborkom/features/main/data/models/categories_model.dart';
 import 'package:oborkom/features/main/data/models/slider_model.dart';
 import 'package:oborkom/features/main/data/models/truck_size.dart';
 
-import '../../../../core/api/end_point.dart';
-import '../../../../core/api/failure.dart';
+import '../../../../core/network/end_point.dart';
+import '../../../../core/network/failure.dart';
 import '../../../../core/utils/constant.dart';
 
 class MainRepository {

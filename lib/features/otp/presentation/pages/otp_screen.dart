@@ -1,13 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:oborkom/core/functions/show_snack_bar.dart';
+import 'package:oborkom/core/helpers/show_snack_bar.dart';
 import 'package:oborkom/core/helpers/extension.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/core/widgets/loading_widget.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import 'package:toastification/toastification.dart';
-import '../../../../core/functions/hide_keyboard.dart';
+import '../../../../core/helpers/hide_keyboard.dart';
 import '../../../../core/routes/routes.dart';
 import '../../../../core/utils/app_colors.dart';
 import '../../../../generated/l10n.dart';

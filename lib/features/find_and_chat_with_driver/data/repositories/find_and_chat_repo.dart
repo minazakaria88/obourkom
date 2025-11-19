@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
-import 'package:oborkom/core/api/end_point.dart';
-import 'package:oborkom/core/api/failure.dart';
+import 'package:oborkom/core/network/end_point.dart';
+import 'package:oborkom/core/network/failure.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/message_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
-import '../../../../core/api/api_helper.dart';
+import '../../../../core/network/api_helper.dart';
 import '../models/firebase_offer_model.dart';
 
 class FindAndChatWithDriverRepository {

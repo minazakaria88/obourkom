@@ -3,14 +3,14 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:oborkom/core/api/failure.dart';
+import 'package:oborkom/core/network/failure.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/firebase_offer_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/message_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/models/offer_model.dart';
 import 'package:oborkom/features/find_and_chat_with_driver/data/repositories/find_and_chat_repo.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:record/record.dart';
-import '../../../../core/helpers/cache_helper.dart';
+import '../../../../core/storage/cache_helper.dart';
 import '../../../../core/utils/constant.dart';
 part 'find_and_chat_with_driver_state.dart';
 

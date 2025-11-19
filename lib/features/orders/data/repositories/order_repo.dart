@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:oborkom/core/api/api_helper.dart';
+import 'package:oborkom/core/network/api_helper.dart';
 import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/orders/data/models/order_model.dart';
 import 'package:oborkom/features/orders/data/models/submit_order_model.dart';
 
-import '../../../../core/api/end_point.dart';
-import '../../../../core/api/failure.dart';
+import '../../../../core/network/end_point.dart';
+import '../../../../core/network/failure.dart';
 
 class OrderRepository {
   final ApiHelper apiHelper;

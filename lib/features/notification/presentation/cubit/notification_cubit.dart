@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:oborkom/core/api/failure.dart';
+import 'package:oborkom/core/network/failure.dart';
 import 'package:oborkom/features/notification/data/models/notification_model.dart';
 import 'package:oborkom/features/notification/data/repositories/notification_repo.dart';
 

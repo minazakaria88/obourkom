@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 
-import '../../../../core/api/api_helper.dart';
-import '../../../../core/api/end_point.dart';
-import '../../../../core/api/failure.dart';
+import '../../../../core/network/api_helper.dart';
+import '../../../../core/network/end_point.dart';
+import '../../../../core/network/failure.dart';
 import '../../../../core/utils/constant.dart';
 
 class RatingRepository {
