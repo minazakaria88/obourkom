@@ -10,18 +10,9 @@ class LoginRepository {
   LoginRepository({required this.apiHelper});
 
   Future login({required String phoneNumber}) async {
-    try {
-      final response = await apiHelper.postData(
+      await apiHelper.postData(
         url: EndPoints.login,
         data: {'phone': phoneNumber},
       );
-      logger.d(response.data);
-    } catch (e) {
-      logger.e(e);
-      if (e is DioException) {
-        throw ApiException(failure: ServerFailure.serverError(e));
-      }
-      throw ApiException(failure: Failure(message: e.toString()));
-    }
   }
 }

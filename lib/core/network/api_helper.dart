@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
-import '../storage/cache_helper.dart';
+import 'package:flutter/foundation.dart';
+import 'auth_interceptor.dart';
 import 'end_point.dart';
+import 'failure.dart';
 
 class ApiHelper {
   static Dio? dio;
@@ -15,19 +17,21 @@ class ApiHelper {
       ..options.sendTimeout = timeoutDuration
       ..options.receiveDataWhenStatusError = true;
     addHeaders();
+    dio?.interceptors.addAll([
+      AuthInterceptor(),
+      if (kDebugMode) LogInterceptor(requestBody: true, requestHeader: true),
+    ]);
   }
 
   static void addHeaders() async {
     dio?.options.headers = {
       'Accept': 'application/json',
-      'Authorization':
-          'Bearer ${await CacheHelper.getSecureString(CacheHelperKeys.token)}',
     };
   }
 
-  void setTokenIntoHeadersAfterLogin(String token) {
-    dio?.options.headers['Authorization'] = 'Bearer $token';
-  }
+  // void setTokenIntoHeadersAfterLogin(String token) {
+  //   dio?.options.headers['Authorization'] = 'Bearer $token';
+  // }
 
   void setLanguageIntoHeaders(String lang) {
     dio?.options.headers['lang'] = lang;
@@ -37,18 +41,46 @@ class ApiHelper {
     required String url,
     Map<String, dynamic>? queryParameters,
   }) async {
-    return await dio!.get(url, queryParameters: queryParameters);
+    try {
+      return await dio!.get(url, queryParameters: queryParameters);
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
   }
 
   Future<Response> postData({required String url, dynamic data}) async {
-    return await dio!.post(url, data: data);
+    try {
+      return await dio!.post(url, data: data);
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
   }
 
   Future<Response> putData({required String url, dynamic data}) async {
-    return await dio!.put(url, data: data);
+    try {
+      return await dio!.put(url, data: data);
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
   }
 
   Future<Response> deleteData({required String url}) async {
-    return await dio!.delete(url);
+    try {
+      return await dio!.delete(url);
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
   }
 }

@@ -3,9 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:oborkom/core/network/failure.dart';
 import 'package:oborkom/features/login/data/repositories/login_repo.dart';
-
 import '../../../../core/utils/constant.dart';
-
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
