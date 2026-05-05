@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'auth_interceptor.dart';
 import 'end_point.dart';
 import 'failure.dart';
@@ -19,7 +20,7 @@ class ApiHelper {
     addHeaders();
     dio?.interceptors.addAll([
       AuthInterceptor(),
-      if (kDebugMode) LogInterceptor(requestBody: true, requestHeader: true),
+      if (kDebugMode) PrettyDioLogger(requestBody: true, requestHeader: true),
     ]);
   }
 
@@ -28,15 +29,6 @@ class ApiHelper {
       'Accept': 'application/json',
     };
   }
-
-  // void setTokenIntoHeadersAfterLogin(String token) {
-  //   dio?.options.headers['Authorization'] = 'Bearer $token';
-  // }
-
-  void setLanguageIntoHeaders(String lang) {
-    dio?.options.headers['lang'] = lang;
-  }
-
   Future<Response> getData({
     required String url,
     Map<String, dynamic>? queryParameters,

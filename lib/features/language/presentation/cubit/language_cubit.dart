@@ -18,7 +18,7 @@ class LanguageCubit extends Cubit<LanguageState> {
 
   void changeLanguage(String languageCode) async {
     await CacheHelper.saveData(key: CacheHelperKeys.lang, value: languageCode);
-    getIt<ApiHelper>().setLanguageIntoHeaders(languageCode);
+    //getIt<ApiHelper>().setLanguageIntoHeaders(languageCode);
     emit(LanguageChanged(languageCode: languageCode));
   }
 }

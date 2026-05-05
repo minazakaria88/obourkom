@@ -7,6 +7,7 @@ class AuthInterceptor extends Interceptor {
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.headers['Authorization'] =
         'Bearer ${CacheHelper.getData(key: CacheHelperKeys.token)}';
+    options.headers['lang'] = CacheHelper.getData(key: CacheHelperKeys.lang);
     super.onRequest(options, handler);
   }
 }
