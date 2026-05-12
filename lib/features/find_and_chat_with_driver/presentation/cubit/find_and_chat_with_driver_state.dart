@@ -11,19 +11,19 @@ enum RejectOfferStatus { loading, success, failure }
 enum ChangeOrderStatus { loading, success, failure }
 
 class FindAndChatWithDriverState extends Equatable {
-final  Duration? orderTimerDuration;
-final List<OfferModel>? offers;
-final List<MessageModel>? messages;
-final String? errorMessage;
-final  String? orderStatus;
-final UploadDeliveryImageStatus? uploadDeliveryImageStatus;
-final  UploadPickImageStatus? uploadPickImageStatus;
-final  AcceptOfferStatus? acceptOfferStatus;
-final  RejectOfferStatus? rejectOfferStatus;
-final  String? selectedOfferId;
-final  ChangeOrderStatus? changeOrderStatus;
-final OfferModel ? selectedOffer;
-final FirebaseOfferModel ? offer;
+  final Duration? orderTimerDuration;
+  final List<OfferModel>? offers;
+  final List<MessageModel>? messages;
+  final String? errorMessage;
+  final String? orderStatus;
+  final UploadDeliveryImageStatus? uploadDeliveryImageStatus;
+  final UploadPickImageStatus? uploadPickImageStatus;
+  final AcceptOfferStatus? acceptOfferStatus;
+  final RejectOfferStatus? rejectOfferStatus;
+  final String? selectedOfferId;
+  final ChangeOrderStatus? changeOrderStatus;
+  final OfferModel? selectedOffer;
+  final FirebaseOfferModel? offer;
 
   const FindAndChatWithDriverState({
     this.orderTimerDuration,
@@ -38,7 +38,7 @@ final FirebaseOfferModel ? offer;
     this.rejectOfferStatus,
     this.changeOrderStatus,
     this.selectedOffer,
-    this.offer
+    this.offer,
   });
 
   FindAndChatWithDriverState copyWith({
@@ -54,7 +54,7 @@ final FirebaseOfferModel ? offer;
     RejectOfferStatus? rejectOfferStatus,
     ChangeOrderStatus? changeOrderStatus,
     OfferModel? selectedOffer,
-    FirebaseOfferModel? offer
+    FirebaseOfferModel? offer,
   }) {
     return FindAndChatWithDriverState(
       orderTimerDuration: orderTimerDuration ?? this.orderTimerDuration,
@@ -71,7 +71,7 @@ final FirebaseOfferModel ? offer;
       rejectOfferStatus: rejectOfferStatus ?? this.rejectOfferStatus,
       changeOrderStatus: changeOrderStatus ?? this.changeOrderStatus,
       selectedOffer: selectedOffer ?? this.selectedOffer,
-      offer: offer ?? this.offer
+      offer: offer ?? this.offer,
     );
   }
 

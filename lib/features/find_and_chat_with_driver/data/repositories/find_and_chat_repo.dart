@@ -33,25 +33,16 @@ class FindAndChatWithDriverRepository {
     required String offerId,
     dynamic data,
   }) async {
-    try {
       await apiHelper.putData(
         url: '${EndPoints.orders}/$orderId/offers/$offerId',
         data: data,
       );
-    } catch (e) {
-      logger.e(e);
-      if (e is DioException) {
-        throw ApiException(failure: ServerFailure.serverError(e));
-      }
-      throw ApiException(failure: Failure(message: e.toString()));
-    }
   }
 
   Stream<List<MessageModel>> getMessages({
     required String orderId,
     required String driverId,
   }) {
-    logger.d('${EndPoints.orders}/$orderId/offers/$driverId/chat');
     return firestore
         .doc(orderId)
         .collection('chat')

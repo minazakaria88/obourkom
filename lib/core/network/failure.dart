@@ -9,6 +9,8 @@ class ApiException implements Exception {
   Failure failure;
 
   ApiException({required this.failure});
+  @override
+  String toString() => failure.message;
 }
 
 class Failure {

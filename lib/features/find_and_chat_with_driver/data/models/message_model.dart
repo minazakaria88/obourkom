@@ -27,8 +27,6 @@ class MessageModel {
   }
 
   dynamic toJson() async {
-    // final Map<String, dynamic> data = <String, dynamic>{};
-
     final data = FormData.fromMap({
       'senderId': senderId,
       'receiverId': receiverId,
@@ -38,10 +36,6 @@ class MessageModel {
       if (voicePath != null)
         'voice-path': await MultipartFile.fromFile(voicePath ?? ''),
     });
-    // data['message'] = message;
-    // data['senderId'] = senderId;
-    // data['receiverId'] = receiverId;
-    // data['created_at'] = dateTime.toString();
     return data;
   }
 }

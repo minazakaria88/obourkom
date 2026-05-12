@@ -74,14 +74,6 @@ class ProfileCubit extends Cubit<ProfileState> {
           userModel: CachedUserModel.fromUserModel(result),
         ),
       );
-    } on ApiException catch (e) {
-      emit(
-        state.copyWith(
-          editProfileStatus: EditProfileStatus.failure,
-          errorMessage: e.failure.message,
-          image: '',
-        ),
-      );
     } catch (e) {
       emit(
         state.copyWith(
@@ -107,13 +99,6 @@ class ProfileCubit extends Cubit<ProfileState> {
       emit(state.copyWith(getFaqStatus: GetFaqStatus.loading));
       final result = await profileRepository.getFaq();
       emit(state.copyWith(faqs: result, getFaqStatus: GetFaqStatus.success));
-    } on ApiException catch (e) {
-      emit(
-        state.copyWith(
-          getFaqStatus: GetFaqStatus.failure,
-          errorMessage: e.failure.message,
-        ),
-      );
     } catch (e) {
       emit(
         state.copyWith(
