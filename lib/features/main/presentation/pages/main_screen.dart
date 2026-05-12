@@ -43,12 +43,16 @@ class _MainScreenState extends State<MainScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      '${S.of(context).welcome}  ${CacheHelper.getData(key: CacheHelperKeys.name) ?? 'Guest'} !',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: AppColors.mainColor,
+                    BlocBuilder<MainCubit,MainState>(
+                      buildWhen: (previous, current) =>
+                          previous.user != current.user,
+                      builder: (context, state) => Text(
+                        '${S.of(context).welcome}  ${state.user?.name } !',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.mainColor,
+                        ),
                       ),
                     ),
                     5.height,

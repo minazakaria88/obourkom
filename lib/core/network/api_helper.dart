@@ -25,10 +25,9 @@ class ApiHelper {
   }
 
   static void addHeaders() async {
-    dio?.options.headers = {
-      'Accept': 'application/json',
-    };
+    dio?.options.headers = {'Accept': 'application/json'};
   }
+
   Future<Response> getData({
     required String url,
     Map<String, dynamic>? queryParameters,
@@ -68,6 +67,21 @@ class ApiHelper {
   Future<Response> deleteData({required String url}) async {
     try {
       return await dio!.delete(url);
+    } catch (e) {
+      if (e is DioException) {
+        throw ApiException(failure: ServerFailure.serverError(e));
+      }
+      throw ApiException(failure: Failure(message: e.toString()));
+    }
+  }
+
+  Future<Response> postMultipartData({
+    required String url,
+    required Map<String, dynamic> data,
+    Function(int, int)? onSendProgress,
+  }) async {
+    try {
+      return await dio!.post(url, data: data, onSendProgress: onSendProgress);
     } catch (e) {
       if (e is DioException) {
         throw ApiException(failure: ServerFailure.serverError(e));

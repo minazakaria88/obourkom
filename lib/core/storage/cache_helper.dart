@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:oborkom/features/profile/data/models/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -57,40 +59,21 @@ class CacheHelper {
   }
 
   static Future<void> saveUser(User model) async {
-    await CacheHelper.saveData(
-      key: CacheHelperKeys.customerId,
-      value: model.id,
-    );
-    await CacheHelper.saveData(key: CacheHelperKeys.name, value: model.name);
-    await CacheHelper.saveData(key: CacheHelperKeys.email, value: model.email);
-    await CacheHelper.saveData(
-      key: CacheHelperKeys.phone,
-      value: model.phone?.substring(4),
-    );
-    await CacheHelper.saveData(key: CacheHelperKeys.image, value: model.avatar);
+    await CacheHelper.saveData(key: CacheHelperKeys.user, value: jsonEncode(model.toJson()));
   }
 
   static Future<CachedUserModel> getUser() async {
-    final name = await CacheHelper.getData(key: CacheHelperKeys.name);
-    final email = await CacheHelper.getData(key: CacheHelperKeys.email);
-    final phone = await CacheHelper.getData(key: CacheHelperKeys.phone);
-    final image = await CacheHelper.getData(key: CacheHelperKeys.image);
-    return CachedUserModel(
-      name: name,
-      email: email,
-      phone: phone,
-      image: image,
-    );
+    final result = await CacheHelper.getData(key: CacheHelperKeys.user);
+    if (result == null) return CachedUserModel();
+    final user=User.fromJson(jsonDecode(result!));
+    return CachedUserModel.fromUserModel(user);
   }
 }
 
 class CacheHelperKeys {
+  static const String user = 'user';
   static const String token = 'token';
   static const String lang = 'lang';
   static const locationEnabled = 'locationEnabled';
-  static const name = 'name';
-  static const email = 'email';
-  static const phone = 'phone';
-  static const image = 'image';
   static const customerId = 'customerId';
 }

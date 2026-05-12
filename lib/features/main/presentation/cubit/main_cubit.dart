@@ -8,6 +8,7 @@ import 'package:oborkom/core/storage/cache_helper.dart';
 import 'package:oborkom/features/main/data/models/slider_model.dart';
 import 'package:oborkom/features/main/data/models/truck_size.dart';
 import 'package:oborkom/features/main/data/repositories/main_repo.dart';
+import 'package:oborkom/features/profile/data/models/user_model.dart';
 import '../../../../core/network/failure.dart';
 import '../../../../core/helpers/determine_position.dart';
 import '../../../../core/helpers/get_places_mark.dart';
@@ -18,6 +19,12 @@ part 'main_state.dart';
 class MainCubit extends Cubit<MainState> {
   MainCubit({required this.mainRepository}) : super(const MainState(location: ''));
   final MainRepository mainRepository;
+
+
+  Future<void> loadUser() async {
+    final user = await CacheHelper.getUser();
+    emit(state.copyWith(user: user));
+  }
 
   void getUserCurrentLocation() async {
     try {

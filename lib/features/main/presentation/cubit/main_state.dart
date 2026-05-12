@@ -16,6 +16,7 @@ class MainState extends Equatable {
  final SliderModel? sliderModel;
  final List<TruckSizeModel>? cars;
  final  GetCarsState? getCarsState;
+ final CachedUserModel? user;
 
   const MainState({
     this.getLocationState,
@@ -25,6 +26,7 @@ class MainState extends Equatable {
     this.sliderModel,
     this.cars,
     this.getCarsState,
+    this.user
   });
 
   MainState copyWith({
@@ -35,6 +37,7 @@ class MainState extends Equatable {
     SliderModel? sliderModel,
     List<TruckSizeModel>? cars,
     GetCarsState? getCarsState,
+    CachedUserModel? user
   }) {
     return MainState(
       getLocationState: getLocationState ?? this.getLocationState,
@@ -44,6 +47,7 @@ class MainState extends Equatable {
       sliderModel: sliderModel ?? this.sliderModel,
       cars: cars ?? this.cars,
       getCarsState: getCarsState ?? this.getCarsState,
+      user: user ?? this.user
     );
   }
 
@@ -56,5 +60,6 @@ class MainState extends Equatable {
     sliderModel,
     cars,
     getCarsState,
+    user
   ];
 }

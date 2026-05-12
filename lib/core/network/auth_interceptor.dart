@@ -10,4 +10,12 @@ class AuthInterceptor extends Interceptor {
     options.headers['lang'] = CacheHelper.getData(key: CacheHelperKeys.lang);
     super.onRequest(options, handler);
   }
+
+  @override
+  void onError(DioException err, ErrorInterceptorHandler handler) {
+    if (err.response?.statusCode == 401) {
+      //Todo logout
+    }
+    super.onError(err, handler);
+  }
 }
