@@ -185,11 +185,6 @@ class AppRoues {
         );
       case Routes.noInternet:
         return MaterialPageRoute(builder: (context) => const NoInternet());
-      case Routes.error:
-        final arguments = setting.arguments as String;
-        return MaterialPageRoute(
-          builder: (context) => CustomErrorWidget(error: arguments),
-        );
       case Routes.finishOrderScreen:
         return MaterialPageRoute(
           builder: (context) => const FinishOrderScreen(),

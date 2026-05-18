@@ -1,64 +1,35 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:oborkom/core/helpers/extension.dart';
-import 'package:oborkom/core/utils/app_styles.dart';
-import 'package:oborkom/main.dart';
+import '../utils/constant.dart';
 
-import '../routes/routes.dart';
-import '../utils/app_colors.dart';
 
-class ErrorHandler {
-  static void handleFlutterError(FlutterErrorDetails details) {
-    FlutterError.dumpErrorToConsole(details);
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      NavigatorClass.navigatorKey.currentState?.push(
-        MaterialPageRoute(
-          builder: (_) =>
-              CustomErrorWidget(error: details.exception.toString()),
-        ),
-      );
-    });
-  }
-}
 
-class CustomErrorWidget extends StatelessWidget {
-  const CustomErrorWidget({super.key, required this.error});
-  final String? error;
+void registerErrorHandler() {
 
-  @override
-  Widget build(BuildContext context) {
+  // * Show some error UI if any uncaught exception happens
+  FlutterError.onError = (final FlutterErrorDetails details) {
+    FlutterError.presentError(details);
+    // FirebaseCrashlytics.instance.recordFlutterFatalError(details);
+    logger.i(details.toString());
+  };
+  // * Handle errors from the underlying platform/OS
+  PlatformDispatcher.instance.onError =
+      (final Object error, final StackTrace stack) {
+    logger.e(error.toString());
+    // FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+  // * Show some error UI when any widget in the app fails to build
+  ErrorWidget.builder = (final FlutterErrorDetails details) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              Text('Something went wrong', style: AppTextStyles.bold18Black),
-              const SizedBox(height: 100),
-              Text(
-                error ?? '',
-                style: AppTextStyles.bold18Black,
-                textAlign: TextAlign.center,
-              ),
-              50.height,
-              TextButton(
-                onPressed: () {
-                  context.pushNamedAndRemoveUntil(
-                    Routes.home,
-                    (route) => false,
-                  );
-                },
-                child: Text(
-                  'Go To Home',
-                  style: AppTextStyles.bold18Black.copyWith(
-                    color: AppColors.mainColor,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: const Text('An error occurred'),
       ),
+      body: Center(child: Text(details.toString())),
     );
-  }
+  };
 }
+
+
+

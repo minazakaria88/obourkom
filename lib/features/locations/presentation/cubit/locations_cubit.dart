@@ -224,9 +224,7 @@ class LocationsCubit extends Cubit<LocationsState> {
       } else {
         emit(state.copyWith(autoCompleteLocations: result));
       }
-    } on ApiException catch (e) {
-      emit(state.copyWith(errorMessage: e.failure.message));
-    } catch (e) {
+    }catch (e) {
       emit(state.copyWith(errorMessage: e.toString()));
     }
   }
@@ -239,8 +237,6 @@ class LocationsCubit extends Cubit<LocationsState> {
       final result = await locationRepository.getDetailsLocation(data);
       final location = result.result!.geometry!.location!;
       pickUserLocation(LatLng(location.lat!, location.lng!));
-    } on ApiException catch (e) {
-      emit(state.copyWith(errorMessage: e.failure.message));
     } catch (e) {
       emit(state.copyWith(errorMessage: e.toString()));
     }

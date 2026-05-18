@@ -13,6 +13,7 @@ import 'package:oborkom/core/utils/constant.dart';
 import 'package:oborkom/features/language/presentation/cubit/language_cubit.dart';
 import 'package:oborkom/injection.dart';
 import 'package:toastification/toastification.dart';
+import 'core/helpers/error_handler.dart';
 import 'core/network/api_helper.dart';
 import 'core/helpers/location_service.dart';
 import 'core/helpers/notification_helper.dart';
@@ -22,7 +23,7 @@ import 'generated/l10n.dart';
 bool isLoggedIn = false;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // FlutterError.onError = ErrorHandler.handleFlutterError;
+  registerErrorHandler();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await CacheHelper.init();
   ApiHelper.init();
