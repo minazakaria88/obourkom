@@ -111,14 +111,7 @@ class LocationsCubit extends Cubit<LocationsState> {
           locations: result,
         ),
       );
-    } on ApiException catch (e) {
-      emit(
-        state.copyWith(
-          locationsStatus: LocationsStatus.error,
-          errorMessage: e.failure.message,
-        ),
-      );
-    } catch (e) {
+    }  catch (e) {
       emit(
         state.copyWith(
           locationsStatus: LocationsStatus.error,

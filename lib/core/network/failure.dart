@@ -50,7 +50,7 @@ class ServerFailure extends Failure {
       case 422:
         return ServerFailure(message: getError(response));
       case 401:
-        return ServerFailure(message: response['message'])..gotoLogin();
+        return ServerFailure(message: response['message']);
       case 404:
         return ServerFailure(message: 'Not Found');
       case 500:
@@ -64,14 +64,6 @@ class ServerFailure extends Failure {
       default:
         return ServerFailure(message: 'Something went wrong');
     }
-  }
-
-  void gotoLogin() {
-    CacheHelper.clearData();
-    NavigatorClass.navigatorKey.currentState!.pushNamedAndRemoveUntil(
-      Routes.login,
-      (context) => false,
-    );
   }
 }
 
@@ -94,3 +86,4 @@ String getError(dynamic response) {
 
   return error;
 }
+

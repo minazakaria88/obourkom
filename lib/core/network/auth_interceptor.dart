@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 
+import '../../main.dart';
+import '../routes/routes.dart';
 import '../storage/cache_helper.dart';
 
 class AuthInterceptor extends Interceptor {
@@ -13,8 +15,17 @@ class AuthInterceptor extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
+    gotoLogin() {
+      CacheHelper.clearData();
+      NavigatorClass.navigatorKey.currentState!.pushNamedAndRemoveUntil(
+        Routes.login,
+        (context) => false,
+      );
+    }
+
     if (err.response?.statusCode == 401) {
       //Todo logout
+      gotoLogin();
     }
     super.onError(err, handler);
   }

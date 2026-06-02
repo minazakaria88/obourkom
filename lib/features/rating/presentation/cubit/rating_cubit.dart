@@ -2,9 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:oborkom/features/rating/data/repositories/rating_repo.dart';
-
-import '../../../../core/network/failure.dart';
-
 part 'rating_state.dart';
 
 class RatingCubit extends Cubit<RatingState> {
@@ -23,14 +20,7 @@ class RatingCubit extends Cubit<RatingState> {
       emit(state.copyWith(rateDriverStatus: RateDriverStatus.loading));
       await ratingRepository.rateDriver(orderId: orderId,data: data);
       emit(state.copyWith(rateDriverStatus: RateDriverStatus.success));
-    } on ApiException catch (e) {
-      emit(
-        state.copyWith(
-          rateDriverStatus: RateDriverStatus.failure,
-          errorMessage: e.failure.message,
-        ),
-      );
-    } catch (e) {
+    }  catch (e) {
       emit(
         state.copyWith(
           rateDriverStatus: RateDriverStatus.failure,
